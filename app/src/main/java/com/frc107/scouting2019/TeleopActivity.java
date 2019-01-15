@@ -1,10 +1,11 @@
-package com.example.vande.scouting2018;
+package com.frc107.scouting2019;
 
 import android.Manifest;
 import android.os.Environment;
 
 import android.provider.Settings;
 import androidx.annotation.NonNull;
+
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,10 +37,9 @@ import utils.StringUtils;
 import utils.ViewUtils;
 
 import static android.R.attr.value;
-import static com.example.vande.scouting2018.AutonActivity.AUTON_STRING_EXTRA;
-import static com.example.vande.scouting2018.AutonActivity.MATCH_STRING_EXTRA;
-import static com.example.vande.scouting2018.AutonActivity.TEAMNUMBER_STRING_EXTRA;
-
+import static com.frc107.scouting2019.AutonActivity.AUTON_STRING_EXTRA;
+import static com.frc107.scouting2019.AutonActivity.MATCH_STRING_EXTRA;
+import static com.frc107.scouting2019.AutonActivity.TEAMNUMBER_STRING_EXTRA;
 
 public class TeleopActivity extends AppCompatActivity implements View.OnKeyListener {
     /*This area sets and binds all of the variables that we will use in the auton activity*/
