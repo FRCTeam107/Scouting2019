@@ -1,4 +1,4 @@
-package com.frc107.scouting2019;
+package com.frc107.scouting2019.view;
 
 import android.Manifest;
 import android.content.Intent;
@@ -8,10 +8,8 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
@@ -24,22 +22,21 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import utils.FormatStringUtils;
-import utils.StringUtils;
-import utils.ViewUtils;
+import com.frc107.scouting2019.utils.FormatStringUtils;
+import com.frc107.scouting2019.utils.StringUtils;
+import com.frc107.scouting2019.utils.ViewUtils;
 
 public class AutonActivity extends AppCompatActivity implements View.OnKeyListener {
 
     /*This area sets and binds all of the variables that we will use in the auton activity*/
-    public static String AUTON_STRING_EXTRA = "auton_extra";
+    public static String AUTON_EXTRA = "auton_extra";
 
     /* These are the names of the match number and team number extras that will be passed into teleop */
-    public static final String MATCH_STRING_EXTRA = "match_extra";
-    public static final String TEAMNUMBER_STRING_EXTRA = "teamnumber_extra";
+    public static final String MATCH_EXTRA = "match_extra";
+    public static final String TEAM_NUMBER_EXTRA = "teamnumber_extra";
 
-    @BindView(R.id.teamNumber_input_layout)
+    /*@BindView(R.id.teamNumber_input_layout)
     public TextInputLayout teamNumberInputLayout;
 
     @BindView(R.id.matchNumber_input_layout)
@@ -67,7 +64,7 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
     public Button nextButton;
 
     private ArrayList<CharSequence> autonDataStringList;
-    public static final int REQUEST_CODE = 1;
+    public static final int REQUEST_CODE = 1;*/
 
 
     /*When this activity is first called,
@@ -92,12 +89,12 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
     protected void onResume() {
         super.onResume();
 
-        autonDataStringList.clear();
+        /*autonDataStringList.clear();
 
         teamNumberInput.setOnKeyListener(this);
         matchNumberInput.setOnKeyListener(this);
         cubeInSwitchRadiobtnGrp.setOnKeyListener(this);
-        cubeInScaleRadiobtnGrp.setOnKeyListener(this);
+        cubeInScaleRadiobtnGrp.setOnKeyListener(this);*/
     }
 
     /*If this activity enters a paused state the data will be set to null*/
@@ -105,10 +102,10 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
     protected void onPause() {
         super.onPause();
 
-        teamNumberInput.setOnKeyListener(null);
+        /*teamNumberInput.setOnKeyListener(null);
         matchNumberInput.setOnKeyListener(null);
         cubeInSwitchRadiobtnGrp.setOnKeyListener(null);
-        cubeInScaleRadiobtnGrp.setOnKeyListener(null);
+        cubeInScaleRadiobtnGrp.setOnKeyListener(null);*/
     }
 
     /* This method will display the options menu when the icon is pressed
@@ -151,11 +148,11 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
                 switch (inputEditText.getId()) {
 
                     case R.id.teamNumber_input:
-                        teamNumberInputLayout.setError(null);
+                        //teamNumberInputLayout.setError(null);
                         break;
 
                     case R.id.matchNumber_input:
-                        matchNumberInputLayout.setError(null);
+                        //matchNumberInputLayout.setError(null);
                         break;
                 }
             }
@@ -212,9 +209,9 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
         autonDataStringList.add(cubeInScale_Radiobtn.getText());
 
         final Intent intent = new Intent(this, TeleopActivity.class);
-        intent.putExtra(AUTON_STRING_EXTRA, FormatStringUtils.addDelimiter(autonDataStringList, ","));
-        intent.putExtra(MATCH_STRING_EXTRA, getTextInputLayoutString(matchNumberInputLayout));
-        intent.putExtra(TEAMNUMBER_STRING_EXTRA, getTextInputLayoutString(teamNumberInputLayout));
+        intent.putExtra(AUTON_EXTRA, FormatStringUtils.addDelimiter(autonDataStringList, ","));
+        intent.putExtra(MATCH_EXTRA, getTextInputLayoutString(matchNumberInputLayout));
+        intent.putExtra(TEAM_NUMBER_EXTRA, getTextInputLayoutString(teamNumberInputLayout));
 
         startActivityForResult(intent, REQUEST_CODE);
 

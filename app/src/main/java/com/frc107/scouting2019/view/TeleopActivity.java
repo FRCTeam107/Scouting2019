@@ -1,4 +1,4 @@
-package com.frc107.scouting2019;
+package com.frc107.scouting2019.view;
 
 import android.Manifest;
 import android.os.Environment;
@@ -6,8 +6,9 @@ import android.os.Environment;
 import android.provider.Settings;
 import androidx.annotation.NonNull;
 
+import com.frc107.scouting2019.R;
 import com.google.android.material.textfield.TextInputEditText;
-import androidx.core.app.ActivityCompat;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,15 +32,15 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import utils.FormatStringUtils;
-import utils.PermissionUtils;
-import utils.StringUtils;
-import utils.ViewUtils;
+import com.frc107.scouting2019.utils.FormatStringUtils;
+import com.frc107.scouting2019.utils.PermissionUtils;
+import com.frc107.scouting2019.utils.StringUtils;
+import com.frc107.scouting2019.utils.ViewUtils;
 
 import static android.R.attr.value;
-import static com.frc107.scouting2019.AutonActivity.AUTON_STRING_EXTRA;
-import static com.frc107.scouting2019.AutonActivity.MATCH_STRING_EXTRA;
-import static com.frc107.scouting2019.AutonActivity.TEAMNUMBER_STRING_EXTRA;
+import static com.frc107.scouting2019.view.AutonActivity.AUTON_EXTRA;
+import static com.frc107.scouting2019.view.AutonActivity.MATCH_EXTRA;
+import static com.frc107.scouting2019.view.AutonActivity.TEAM_NUMBER_EXTRA;
 
 public class TeleopActivity extends AppCompatActivity implements View.OnKeyListener {
     /*This area sets and binds all of the variables that we will use in the auton activity*/
@@ -114,9 +115,9 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         ButterKnife.bind(this);
 
         Bundle bundle = getIntent().getExtras();
-        auton = bundle.getString(AUTON_STRING_EXTRA);
-        matchNumber = bundle.getString(MATCH_STRING_EXTRA);
-        teamNumber = bundle.getString(TEAMNUMBER_STRING_EXTRA);
+        auton = bundle.getString(AUTON_EXTRA);
+        matchNumber = bundle.getString(MATCH_EXTRA);
+        teamNumber = bundle.getString(TEAM_NUMBER_EXTRA);
 
         getSupportActionBar().setTitle("Match: " + matchNumber + " - Team: " + teamNumber);
 

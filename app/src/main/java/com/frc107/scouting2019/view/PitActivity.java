@@ -1,4 +1,4 @@
-package com.frc107.scouting2019;
+package com.frc107.scouting2019.view;
 
 import android.Manifest;
 import android.content.Intent;
@@ -11,6 +11,9 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import androidx.annotation.NonNull;
+
+import com.frc107.scouting2019.BuildConfig;
+import com.frc107.scouting2019.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -38,10 +41,10 @@ import java.util.ArrayList;
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import utils.FormatStringUtils;
-import utils.PermissionUtils;
-import utils.StringUtils;
-import utils.ViewUtils;
+import com.frc107.scouting2019.utils.FormatStringUtils;
+import com.frc107.scouting2019.utils.PermissionUtils;
+import com.frc107.scouting2019.utils.StringUtils;
+import com.frc107.scouting2019.utils.ViewUtils;
 
 /**
  * Created by Matt on 9/30/2017.

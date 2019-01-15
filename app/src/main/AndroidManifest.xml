@@ -9,18 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScouterInitialsActivity"></activity>
-        <activity android:name=".AutonActivity"></activity>
-        <activity android:name=".TeleopActivity"></activity>
-        <activity android:name=".PitActivity"></activity>
-        <activity android:name=".SendDataActivity"></activity>
+        <activity android:name=".view.ScouterInitialsActivity"></activity>
+        <activity android:name=".view.AutonActivity"></activity>
+        <activity android:name=".view.TeleopActivity"></activity>
+        <activity android:name=".view.PitActivity"></activity>
+        <activity android:name=".view.SendDataActivity"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"

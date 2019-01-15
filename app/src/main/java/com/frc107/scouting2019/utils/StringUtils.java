@@ -1,4 +1,4 @@
-package utils;
+package com.frc107.scouting2019.utils;
 
 public class StringUtils {
     public static boolean isEmptyOrNull(String string){
