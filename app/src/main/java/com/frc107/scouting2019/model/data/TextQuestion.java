@@ -1,13 +1,12 @@
 package com.frc107.scouting2019.model.data;
 
-public class TextQuestion implements IQuestion<String> {
+public class TextQuestion extends QuestionBase<String> {
     private boolean needsAnswer;
     private String answer;
-    private String name;
 
-    public TextQuestion(String name, boolean needsAnswer) {
+    public TextQuestion(int id, boolean needsAnswer) {
+        super(id);
         this.needsAnswer = needsAnswer;
-        this.name = name;
     }
 
     @Override
@@ -28,10 +27,5 @@ public class TextQuestion implements IQuestion<String> {
     @Override
     public String getAnswer() {
         return answer;
-    }
-
-    @Override
-    public String getName() {
-        return name;
     }
 }

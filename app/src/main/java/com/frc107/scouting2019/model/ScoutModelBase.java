@@ -1,16 +1,15 @@
 package com.frc107.scouting2019.model;
 
-import com.frc107.scouting2019.model.data.IQuestion;
-import com.frc107.scouting2019.utils.FormatStringUtils;
+import com.frc107.scouting2019.model.data.QuestionBase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public abstract class ScoutModelBase {
-    private ArrayList<IQuestion> questions;
+public class ScoutModelBase {
+    private ArrayList<QuestionBase> questions;
     private String name;
 
-    public ScoutModelBase(String name, IQuestion... questions) {
+    public ScoutModelBase(String name, QuestionBase... questions) {
         this.name = name;
         this.questions = new ArrayList<>(Arrays.asList(questions));
     }
@@ -20,7 +19,7 @@ public abstract class ScoutModelBase {
     }
 
     public String getUnfinishedQuestionName() {
-        for (IQuestion question : questions) {
+        for (QuestionBase question : questions) {
             if (question.needsAnswer() && !question.hasAnswer()) {
                 return question.getName();
             }
@@ -28,8 +27,8 @@ public abstract class ScoutModelBase {
         return null;
     }
 
-    public IQuestion getQuestion(String name) {
-        for (IQuestion question : questions) {
+    public QuestionBase getQuestion(String name) {
+        for (QuestionBase question : questions) {
             if (question.getName().equals(name)) {
                 return question;
             }
@@ -50,7 +49,7 @@ public abstract class ScoutModelBase {
         return stringBuilder.toString();
     }
 
-    public ArrayList<IQuestion> getQuestions() {
+    public ArrayList<QuestionBase> getQuestions() {
         return questions;
     }
 }

@@ -1,13 +1,10 @@
 package com.frc107.scouting2019.model.data;
 
-import java.util.ArrayList;
-
-public class NumberQuestion implements IQuestion<Integer> {
+public class NumberQuestion extends QuestionBase<Integer> {
     private int answer;
-    private String name;
 
-    public NumberQuestion(String name) {
-        this.name = name;
+    public NumberQuestion(int id) {
+        super(id);
     }
 
     @Override
@@ -28,10 +25,5 @@ public class NumberQuestion implements IQuestion<Integer> {
     @Override
     public String getAnswer() {
         return String.valueOf(answer);
-    }
-
-    @Override
-    public String getName() {
-        return name;
     }
 }

@@ -1,11 +1,10 @@
 package com.frc107.scouting2019.model.data;
 
-public class CheckBoxQuestion implements IQuestion<Boolean> {
+public class CheckBoxQuestion extends QuestionBase<Boolean> {
     private boolean answer;
-    private String name;
 
-    public CheckBoxQuestion(String name) {
-        this.name = name;
+    public CheckBoxQuestion(int id) {
+        super(id);
     }
 
     @Override
@@ -28,10 +27,5 @@ public class CheckBoxQuestion implements IQuestion<Boolean> {
     @Override
     public String getAnswer() {
         return String.valueOf(answer);
-    }
-
-    @Override
-    public String getName() {
-        return name;
     }
 }

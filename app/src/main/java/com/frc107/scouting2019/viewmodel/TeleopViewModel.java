@@ -1,4 +1,6 @@
 package com.frc107.scouting2019.viewmodel;
 
-public class TeleopViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class TeleopViewModel extends ViewModel {
 }

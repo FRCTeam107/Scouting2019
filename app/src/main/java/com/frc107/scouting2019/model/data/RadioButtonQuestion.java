@@ -3,17 +3,15 @@ package com.frc107.scouting2019.model.data;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class RadioButtonQuestion implements IQuestion<String> {
-    private ArrayList<String> possibleAnswers;
-    private int selectedAnswerIndex;
+public class RadioButtonQuestion extends QuestionBase<Integer> {
+    private ArrayList<RadioQuestionOption> options;
+    private RadioQuestionOption selectedOption;
     private boolean needsAnswer;
-    private String name;
 
-    public RadioButtonQuestion(String name, boolean needsAnswer, String... possibleAnswers) {
-        this.name = name;
+    public RadioButtonQuestion(int id, boolean needsAnswer, RadioQuestionOption... options) {
+        super(id);
         this.needsAnswer = needsAnswer;
-        selectedAnswerIndex = -1;
-        this.possibleAnswers = new ArrayList<>(Arrays.asList(possibleAnswers));
+        this.options = new ArrayList<>(Arrays.asList(options));
     }
 
     @Override
@@ -23,22 +21,24 @@ public class RadioButtonQuestion implements IQuestion<String> {
 
     @Override
     public boolean hasAnswer() {
-        return selectedAnswerIndex != -1;
+        return selectedOption != null;
     }
 
     @Override
-    public void setAnswer(String answer) {
-        selectedAnswerIndex = possibleAnswers.indexOf(answer);
+    public void setAnswer(Integer answerId) {
+        for (RadioQuestionOption option : options) {
+            if (option.getId() == answerId) {
+                selectedOption = option;
+            }
+        }
     }
 
     @Override
     public String getAnswer() {
-        String answer = selectedAnswerIndex == -1 ? null : possibleAnswers.get(selectedAnswerIndex);
-        return answer;
-    }
+        if (selectedOption == null)
+            return null;
 
-    @Override
-    public String getName() {
-        return name;
+        return selectedOption.getText();
     }
 }
+
