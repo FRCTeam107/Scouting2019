@@ -1,12 +1,13 @@
 package com.frc107.scouting2019.model.data;
 
-public class TextQuestion extends QuestionBase<String> {
+public class TextQuestion extends Question<String> {
     private boolean needsAnswer;
     private String answer;
 
     public TextQuestion(int id, boolean needsAnswer) {
         super(id);
         this.needsAnswer = needsAnswer;
+        this.answer = "";
     }
 
     @Override

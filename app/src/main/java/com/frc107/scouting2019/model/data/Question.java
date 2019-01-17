@@ -3,11 +3,11 @@ package com.frc107.scouting2019.model.data;
 /**
  * @param <T> The type of the answer.
  */
-public abstract class QuestionBase<T> {
+public abstract class Question<T> {
     private String name;
     private int id;
 
-    public QuestionBase(int id) {
+    public Question(int id) {
         this.name = "";
         this.id = id;
     }

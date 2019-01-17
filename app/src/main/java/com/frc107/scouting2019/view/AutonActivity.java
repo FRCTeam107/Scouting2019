@@ -6,31 +6,33 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.model.data.RadioButtonQuestion;
 import com.frc107.scouting2019.model.data.RadioQuestionOption;
 import com.frc107.scouting2019.model.data.TextQuestion;
+import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.AutonViewModel;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.ArrayList;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 public class AutonActivity extends AppCompatActivity {
+    /*This area sets and binds all of the variables that we will use in the auton activity*/
+    public static String AUTON_STRING_EXTRA = "auton_extra";
+
+    /* These are the names of the match number and team number extras that will be passed into teleop */
+    public static final String MATCH_STRING_EXTRA = "match_extra";
+    public static final String TEAMNUMBER_STRING_EXTRA = "teamnumber_extra";
+
+    public static final int REQUEST_CODE = 1;
+
     private AutonViewModel viewModel;
 
     @Override
@@ -86,18 +88,25 @@ public class AutonActivity extends AppCompatActivity {
         }
     }
 
-    /* This method will change the text entered into the app into a string if it is not already*/
-    private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
-        final EditText editText = textInputLayout.getEditText();
-        return editText != null && editText.getText() != null ? editText.getText().toString() : "";
-    }
-
     private void checkForPermissions() {
         int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
         if (writePermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         }
     }
 
+    public void goToTeleop(View view) {
+        int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
+        if (unfinishedQuestionId != -1) {
+            ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
+            return;
+        }
+
+        final Intent intent = new Intent(this, TeleopActivity.class);
+        intent.putExtra(AUTON_STRING_EXTRA, viewModel.toString());
+        intent.putExtra(MATCH_STRING_EXTRA, viewModel.getMatchNumber());
+        intent.putExtra(TEAMNUMBER_STRING_EXTRA, viewModel.getTeamNumber());
+
+        startActivityForResult(intent, REQUEST_CODE);
+    }
 }

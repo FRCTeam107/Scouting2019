@@ -1,6 +1,6 @@
 package com.frc107.scouting2019.model.data;
 
-public class CheckBoxQuestion extends QuestionBase<Boolean> {
+public class CheckBoxQuestion extends Question<Boolean> {
     private boolean answer;
 
     public CheckBoxQuestion(int id) {

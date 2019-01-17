@@ -1,6 +1,6 @@
 package com.frc107.scouting2019.model.data;
 
-public class NumberQuestion extends QuestionBase<Integer> {
+public class NumberQuestion extends Question<Integer> {
     private int answer;
 
     public NumberQuestion(int id) {

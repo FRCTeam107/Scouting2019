@@ -22,7 +22,8 @@
                 android:id="@+id/testEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
+                android:layout_margin="10dp"
+                android:inputType="text" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/testRadioQuestion"
@@ -56,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:onClick="onShowTeleop"
+                android:onClick="goToTeleop"
                 android:text="@string/nextButton" />
 
         </LinearLayout>

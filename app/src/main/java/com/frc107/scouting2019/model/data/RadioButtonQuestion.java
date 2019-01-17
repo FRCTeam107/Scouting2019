@@ -3,7 +3,7 @@ package com.frc107.scouting2019.model.data;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class RadioButtonQuestion extends QuestionBase<Integer> {
+public class RadioButtonQuestion extends Question<Integer> {
     private ArrayList<RadioQuestionOption> options;
     private RadioQuestionOption selectedOption;
     private boolean needsAnswer;
@@ -36,7 +36,7 @@ public class RadioButtonQuestion extends QuestionBase<Integer> {
     @Override
     public String getAnswer() {
         if (selectedOption == null)
-            return null;
+            return "";
 
         return selectedOption.getText();
     }
