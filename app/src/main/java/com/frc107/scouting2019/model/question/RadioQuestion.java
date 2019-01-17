@@ -1,14 +1,14 @@
-package com.frc107.scouting2019.model.data;
+package com.frc107.scouting2019.model.question;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class RadioButtonQuestion extends Question<Integer> {
+public class RadioQuestion extends Question<Integer> {
     private ArrayList<RadioQuestionOption> options;
     private RadioQuestionOption selectedOption;
     private boolean needsAnswer;
 
-    public RadioButtonQuestion(int id, boolean needsAnswer, RadioQuestionOption... options) {
+    public RadioQuestion(int id, boolean needsAnswer, RadioQuestionOption... options) {
         super(id);
         this.needsAnswer = needsAnswer;
         this.options = new ArrayList<>(Arrays.asList(options));

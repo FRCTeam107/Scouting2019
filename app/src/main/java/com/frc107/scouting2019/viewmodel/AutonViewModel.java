@@ -1,23 +1,31 @@
 package com.frc107.scouting2019.viewmodel;
 
-import com.frc107.scouting2019.model.ScoutModelBase;
-import com.frc107.scouting2019.model.data.Question;
+import com.frc107.scouting2019.model.ScoutModel;
+import com.frc107.scouting2019.model.question.Question;
 
 import androidx.lifecycle.ViewModel;
 
 public class AutonViewModel extends ViewModel {
-    private ScoutModelBase model;
+    private ScoutModel model;
 
     public AutonViewModel(Question... questions) {
-       model = new ScoutModelBase("Auton", questions);
+       model = new ScoutModel("Auton", questions);
     }
 
     public int getTeamNumber() {
         return model.getTeamNumber();
     }
 
+    public void setTeamNumber(int teamNumber) {
+        model.setTeamNumber(teamNumber);
+    }
+
     public int getMatchNumber() {
         return model.getMatchNumber();
+    }
+
+    public void setMatchNumber(int matchNumber) {
+        model.setMatchNumber(matchNumber);
     }
 
     public int getFirstUnfinishedQuestionId() {

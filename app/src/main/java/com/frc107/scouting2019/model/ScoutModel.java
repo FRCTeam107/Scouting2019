@@ -1,21 +1,21 @@
 package com.frc107.scouting2019.model;
 
-import com.frc107.scouting2019.model.data.CheckBoxQuestion;
-import com.frc107.scouting2019.model.data.NumberQuestion;
-import com.frc107.scouting2019.model.data.Question;
-import com.frc107.scouting2019.model.data.RadioButtonQuestion;
-import com.frc107.scouting2019.model.data.TextQuestion;
+import com.frc107.scouting2019.model.question.CheckBoxQuestion;
+import com.frc107.scouting2019.model.question.NumberQuestion;
+import com.frc107.scouting2019.model.question.Question;
+import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.model.question.TextQuestion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ScoutModelBase {
+public class ScoutModel {
     private int teamNumber;
     private int matchNumber;
     private ArrayList<Question> questions;
     private String name;
 
-    public ScoutModelBase(String name, Question... questions) {
+    public ScoutModel(String name, Question... questions) {
         this.name = name;
         this.questions = new ArrayList<>(Arrays.asList(questions));
     }
@@ -80,8 +80,8 @@ public class ScoutModelBase {
                     return true;
                 }
 
-                if (question instanceof RadioButtonQuestion) {
-                    ((RadioButtonQuestion) question).setAnswer(answer);
+                if (question instanceof RadioQuestion) {
+                    ((RadioQuestion) question).setAnswer(answer);
                     return true;
                 }
             }
@@ -107,10 +107,15 @@ public class ScoutModelBase {
 
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(teamNumber);
+        stringBuilder.append(',');
+        stringBuilder.append(matchNumber);
+        stringBuilder.append(',');
+
         for (int i = 0; i < questions.size(); i++) {
             stringBuilder.append(questions.get(i).getAnswer());
             if (i < questions.size() - 1) {
-                stringBuilder.append(",");
+                stringBuilder.append(',');
             }
         }
         return stringBuilder.toString();

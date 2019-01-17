@@ -1,4 +1,4 @@
-package com.frc107.scouting2019.model.data;
+package com.frc107.scouting2019.model.question;
 
 public class NumberQuestion extends Question<Integer> {
     private int answer;

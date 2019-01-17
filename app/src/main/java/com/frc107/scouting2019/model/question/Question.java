@@ -1,4 +1,4 @@
-package com.frc107.scouting2019.model.data;
+package com.frc107.scouting2019.model.question;
 
 /**
  * @param <T> The type of the answer.

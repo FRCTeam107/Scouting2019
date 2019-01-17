@@ -13,9 +13,9 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.model.data.RadioButtonQuestion;
-import com.frc107.scouting2019.model.data.RadioQuestionOption;
-import com.frc107.scouting2019.model.data.TextQuestion;
+import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.model.question.RadioQuestionOption;
+import com.frc107.scouting2019.model.question.TextQuestion;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.AutonViewModel;
 
@@ -30,8 +30,15 @@ public class AutonActivity extends AppCompatActivity {
     /* These are the names of the match number and team number extras that will be passed into teleop */
     public static final String MATCH_STRING_EXTRA = "match_extra";
     public static final String TEAMNUMBER_STRING_EXTRA = "teamnumber_extra";
-
     public static final int REQUEST_CODE = 1;
+
+    private EditText testEditText;
+    private TextWatcher testEditTextWatcher;
+    private EditText teamNumberEditText;
+    private TextWatcher teamNumberTextWatcher;
+    private EditText matchNumberEditText;
+    private TextWatcher matchNumberTextWatcher;
+    private RadioGroup testRadioGroup;
 
     private AutonViewModel viewModel;
 
@@ -42,24 +49,66 @@ public class AutonActivity extends AppCompatActivity {
 
         viewModel = new AutonViewModel(
                 new TextQuestion(R.id.testEditText, true),
-                new RadioButtonQuestion(R.id.testRadioQuestion, true, new RadioQuestionOption(R.id.leftStartingLocation_Radiobtn, getString(R.string.leftStarting)),
+                new RadioQuestion(R.id.testRadioQuestion, true, new RadioQuestionOption(R.id.leftStartingLocation_Radiobtn, getString(R.string.leftStarting)),
                                                                                     new RadioQuestionOption(R.id.centerStartingLocation_Radiobtn, getString(R.string.centerStarting)),
                                                                                     new RadioQuestionOption(R.id.rightStartingLocation_Radiobtn, getString(R.string.rightStarting)))
         );
-        ((EditText) findViewById(R.id.testEditText)).addTextChangedListener(new TextWatcher() {
+
+        testEditText = findViewById(R.id.testEditText);
+        testEditTextWatcher = new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 viewModel.setAnswer(R.id.testEditText, s.toString());
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }
-        });
-        ((RadioGroup) findViewById(R.id.testRadioQuestion)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                viewModel.setAnswer(R.id.testRadioQuestion, checkedId);
+        };
+        testEditText.addTextChangedListener(testEditTextWatcher);
+
+        teamNumberEditText = findViewById(R.id.teamNumberEditText);
+        teamNumberTextWatcher = new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                viewModel.setTeamNumber(Integer.valueOf(s.toString()));
             }
-        });
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void afterTextChanged(Editable s) { }
+        };
+        teamNumberEditText.addTextChangedListener(teamNumberTextWatcher);
+
+        matchNumberEditText = findViewById(R.id.matchNumberEditText);
+        matchNumberTextWatcher = new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                viewModel.setMatchNumber(Integer.valueOf(s.toString()));
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void afterTextChanged(Editable s) { }
+        };
+        matchNumberEditText.addTextChangedListener(matchNumberTextWatcher);
+
+        testRadioGroup = findViewById(R.id.testRadioQuestion);
+        testRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.testRadioQuestion, checkedId));
 
         checkForPermissions();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        testEditText.removeTextChangedListener(testEditTextWatcher);
+        testEditText = null;
+        testEditTextWatcher = null;
+
+        teamNumberEditText.removeTextChangedListener(teamNumberTextWatcher);
+        teamNumberEditText = null;
+        teamNumberTextWatcher = null;
+
+        matchNumberEditText.removeTextChangedListener(matchNumberTextWatcher);
+        matchNumberEditText = null;
+        matchNumberTextWatcher = null;
+
+        testRadioGroup.setOnCheckedChangeListener(null);
+        testRadioGroup = null;
+
+        viewModel = null;
     }
 
     /* This method will display the options menu when the icon is pressed
