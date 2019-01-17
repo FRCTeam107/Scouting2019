@@ -19,13 +19,6 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/testEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:inputType="text" />
-
-            <EditText
                 android:id="@+id/teamNumberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

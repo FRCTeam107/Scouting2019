@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.model.question.RadioQuestionOption;
 import com.frc107.scouting2019.model.question.TextQuestion;
@@ -32,8 +33,6 @@ public class AutonActivity extends AppCompatActivity {
     public static final String TEAMNUMBER_STRING_EXTRA = "teamnumber_extra";
     public static final int REQUEST_CODE = 1;
 
-    private EditText testEditText;
-    private TextWatcher testEditTextWatcher;
     private EditText teamNumberEditText;
     private TextWatcher teamNumberTextWatcher;
     private EditText matchNumberEditText;
@@ -47,22 +46,15 @@ public class AutonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auton);
 
-        viewModel = new AutonViewModel(
-                new TextQuestion(R.id.testEditText, true),
+        Question[] questions = {
+                new TextQuestion(R.id.teamNumberEditText, true),
+                new TextQuestion(R.id.matchNumberEditText, true),
                 new RadioQuestion(R.id.testRadioQuestion, true, new RadioQuestionOption(R.id.leftStartingLocation_Radiobtn, getString(R.string.leftStarting)),
-                                                                                    new RadioQuestionOption(R.id.centerStartingLocation_Radiobtn, getString(R.string.centerStarting)),
-                                                                                    new RadioQuestionOption(R.id.rightStartingLocation_Radiobtn, getString(R.string.rightStarting)))
-        );
-
-        testEditText = findViewById(R.id.testEditText);
-        testEditTextWatcher = new TextWatcher() {
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setAnswer(R.id.testEditText, s.toString());
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void afterTextChanged(Editable s) { }
+                        new RadioQuestionOption(R.id.centerStartingLocation_Radiobtn, getString(R.string.centerStarting)),
+                        new RadioQuestionOption(R.id.rightStartingLocation_Radiobtn, getString(R.string.rightStarting)))
         };
-        testEditText.addTextChangedListener(testEditTextWatcher);
+
+        viewModel = new AutonViewModel(questions);
 
         teamNumberEditText = findViewById(R.id.teamNumberEditText);
         teamNumberTextWatcher = new TextWatcher() {
@@ -93,9 +85,6 @@ public class AutonActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        testEditText.removeTextChangedListener(testEditTextWatcher);
-        testEditText = null;
-        testEditTextWatcher = null;
 
         teamNumberEditText.removeTextChangedListener(teamNumberTextWatcher);
         teamNumberEditText = null;
