@@ -30,7 +30,7 @@ public class AutonActivity extends AppCompatActivity {
 
     /* These are the names of the match number and team number extras that will be passed into teleop */
     public static final String MATCH_STRING_EXTRA = "match_extra";
-    public static final String TEAMNUMBER_STRING_EXTRA = "teamnumber_extra";
+    public static final String TEAM_NUMBER_STRING_EXTRA = "teamnumber_extra";
     public static final int REQUEST_CODE = 1;
 
     private EditText teamNumberEditText;
@@ -47,8 +47,6 @@ public class AutonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_auton);
 
         Question[] questions = {
-                new TextQuestion(R.id.teamNumberEditText, true),
-                new TextQuestion(R.id.matchNumberEditText, true),
                 new RadioQuestion(R.id.testRadioQuestion, true, new RadioQuestionOption(R.id.leftStartingLocation_Radiobtn, getString(R.string.leftStarting)),
                         new RadioQuestionOption(R.id.centerStartingLocation_Radiobtn, getString(R.string.centerStarting)),
                         new RadioQuestionOption(R.id.rightStartingLocation_Radiobtn, getString(R.string.rightStarting)))
@@ -143,7 +141,7 @@ public class AutonActivity extends AppCompatActivity {
         final Intent intent = new Intent(this, TeleopActivity.class);
         intent.putExtra(AUTON_STRING_EXTRA, viewModel.getResult());
         intent.putExtra(MATCH_STRING_EXTRA, viewModel.getMatchNumber());
-        intent.putExtra(TEAMNUMBER_STRING_EXTRA, viewModel.getTeamNumber());
+        intent.putExtra(TEAM_NUMBER_STRING_EXTRA, viewModel.getTeamNumber());
 
         startActivityForResult(intent, REQUEST_CODE);
     }
