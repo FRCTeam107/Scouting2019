@@ -12,51 +12,27 @@
         android:fillViewport="true"
         android:scrollbars="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/pit_teamNumber_input_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="8dp"
-                android:hint="@string/pitTeamNumberHeading"
-                
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/pit_teamNumber_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
+            <EditText
+                android:id="@+id/pit_teamNumber_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/pit_teleopPreference_TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pitTeleopPreference"
-                app:layout_constraintLeft_toRightOf="parent"
-                app:layout_constraintRight_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_teamNumber_input_layout"/>
+                android:text="@string/pitTeleopPreference" />
 
             <RadioGroup
                 android:id="@+id/pit_teleopPreference_RadiobtnGrp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_teleopPreference_TextView">
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/pitTeleopScale_btn"
@@ -72,95 +48,32 @@
 
             </RadioGroup>
 
+            <EditText
+                android:id="@+id/pit_cubeNumberInSwitch_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
+            <EditText
+                android:id="@+id/pit_cubeNumberInScale_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/pit_cubeNumberInSwitch_input_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="8dp"
-                android:hint="@string/pitCubeNumberInSwitch"
-                
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pit_teleopPreference_RadiobtnGrp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/pit_cubeNumberInSwitch_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/pit_cubeNumberInScale_input_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="8dp"
-                android:hint="@string/pitCubeNumberInScale"
-                
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pit_cubeNumberInSwitch_input_layout">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/pit_cubeNumberInScale_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/pit_cubeNumberInExchange_input_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="8dp"
-                android:hint="@string/pitCubeNumberInExchange"
-                
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pit_cubeNumberInScale_input_layout">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/pit_cubeNumberInExchange_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
+            <EditText
+                android:id="@+id/pit_cubeNumberInExchange_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/pit_climbBoolean_TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pitClimbBoolean"
-                app:layout_constraintLeft_toRightOf="parent"
-                app:layout_constraintRight_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_cubeNumberInExchange_input_layout"/>
+                android:text="@string/pitClimbBoolean" />
 
             <RadioGroup
                 android:id="@+id/pit_climbBoolean_RadiobtnGrp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_climbBoolean_TextView">
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/pitClimbYes_btn"
@@ -180,19 +93,13 @@
                 android:id="@+id/pit_climbHelpBoolean_TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pitClimbHelp"
-                app:layout_constraintLeft_toRightOf="parent"
-                app:layout_constraintRight_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_climbBoolean_RadiobtnGrp"/>
+                android:text="@string/pitClimbHelp" />
 
             <RadioGroup
                 android:id="@+id/pit_climbHelpBoolean_RadiobtnGrp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_climbHelpBoolean_TextView">
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/pitClimbHelp1_btn"
@@ -217,19 +124,13 @@
                 android:id="@+id/pit_programmingLanguage_TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pitProgrammingLanguage"
-                app:layout_constraintLeft_toRightOf="parent"
-                app:layout_constraintRight_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_climbHelpBoolean_RadiobtnGrp"/>
+                android:text="@string/pitProgrammingLanguage" />
 
             <RadioGroup
                 android:id="@+id/pit_programmingLanguage_RadiobtnGrp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_programmingLanguage_TextView">
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/pit_programmingLanguageJava_btn"
@@ -256,72 +157,30 @@
                     android:text="@string/pitOther" />
             </RadioGroup>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/pit_arcadeGame_input_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="8dp"
-                android:hint="@string/pitRobotArcadeGame"
-                
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_programmingLanguage_RadiobtnGrp">
+            <EditText
+                android:id="@+id/pit_arcadeGame_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/pit_arcadeGame_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/pit_comments_input_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="8dp"
-                android:hint="@string/pitRobotComment"
-                
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_arcadeGame_input_layout">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/pit_comments_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/pit_comments_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/take_photo_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:onClick="takePhoto"
-                android:text="@string/takePhotoButton"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_comments_input_layout"/>
+                android:text="@string/takePhotoButton" />
 
             <Button
                 android:id="@+id/save_pit_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:onClick="savePitData"
-                android:text="@string/savePitButton"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/take_photo_btn"/>
+                android:text="@string/savePitButton" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </ScrollView>
 </FrameLayout>

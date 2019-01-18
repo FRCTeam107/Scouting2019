@@ -47,7 +47,8 @@ public class AutonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_auton);
 
         Question[] questions = {
-                new RadioQuestion(R.id.testRadioQuestion, true, new RadioQuestionOption(R.id.leftStartingLocation_Radiobtn, getString(R.string.leftStarting)),
+                new RadioQuestion(R.id.testRadioQuestion, true,
+                        new RadioQuestionOption(R.id.leftStartingLocation_Radiobtn, getString(R.string.leftStarting)),
                         new RadioQuestionOption(R.id.centerStartingLocation_Radiobtn, getString(R.string.centerStarting)),
                         new RadioQuestionOption(R.id.rightStartingLocation_Radiobtn, getString(R.string.rightStarting)))
         };

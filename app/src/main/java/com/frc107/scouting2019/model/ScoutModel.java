@@ -1,11 +1,17 @@
 package com.frc107.scouting2019.model;
 
+import android.os.Environment;
+import android.util.Log;
+
 import com.frc107.scouting2019.model.question.CheckBoxQuestion;
 import com.frc107.scouting2019.model.question.NumberQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.model.question.TextQuestion;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,11 +19,14 @@ public class ScoutModel {
     private int teamNumber;
     private int matchNumber;
     private ArrayList<Question> questions;
-    private String name;
+    private String fileNameHeader;
 
-    public ScoutModel(String name, Question... questions) {
-        this.name = name;
+    public ScoutModel(Question... questions) {
         this.questions = new ArrayList<>(Arrays.asList(questions));
+    }
+
+    public void setFileNameHeader(String fileNameHeader) {
+        this.fileNameHeader = fileNameHeader;
     }
 
     public int getTeamNumber() {
@@ -36,10 +45,6 @@ public class ScoutModel {
         this.matchNumber = matchNumber;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public int getFirstUnfinishedQuestionId() {
         for (Question question : questions) {
             if (!question.needsAnswer())
@@ -52,44 +57,63 @@ public class ScoutModel {
     }
 
     public boolean setAnswer(int questionId, String answer) {
-        for (Question question : questions) {
-            if (question.getId() == questionId) {
-                if (question instanceof TextQuestion) {
-                    ((TextQuestion) question).setAnswer(answer);
-                    return true;
-                }
-            }
+        Question question = getQuestion(questionId);
+        if (question == null)
+            return false;
+
+        if (question instanceof TextQuestion) {
+            ((TextQuestion) question).setAnswer(answer);
+            return true;
         }
+
         return false;
     }
 
     public boolean setAnswer(int questionId, int answer) {
-        for (Question question : questions) {
-            if (question.getId() == questionId) {
-                if (question instanceof NumberQuestion) {
-                    ((NumberQuestion) question).setAnswer(answer);
-                    return true;
-                }
+        Question question = getQuestion(questionId);
+        if (question == null)
+            return false;
 
-                if (question instanceof RadioQuestion) {
-                    ((RadioQuestion) question).setAnswer(answer);
-                    return true;
-                }
-            }
+        if (question instanceof NumberQuestion) {
+            ((NumberQuestion) question).setAnswer(answer);
+            return true;
         }
+
+        if (question instanceof RadioQuestion) {
+            ((RadioQuestion) question).setAnswer(answer);
+            return true;
+        }
+
         return false;
     }
 
     public boolean setAnswer(int questionId, boolean answer) {
-        for (Question question : questions) {
-            if (question.getId() == questionId) {
-                if (question instanceof CheckBoxQuestion) {
-                    ((CheckBoxQuestion) question).setAnswer(answer);
-                    return true;
-                }
-            }
+        Question question = getQuestion(questionId);
+        if (question == null)
+            return false;
+
+        if (question instanceof CheckBoxQuestion) {
+            ((CheckBoxQuestion) question).setAnswer(answer);
+            return true;
         }
+
         return false;
+    }
+
+    private Question getQuestion(int id) {
+        for (Question question : questions) {
+            if (question.getId() == id)
+                return question;
+        }
+        return null;
+    }
+
+    public String getAnswerForQuestion(int id) {
+        Question question = getQuestion(id);
+        if (question == null)
+            return null;
+
+        return question.getAnswer();
     }
 
     public String getResult() {
@@ -106,5 +130,31 @@ public class ScoutModel {
             }
         }
         return stringBuilder.toString();
+    }
+
+    public String save(String uniqueDeviceId) {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
+            dir.mkdirs();
+
+            File file = new File(dir, fileNameHeader + uniqueDeviceId + ".csv");
+
+            String result = getResult();
+            String message = result + "\n";
+
+            try {
+                FileOutputStream fileOutputStream = new FileOutputStream(file, true);
+                fileOutputStream.write(message.getBytes());
+                fileOutputStream.close();
+
+                return "Saved successfully.";
+            } catch (IOException e) {
+                Log.d("Scouting", e.getMessage());
+                return "IOException! Go talk to the programmers.";
+            }
+        } else {
+            return "SD card not found.";
+        }
     }
 }
