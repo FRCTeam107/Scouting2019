@@ -25,6 +25,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -96,7 +99,54 @@ public class PitActivity extends AppCompatActivity {
                 new TextQuestion(R.id.pit_arcadeGame_editText, true),
                 new TextQuestion(R.id.pit_comments_editText, true)
         };
-        viewModel = new PitViewModel("Pit", questions);
+        viewModel = new PitViewModel(questions);
+
+        teamNumberEditText.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                viewModel.setTeamNumber(Integer.valueOf(s.toString()));
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void afterTextChanged(Editable s) { }
+        });
+        teleopPreferenceRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pit_teleopPreference_RadiobtnGrp, checkedId));
+        cubeNumberInSwitchEditText.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                viewModel.setAnswer(R.id.pit_cubeNumberInSwitch_editText, s.toString());
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void afterTextChanged(Editable s) { }
+        });
+        cubeNumberInScaleEditText.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                viewModel.setAnswer(R.id.pit_cubeNumberInScale_editText, s.toString());
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void afterTextChanged(Editable s) { }
+        });
+        cubeNumberInExchangeEditText.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                viewModel.setAnswer(R.id.pit_cubeNumberInExchange_editText, s.toString());
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void afterTextChanged(Editable s) { }
+        });
+        climbRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pit_climbBoolean_RadiobtnGrp, checkedId));
+        climbHelpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pit_climbHelpBoolean_RadiobtnGrp, checkedId));
+        programmingLanguageRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pit_programmingLanguage_RadiobtnGrp, checkedId));
+        arcadeGameEditText.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                viewModel.setAnswer(R.id.pit_arcadeGame_editText, s.toString());
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void afterTextChanged(Editable s) { }
+        });
+        commentsEditText.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                viewModel.setAnswer(R.id.pit_comments_editText, s.toString());
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void afterTextChanged(Editable s) { }
+        });
 
         checkForPermissions();
     }
@@ -121,7 +171,7 @@ public class PitActivity extends AppCompatActivity {
         }
     }
 
-    public void savePitData(View view) throws IOException {
+    public void savePitData(View view) {
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
         if (unfinishedQuestionId != -1) {
             ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
@@ -144,7 +194,7 @@ public class PitActivity extends AppCompatActivity {
         finish();
     }
 
-    public void takePhoto(View view) {
+    public void takeAndCompressPhoto(View view) {
         String teamNumber = viewModel.getAnswerForQuestion(R.id.pit_teamNumber_editText);
         if (teamNumber == null) {
             ViewUtils.requestFocus(findViewById(R.id.pit_teamNumber_editText), this);
@@ -173,50 +223,19 @@ public class PitActivity extends AppCompatActivity {
         }
 
         File photoFile = viewModel.createPhotoFile();
-
         Uri outputUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", photoFile);
-
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
             startActivityForResult(takePictureIntent, 0);
         } else {
-            Toast.makeText(getApplicationContext(), "Failure trying to take picture.", Toast.LENGTH_LONG);
+            Toast.makeText(getApplicationContext(), "Failure trying to take picture.", Toast.LENGTH_LONG).show();
+            return;
         }
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 0) {
-            if(resultCode == RESULT_OK) {
-                compressPhoto();
-            }
-        }
-    }
-
-    private void compressPhoto() {
-        try {
-            String name = getTextInputLayoutString(pitTeamNumberInputLayout);
-
-            File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
-            File file = new File(dir, name + ".jpg");
-
-            FileInputStream inputStream = new FileInputStream(file);
-            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 25, out);
-
-            FileOutputStream outputStream = new FileOutputStream(file);
-            outputStream.write(out.toByteArray());
-            inputStream.close();
-            out.close();
-            outputStream.close();
-
-            Toast.makeText(this, "Photo taken!", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            Log.d("Scouting", e.getMessage());
-            Toast.makeText(this, "Failed to save photo. Try again!", Toast.LENGTH_LONG).show();
+        boolean didCompressPhoto = viewModel.compressPhoto();
+        if (!didCompressPhoto) {
+            Toast.makeText(getApplicationContext(), "Failure while compressing picture.", Toast.LENGTH_LONG).show();
         }
     }
 

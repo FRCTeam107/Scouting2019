@@ -8,8 +8,8 @@ import java.io.File;
 public class PitViewModel extends ScoutViewModel {
     private PitModel model;
 
-    public PitViewModel(String name, Question... questions) {
-        super(name, questions);
+    public PitViewModel(Question... questions) {
+        super(questions);
         model = new PitModel(questions);
     }
 

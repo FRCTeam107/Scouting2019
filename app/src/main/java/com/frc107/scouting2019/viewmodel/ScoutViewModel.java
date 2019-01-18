@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModel;
 public abstract class ScoutViewModel extends ViewModel {
     protected ScoutModel model;
 
-    public ScoutViewModel(String name, Question... questions) {
-       model = new ScoutModel(name, questions);
+    public ScoutViewModel(Question... questions) {
+       model = new ScoutModel(questions);
     }
 
     public int getTeamNumber() {
