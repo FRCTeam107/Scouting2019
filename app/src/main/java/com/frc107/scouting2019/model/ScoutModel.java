@@ -51,15 +51,6 @@ public class ScoutModel {
         return -1;
     }
 
-    public Question getQuestion(String name) {
-        for (Question question : questions) {
-            if (question.getName().equals(name)) {
-                return question;
-            }
-        }
-        return null;
-    }
-
     public boolean setAnswer(int questionId, String answer) {
         for (Question question : questions) {
             if (question.getId() == questionId) {
@@ -101,11 +92,7 @@ public class ScoutModel {
         return false;
     }
 
-    public ArrayList<Question> getQuestions() {
-        return questions;
-    }
-
-    public String toString() {
+    public String getResult() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(teamNumber);
         stringBuilder.append(',');

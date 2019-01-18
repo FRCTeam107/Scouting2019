@@ -44,7 +44,7 @@ public class AutonViewModel extends ViewModel {
         return model.setAnswer(questionId, answer);
     }
 
-    public String toString() {
-        return model.toString();
+    public String getResult() {
+        return model.getResult();
     }
 }

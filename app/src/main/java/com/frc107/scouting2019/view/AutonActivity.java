@@ -141,7 +141,7 @@ public class AutonActivity extends AppCompatActivity {
         }
 
         final Intent intent = new Intent(this, TeleopActivity.class);
-        intent.putExtra(AUTON_STRING_EXTRA, viewModel.toString());
+        intent.putExtra(AUTON_STRING_EXTRA, viewModel.getResult());
         intent.putExtra(MATCH_STRING_EXTRA, viewModel.getMatchNumber());
         intent.putExtra(TEAMNUMBER_STRING_EXTRA, viewModel.getTeamNumber());
 
