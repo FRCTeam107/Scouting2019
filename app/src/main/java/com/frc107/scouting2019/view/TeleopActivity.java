@@ -11,6 +11,8 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.model.question.RadioQuestionOption;
 import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.utils.PermissionUtils;
@@ -37,6 +39,9 @@ public class TeleopActivity extends AppCompatActivity {
         String matchNumber = bundle.getString(TEAM_NUMBER_STRING_EXTRA);
 
         Question[] questions = {
+                new RadioQuestion(R.id.pickupLocationRadioQuestion, true,
+                        new RadioQuestionOption(R.id.portPickupLocation_Radiobtn, getString(R.string.portPickupLocation)),
+                        new RadioQuestionOption(R.id.floorPickupLocation_Radiobtn, getString(R.string.floorPickupLocation))),
                 new ToggleQuestion(R.id.fouls_chkbx)
         };
         viewModel = new TeleopViewModel(autonData, questions);
