@@ -1,20 +1,15 @@
-package com.frc107.scouting2019;
+package com.frc107.scouting2019.view;
 
 import android.Manifest;
-import android.app.ActionBar;
-import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Message;
-import android.os.Parcelable;
 import android.provider.Settings;
 import androidx.annotation.NonNull;
-import com.google.android.material.textfield.TextInputEditText;
+
+import com.frc107.scouting2019.BuildConfig;
+import com.frc107.scouting2019.R;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.core.content.FileProvider;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,26 +20,18 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import utils.FormatStringUtils;
-import utils.PermissionUtils;
-
-import static android.os.Environment.getExternalStorageDirectory;
+import com.frc107.scouting2019.utils.PermissionUtils;
 
 /**
  * Created by Matt on 10/9/2017.
