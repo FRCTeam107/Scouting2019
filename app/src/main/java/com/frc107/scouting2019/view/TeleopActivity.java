@@ -33,6 +33,8 @@ public class TeleopActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_teleop);
+
         Bundle bundle = getIntent().getExtras();
         String autonData = bundle.getString(AUTON_STRING_EXTRA);
         String teamNumber = bundle.getString(MATCH_STRING_EXTRA);
@@ -42,6 +44,14 @@ public class TeleopActivity extends AppCompatActivity {
                 new RadioQuestion(R.id.pickupLocationRadioQuestion, true,
                         new RadioQuestionOption(R.id.portPickupLocation_Radiobtn, getString(R.string.portPickupLocation)),
                         new RadioQuestionOption(R.id.floorPickupLocation_Radiobtn, getString(R.string.floorPickupLocation))),
+                new RadioQuestion(R.id.itemPickedUpRadioQuestion, true,
+                        new RadioQuestionOption(R.id.cargoItemPickedUp_Radiobtn, getString(R.string.cargoPickedUp)),
+                        new RadioQuestionOption(R.id.hatchItemPickedUp_Radiobtn, getString(R.string.hatchPickedUp))),
+                new RadioQuestion(R.id.itemPlacedRadioQuestion, true,
+                        new RadioQuestionOption(R.id.topRocketItemPlaced_Radiobtn, getString(R.string.topRocketItemPlaced)),
+                        new RadioQuestionOption(R.id.middleRocketItemPlaced_Radiobtn, getString(R.string.middleRocketItemPlaced)),
+                        new RadioQuestionOption(R.id.bottomRocketItemPlaced_Radiobtn, getString(R.string.bottomRocketItemPlaced)),
+                        new RadioQuestionOption(R.id.floorItemPlaced_Radiobtn, getString(R.string.floorItemPlaced))),
                 new ToggleQuestion(R.id.fouls_chkbx)
         };
         viewModel = new TeleopViewModel(autonData, questions);

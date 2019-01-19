@@ -52,6 +52,15 @@
     <string name="portPickupLocation">Port</string>
     <string name="floorPickupLocation">Floor</string>
 
+    <string name="itemPickedUpLocationText">Picked Up Location</string>
+    <string name="cargoPickedUp">Cargo</string>
+    <string name="hatchPickedUp">Hatch</string>
+
+    <string name="itemPlacedLocationText">Location Placed</string>
+    <string name="topRocketItemPlaced">Top\nRocket</string>
+    <string name="middleRocketItemPlaced">Middle\nRocket</string>
+    <string name="bottomRocketItemPlaced">Bottom\nRocket</string>
+    <string name="floorItemPlaced">Floor</string>
 
     <string name="defenseHeading">Defense</string>
     <string name="effectiveDefense">Effective</string>
@@ -71,6 +80,9 @@
     <string name="cubesInTheirSwitchError">Enter # of cubes in opponent switch</string>
     <string name="cubesInScaleError">Enter # of cubes in scale</string>
     <string name="scouterInitialsError">Enter scouter initials</string>
+
+
+
 
 
     <!--Menu Strings-->
