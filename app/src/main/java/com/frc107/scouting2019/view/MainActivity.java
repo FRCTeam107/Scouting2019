@@ -12,14 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements View.OnKeyListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
     }
 
     @Override
@@ -40,21 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
-        if (keyCode != KeyEvent.KEYCODE_SPACE && keyCode != KeyEvent.KEYCODE_TAB) {
-            TextInputEditText inputEditText = (TextInputEditText) v;
-
-            if (inputEditText != null) {
-
-                switch (inputEditText.getId()) {
-
-                }
-            }
-        }
-        return false;
     }
 
     public void showMatch(View view) {
