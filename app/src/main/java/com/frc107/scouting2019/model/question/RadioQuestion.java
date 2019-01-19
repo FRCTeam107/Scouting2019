@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class RadioQuestion extends Question<Integer> {
-    private ArrayList<RadioQuestionOption> options;
-    private RadioQuestionOption selectedOption;
+    private ArrayList<Option> options;
+    private Option selectedOption;
     private boolean needsAnswer;
 
-    public RadioQuestion(int id, boolean needsAnswer, RadioQuestionOption... options) {
+    public RadioQuestion(int id, boolean needsAnswer, Option... options) {
         super(id);
         this.needsAnswer = needsAnswer;
         this.options = new ArrayList<>(Arrays.asList(options));
@@ -26,7 +26,7 @@ public class RadioQuestion extends Question<Integer> {
 
     @Override
     public void setAnswer(Integer answerId) {
-        for (RadioQuestionOption option : options) {
+        for (Option option : options) {
             if (option.getId() == answerId) {
                 selectedOption = option;
             }
@@ -39,6 +39,24 @@ public class RadioQuestion extends Question<Integer> {
             return "";
 
         return selectedOption.getText();
+    }
+
+    public static class Option {
+        private int id;
+        private String text;
+
+        public Option(int id, String text) {
+            this.id = id;
+            this.text = text;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getText() {
+            return text;
+        }
     }
 }
 
