@@ -9,23 +9,19 @@ import androidx.lifecycle.ViewModel;
 public abstract class ScoutViewModel extends ViewModel {
     protected ScoutModel model;
 
-    public ScoutViewModel(Question... questions) {
-       model = new ScoutModel(questions);
-    }
-
-    public int getTeamNumber() {
+    public String getTeamNumber() {
         return model.getTeamNumber();
     }
 
-    public void setTeamNumber(int teamNumber) {
+    public void setTeamNumber(String teamNumber) {
         model.setTeamNumber(teamNumber);
     }
 
-    public int getMatchNumber() {
+    public String getMatchNumber() {
         return model.getMatchNumber();
     }
 
-    public void setMatchNumber(int matchNumber) {
+    public void setMatchNumber(String matchNumber) {
         model.setMatchNumber(matchNumber);
     }
 
@@ -49,8 +45,8 @@ public abstract class ScoutViewModel extends ViewModel {
         return model.getAnswerForQuestion(questionId);
     }
 
-    public String getResult() {
-        return model.getResult();
+    public String getAnswerCSVRow() {
+        return model.getAnswerCSVRow();
     }
 
     public String save(String uniqueDeviceId) {

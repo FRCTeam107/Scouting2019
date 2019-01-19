@@ -101,9 +101,20 @@ public class PitActivity extends AppCompatActivity {
         };
         viewModel = new PitViewModel(questions);
 
+        teamNumberEditText = findViewById(R.id.pit_teamNumber_editText);
+        teleopPreferenceRadioGroup = findViewById(R.id.pit_teleopPreference_RadiobtnGrp);
+        cubeNumberInSwitchEditText = findViewById(R.id.pit_cubeNumberInSwitch_editText);
+        cubeNumberInScaleEditText = findViewById(R.id.pit_cubeNumberInScale_editText);
+        cubeNumberInExchangeEditText = findViewById(R.id.pit_cubeNumberInExchange_editText);
+        climbRadioGroup = findViewById(R.id.pit_climbBoolean_RadiobtnGrp);
+        climbHelpRadioGroup = findViewById(R.id.pit_climbHelpBoolean_RadiobtnGrp);
+        programmingLanguageRadioGroup = findViewById(R.id.pit_programmingLanguage_RadiobtnGrp);
+        arcadeGameEditText = findViewById(R.id.pit_arcadeGame_editText);
+        commentsEditText = findViewById(R.id.pit_comments_editText);
+
         teamNumberEditText.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setTeamNumber(Integer.valueOf(s.toString()));
+                viewModel.setTeamNumber(s.toString());
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }

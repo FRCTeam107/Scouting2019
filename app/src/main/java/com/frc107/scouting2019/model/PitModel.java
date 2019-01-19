@@ -23,7 +23,7 @@ public class PitModel extends ScoutModel {
         File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
         dir.mkdirs();
 
-        int teamNumber = getTeamNumber();
+        String teamNumber = getTeamNumber();
         File file = new File(dir, teamNumber + ".jpg");
 
         try {
@@ -38,7 +38,7 @@ public class PitModel extends ScoutModel {
 
     public boolean compressPhoto() {
         File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
-        int teamNumber = getTeamNumber();
+        String teamNumber = getTeamNumber();
         File file = new File(dir, teamNumber + ".jpg");
 
         try {
@@ -58,5 +58,10 @@ public class PitModel extends ScoutModel {
         } catch (IOException e) {
             return false;
         }
+    }
+
+    @Override
+    public String getCSVRowHeader() {
+        return getTeamNumber();
     }
 }

@@ -3,7 +3,7 @@ package com.frc107.scouting2019.model;
 import android.os.Environment;
 import android.util.Log;
 
-import com.frc107.scouting2019.model.question.CheckBoxQuestion;
+import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.model.question.NumberQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
@@ -15,9 +15,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ScoutModel {
-    private int teamNumber;
-    private int matchNumber;
+public abstract class ScoutModel {
+    private String teamNumber;
+    private String matchNumber;
     private ArrayList<Question> questions;
     private String fileNameHeader;
 
@@ -29,19 +29,19 @@ public class ScoutModel {
         this.fileNameHeader = fileNameHeader;
     }
 
-    public int getTeamNumber() {
+    public String getTeamNumber() {
         return teamNumber;
     }
 
-    public void setTeamNumber(int teamNumber) {
+    public void setTeamNumber(String teamNumber) {
         this.teamNumber = teamNumber;
     }
 
-    public int getMatchNumber() {
+    public String getMatchNumber() {
         return matchNumber;
     }
 
-    public void setMatchNumber(int matchNumber) {
+    public void setMatchNumber(String matchNumber) {
         this.matchNumber = matchNumber;
     }
 
@@ -92,8 +92,8 @@ public class ScoutModel {
         if (question == null)
             return false;
 
-        if (question instanceof CheckBoxQuestion) {
-            ((CheckBoxQuestion) question).setAnswer(answer);
+        if (question instanceof ToggleQuestion) {
+            ((ToggleQuestion) question).setAnswer(answer);
             return true;
         }
 
@@ -116,13 +116,10 @@ public class ScoutModel {
         return question.getAnswer();
     }
 
-    public String getResult() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(teamNumber);
-        stringBuilder.append(',');
-        stringBuilder.append(matchNumber);
-        stringBuilder.append(',');
+    public abstract String getCSVRowHeader();
 
+    public String getAnswerCSVRow() {
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < questions.size(); i++) {
             stringBuilder.append(questions.get(i).getAnswer());
             if (i < questions.size() - 1) {
@@ -140,7 +137,7 @@ public class ScoutModel {
 
             File file = new File(dir, fileNameHeader + uniqueDeviceId + ".csv");
 
-            String result = getResult();
+            String result = getCSVRowHeader() + ',' + getAnswerCSVRow();
             String message = result + "\n";
 
             try {

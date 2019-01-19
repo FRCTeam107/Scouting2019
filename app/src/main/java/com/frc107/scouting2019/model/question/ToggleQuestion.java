@@ -1,21 +1,21 @@
 package com.frc107.scouting2019.model.question;
 
-public class CheckBoxQuestion extends Question<Boolean> {
+public class ToggleQuestion extends Question<Boolean> {
     private boolean answer;
 
-    public CheckBoxQuestion(int id) {
+    public ToggleQuestion(int id) {
         super(id);
     }
 
     @Override
     public boolean needsAnswer() {
-        // Since it's a checkbox, it'll always have an answer: true or false.
+        // Since it's a toggle, it'll always have an answer: true or false.
         return false;
     }
 
     @Override
     public boolean hasAnswer() {
-        // Since it's a checkbox, we can't exactly differentiate between an intentional or unintentional empty selection.
+        // Since it's a toggle, we can't exactly differentiate between an intentional or unintentional empty selection.
         return true;
     }
 

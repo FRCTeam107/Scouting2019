@@ -11,7 +11,7 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.model.question.CheckBoxQuestion;
+import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
@@ -37,11 +37,11 @@ public class TeleopActivity extends AppCompatActivity {
         String matchNumber = bundle.getString(TEAM_NUMBER_STRING_EXTRA);
 
         Question[] questions = {
-                new CheckBoxQuestion(R.id.fouls_chkbx)
+                new ToggleQuestion(R.id.fouls_chkbx)
         };
         viewModel = new TeleopViewModel(autonData, questions);
-        viewModel.setTeamNumber(Integer.valueOf(teamNumber));
-        viewModel.setTeamNumber(Integer.valueOf(matchNumber));
+        viewModel.setTeamNumber(teamNumber);
+        viewModel.setMatchNumber(matchNumber);
 
         foulsCheckBox = findViewById(R.id.fouls_chkbx);
         foulsCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.fouls_chkbx, isChecked));

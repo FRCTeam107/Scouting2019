@@ -12,8 +12,7 @@ public class TeleopModel extends ScoutModel {
     }
 
     @Override
-    public String getResult() {
-        String teleopData = super.getResult();
-        return autonData + teleopData;
+    public String getCSVRowHeader() {
+        return autonData;
     }
 }

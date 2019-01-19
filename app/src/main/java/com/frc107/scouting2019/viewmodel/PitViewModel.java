@@ -9,7 +9,6 @@ public class PitViewModel extends ScoutViewModel {
     private PitModel model;
 
     public PitViewModel(Question... questions) {
-        super(questions);
         model = new PitModel(questions);
     }
 
