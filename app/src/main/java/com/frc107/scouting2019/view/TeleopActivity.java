@@ -31,6 +31,8 @@ public class TeleopActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_teleop);
+
         Bundle bundle = getIntent().getExtras();
         String autonData = bundle.getString(AUTON_STRING_EXTRA);
         String teamNumber = bundle.getString(MATCH_STRING_EXTRA);

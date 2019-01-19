@@ -8,6 +8,7 @@ import com.frc107.scouting2019.model.question.NumberQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.model.question.TextQuestion;
+import com.frc107.scouting2019.utils.StringUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -120,6 +121,12 @@ public abstract class ScoutModel {
 
     public String getAnswerCSVRow() {
         StringBuilder stringBuilder = new StringBuilder();
+        String header = getCSVRowHeader();
+        stringBuilder.append(header);
+
+        if (!StringUtils.isEmptyOrNull(header))
+            stringBuilder.append(',');
+
         for (int i = 0; i < questions.size(); i++) {
             stringBuilder.append(questions.get(i).getAnswer());
             if (i < questions.size() - 1) {
@@ -137,7 +144,7 @@ public abstract class ScoutModel {
 
             File file = new File(dir, fileNameHeader + uniqueDeviceId + ".csv");
 
-            String result = getCSVRowHeader() + ',' + getAnswerCSVRow();
+            String result = getAnswerCSVRow();
             String message = result + "\n";
 
             try {
