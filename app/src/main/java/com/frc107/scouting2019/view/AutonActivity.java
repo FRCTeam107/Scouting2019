@@ -15,7 +15,6 @@ import android.widget.RadioGroup;
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
-import com.frc107.scouting2019.model.question.RadioQuestionOption;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.AutonViewModel;
 
@@ -47,9 +46,9 @@ public class AutonActivity extends AppCompatActivity {
 
         Question[] questions = {
                 new RadioQuestion(R.id.testRadioQuestion, true,
-                        new RadioQuestionOption(R.id.leftStartingLocation_Radiobtn, getString(R.string.leftStarting)),
-                        new RadioQuestionOption(R.id.centerStartingLocation_Radiobtn, getString(R.string.centerStarting)),
-                        new RadioQuestionOption(R.id.rightStartingLocation_Radiobtn, getString(R.string.rightStarting)))
+                        new RadioQuestion.Option(R.id.leftStartingLocation_Radiobtn, getString(R.string.leftStarting)),
+                        new RadioQuestion.Option(R.id.centerStartingLocation_Radiobtn, getString(R.string.centerStarting)),
+                        new RadioQuestion.Option(R.id.rightStartingLocation_Radiobtn, getString(R.string.rightStarting)))
         };
 
         viewModel = new AutonViewModel(questions);
