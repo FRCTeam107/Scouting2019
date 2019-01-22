@@ -1,8 +1,6 @@
 package com.frc107.scouting2019.viewmodel;
 
 import com.frc107.scouting2019.model.ScoutModel;
-import com.frc107.scouting2019.model.TeleopModel;
-import com.frc107.scouting2019.model.question.Question;
 
 import androidx.lifecycle.ViewModel;
 
