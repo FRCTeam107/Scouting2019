@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.model.question.RadioQuestion;
-import com.frc107.scouting2019.model.question.RadioQuestionOption;
+import com.frc107.scouting2019.model.question.RadioQuestion.Option;
 import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.utils.PermissionUtils;
@@ -42,24 +42,25 @@ public class TeleopActivity extends AppCompatActivity {
 
         Question[] questions = {
                 new RadioQuestion(R.id.pickupLocationRadioQuestion, true,
-                        new RadioQuestionOption(R.id.portPickupLocation_Radiobtn, getString(R.string.portPickupLocation)),
-                        new RadioQuestionOption(R.id.floorPickupLocation_Radiobtn, getString(R.string.floorPickupLocation))),
+                        new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, getString(R.string.portPickupLocation)),
+                        new RadioQuestion.Option(R.id.floorPickupLocation_Radiobtn, getString(R.string.floorPickupLocation))),
                 new RadioQuestion(R.id.itemPickedUpRadioQuestion, true,
-                        new RadioQuestionOption(R.id.cargoItemPickedUp_Radiobtn, getString(R.string.cargoPickedUp)),
-                        new RadioQuestionOption(R.id.hatchItemPickedUp_Radiobtn, getString(R.string.hatchPickedUp))),
+                        new RadioQuestion.Option(R.id.cargoItemPickedUp_Radiobtn, getString(R.string.cargoPickedUp)),
+                        new RadioQuestion.Option(R.id.hatchItemPickedUp_Radiobtn, getString(R.string.hatchPickedUp))),
                 new RadioQuestion(R.id.itemPlacedRadioQuestion, true,
-                        new RadioQuestionOption(R.id.topRocketItemPlaced_Radiobtn, getString(R.string.topRocketItemPlaced)),
-                        new RadioQuestionOption(R.id.middleRocketItemPlaced_Radiobtn, getString(R.string.middleRocketItemPlaced)),
-                        new RadioQuestionOption(R.id.bottomRocketItemPlaced_Radiobtn, getString(R.string.bottomRocketItemPlaced)),
-                        new RadioQuestionOption(R.id.floorItemPlaced_Radiobtn, getString(R.string.floorItemPlaced))),
-                new ToggleQuestion(R.id.fouls_chkbx)
+                        new RadioQuestion.Option(R.id.topRocketItemPlaced_Radiobtn, getString(R.string.topRocketItemPlaced)),
+                        new RadioQuestion.Option(R.id.middleRocketItemPlaced_Radiobtn, getString(R.string.middleRocketItemPlaced)),
+                        new RadioQuestion.Option(R.id.bottomRocketItemPlaced_Radiobtn, getString(R.string.bottomRocketItemPlaced)),
+                        new RadioQuestion.Option(R.id.cargoshipItemPlaced_Radiobtn, getString(R.string.cargoshipItemPlaced)),
+                        new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, getString(R.string.floorItemPlaced))),
+                new ToggleQuestion(R.id.defense_chkbx)
         };
         viewModel = new TeleopViewModel(autonData, questions);
         viewModel.setTeamNumber(teamNumber);
         viewModel.setMatchNumber(matchNumber);
 
-        foulsCheckBox = findViewById(R.id.fouls_chkbx);
-        foulsCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.fouls_chkbx, isChecked));
+        foulsCheckBox = findViewById(R.id.defense_chkbx);
+        foulsCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.defense_chkbx, isChecked));
     }
 
     @Override

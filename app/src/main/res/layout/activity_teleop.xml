@@ -14,12 +14,6 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <ToggleButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:background="@drawable/toggle_drawable"/>
-
         <TextView
             android:id="@+id/pickupLocationText"
             android:layout_height="wrap_content"
@@ -39,13 +33,17 @@
                 android:id="@+id/portPickupLocation_Radiobtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/portPickupLocation" />
+                android:text="@string/portPickupLocation"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"/>
 
             <RadioButton
                 android:id="@+id/floorPickupLocation_Radiobtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/floorPickupLocation" />
+                android:text="@string/floorPickupLocation"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"/>
         </RadioGroup>
 
         <TextView
@@ -66,13 +64,17 @@
                 android:id="@+id/cargoItemPickedUp_Radiobtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cargoPickedUp" />
+                android:text="@string/cargoPickedUp"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"/>
 
             <RadioButton
                 android:id="@+id/hatchItemPickedUp_Radiobtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/hatchPickedUp" />
+                android:text="@string/hatchPickedUp"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"/>
         </RadioGroup>
 
         <TextView
@@ -94,26 +96,47 @@
                 android:id="@+id/topRocketItemPlaced_Radiobtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/topRocketItemPlaced" />
+                android:text="@string/topRocketItemPlaced"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"/>
             <RadioButton
                 android:id="@+id/middleRocketItemPlaced_Radiobtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/middleRocketItemPlaced" />
+                android:text="@string/middleRocketItemPlaced"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"/>
             <RadioButton
                 android:id="@+id/bottomRocketItemPlaced_Radiobtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bottomRocketItemPlaced" />
+                android:text="@string/bottomRocketItemPlaced"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"/>
+            <RadioButton
+                android:id="@+id/cargoshipItemPlaced_Radiobtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cargoshipItemPlaced"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"/>
             <RadioButton
                 android:id="@+id/floorItemPlaced_Radiobtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/floorItemPlaced" />
+                android:text="@string/floorItemPlaced"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"/>
         </RadioGroup>
 
+        <TextView
+            android:id="@+id/defense_chkbxText"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/defenseChkbxText" />
+
         <CheckBox
-            android:id="@+id/fdefense_chkbx"
+            android:id="@+id/defense_chkbx"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
