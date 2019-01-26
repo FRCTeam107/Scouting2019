@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
@@ -57,6 +58,15 @@ public class TeleopActivity extends AppCompatActivity {
         viewModel = new TeleopViewModel(autonData, questions);
         viewModel.setTeamNumber(teamNumber);
         viewModel.setMatchNumber(matchNumber);
+
+        RadioGroup pickupLocationRadioQuestion = findViewById(R.id.pickupLocationRadioQuestion);
+        pickupLocationRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
+
+        RadioGroup itemPickedUpRadioQuestion = findViewById(R.id.itemPickedUpRadioQuestion);
+        itemPickedUpRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPickedUpRadioQuestion, checkedId));
+
+        RadioGroup itemPlacedRadioQuestion = findViewById(R.id.itemPlacedRadioQuestion);
+        itemPlacedRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPlacedRadioQuestion, checkedId));
 
         foulsCheckBox = findViewById(R.id.defense_chkbx);
         foulsCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.defense_chkbx, isChecked));

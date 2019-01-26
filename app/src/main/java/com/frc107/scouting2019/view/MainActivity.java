@@ -4,13 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.frc107.scouting2019.R;
-import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 

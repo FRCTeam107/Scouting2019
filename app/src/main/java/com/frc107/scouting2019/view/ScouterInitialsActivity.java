@@ -2,11 +2,11 @@ package com.frc107.scouting2019.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import androidx.annotation.NonNull;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.viewmodel.InitialsViewModel;
 import com.google.android.material.textfield.TextInputEditText;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;

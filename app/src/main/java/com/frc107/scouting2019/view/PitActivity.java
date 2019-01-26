@@ -94,6 +94,17 @@ public class PitActivity extends AppCompatActivity {
         };
         viewModel = new PitViewModel(questions);
 
+        RadioGroup sandstormOperationsRadioQuestion = findViewById(R.id.sandstormOperationsRadioQuestion);
+        sandstormOperationsRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormOperationsRadioQuestion, checkedId));
+        RadioGroup sandstormPreferenceRadioQuestion = findViewById(R.id.sandstormPreferenceRadioQuestion);
+        sandstormPreferenceRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormPreferenceRadioQuestion, checkedId));
+        RadioGroup highestRocketLevelSandstormRadioQuestion = findViewById(R.id.highestRocketLevelSandstormRadioQuestion);
+        highestRocketLevelSandstormRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.highestRocketLevelSandstormRadioQuestion, checkedId));
+        RadioGroup highestHabitatLevelRadioQuestion = findViewById(R.id.highestHabitatLevelRadioQuestion);
+        highestHabitatLevelRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.highestHabitatLevelRadioQuestion, checkedId));
+        RadioGroup programmingLanguageRadioQuestion = findViewById(R.id.programmingLanguageRadioQuestion);
+        programmingLanguageRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.programmingLanguageRadioQuestion, checkedId));
+
         teamNumberEditText = findViewById(R.id.pit_teamNumber_editText);
         habitatTimeEditText = findViewById(R.id.pit_habitatTime_editText);
         arcadeGameEditText = findViewById(R.id.pit_arcadeGame_editText);

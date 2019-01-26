@@ -147,8 +147,7 @@ public abstract class ScoutModel {
             String result = getAnswerCSVRow();
             String message = result + "\n";
 
-            try {
-                FileOutputStream fileOutputStream = new FileOutputStream(file, true);
+            try (FileOutputStream fileOutputStream = new FileOutputStream(file, true)) {
                 fileOutputStream.write(message.getBytes());
                 fileOutputStream.close();
 
