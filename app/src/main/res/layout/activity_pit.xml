@@ -18,155 +18,275 @@
             android:orientation="vertical"
             android:gravity="center">
 
+
+            <TextView
+                android:id="@+id/pitTeamNumberText"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/pitTeamNumber" />
+
             <EditText
                 android:id="@+id/pit_teamNumber_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"/>
 
+
             <TextView
-                android:id="@+id/pit_teleopPreference_TextView"
-                android:layout_width="wrap_content"
+                android:id="@+id/pitSandstormOperationText"
                 android:layout_height="wrap_content"
-                android:text="@string/pitTeleopPreference" />
-
-            <RadioGroup
-                android:id="@+id/pit_teleopPreference_RadiobtnGrp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:text="@string/pitSandstormOperation" />
 
-                <RadioButton
-                    android:id="@+id/pitTeleopScale_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pitTeleopScale" />
-
-                <RadioButton
-                    android:id="@+id/pitTeleopSwitch_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pitTeleopSwitch" />
-
-            </RadioGroup>
-
-            <EditText
-                android:id="@+id/pit_cubeNumberInSwitch_editText"
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/sandstormOperationsRadioQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"/>
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/pit_cubeNumberInScale_editText"
+                <RadioButton
+                    android:id="@+id/visionSystemSandstorm_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/visionSystemSandstorm"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+
+                <RadioButton
+                    android:id="@+id/cameraDrivingSandstorm_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cameraDrivingSandstorm"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+
+                <RadioButton
+                    android:id="@+id/blindDrivingSandstorm_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/blindDrivingSandstorm"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+
+                <RadioButton
+                    android:id="@+id/noDrivingSandstorm_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/noDrivingSandstorm"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/pitSandstormPreferenceText"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/pitSandstormPreference" />
+
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/sandstormPreferenceRadioQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"/>
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/pit_cubeNumberInExchange_editText"
+                <RadioButton
+                    android:id="@+id/rocketshipPreferenceSandstorm_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rocketshipPreferenceSandstorm"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+
+                <RadioButton
+                    android:id="@+id/cargoshipPreferenceSandstorm_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cargoshipPreferenceSandstorm"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+
+                <RadioButton
+                    android:id="@+id/noPreferenceSandstorm_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/noPreferenceSandstorm"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/pitRocketLevelSandstormText"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/pitRocketLevelSandstorm" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/highestRocketLevelSandstormRadioQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"/>
-
-            <TextView
-                android:id="@+id/pit_climbBoolean_TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pitClimbBoolean" />
-
-            <RadioGroup
-                android:id="@+id/pit_climbBoolean_RadiobtnGrp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/pitClimbYes_btn"
+                    android:id="@+id/topRocketLevelSandstorm_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pitClimbYes" />
+                    android:text="@string/topRocketLevelSandstorm"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
 
                 <RadioButton
-                    android:id="@+id/pitClimbNo_btn"
+                    android:id="@+id/middleRocketLevelSandstorm_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pitClimbNo" />
-            </RadioGroup>
-
-
-            <TextView
-                android:id="@+id/pit_climbHelpBoolean_TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pitClimbHelp" />
-
-            <RadioGroup
-                android:id="@+id/pit_climbHelpBoolean_RadiobtnGrp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    android:text="@string/middleRocketLevelSandstorm"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
 
                 <RadioButton
-                    android:id="@+id/pitClimbHelp1_btn"
+                    android:id="@+id/bottomRocketLevelSandstorm_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pitClimbHelp1" />
-
+                    android:text="@string/bottomRocketLevelSandstorm"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
                 <RadioButton
-                    android:id="@+id/pitClimbHelp2_btn"
+                    android:id="@+id/noRocketLevelSandstorm_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pitClimbHelp2" />
-
-                <RadioButton
-                    android:id="@+id/pitClimbHelpNo_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pitClimbHelpNo" />
+                    android:text="@string/noRocketLevelSandstorm"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
             </RadioGroup>
 
             <TextView
-                android:id="@+id/pit_programmingLanguage_TextView"
-                android:layout_width="wrap_content"
+                android:id="@+id/pitHabitatLevelText"
                 android:layout_height="wrap_content"
-                android:text="@string/pitProgrammingLanguage" />
+                android:layout_width="wrap_content"
+                android:text="@string/pitHabitatLevel" />
 
-            <RadioGroup
-                android:id="@+id/pit_programmingLanguage_RadiobtnGrp"
-                android:layout_width="wrap_content"
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/highestHabitatLevelRadioQuestion"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/pit_programmingLanguageJava_btn"
+                    android:id="@+id/topHabitatLevel_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pitJava" />
+                    android:text="@string/topHabitatLevel"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
 
                 <RadioButton
-                    android:id="@+id/pit_programmingLanguageCpp_btn"
+                    android:id="@+id/middleHabitatLevel_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pitCpp" />
+                    android:text="@string/middleHabitatLevel"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
 
                 <RadioButton
-                    android:id="@+id/pit_programmingLanguageLabview_btn"
+                    android:id="@+id/bottomHabitatLevel_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pitLabview" />
-
+                    android:text="@string/bottomHabitatLevel"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
                 <RadioButton
-                    android:id="@+id/pit_programmingLanguageOther_btn"
+                    android:id="@+id/noHabitatLevel_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pitOther" />
+                    android:text="@string/noHabitatLevel"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
             </RadioGroup>
+
+            <TextView
+                android:id="@+id/pitHabitatTimeText"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/pitHabitatLevelTime" />
+
+            <EditText
+                android:id="@+id/pit_habitatTime_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"/>
+
+            <TextView
+                android:id="@+id/pitprogrammingLanguageText"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/pitprogrammingLanguage" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/programmingLanguageRadioQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/javaProgrammingLanguage_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/javaProgrammingLanguage"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+
+                <RadioButton
+                    android:id="@+id/cppProgrammingLanguage_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cppProgrammingLanguage"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+                <RadioButton
+                    android:id="@+id/labviewProgrammingLanguage_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/labviewProgrammingLanguage"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+                <RadioButton
+                    android:id="@+id/otherProgrammingLanguage_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/otherProgrammingLanguage"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/pitArcadeGameText"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/pitArcadeGameText" />
 
             <EditText
                 android:id="@+id/pit_arcadeGame_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"/>
+
+            <TextView
+                android:id="@+id/pit_comments_Text"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/pit_comments_Text" />
 
             <EditText
                 android:id="@+id/pit_comments_editText"

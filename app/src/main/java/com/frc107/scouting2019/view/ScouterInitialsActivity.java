@@ -2,25 +2,18 @@ package com.frc107.scouting2019.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.viewmodel.InitialsViewModel;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import com.frc107.scouting2019.utils.StringUtils;
 
 public class ScouterInitialsActivity extends AppCompatActivity {
     private InitialsViewModel viewModel;
@@ -68,6 +61,6 @@ public class ScouterInitialsActivity extends AppCompatActivity {
         if (initals.length() == 0)
             return;
 
-        startActivity(new Intent(this, AutonActivity.class));
+        startActivity(new Intent(this, SandstormActivity.class));
     }
 }

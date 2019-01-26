@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.model.question.RadioQuestion;
-import com.frc107.scouting2019.model.question.RadioQuestion.Option;
 import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.utils.PermissionUtils;
@@ -21,9 +20,9 @@ import com.frc107.scouting2019.viewmodel.TeleopViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.frc107.scouting2019.view.AutonActivity.AUTON_STRING_EXTRA;
-import static com.frc107.scouting2019.view.AutonActivity.MATCH_STRING_EXTRA;
-import static com.frc107.scouting2019.view.AutonActivity.TEAM_NUMBER_STRING_EXTRA;
+import static com.frc107.scouting2019.view.SandstormActivity.AUTON_STRING_EXTRA;
+import static com.frc107.scouting2019.view.SandstormActivity.MATCH_STRING_EXTRA;
+import static com.frc107.scouting2019.view.SandstormActivity.TEAM_NUMBER_STRING_EXTRA;
 
 public class TeleopActivity extends AppCompatActivity {
     private CheckBox foulsCheckBox;

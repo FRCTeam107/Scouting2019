@@ -15,6 +15,7 @@ import android.widget.RadioGroup;
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.model.question.TextQuestion;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.AutonViewModel;
 
@@ -22,7 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-public class AutonActivity extends AppCompatActivity {
+public class SandstormActivity extends AppCompatActivity {
     /*This area sets and binds all of the variables that we will use in the auton activity*/
     public static String AUTON_STRING_EXTRA = "auton_extra";
 
@@ -42,13 +43,19 @@ public class AutonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_auton);
+        setContentView(R.layout.activity_sandstorm);
 
         Question[] questions = {
-                new RadioQuestion(R.id.testRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.leftStartingLocation_Radiobtn, getString(R.string.leftStarting)),
-                        new RadioQuestion.Option(R.id.centerStartingLocation_Radiobtn, getString(R.string.centerStarting)),
-                        new RadioQuestion.Option(R.id.rightStartingLocation_Radiobtn, getString(R.string.rightStarting)))
+                new TextQuestion(R.id.pit_teamNumber_editText, true),
+                new RadioQuestion(R.id.sandstormStartingPositionRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.habTwoSandstorm_Radiobtn, getString(R.string.habTwoSandstorm)),
+                        new RadioQuestion.Option(R.id.habOneSandstorm_Radiobtn, getString(R.string.habOneSandstorm))),
+                new RadioQuestion(R.id.sandstormStartingGamePieceRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.cargoSandstormStartingGamePiece_Radiobtn, getString(R.string.cargoSandstormStartingGamePiece)),
+                        new RadioQuestion.Option(R.id.panelSandstormStartingGamePiece_Radiobtn, getString(R.string.panelSandstormStartingGamePiece)),
+                        new RadioQuestion.Option(R.id.noSandstormStartingGamePiece_Radiobtn, getString(R.string.noSandstormStartingGamePiece))),
+
+
         };
 
         viewModel = new AutonViewModel(questions);
@@ -73,8 +80,6 @@ public class AutonActivity extends AppCompatActivity {
         };
         matchNumberEditText.addTextChangedListener(matchNumberTextWatcher);
 
-        testRadioGroup = findViewById(R.id.testRadioQuestion);
-        testRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.testRadioQuestion, checkedId));
 
         checkForPermissions();
     }
