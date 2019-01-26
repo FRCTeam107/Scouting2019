@@ -44,21 +44,21 @@ public class PitModel extends ScoutModel {
         int teamNumber = getTeamNumber();
         File file = new File(dir, teamNumber + ".jpg");
 
-        try {
-            FileInputStream inputStream = new FileInputStream(file);
-            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+        try (FileInputStream fileInputStream = new FileInputStream(file);
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+            Bitmap bitmap = BitmapFactory.decodeStream(fileInputStream);
 
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 25, out);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 25, byteArrayOutputStream);
 
-            FileOutputStream outputStream = new FileOutputStream(file);
-            outputStream.write(out.toByteArray());
-            inputStream.close();
-            out.close();
-            outputStream.close();
+            fileOutputStream.write(byteArrayOutputStream.toByteArray());
+            fileInputStream.close();
+            byteArrayOutputStream.close();
+            fileOutputStream.close();
 
             return true;
         } catch (IOException e) {
+            Log.d("Scouting", e.getMessage());
             return false;
         }
     }

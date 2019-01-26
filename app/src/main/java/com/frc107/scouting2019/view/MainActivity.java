@@ -5,15 +5,13 @@ import android.os.Bundle;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
-import com.google.android.material.textfield.TextInputEditText;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.provider.Settings;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import butterknife.ButterKnife;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
