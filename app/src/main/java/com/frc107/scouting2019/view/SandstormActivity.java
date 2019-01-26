@@ -25,7 +25,7 @@ import androidx.core.content.ContextCompat;
 
 public class SandstormActivity extends AppCompatActivity {
     /*This area sets and binds all of the variables that we will use in the auton activity*/
-    public static String AUTON_STRING_EXTRA = "auton_extra";
+    public static final String AUTON_STRING_EXTRA = "auton_extra";
 
     /* These are the names of the match number and team number extras that will be passed into teleop */
     public static final String MATCH_STRING_EXTRA = "match_extra";
