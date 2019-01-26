@@ -1,0 +1,24 @@
+
+xsquid:S1450-"aRemove the "teamNumberEditText" field and declare it as a local variable in the relevant methods.(‘ü¾•
+—squid:S1186f"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô—½4
+xsquid:S14505"aRemove the "arcadeGameEditText" field and declare it as a local variable in the relevant methods.(Úı»û
+~squid:S14500"hRemove the "cubeNumberInScaleEditText" field and declare it as a local variable in the relevant methods.(âÉò|
+—squid:S1186|"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô—½4
+€squid:S1450."iRemove the "teleopPreferenceRadioGroup" field and declare it as a local variable in the relevant methods.(¢Úİ
+ysquid:S14503"bRemove the "climbHelpRadioGroup" field and declare it as a local variable in the relevant methods.(‘›Ëï
+ˆsquid:S14504"lRemove the "programmingLanguageRadioGroup" field and declare it as a local variable in the relevant methods.(º—ÚÆıÿÿÿÿ
+vsquid:S14506"_Remove the "commentsEditText" field and declare it as a local variable in the relevant methods.(‹”æ¯
+˜squid:S1186}"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(íÑíÍ
+˜squid:S1186v"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(íÑíÍ
+‡squid:S14501"kRemove the "cubeNumberInExchangeEditText" field and declare it as a local variable in the relevant methods.(ùÂù—ùÿÿÿÿ
+˜squid:S1186o"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(íÑíÍ
+—squid:S1186u"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô—½4
+˜squid:S1186g"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(íÑíÍ
+˜squid:S1186†"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô—½4
+™squid:S1186‡"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(íÑíÍ
+bsquid:UnusedPrivateMethodó"=Remove this unused private "getTextInputLayoutString" method.(ß—ƒ$
+zsquid:S14502"^Remove the "climbRadioGroup" field and declare it as a local variable in the relevant methods.(ĞÙë•úÿÿÿÿ
+˜squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô—½4
+€squid:S1450/"iRemove the "cubeNumberInSwitchEditText" field and declare it as a local variable in the relevant methods.(’¢®º
+—squid:S1186n"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô—½4
+™squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(íÑíÍ

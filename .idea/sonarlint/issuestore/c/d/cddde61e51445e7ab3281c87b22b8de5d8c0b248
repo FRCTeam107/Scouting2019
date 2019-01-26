@@ -1,0 +1,10 @@
+
+ssquid:S1192"VDefine a constant instead of duplicating this literal "com.android.bluetooth" 3 times.(õŞÖûÿÿÿÿ
+esquid:S2095u"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(í¶¬ 
+dsquid:S2095l"HUse try-with-resources or close this "FileReader" in a "finally" clause.(ĞÑ¹Úıÿÿÿÿ
+bsquid:S1192’"JDefine a constant instead of duplicating this literal "Share app" 3 times.(ºùÙ
+isquid:S3776R"RRefactor this method to reduce its Cognitive Complexity from 41 to the 15 allowed.(°íÁ
+bsquid:S1764T"KCorrect one of the identical sub-expressions on both sides of operator "&&"(ÄÌ”
+csquid:S2095m"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(Å€ÒÂ
+gsquid:S1192‘"JDefine a constant instead of duplicating this literal ".provider" 3 times.(ê£Üªøÿÿÿÿ
+bsquid:UnusedPrivateMethodº"=Remove this unused private "getTextInputLayoutString" method.(ß—ƒ$

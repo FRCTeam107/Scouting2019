@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.util.Log;
 
+import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 
 import java.io.ByteArrayOutputStream;
@@ -12,6 +13,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import static com.frc107.scouting2019.Scouting.getTeamNumber;
 
 public class PitModel extends ScoutModel {
     public PitModel(Question... questions) {
@@ -23,7 +26,7 @@ public class PitModel extends ScoutModel {
         File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
         dir.mkdirs();
 
-        String teamNumber = getTeamNumber();
+        int teamNumber = getTeamNumber();
         File file = new File(dir, teamNumber + ".jpg");
 
         try {
@@ -38,7 +41,7 @@ public class PitModel extends ScoutModel {
 
     public boolean compressPhoto() {
         File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
-        String teamNumber = getTeamNumber();
+        int teamNumber = getTeamNumber();
         File file = new File(dir, teamNumber + ".jpg");
 
         try {
@@ -62,6 +65,6 @@ public class PitModel extends ScoutModel {
 
     @Override
     public String getCSVRowHeader() {
-        return getTeamNumber();
+        return String.valueOf(Scouting.getTeamNumber());
     }
 }

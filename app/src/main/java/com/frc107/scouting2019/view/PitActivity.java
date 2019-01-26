@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 
 import com.frc107.scouting2019.BuildConfig;
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.model.question.TextQuestion;
@@ -97,7 +98,8 @@ public class PitActivity extends AppCompatActivity {
 
         teamNumberEditText.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setTeamNumber(s.toString());
+                int teamNumber = Scouting.getTeamNumber();
+                Scouting.setTeamNumber(teamNumber);
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }
@@ -178,8 +180,7 @@ public class PitActivity extends AppCompatActivity {
             return;
         }
 
-        String uniqueId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-        String saveResponse = viewModel.save(uniqueId);
+        String saveResponse = viewModel.save();
 
         Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
 

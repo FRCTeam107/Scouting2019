@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.utils.ViewUtils;
@@ -56,7 +57,8 @@ public class AutonActivity extends AppCompatActivity {
         teamNumberEditText = findViewById(R.id.teamNumberEditText);
         teamNumberTextWatcher = new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setTeamNumber(s.toString());
+                int teamNumber = Integer.valueOf(s.toString());
+                Scouting.setTeamNumber(teamNumber);
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }
@@ -66,7 +68,8 @@ public class AutonActivity extends AppCompatActivity {
         matchNumberEditText = findViewById(R.id.matchNumberEditText);
         matchNumberTextWatcher = new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setMatchNumber(s.toString());
+                int matchNumber = Integer.valueOf(s.toString());
+                Scouting.setMatchNumber(matchNumber);
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }
@@ -139,8 +142,6 @@ public class AutonActivity extends AppCompatActivity {
 
         final Intent intent = new Intent(this, TeleopActivity.class);
         intent.putExtra(AUTON_STRING_EXTRA, viewModel.getAnswerCSVRow());
-        intent.putExtra(MATCH_STRING_EXTRA, viewModel.getMatchNumber());
-        intent.putExtra(TEAM_NUMBER_STRING_EXTRA, viewModel.getTeamNumber());
 
         startActivityForResult(intent, REQUEST_CODE);
     }
