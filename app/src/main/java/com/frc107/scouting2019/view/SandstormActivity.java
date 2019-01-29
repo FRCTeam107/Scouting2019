@@ -47,7 +47,6 @@ public class SandstormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sandstorm);
 
         Question[] questions = {
-                new TextQuestion(R.id.pit_teamNumber_editText, true),
                 new RadioQuestion(R.id.sandstormStartingPositionRadioQuestion, true,
                         new RadioQuestion.Option(R.id.habTwoSandstorm_Radiobtn, getString(R.string.habTwoSandstorm)),
                         new RadioQuestion.Option(R.id.habOneSandstorm_Radiobtn, getString(R.string.habOneSandstorm))),
