@@ -3,6 +3,7 @@ package com.frc107.scouting2019.view;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.frc107.scouting2019.DuckActivity;
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
 
@@ -10,6 +11,7 @@ import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
         String uniqueId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         Scouting.setUniqueId(uniqueId);
+
+        Intent duckIntent = new Intent(this, DuckActivity.class);
+
+        Button sendDataButton = findViewById(R.id.send_data_button);
+        sendDataButton.setOnLongClickListener(v -> {
+            startActivity(duckIntent);
+            return true;
+        });
     }
 
     @Override
