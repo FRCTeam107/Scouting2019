@@ -8,9 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.utils.PermissionUtils;
@@ -19,9 +21,9 @@ import com.frc107.scouting2019.viewmodel.TeleopViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.frc107.scouting2019.view.AutonActivity.AUTON_STRING_EXTRA;
-import static com.frc107.scouting2019.view.AutonActivity.MATCH_STRING_EXTRA;
-import static com.frc107.scouting2019.view.AutonActivity.TEAM_NUMBER_STRING_EXTRA;
+import static com.frc107.scouting2019.view.SandstormActivity.AUTON_STRING_EXTRA;
+import static com.frc107.scouting2019.view.SandstormActivity.MATCH_STRING_EXTRA;
+import static com.frc107.scouting2019.view.SandstormActivity.TEAM_NUMBER_STRING_EXTRA;
 
 public class TeleopActivity extends AppCompatActivity {
     private CheckBox foulsCheckBox;
@@ -39,14 +41,35 @@ public class TeleopActivity extends AppCompatActivity {
         String matchNumber = bundle.getString(TEAM_NUMBER_STRING_EXTRA);
 
         Question[] questions = {
-                new ToggleQuestion(R.id.fouls_chkbx)
+                new RadioQuestion(R.id.pickupLocationRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, getString(R.string.portPickupLocation)),
+                        new RadioQuestion.Option(R.id.floorPickupLocation_Radiobtn, getString(R.string.floorPickupLocation))),
+                new RadioQuestion(R.id.itemPickedUpRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.cargoItemPickedUp_Radiobtn, getString(R.string.cargoPickedUp)),
+                        new RadioQuestion.Option(R.id.hatchItemPickedUp_Radiobtn, getString(R.string.hatchPickedUp))),
+                new RadioQuestion(R.id.itemPlacedRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.topRocketItemPlaced_Radiobtn, getString(R.string.topRocketItemPlaced)),
+                        new RadioQuestion.Option(R.id.middleRocketItemPlaced_Radiobtn, getString(R.string.middleRocketItemPlaced)),
+                        new RadioQuestion.Option(R.id.bottomRocketItemPlaced_Radiobtn, getString(R.string.bottomRocketItemPlaced)),
+                        new RadioQuestion.Option(R.id.cargoshipItemPlaced_Radiobtn, getString(R.string.cargoshipItemPlaced)),
+                        new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, getString(R.string.floorItemPlaced))),
+                new ToggleQuestion(R.id.defense_chkbx)
         };
         viewModel = new TeleopViewModel(autonData, questions);
         viewModel.setTeamNumber(teamNumber);
         viewModel.setMatchNumber(matchNumber);
 
-        foulsCheckBox = findViewById(R.id.fouls_chkbx);
-        foulsCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.fouls_chkbx, isChecked));
+        RadioGroup pickupLocationRadioQuestion = findViewById(R.id.pickupLocationRadioQuestion);
+        pickupLocationRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
+
+        RadioGroup itemPickedUpRadioQuestion = findViewById(R.id.itemPickedUpRadioQuestion);
+        itemPickedUpRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPickedUpRadioQuestion, checkedId));
+
+        RadioGroup itemPlacedRadioQuestion = findViewById(R.id.itemPlacedRadioQuestion);
+        itemPlacedRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPlacedRadioQuestion, checkedId));
+
+        foulsCheckBox = findViewById(R.id.defense_chkbx);
+        foulsCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.defense_chkbx, isChecked));
     }
 
     @Override

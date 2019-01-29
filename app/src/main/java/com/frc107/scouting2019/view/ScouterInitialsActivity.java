@@ -2,6 +2,7 @@ package com.frc107.scouting2019.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import androidx.annotation.NonNull;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.viewmodel.InitialsViewModel;
@@ -60,6 +61,6 @@ public class ScouterInitialsActivity extends AppCompatActivity {
         if (initals.length() == 0)
             return;
 
-        startActivity(new Intent(this, AutonActivity.class));
+        startActivity(new Intent(this, SandstormActivity.class));
     }
 }

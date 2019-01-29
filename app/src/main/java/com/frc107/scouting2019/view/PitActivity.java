@@ -50,6 +50,7 @@ public class PitActivity extends AppCompatActivity {
     private RadioGroup climbRadioGroup;
     private RadioGroup climbHelpRadioGroup;
     private RadioGroup programmingLanguageRadioGroup;
+    private EditText habitatTimeEditText;
     private EditText arcadeGameEditText;
     private EditText commentsEditText;
 
@@ -61,72 +62,72 @@ public class PitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pit);
 
         Question[] questions = {
-                new RadioQuestion(R.id.pit_teleopPreference_RadiobtnGrp, true,
-                        new RadioQuestion.Option(R.id.pitTeleopScale_btn, getString(R.string.pitTeleopScale)),
-                        new RadioQuestion.Option(R.id.pitTeleopSwitch_btn, getString(R.string.pitTeleopSwitch))),
-                new TextQuestion(R.id.pit_cubeNumberInSwitch_editText, true),
-                new TextQuestion(R.id.pit_cubeNumberInScale_editText, true),
-                new TextQuestion(R.id.pit_cubeNumberInExchange_editText, true),
-                new RadioQuestion(R.id.pit_climbBoolean_RadiobtnGrp, true,
-                        new RadioQuestion.Option(R.id.pitClimbYes_btn, getString(R.string.pitClimbYes)),
-                        new RadioQuestion.Option(R.id.pitClimbNo_btn, getString(R.string.pitClimbNo))),
-                new RadioQuestion(R.id.pit_climbHelpBoolean_RadiobtnGrp, true,
-                        new RadioQuestion.Option(R.id.pitClimbHelp1_btn, getString(R.string.pitClimbHelp1)),
-                        new RadioQuestion.Option(R.id.pitClimbHelp2_btn, getString(R.string.pitClimbHelp2)),
-                        new RadioQuestion.Option(R.id.pitClimbHelpNo_btn, getString(R.string.pitClimbHelpNo))),
-                new RadioQuestion(R.id.pit_programmingLanguage_RadiobtnGrp, true,
-                        new RadioQuestion.Option(R.id.pit_programmingLanguageJava_btn, getString(R.string.pitJava)),
-                        new RadioQuestion.Option(R.id.pit_programmingLanguageCpp_btn, getString(R.string.pitCpp)),
-                        new RadioQuestion.Option(R.id.pit_programmingLanguageLabview_btn, getString(R.string.pitLabview)),
-                        new RadioQuestion.Option(R.id.pit_programmingLanguageOther_btn, getString(R.string.pitOther))),
+                new TextQuestion(R.id.pit_teamNumber_editText, true),
+                new RadioQuestion(R.id.sandstormOperationsRadioQuestion, true,
+                    new RadioQuestion.Option(R.id.visionSystemSandstorm_Radiobtn, getString(R.string.visionSystemSandstorm)),
+                    new RadioQuestion.Option(R.id.cameraDrivingSandstorm_Radiobtn, getString(R.string.cameraDrivingSandstorm)),
+                    new RadioQuestion.Option(R.id.blindDrivingSandstorm_Radiobtn, getString(R.string.blindDrivingSandstorm)),
+                        new RadioQuestion.Option(R.id.noDrivingSandstorm_Radiobtn, getString(R.string.noDrivingSandstorm))),
+                new RadioQuestion(R.id.sandstormPreferenceRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.cargoshipPreferenceSandstorm_Radiobtn, getString(R.string.cargoshipPreferenceSandstorm)),
+                        new RadioQuestion.Option(R.id.rocketshipPreferenceSandstorm_Radiobtn, getString(R.string.rocketshipPreferenceSandstorm)),
+                        new RadioQuestion.Option(R.id.noPreferenceSandstorm_Radiobtn, getString(R.string.noPreferenceSandstorm))),
+                new RadioQuestion(R.id.highestRocketLevelSandstormRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.topRocketLevelSandstorm_Radiobtn, getString(R.string.topRocketLevelSandstorm)),
+                        new RadioQuestion.Option(R.id.middleRocketLevelSandstorm_Radiobtn, getString(R.string.middleRocketLevelSandstorm)),
+                        new RadioQuestion.Option(R.id.bottomRocketLevelSandstorm_Radiobtn, getString(R.string.bottomRocketLevelSandstorm)),
+                        new RadioQuestion.Option(R.id.noRocketLevelSandstorm_Radiobtn, getString(R.string.noRocketLevelSandstorm))),
+                new RadioQuestion(R.id.highestHabitatLevelRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.topHabitatLevel_Radiobtn, getString(R.string.topHabitatLevel)),
+                        new RadioQuestion.Option(R.id.middleHabitatLevel_Radiobtn, getString(R.string.middleHabitatLevel)),
+                        new RadioQuestion.Option(R.id.bottomHabitatLevel_Radiobtn, getString(R.string.bottomHabitatLevel)),
+                        new RadioQuestion.Option(R.id.noHabitatLevel_Radiobtn, getString(R.string.noHabitatLevel))),
+                new TextQuestion(R.id.pit_habitatTime_editText, true),
+                new RadioQuestion(R.id.programmingLanguageRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.javaProgrammingLanguage_Radiobtn, getString(R.string.javaProgrammingLanguage)),
+                        new RadioQuestion.Option(R.id.cppProgrammingLanguage_Radiobtn, getString(R.string.cppProgrammingLanguage)),
+                        new RadioQuestion.Option(R.id.labviewProgrammingLanguage_Radiobtn, getString(R.string.labviewProgrammingLanguage)),
+                        new RadioQuestion.Option(R.id.otherProgrammingLanguage_Radiobtn, getString(R.string.otherProgrammingLanguage))),
+
                 new TextQuestion(R.id.pit_arcadeGame_editText, true),
                 new TextQuestion(R.id.pit_comments_editText, true)
         };
         viewModel = new PitViewModel(questions);
 
+        RadioGroup sandstormOperationsRadioQuestion = findViewById(R.id.sandstormOperationsRadioQuestion);
+        sandstormOperationsRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormOperationsRadioQuestion, checkedId));
+        RadioGroup sandstormPreferenceRadioQuestion = findViewById(R.id.sandstormPreferenceRadioQuestion);
+        sandstormPreferenceRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormPreferenceRadioQuestion, checkedId));
+        RadioGroup highestRocketLevelSandstormRadioQuestion = findViewById(R.id.highestRocketLevelSandstormRadioQuestion);
+        highestRocketLevelSandstormRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.highestRocketLevelSandstormRadioQuestion, checkedId));
+        RadioGroup highestHabitatLevelRadioQuestion = findViewById(R.id.highestHabitatLevelRadioQuestion);
+        highestHabitatLevelRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.highestHabitatLevelRadioQuestion, checkedId));
+        RadioGroup programmingLanguageRadioQuestion = findViewById(R.id.programmingLanguageRadioQuestion);
+        programmingLanguageRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.programmingLanguageRadioQuestion, checkedId));
+
         teamNumberEditText = findViewById(R.id.pit_teamNumber_editText);
-        teleopPreferenceRadioGroup = findViewById(R.id.pit_teleopPreference_RadiobtnGrp);
-        cubeNumberInSwitchEditText = findViewById(R.id.pit_cubeNumberInSwitch_editText);
-        cubeNumberInScaleEditText = findViewById(R.id.pit_cubeNumberInScale_editText);
-        cubeNumberInExchangeEditText = findViewById(R.id.pit_cubeNumberInExchange_editText);
-        climbRadioGroup = findViewById(R.id.pit_climbBoolean_RadiobtnGrp);
-        climbHelpRadioGroup = findViewById(R.id.pit_climbHelpBoolean_RadiobtnGrp);
-        programmingLanguageRadioGroup = findViewById(R.id.pit_programmingLanguage_RadiobtnGrp);
+        habitatTimeEditText = findViewById(R.id.pit_habitatTime_editText);
         arcadeGameEditText = findViewById(R.id.pit_arcadeGame_editText);
         commentsEditText = findViewById(R.id.pit_comments_editText);
 
         teamNumberEditText.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setTeamNumber(s.toString());
+                viewModel.setAnswer(R.id.pit_teamNumber_editText, s.toString());
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }
         });
-        teleopPreferenceRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pit_teleopPreference_RadiobtnGrp, checkedId));
-        cubeNumberInSwitchEditText.addTextChangedListener(new TextWatcher() {
+
+
+        habitatTimeEditText.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setAnswer(R.id.pit_cubeNumberInSwitch_editText, s.toString());
+                viewModel.setAnswer(R.id.pit_habitatTime_editText, s.toString());
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }
         });
-        cubeNumberInScaleEditText.addTextChangedListener(new TextWatcher() {
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setAnswer(R.id.pit_cubeNumberInScale_editText, s.toString());
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void afterTextChanged(Editable s) { }
-        });
-        cubeNumberInExchangeEditText.addTextChangedListener(new TextWatcher() {
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setAnswer(R.id.pit_cubeNumberInExchange_editText, s.toString());
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void afterTextChanged(Editable s) { }
-        });
-        climbRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pit_climbBoolean_RadiobtnGrp, checkedId));
-        climbHelpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pit_climbHelpBoolean_RadiobtnGrp, checkedId));
-        programmingLanguageRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pit_programmingLanguage_RadiobtnGrp, checkedId));
+
+
         arcadeGameEditText.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 viewModel.setAnswer(R.id.pit_arcadeGame_editText, s.toString());
