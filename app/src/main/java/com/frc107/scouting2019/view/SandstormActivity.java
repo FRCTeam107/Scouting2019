@@ -36,7 +36,6 @@ public class SandstormActivity extends AppCompatActivity {
     private TextWatcher teamNumberTextWatcher;
     private EditText matchNumberEditText;
     private TextWatcher matchNumberTextWatcher;
-    private RadioGroup testRadioGroup;
 
     private AutonViewModel viewModel;
 
@@ -102,9 +101,6 @@ public class SandstormActivity extends AppCompatActivity {
         matchNumberEditText.removeTextChangedListener(matchNumberTextWatcher);
         matchNumberEditText = null;
         matchNumberTextWatcher = null;
-
-        testRadioGroup.setOnCheckedChangeListener(null);
-        testRadioGroup = null;
 
         viewModel = null;
     }
