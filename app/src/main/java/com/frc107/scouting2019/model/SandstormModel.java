@@ -12,4 +12,9 @@ public class SandstormModel extends ScoutModel {
     public String getCSVRowHeader() {
         return Scouting.getTeamNumber() + "," + Scouting.getMatchNumber();
     }
+
+    public void finish() {
+        String csvRow = getAnswerCSVRow();
+        Scouting.setSandstormData(csvRow);
+    }
 }

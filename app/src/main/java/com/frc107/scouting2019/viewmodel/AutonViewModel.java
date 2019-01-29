@@ -7,4 +7,8 @@ public class AutonViewModel extends ScoutViewModel {
     public AutonViewModel(Question... questions) {
         model = new SandstormModel(questions);
     }
+
+    public void finish() {
+        ((SandstormModel) model).finish();
+    }
 }

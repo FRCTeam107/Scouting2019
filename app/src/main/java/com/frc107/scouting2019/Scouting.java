@@ -28,4 +28,12 @@ public class Scouting {
     public static int getMatchNumber() {
         return matchNumber;
     }
+
+    private static String sandstormData;
+    public static void setSandstormData(String newSandstormData) {
+        sandstormData = newSandstormData;
+    }
+    public static String getSandstormData() {
+        return sandstormData;
+    }
 }
