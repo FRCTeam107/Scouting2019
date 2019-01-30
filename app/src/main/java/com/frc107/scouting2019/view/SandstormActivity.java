@@ -36,7 +36,6 @@ public class SandstormActivity extends AppCompatActivity {
     private TextWatcher teamNumberTextWatcher;
     private EditText matchNumberEditText;
     private TextWatcher matchNumberTextWatcher;
-    private RadioGroup testRadioGroup;
 
     private AutonViewModel viewModel;
 
@@ -46,7 +45,6 @@ public class SandstormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sandstorm);
 
         Question[] questions = {
-                new TextQuestion(R.id.pit_teamNumber_editText, true),
                 new RadioQuestion(R.id.sandstormStartingPositionRadioQuestion, true,
                         new RadioQuestion.Option(R.id.habTwoSandstorm_Radiobtn, getString(R.string.habTwoSandstorm)),
                         new RadioQuestion.Option(R.id.habOneSandstorm_Radiobtn, getString(R.string.habOneSandstorm))),
@@ -103,9 +101,6 @@ public class SandstormActivity extends AppCompatActivity {
         matchNumberEditText.removeTextChangedListener(matchNumberTextWatcher);
         matchNumberEditText = null;
         matchNumberTextWatcher = null;
-
-        testRadioGroup.setOnCheckedChangeListener(null);
-        testRadioGroup = null;
 
         viewModel = null;
     }
