@@ -1,6 +1,6 @@
 .DS_Store
 .sonar
-
+.idea/sonarlint
 
 # Built application files
 *.apk
