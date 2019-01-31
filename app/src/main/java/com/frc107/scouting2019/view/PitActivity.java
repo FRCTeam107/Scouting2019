@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 
 import com.frc107.scouting2019.BuildConfig;
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.model.question.TextQuestion;
@@ -179,8 +180,7 @@ public class PitActivity extends AppCompatActivity {
             return;
         }
 
-        String uniqueId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-        String saveResponse = viewModel.save(uniqueId);
+        String saveResponse = viewModel.save();
 
         Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
 

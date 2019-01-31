@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.model.question.TextQuestion;
@@ -24,12 +25,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 public class SandstormActivity extends AppCompatActivity {
-    /*This area sets and binds all of the variables that we will use in the auton activity*/
-    public static final String AUTON_STRING_EXTRA = "auton_extra";
-
-    /* These are the names of the match number and team number extras that will be passed into teleop */
-    public static final String MATCH_STRING_EXTRA = "match_extra";
-    public static final String TEAM_NUMBER_STRING_EXTRA = "teamnumber_extra";
     public static final int REQUEST_CODE = 1;
 
     private EditText teamNumberEditText;
@@ -69,7 +64,8 @@ public class SandstormActivity extends AppCompatActivity {
         teamNumberEditText = findViewById(R.id.teamNumberEditText);
         teamNumberTextWatcher = new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setTeamNumber(s.toString());
+                int teamNumber = Integer.valueOf(s.toString());
+                Scouting.setTeamNumber(teamNumber);
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }
@@ -79,7 +75,8 @@ public class SandstormActivity extends AppCompatActivity {
         matchNumberEditText = findViewById(R.id.matchNumberEditText);
         matchNumberTextWatcher = new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setMatchNumber(s.toString());
+                int matchNumber = Integer.valueOf(s.toString());
+                Scouting.setMatchNumber(matchNumber);
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }
@@ -145,10 +142,9 @@ public class SandstormActivity extends AppCompatActivity {
             return;
         }
 
+        viewModel.finish();
+
         final Intent intent = new Intent(this, TeleopActivity.class);
-        intent.putExtra(AUTON_STRING_EXTRA, viewModel.getAnswerCSVRow());
-        intent.putExtra(MATCH_STRING_EXTRA, viewModel.getMatchNumber());
-        intent.putExtra(TEAM_NUMBER_STRING_EXTRA, viewModel.getTeamNumber());
 
         startActivityForResult(intent, REQUEST_CODE);
     }

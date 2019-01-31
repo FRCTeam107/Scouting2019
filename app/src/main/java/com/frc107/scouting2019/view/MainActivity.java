@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.frc107.scouting2019.R;
-import androidx.appcompat.app.AppCompatActivity;
+import com.frc107.scouting2019.Scouting;
+
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String uniqueId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        Scouting.setUniqueId(uniqueId);
     }
 
     @Override
