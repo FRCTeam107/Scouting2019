@@ -44,7 +44,7 @@
                     android:id="@+id/habTwoEndGame_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/habOneEndGame"
+                    android:text="@string/habTwoEndGame"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
 
@@ -70,7 +70,7 @@
                 android:id="@+id/endGameDefenseText"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="@string/sandstormStartingGamePiece" />
+                android:text="@string/endGameDefenseHeading" />
 
             <RadioGroup
                 android:id="@+id/endGameDefenseRadioQuestion"

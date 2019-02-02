@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
-import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
@@ -39,25 +38,19 @@ public class SandstormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sandstorm);
 
         Question[] questions = {
-
-                new RadioQuestion(R.id.endGameHabitatLevelRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.habOneEndGame_Radiobtn, getString(R.string.habOneEndGame)),
-                        new RadioQuestion.Option(R.id.habTwoEndGame_Radiobtn, getString(R.string.habTwoEndGame)),
-                        new RadioQuestion.Option(R.id.habThreeEndGame_Radiobtn, getString(R.string.habThreeEndGame)),
-                        new RadioQuestion.Option(R.id.habNoneEndGame_Radiobtn, getString(R.string.habNoneEndGame))),
-                new RadioQuestion(R.id.endGameDefenseRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.endGameDefenseAllMatch_Radiobtn, getString(R.string.endGameDefenseAllMatch)),
-                        new RadioQuestion.Option(R.id.endGameDefenseEffective_Radiobtn, getString(R.string.endGameDefenseEffective)),
-                        new RadioQuestion.Option(R.id.endGameDefenseIneffective_Radiobtn, getString(R.string.endGameDefenseIneffective))),
-
+                new RadioQuestion(R.id.sandstormStartingPositionRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.habTwoSandstorm_Radiobtn, getString(R.string.habTwoSandstorm)),
+                        new RadioQuestion.Option(R.id.habOneSandstorm_Radiobtn, getString(R.string.habOneSandstorm))),
+                new RadioQuestion(R.id.sandstormStartingGamePieceRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.cargoSandstormStartingGamePiece_Radiobtn, getString(R.string.cargoSandstormStartingGamePiece)),
+                        new RadioQuestion.Option(R.id.panelSandstormStartingGamePiece_Radiobtn, getString(R.string.panelSandstormStartingGamePiece)),
+                        new RadioQuestion.Option(R.id.noSandstormStartingGamePiece_Radiobtn, getString(R.string.noSandstormStartingGamePiece))),
 
 
         };
 
         viewModel = new SandstormViewModel(questions);
 
-        RadioGroup endGameHabitatLevelRadioQuestion = findViewById(R.id.endGameHabitatLevelRadioQuestion);
-        endGameHabitatLevelRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameHabitatLevelRadioQuestion, checkedId));
 
         RadioGroup endGameDefenseRadioQuestion = findViewById(R.id.endGameDefenseRadioQuestion);
         endGameDefenseRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameDefenseRadioQuestion, checkedId));

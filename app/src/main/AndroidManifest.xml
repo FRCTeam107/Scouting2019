@@ -20,6 +20,7 @@
         <activity android:name=".view.SandstormActivity"></activity>
         <activity android:name=".view.CycleActivity"></activity>
         <activity android:name=".view.PitActivity"></activity>
+        <activity android:name=".view.EndGameActivity"></activity>
         <activity android:name=".view.SendDataActivity"></activity>
 
         <provider

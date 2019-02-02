@@ -64,7 +64,8 @@
     <string name="habThreeEndGame">Level Three</string>
     <string name="habNoneEndGame">No Level</string>
 
-    <string name="endGameDefenseRadioQuestion">Defense</string>
+
+    <string name="endGameDefenseHeading">Defense</string>
     <string name="endGameDefenseAllMatch">All Match</string>
     <string name="endGameDefenseEffective">Effective</string>
     <string name="endGameDefenseIneffective">Ineffective</string>

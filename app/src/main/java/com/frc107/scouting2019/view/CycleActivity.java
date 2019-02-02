@@ -16,14 +16,14 @@ import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
-import com.frc107.scouting2019.viewmodel.TeleopViewModel;
+import com.frc107.scouting2019.viewmodel.CycleViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class CycleActivity extends AppCompatActivity {
     private CheckBox foulsCheckBox;
 
-    private TeleopViewModel viewModel;
+    private CycleViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class CycleActivity extends AppCompatActivity {
                         new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, getString(R.string.floorItemPlaced))),
                 new ToggleQuestion(R.id.defense_chkbx)
         };
-        viewModel = new TeleopViewModel(questions);
+        viewModel = new CycleViewModel(questions);
 
         RadioGroup pickupLocationRadioQuestion = findViewById(R.id.pickupLocationRadioQuestion);
         pickupLocationRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
