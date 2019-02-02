@@ -13,8 +13,10 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.model.question.TextQuestion;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.SandstormViewModel;
 
@@ -23,19 +25,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 public class SandstormActivity extends AppCompatActivity {
-    /*This area sets and binds all of the variables that we will use in the auton activity*/
-    public static final String AUTON_STRING_EXTRA = "auton_extra";
-
-    /* These are the names of the match number and team number extras that will be passed into teleop */
-    public static final String MATCH_STRING_EXTRA = "match_extra";
-    public static final String TEAM_NUMBER_STRING_EXTRA = "teamnumber_extra";
     public static final int REQUEST_CODE = 1;
 
     private EditText teamNumberEditText;
     private TextWatcher teamNumberTextWatcher;
     private EditText matchNumberEditText;
     private TextWatcher matchNumberTextWatcher;
-    private RadioGroup testRadioGroup;
 
     private SandstormViewModel viewModel;
 
@@ -45,6 +40,14 @@ public class SandstormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sandstorm);
 
         Question[] questions = {
+                new TextQuestion(R.id.pit_teamNumber_editText, true),
+                new RadioQuestion(R.id.sandstormStartingPositionRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.habTwoSandstorm_Radiobtn, getString(R.string.habTwoSandstorm)),
+                        new RadioQuestion.Option(R.id.habOneSandstorm_Radiobtn, getString(R.string.habOneSandstorm))),
+                new RadioQuestion(R.id.sandstormStartingGamePieceRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.cargoSandstormStartingGamePiece_Radiobtn, getString(R.string.cargoSandstormStartingGamePiece)),
+                        new RadioQuestion.Option(R.id.panelSandstormStartingGamePiece_Radiobtn, getString(R.string.panelSandstormStartingGamePiece)),
+                        new RadioQuestion.Option(R.id.noSandstormStartingGamePiece_Radiobtn, getString(R.string.noSandstormStartingGamePiece))),
 
                 new RadioQuestion(R.id.endGameHabitatLevelRadioQuestion, true,
                         new RadioQuestion.Option(R.id.habOneEndGame_Radiobtn, getString(R.string.habOneEndGame)),
@@ -68,11 +71,22 @@ public class SandstormActivity extends AppCompatActivity {
         RadioGroup endGameDefenseRadioQuestion = findViewById(R.id.endGameDefenseRadioQuestion);
         endGameDefenseRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameDefenseRadioQuestion, checkedId));
 
+        teamNumberEditText = findViewById(R.id.teamNumberEditText);
+        teamNumberTextWatcher = new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                int teamNumber = Integer.valueOf(s.toString());
+                Scouting.setTeamNumber(teamNumber);
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void afterTextChanged(Editable s) { }
+        };
+        teamNumberEditText.addTextChangedListener(teamNumberTextWatcher);
 
         matchNumberEditText = findViewById(R.id.matchNumberEditText);
         matchNumberTextWatcher = new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setMatchNumber(s.toString());
+                int matchNumber = Integer.valueOf(s.toString());
+                Scouting.setMatchNumber(matchNumber);
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }
@@ -94,9 +108,6 @@ public class SandstormActivity extends AppCompatActivity {
         matchNumberEditText.removeTextChangedListener(matchNumberTextWatcher);
         matchNumberEditText = null;
         matchNumberTextWatcher = null;
-
-        testRadioGroup.setOnCheckedChangeListener(null);
-        testRadioGroup = null;
 
         viewModel = null;
     }
@@ -141,10 +152,9 @@ public class SandstormActivity extends AppCompatActivity {
             return;
         }
 
+        viewModel.finish();
+
         final Intent intent = new Intent(this, TeleopActivity.class);
-        intent.putExtra(AUTON_STRING_EXTRA, viewModel.getAnswerCSVRow());
-        intent.putExtra(MATCH_STRING_EXTRA, viewModel.getMatchNumber());
-        intent.putExtra(TEAM_NUMBER_STRING_EXTRA, viewModel.getTeamNumber());
 
         startActivityForResult(intent, REQUEST_CODE);
     }

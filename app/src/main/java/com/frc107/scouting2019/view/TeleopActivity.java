@@ -21,10 +21,6 @@ import com.frc107.scouting2019.viewmodel.TeleopViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.frc107.scouting2019.view.SandstormActivity.AUTON_STRING_EXTRA;
-import static com.frc107.scouting2019.view.SandstormActivity.MATCH_STRING_EXTRA;
-import static com.frc107.scouting2019.view.SandstormActivity.TEAM_NUMBER_STRING_EXTRA;
-
 public class TeleopActivity extends AppCompatActivity {
     private CheckBox foulsCheckBox;
 
@@ -36,10 +32,6 @@ public class TeleopActivity extends AppCompatActivity {
         setContentView(R.layout.activity_teleop);
 
         Bundle bundle = getIntent().getExtras();
-        String autonData = bundle.getString(AUTON_STRING_EXTRA);
-        String teamNumber = bundle.getString(MATCH_STRING_EXTRA);
-        String matchNumber = bundle.getString(TEAM_NUMBER_STRING_EXTRA);
-
         Question[] questions = {
                 new RadioQuestion(R.id.pickupLocationRadioQuestion, true,
                         new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, getString(R.string.portPickupLocation)),
@@ -55,9 +47,7 @@ public class TeleopActivity extends AppCompatActivity {
                         new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, getString(R.string.floorItemPlaced))),
                 new ToggleQuestion(R.id.defense_chkbx)
         };
-        viewModel = new TeleopViewModel(autonData, questions);
-        viewModel.setTeamNumber(teamNumber);
-        viewModel.setMatchNumber(matchNumber);
+        viewModel = new TeleopViewModel(questions);
 
         RadioGroup pickupLocationRadioQuestion = findViewById(R.id.pickupLocationRadioQuestion);
         pickupLocationRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
@@ -108,13 +98,18 @@ public class TeleopActivity extends AppCompatActivity {
             return;
         }
 
-        final Intent intent = new Intent(this, TeleopActivity.class);
-        intent.putExtra(AUTON_STRING_EXTRA, viewModel.getAnswerCSVRow());
-        intent.putExtra(MATCH_STRING_EXTRA, viewModel.getMatchNumber());
-        intent.putExtra(TEAM_NUMBER_STRING_EXTRA, viewModel.getTeamNumber());
+        boolean hasWritePermissions = PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (!hasWritePermissions) {
+            Toast.makeText(getApplicationContext(), "No write permissions.", Toast.LENGTH_LONG).show();
+            return;
+        }
 
-        startActivityForResult(intent, REQUEST_CODE);
+        String saveResponse = viewModel.save();
+
+        Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
+
+        setResult(RESULT_OK);
+
+        finish();
     }
-
-
 }

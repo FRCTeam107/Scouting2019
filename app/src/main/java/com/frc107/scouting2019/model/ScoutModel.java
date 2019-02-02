@@ -3,6 +3,7 @@ package com.frc107.scouting2019.model;
 import android.os.Environment;
 import android.util.Log;
 
+import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.model.question.NumberQuestion;
 import com.frc107.scouting2019.model.question.Question;
@@ -17,8 +18,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public abstract class ScoutModel {
-    private String teamNumber;
-    private String matchNumber;
     private ArrayList<Question> questions;
     private String fileNameHeader;
 
@@ -28,22 +27,6 @@ public abstract class ScoutModel {
 
     public void setFileNameHeader(String fileNameHeader) {
         this.fileNameHeader = fileNameHeader;
-    }
-
-    public String getTeamNumber() {
-        return teamNumber;
-    }
-
-    public void setTeamNumber(String teamNumber) {
-        this.teamNumber = teamNumber;
-    }
-
-    public String getMatchNumber() {
-        return matchNumber;
-    }
-
-    public void setMatchNumber(String matchNumber) {
-        this.matchNumber = matchNumber;
     }
 
     public int getFirstUnfinishedQuestionId() {
@@ -136,28 +119,8 @@ public abstract class ScoutModel {
         return stringBuilder.toString();
     }
 
-    public String save(String uniqueDeviceId) {
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
-            dir.mkdirs();
-
-            File file = new File(dir, fileNameHeader + uniqueDeviceId + ".csv");
-
-            String result = getAnswerCSVRow();
-            String message = result + "\n";
-
-            try (FileOutputStream fileOutputStream = new FileOutputStream(file, true)) {
-                fileOutputStream.write(message.getBytes());
-                fileOutputStream.close();
-
-                return "Saved successfully.";
-            } catch (IOException e) {
-                Log.d("Scouting", e.getMessage());
-                return "IOException! Go talk to the programmers.";
-            }
-        } else {
-            return "SD card not found.";
-        }
+    public String save() {
+        String result = Scouting.CSV_GENERATOR.writeData(fileNameHeader, getAnswerCSVRow());
+        return result;
     }
 }

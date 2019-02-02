@@ -42,9 +42,9 @@
     <string name="hatchPickedUp">Hatch</string>
 
     <string name="itemPlacedLocationText">Location Placed</string>
-    <string name="topRocketItemPlaced">Top\nRocket</string>
-    <string name="middleRocketItemPlaced">Middle\nRocket</string>
-    <string name="bottomRocketItemPlaced">Bottom\nRocket</string>
+    <string name="topRocketItemPlaced">Top Rocket</string>
+    <string name="middleRocketItemPlaced">Middle Rocket</string>
+    <string name="bottomRocketItemPlaced">Bottom Rocket</string>
     <string name="cargoshipItemPlaced">Cargoship</string>
     <string name="floorItemPlaced">Floor</string>
 
@@ -90,9 +90,9 @@
   <string name="noPreferenceSandstorm">None</string>
 
   <string name="pitRocketLevelSandstorm">Rocket Level Sandstorm</string>
-  <string name="topRocketLevelSandstorm">Top\nRocket</string>
-  <string name="middleRocketLevelSandstorm">Middle\nRocket</string>
-  <string name="bottomRocketLevelSandstorm">Bottom\nRocket</string>
+  <string name="topRocketLevelSandstorm">Top Rocket</string>
+  <string name="middleRocketLevelSandstorm">Middle Rocket</string>
+  <string name="bottomRocketLevelSandstorm">Bottom Rocket</string>
   <string name="noRocketLevelSandstorm">None</string>
 
   <string name="pitHabitatLevel">Habitat Level</string>

@@ -7,4 +7,8 @@ public class EndGameViewModel extends ScoutViewModel {
     public EndGameViewModel(Question... questions) {
         model = new SandstormModel(questions);
     }
+
+    public void finish() {
+        ((SandstormModel) model).finish();
+    }
 }
