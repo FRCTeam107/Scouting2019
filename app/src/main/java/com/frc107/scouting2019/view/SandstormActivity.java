@@ -16,7 +16,6 @@ import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
-import com.frc107.scouting2019.model.question.TextQuestion;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.SandstormViewModel;
 
@@ -40,14 +39,6 @@ public class SandstormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sandstorm);
 
         Question[] questions = {
-                new TextQuestion(R.id.pit_teamNumber_editText, true),
-                new RadioQuestion(R.id.sandstormStartingPositionRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.habTwoSandstorm_Radiobtn, getString(R.string.habTwoSandstorm)),
-                        new RadioQuestion.Option(R.id.habOneSandstorm_Radiobtn, getString(R.string.habOneSandstorm))),
-                new RadioQuestion(R.id.sandstormStartingGamePieceRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.cargoSandstormStartingGamePiece_Radiobtn, getString(R.string.cargoSandstormStartingGamePiece)),
-                        new RadioQuestion.Option(R.id.panelSandstormStartingGamePiece_Radiobtn, getString(R.string.panelSandstormStartingGamePiece)),
-                        new RadioQuestion.Option(R.id.noSandstormStartingGamePiece_Radiobtn, getString(R.string.noSandstormStartingGamePiece))),
 
                 new RadioQuestion(R.id.endGameHabitatLevelRadioQuestion, true,
                         new RadioQuestion.Option(R.id.habOneEndGame_Radiobtn, getString(R.string.habOneEndGame)),
@@ -60,10 +51,10 @@ public class SandstormActivity extends AppCompatActivity {
                         new RadioQuestion.Option(R.id.endGameDefenseIneffective_Radiobtn, getString(R.string.endGameDefenseIneffective))),
 
 
+
         };
 
         viewModel = new SandstormViewModel(questions);
-
 
         RadioGroup endGameHabitatLevelRadioQuestion = findViewById(R.id.endGameHabitatLevelRadioQuestion);
         endGameHabitatLevelRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameHabitatLevelRadioQuestion, checkedId));
@@ -154,7 +145,7 @@ public class SandstormActivity extends AppCompatActivity {
 
         viewModel.finish();
 
-        final Intent intent = new Intent(this, TeleopActivity.class);
+        final Intent intent = new Intent(this, CycleActivity.class);
 
         startActivityForResult(intent, REQUEST_CODE);
     }

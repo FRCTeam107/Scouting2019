@@ -3,7 +3,6 @@ package com.frc107.scouting2019.view;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +20,7 @@ import com.frc107.scouting2019.viewmodel.TeleopViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class TeleopActivity extends AppCompatActivity {
+public class CycleActivity extends AppCompatActivity {
     private CheckBox foulsCheckBox;
 
     private TeleopViewModel viewModel;
@@ -29,7 +28,7 @@ public class TeleopActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teleop);
+        setContentView(R.layout.activity_cycle);
 
         Bundle bundle = getIntent().getExtras();
         Question[] questions = {

@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".view.ScouterInitialsActivity"></activity>
         <activity android:name=".view.SandstormActivity"></activity>
-        <activity android:name=".view.TeleopActivity"></activity>
+        <activity android:name=".view.CycleActivity"></activity>
         <activity android:name=".view.PitActivity"></activity>
         <activity android:name=".view.SendDataActivity"></activity>
 
