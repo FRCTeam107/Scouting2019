@@ -15,8 +15,6 @@
     <string name="teamNumberHeading">Team Number</string>
     <string name="matchNumberHeading">Match Number</string>
 
-
-
     <string name="startingPositionHeading">Starting Location</string>
     <string name="habOneSandstorm">Hab One</string>
     <string name="habTwoSandstorm">Hab Two</string>
@@ -59,6 +57,17 @@
 
     <!--Teleop Error Strings-->
 
+    <!--End Game Strings-->
+    <string name="endGameHabitatLevelHeading">Habitat Level</string>
+    <string name="habOneEndGame">Level One</string>
+    <string name="habTwoEndGame">Level Two</string>
+    <string name="habThreeEndGame">Level Three</string>
+    <string name="habNoneEndGame">No Level</string>
+
+    <string name="endGameDefenseRadioQuestion">Defense</string>
+    <string name="endGameDefenseAllMatch">All Match</string>
+    <string name="endGameDefenseEffective">Effective</string>
+    <string name="endGameDefenseIneffective">Ineffective</string>
 
     <!--Menu Strings-->
     <string name="matchScouting">Match</string>

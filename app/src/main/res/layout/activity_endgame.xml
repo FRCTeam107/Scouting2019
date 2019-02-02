@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/ScrollView01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/endGameHabitatLevelText"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/endGameHabitatLevelHeading" />
+
+            <RadioGroup
+                android:id="@+id/endGameHabitatLevelRadioQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+            <RadioButton
+                android:id="@+id/habOneEndGame_Radiobtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/habOneEndGame"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"/>
+
+                <RadioButton
+                    android:id="@+id/habTwoEndGame_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/habOneEndGame"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+
+
+                <RadioButton
+                    android:id="@+id/habThreeEndGame_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/habThreeEndGame"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+
+                <RadioButton
+                    android:id="@+id/habNoneEndGame_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/habNoneEndGame"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/endGameDefenseText"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/sandstormStartingGamePiece" />
+
+            <RadioGroup
+                android:id="@+id/endGameDefenseRadioQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/endGameDefenseAllMatch_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/endGameDefenseAllMatch"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+
+                <RadioButton
+                    android:id="@+id/endGameDefenseEffective_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/endGameDefenseEffective"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+
+                <RadioButton
+                    android:id="@+id/endGameDefenseIneffective_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/endGameDefenseIneffective"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"/>
+            </RadioGroup>
+
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="goToTeleop"
+                android:text="@string/nextButton" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

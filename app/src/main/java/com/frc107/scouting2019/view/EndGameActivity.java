@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -11,10 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.SandstormViewModel;
 
@@ -22,7 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-public class SandstormActivity extends AppCompatActivity {
+public class EndGameActivity extends AppCompatActivity {
     /*This area sets and binds all of the variables that we will use in the auton activity*/
     public static final String AUTON_STRING_EXTRA = "auton_extra";
 
@@ -46,15 +49,13 @@ public class SandstormActivity extends AppCompatActivity {
 
         Question[] questions = {
 
-                new RadioQuestion(R.id.endGameHabitatLevelRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.habOneEndGame_Radiobtn, getString(R.string.habOneEndGame)),
-                        new RadioQuestion.Option(R.id.habTwoEndGame_Radiobtn, getString(R.string.habTwoEndGame)),
-                        new RadioQuestion.Option(R.id.habThreeEndGame_Radiobtn, getString(R.string.habThreeEndGame)),
-                        new RadioQuestion.Option(R.id.habNoneEndGame_Radiobtn, getString(R.string.habNoneEndGame))),
-                new RadioQuestion(R.id.endGameDefenseRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.endGameDefenseAllMatch_Radiobtn, getString(R.string.endGameDefenseAllMatch)),
-                        new RadioQuestion.Option(R.id.endGameDefenseEffective_Radiobtn, getString(R.string.endGameDefenseEffective)),
-                        new RadioQuestion.Option(R.id.endGameDefenseIneffective_Radiobtn, getString(R.string.endGameDefenseIneffective))),
+                new RadioQuestion(R.id.sandstormStartingPositionRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.habTwoSandstorm_Radiobtn, getString(R.string.habTwoSandstorm)),
+                        new RadioQuestion.Option(R.id.habOneSandstorm_Radiobtn, getString(R.string.habOneSandstorm))),
+                new RadioQuestion(R.id.sandstormStartingGamePieceRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.cargoSandstormStartingGamePiece_Radiobtn, getString(R.string.cargoSandstormStartingGamePiece)),
+                        new RadioQuestion.Option(R.id.panelSandstormStartingGamePiece_Radiobtn, getString(R.string.panelSandstormStartingGamePiece)),
+                        new RadioQuestion.Option(R.id.noSandstormStartingGamePiece_Radiobtn, getString(R.string.noSandstormStartingGamePiece))),
 
 
         };
@@ -62,11 +63,11 @@ public class SandstormActivity extends AppCompatActivity {
         viewModel = new SandstormViewModel(questions);
 
 
-        RadioGroup endGameHabitatLevelRadioQuestion = findViewById(R.id.endGameHabitatLevelRadioQuestion);
-        endGameHabitatLevelRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameHabitatLevelRadioQuestion, checkedId));
+        RadioGroup sandstormStartingPositionRadioQuestion = findViewById(R.id.sandstormStartingPositionRadioQuestion);
+        sandstormStartingPositionRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingPositionRadioQuestion, checkedId));
 
-        RadioGroup endGameDefenseRadioQuestion = findViewById(R.id.endGameDefenseRadioQuestion);
-        endGameDefenseRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameDefenseRadioQuestion, checkedId));
+        RadioGroup sandstormStartingGamePieceRadioQuestion = findViewById(R.id.sandstormStartingGamePieceRadioQuestion);
+        sandstormStartingGamePieceRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingGamePieceRadioQuestion, checkedId));
 
 
         matchNumberEditText = findViewById(R.id.matchNumberEditText);
@@ -134,18 +135,27 @@ public class SandstormActivity extends AppCompatActivity {
         }
     }
 
-    public void goToTeleop(View view) {
+
+    public void saveData(View view) {
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
         if (unfinishedQuestionId != -1) {
             ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
             return;
         }
 
-        final Intent intent = new Intent(this, TeleopActivity.class);
-        intent.putExtra(AUTON_STRING_EXTRA, viewModel.getAnswerCSVRow());
-        intent.putExtra(MATCH_STRING_EXTRA, viewModel.getMatchNumber());
-        intent.putExtra(TEAM_NUMBER_STRING_EXTRA, viewModel.getTeamNumber());
+        boolean hasWritePermissions = PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (!hasWritePermissions) {
+            Toast.makeText(getApplicationContext(), "No write permissions.", Toast.LENGTH_LONG).show();
+            return;
+        }
 
-        startActivityForResult(intent, REQUEST_CODE);
+        String uniqueId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        String saveResponse = viewModel.save(uniqueId);
+
+        Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
+
+        setResult(RESULT_OK);
+
+        finish();
     }
 }

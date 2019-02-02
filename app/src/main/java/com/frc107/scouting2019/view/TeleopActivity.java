@@ -101,26 +101,20 @@ public class TeleopActivity extends AppCompatActivity {
         }
     }
 
-    public void saveData(View view) {
+    public void goToEndgame(View view) {
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
         if (unfinishedQuestionId != -1) {
             ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
             return;
         }
 
-        boolean hasWritePermissions = PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (!hasWritePermissions) {
-            Toast.makeText(getApplicationContext(), "No write permissions.", Toast.LENGTH_LONG).show();
-            return;
-        }
+        final Intent intent = new Intent(this, TeleopActivity.class);
+        intent.putExtra(AUTON_STRING_EXTRA, viewModel.getAnswerCSVRow());
+        intent.putExtra(MATCH_STRING_EXTRA, viewModel.getMatchNumber());
+        intent.putExtra(TEAM_NUMBER_STRING_EXTRA, viewModel.getTeamNumber());
 
-        String uniqueId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-        String saveResponse = viewModel.save(uniqueId);
-
-        Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
-
-        setResult(RESULT_OK);
-
-        finish();
+        startActivityForResult(intent, REQUEST_CODE);
     }
+
+
 }
