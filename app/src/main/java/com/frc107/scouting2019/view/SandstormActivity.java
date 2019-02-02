@@ -16,9 +16,8 @@ import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
-import com.frc107.scouting2019.model.question.TextQuestion;
 import com.frc107.scouting2019.utils.ViewUtils;
-import com.frc107.scouting2019.viewmodel.AutonViewModel;
+import com.frc107.scouting2019.viewmodel.SandstormViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -32,7 +31,7 @@ public class SandstormActivity extends AppCompatActivity {
     private EditText matchNumberEditText;
     private TextWatcher matchNumberTextWatcher;
 
-    private AutonViewModel viewModel;
+    private SandstormViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +50,7 @@ public class SandstormActivity extends AppCompatActivity {
 
         };
 
-        viewModel = new AutonViewModel(questions);
+        viewModel = new SandstormViewModel(questions);
 
 
         RadioGroup sandstormStartingPositionRadioQuestion = findViewById(R.id.sandstormStartingPositionRadioQuestion);
