@@ -53,8 +53,11 @@ public class SandstormActivity extends AppCompatActivity {
         viewModel = new SandstormViewModel(questions);
 
 
-        RadioGroup endGameDefenseRadioQuestion = findViewById(R.id.endGameDefenseRadioQuestion);
-        endGameDefenseRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameDefenseRadioQuestion, checkedId));
+        RadioGroup sandstormStartingPositionRadioQuestion = findViewById(R.id.sandstormStartingPositionRadioQuestion);
+        sandstormStartingPositionRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingPositionRadioQuestion, checkedId));
+
+        RadioGroup sandstormStartingGamePieceRadioQuestion = findViewById(R.id.sandstormStartingGamePieceRadioQuestion);
+        sandstormStartingGamePieceRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingGamePieceRadioQuestion, checkedId));
 
         teamNumberEditText = findViewById(R.id.teamNumberEditText);
         teamNumberTextWatcher = new TextWatcher() {

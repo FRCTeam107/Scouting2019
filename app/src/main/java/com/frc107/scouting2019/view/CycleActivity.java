@@ -30,7 +30,6 @@ public class CycleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cycle);
 
-        Bundle bundle = getIntent().getExtras();
         Question[] questions = {
                 new RadioQuestion(R.id.pickupLocationRadioQuestion, true,
                         new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, getString(R.string.portPickupLocation)),

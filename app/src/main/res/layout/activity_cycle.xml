@@ -145,7 +145,7 @@
             android:id="@+id/save_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="saveData"
+            android:onClick="moveToEndgame"
             android:text="@string/saveButton" />
     </LinearLayout>
 </ScrollView>
