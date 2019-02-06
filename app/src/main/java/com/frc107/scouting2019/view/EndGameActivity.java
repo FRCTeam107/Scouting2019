@@ -28,15 +28,12 @@ import androidx.core.content.ContextCompat;
 
 public class EndGameActivity extends AppCompatActivity {
 
-
-    private RadioGroup testRadioGroup;
-
     private EndGameViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sandstorm);
+        setContentView(R.layout.activity_endgame);
 
         Question[] questions = {
 
@@ -67,10 +64,6 @@ public class EndGameActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-
-
-        testRadioGroup.setOnCheckedChangeListener(null);
-        testRadioGroup = null;
 
         viewModel = null;
     }
@@ -126,7 +119,7 @@ public class EndGameActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
 
-        setResult(RESULT_OK);
+
 
         finish();
     }

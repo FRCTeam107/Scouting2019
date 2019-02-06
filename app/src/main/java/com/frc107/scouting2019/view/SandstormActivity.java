@@ -24,7 +24,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 public class SandstormActivity extends AppCompatActivity {
-    public static final int REQUEST_CODE = 1;
 
     private EditText teamNumberEditText;
     private TextWatcher teamNumberTextWatcher;
@@ -133,7 +132,7 @@ public class SandstormActivity extends AppCompatActivity {
         }
     }
 
-    public void goToTeleop(View view) {
+    public void goToCycle(View view) {
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
         if (unfinishedQuestionId != -1) {
             ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
@@ -144,6 +143,6 @@ public class SandstormActivity extends AppCompatActivity {
 
         final Intent intent = new Intent(this, CycleActivity.class);
 
-        startActivityForResult(intent, REQUEST_CODE);
+        startActivity(intent);
     }
 }

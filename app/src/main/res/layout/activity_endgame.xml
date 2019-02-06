@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:onClick="saveData"
-                android:text="@string/nextButton" />
+                android:text="@string/saveButton" />
 
 
         </LinearLayout>

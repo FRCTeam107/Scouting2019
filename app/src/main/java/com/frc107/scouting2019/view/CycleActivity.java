@@ -20,8 +20,11 @@ import com.frc107.scouting2019.viewmodel.CycleViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
+
 public class CycleActivity extends AppCompatActivity {
     private CheckBox foulsCheckBox;
+
 
     private CycleViewModel viewModel;
 
@@ -63,8 +66,7 @@ public class CycleActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        foulsCheckBox.setOnCheckedChangeListener(null);
-        foulsCheckBox = null;
+
 
         viewModel = null;
     }
@@ -89,7 +91,24 @@ public class CycleActivity extends AppCompatActivity {
         }
     }
 
-    public void goToEndgame(View view) {
+    public void goToEndGame(View view) {
+        int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
+        if (unfinishedQuestionId != -1) {
+            ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
+            return;
+        }
+
+        viewModel.finish();
+
+        final Intent intent = new Intent(this, EndGameActivity.class);
+        startActivity(intent);
+
+        finish();
+
+
+    }
+
+    public void goToNextCycle(View view) {
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
         if (unfinishedQuestionId != -1) {
             ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
@@ -105,8 +124,9 @@ public class CycleActivity extends AppCompatActivity {
         String saveResponse = viewModel.save();
 
         Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
+        final Intent intent = new Intent(this, CycleActivity.class);
 
-        setResult(RESULT_OK);
+        startActivity(intent);
 
         finish();
     }

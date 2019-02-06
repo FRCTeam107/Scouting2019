@@ -14,4 +14,9 @@ public class CycleModel extends ScoutModel {
         // TODO: this should be in the endgame model once that becomes a thing
         return Scouting.getSandstormData();
     }
+
+    public void finish() {
+        String csvRow = getAnswerCSVRow();
+        Scouting.setSandstormData(csvRow);
+    }
 }

@@ -110,8 +110,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:onClick="goToTeleop"
-                android:text="@string/nextButton" />
+                android:onClick="goToCycle"
+                android:text="@string/goToCycleButton" />
 
 
         </LinearLayout>
