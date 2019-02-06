@@ -69,7 +69,7 @@
     <string name="endGameDefenseAllMatch">All Match</string>
     <string name="endGameDefenseEffective">Effective</string>
     <string name="endGameDefenseIneffective">Ineffective</string>
-    <string name="endGameButton">End Game</string>
+    <string name="endGameButton">Endgame</string>
     <string name="nextCycleButton">Next Cycle</string>
 
     <!--Menu Strings-->
