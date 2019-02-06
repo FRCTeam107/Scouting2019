@@ -40,39 +40,42 @@
             <RadioGroup
                 android:id="@+id/sandstormOperationsRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:gravity="center"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/visionSystemSandstorm_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/visionSystemSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
 
                 <RadioButton
                     android:id="@+id/cameraDrivingSandstorm_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/cameraDrivingSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
 
                 <RadioButton
                     android:id="@+id/blindDrivingSandstorm_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/blindDrivingSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
 
                 <RadioButton
                     android:id="@+id/noDrivingSandstorm_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/noDrivingSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
@@ -88,31 +91,33 @@
             <RadioGroup
                 android:id="@+id/sandstormPreferenceRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:gravity="center"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/rocketshipPreferenceSandstorm_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/rocketshipPreferenceSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
 
                 <RadioButton
                     android:id="@+id/cargoshipPreferenceSandstorm_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/cargoshipPreferenceSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
 
                 <RadioButton
                     android:id="@+id/noPreferenceSandstorm_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/noPreferenceSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
@@ -129,38 +134,42 @@
             <RadioGroup
                 android:id="@+id/highestRocketLevelSandstormRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:gravity="center"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/topRocketLevelSandstorm_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/topRocketLevelSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
 
                 <RadioButton
                     android:id="@+id/middleRocketLevelSandstorm_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/middleRocketLevelSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
 
                 <RadioButton
                     android:id="@+id/bottomRocketLevelSandstorm_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/bottomRocketLevelSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
+
                 <RadioButton
                     android:id="@+id/noRocketLevelSandstorm_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/noRocketLevelSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
@@ -175,38 +184,41 @@
             <RadioGroup
                 android:id="@+id/highestHabitatLevelRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:gravity="center"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/topHabitatLevel_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/topHabitatLevel"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
 
                 <RadioButton
                     android:id="@+id/middleHabitatLevel_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/middleHabitatLevel"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
 
                 <RadioButton
                     android:id="@+id/bottomHabitatLevel_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/bottomHabitatLevel"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
                 <RadioButton
                     android:id="@+id/noHabitatLevel_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/noHabitatLevel"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
@@ -233,37 +245,42 @@
             <RadioGroup
                 android:id="@+id/programmingLanguageRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:gravity="center"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/javaProgrammingLanguage_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/javaProgrammingLanguage"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
 
                 <RadioButton
                     android:id="@+id/cppProgrammingLanguage_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/cppProgrammingLanguage"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
+
                 <RadioButton
                     android:id="@+id/labviewProgrammingLanguage_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/labviewProgrammingLanguage"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>
+
                 <RadioButton
                     android:id="@+id/otherProgrammingLanguage_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/otherProgrammingLanguage"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"/>

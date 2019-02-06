@@ -14,94 +14,98 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
             <EditText
                 android:id="@+id/teamNumberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:inputType="number"
-                android:hint="@string/teamNumberHeading" />
+                android:hint="@string/teamNumberHeading"
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/matchNumberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:inputType="number"
-                android:hint="@string/matchNumberHeading" />
+                android:hint="@string/matchNumberHeading"
+                android:inputType="number" />
 
 
             <TextView
                 android:id="@+id/sandstormStartingPositionText"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/startingPositionHeading" />
 
             <RadioGroup
                 android:id="@+id/sandstormStartingPositionRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:gravity="center"
                 android:orientation="horizontal">
 
 
-            <RadioButton
-                android:id="@+id/habOneSandstorm_Radiobtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/habOneSandstorm"
-                android:background="@drawable/toggle_drawable"
-                android:button="@null"/>
+                <RadioButton
+                    android:id="@+id/habOneSandstorm_Radiobtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"
+                    android:text="@string/habOneSandstorm" />
 
                 <RadioButton
                     android:id="@+id/habTwoSandstorm_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/habTwoSandstorm"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
-                    android:button="@null"/>
+                    android:button="@null"
+                    android:text="@string/habTwoSandstorm" />
             </RadioGroup>
 
             <TextView
                 android:id="@+id/sandstormStartingGamePieceText"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/sandstormStartingGamePiece" />
 
             <RadioGroup
                 android:id="@+id/sandstormStartingGamePieceRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:gravity="center"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/cargoSandstormStartingGamePiece_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cargoSandstormStartingGamePiece"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
-                    android:button="@null"/>
+                    android:button="@null"
+                    android:text="@string/cargoSandstormStartingGamePiece" />
 
                 <RadioButton
                     android:id="@+id/panelSandstormStartingGamePiece_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/panelSandstormStartingGamePiece"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
-                    android:button="@null"/>
+                    android:button="@null"
+                    android:text="@string/panelSandstormStartingGamePiece" />
 
                 <RadioButton
                     android:id="@+id/noSandstormStartingGamePiece_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/noSandstormStartingGamePiece"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
-                    android:button="@null"/>
+                    android:button="@null"
+                    android:text="@string/noSandstormStartingGamePiece" />
             </RadioGroup>
 
 

@@ -14,95 +14,101 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
 
             <TextView
                 android:id="@+id/endGameHabitatLevelText"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/endGameHabitatLevelHeading" />
 
             <RadioGroup
                 android:id="@+id/endGameHabitatLevelRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:gravity="center"
                 android:orientation="horizontal">
 
 
-            <RadioButton
-                android:id="@+id/habOneEndGame_Radiobtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/habOneEndGame"
-                android:background="@drawable/toggle_drawable"
-                android:button="@null"/>
+                <RadioButton
+                    android:id="@+id/habOneEndGame_Radiobtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"
+                    android:text="@string/habOneEndGame" />
 
                 <RadioButton
                     android:id="@+id/habTwoEndGame_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/habTwoEndGame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
-                    android:button="@null"/>
+                    android:button="@null"
+                    android:text="@string/habTwoEndGame" />
 
 
                 <RadioButton
                     android:id="@+id/habThreeEndGame_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/habThreeEndGame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
-                    android:button="@null"/>
+                    android:button="@null"
+                    android:text="@string/habThreeEndGame" />
 
                 <RadioButton
                     android:id="@+id/habNoneEndGame_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/habNoneEndGame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
-                    android:button="@null"/>
+                    android:button="@null"
+                    android:text="@string/habNoneEndGame" />
             </RadioGroup>
 
             <TextView
                 android:id="@+id/endGameDefenseText"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/endGameDefenseHeading" />
 
             <RadioGroup
                 android:id="@+id/endGameDefenseRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:gravity="center"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/endGameDefenseAllMatch_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/endGameDefenseAllMatch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
-                    android:button="@null"/>
+                    android:button="@null"
+                    android:text="@string/endGameDefenseAllMatch" />
 
                 <RadioButton
                     android:id="@+id/endGameDefenseEffective_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/endGameDefenseEffective"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
-                    android:button="@null"/>
+                    android:button="@null"
+                    android:text="@string/endGameDefenseEffective" />
 
                 <RadioButton
                     android:id="@+id/endGameDefenseIneffective_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/endGameDefenseIneffective"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
-                    android:button="@null"/>
+                    android:button="@null"
+                    android:text="@string/endGameDefenseIneffective" />
             </RadioGroup>
 
 
