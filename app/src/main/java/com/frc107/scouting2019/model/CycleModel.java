@@ -6,7 +6,7 @@ import com.frc107.scouting2019.model.question.Question;
 public class CycleModel extends ScoutModel {
     public CycleModel(Question... questions) {
         super(questions);
-        setFileNameHeader("Match");
+        setFileNameHeader("Cycle");
     }
 
     @Override
@@ -16,7 +16,6 @@ public class CycleModel extends ScoutModel {
     }
 
     public void finish() {
-        String csvRow = getAnswerCSVRow();
-        Scouting.setSandstormData(csvRow);
+        save();
     }
 }

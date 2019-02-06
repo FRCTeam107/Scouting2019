@@ -123,4 +123,10 @@ public abstract class ScoutModel {
         String result = Scouting.CSV_GENERATOR.writeData(fileNameHeader, getAnswerCSVRow());
         return result;
     }
+
+    public void clearAllQuestions() {
+        for (Question question : questions) {
+            question.setAnswer(null);
+        }
+    }
 }

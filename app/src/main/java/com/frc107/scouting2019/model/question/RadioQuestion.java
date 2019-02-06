@@ -26,6 +26,11 @@ public class RadioQuestion extends Question<Integer> {
 
     @Override
     public void setAnswer(Integer answerId) {
+        if (answerId == null) {
+            setHasAnswer(false);
+            return;
+        }
+
         for (Option option : options) {
             if (option.getId() == answerId) {
                 selectedOption = option;

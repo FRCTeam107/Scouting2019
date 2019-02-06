@@ -19,6 +19,11 @@ public class NumberQuestion extends Question<Integer> {
 
     @Override
     public void setAnswer(Integer answer) {
+        if (answer == null) {
+            setHasAnswer(false);
+            return;
+        }
+
         this.answer = answer;
     }
 

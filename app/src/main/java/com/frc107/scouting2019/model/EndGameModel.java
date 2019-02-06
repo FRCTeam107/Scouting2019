@@ -14,7 +14,6 @@ public class EndGameModel extends ScoutModel {
     }
 
     public void finish() {
-        String csvRow = getAnswerCSVRow();
-        Scouting.setSandstormData(csvRow);
+        String csvRow = Scouting.getSandstormData() + "," + getAnswerCSVRow();
     }
 }

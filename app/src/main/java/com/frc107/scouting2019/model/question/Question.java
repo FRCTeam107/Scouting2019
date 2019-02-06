@@ -6,6 +6,7 @@ package com.frc107.scouting2019.model.question;
 public abstract class Question<T> {
     private String name;
     private int id;
+    private boolean hasAnswer;
 
     public Question(int id) {
         this.name = "";
@@ -13,7 +14,12 @@ public abstract class Question<T> {
     }
 
     public abstract boolean needsAnswer();
-    public abstract boolean hasAnswer();
+    public boolean hasAnswer() {
+        return hasAnswer;
+    }
+    protected void setHasAnswer(boolean hasAnswer) {
+        this.hasAnswer = hasAnswer;
+    }
     public abstract void setAnswer(T answer);
     public abstract String getAnswer();
 
