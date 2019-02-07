@@ -4,6 +4,8 @@ import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 
 public class CycleModel extends ScoutModel {
+    private boolean isTeleop;
+
     public CycleModel(Question... questions) {
         super(questions);
         setFileNameHeader("Cycle");
@@ -11,11 +13,15 @@ public class CycleModel extends ScoutModel {
 
     @Override
     public String getCSVRowHeader() {
-        // TODO: this should be in the endgame model once that becomes a thing
-        return Scouting.getSandstormData();
+        String header = isTeleop ? "Teleop" : "Sandstorm";
+        return header;
     }
 
     public void finish() {
         save();
+    }
+
+    public void enterTeleop() {
+        isTeleop = true;
     }
 }

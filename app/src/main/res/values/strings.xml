@@ -25,6 +25,8 @@
     <string name="noSandstormStartingGamePiece">None</string>
     <string name="saveButton">Save</string>
 
+    <string name="enterTeleopCycle">Enter Teleop Cycle</string>
+
 
     <!--Auton Error Strings-->
 

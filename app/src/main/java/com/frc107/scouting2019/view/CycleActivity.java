@@ -30,6 +30,8 @@ public class CycleActivity extends AppCompatActivity {
 
     private CycleViewModel viewModel;
 
+    private boolean isTeleop;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,14 +70,15 @@ public class CycleActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-
         viewModel = null;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        if (isTeleop)
+            getMenuInflater().inflate(R.menu.cycle_teleop_menu, menu);
+        else
+            getMenuInflater().inflate(R.menu.cycle_sandstorm_menu, menu);
         return true;
     }
 
@@ -88,29 +91,51 @@ public class CycleActivity extends AppCompatActivity {
             case R.id.send_data:
                 startActivity(new Intent(this, SendDataActivity.class));
                 return true;
+            case R.id.enter_teleop_cycle:
+                goToTeleop();
+                return true;
+            case R.id.go_to_endgame:
+                goToEndGame();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    public void goToEndGame(View view) {
+    private void goToTeleop() {
+        boolean newCycleSuccess = startNewCycle();
+        if (!newCycleSuccess)
+            return;
+
+        isTeleop = true;
+        invalidateOptionsMenu(); // Calling this tells Android to call onCreateOptionsMenu.
+    }
+
+    private boolean startNewCycle() {
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
         if (unfinishedQuestionId != -1) {
             ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
-            return;
+            return false;
         }
 
-        viewModel.finish();
+        boolean hasWritePermissions = PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (!hasWritePermissions) {
+            Toast.makeText(getApplicationContext(), "No write permissions.", Toast.LENGTH_LONG).show();
+            return false;
+        }
 
-        final Intent intent = new Intent(this, EndGameActivity.class);
-        startActivity(intent);
+        String saveResponse = viewModel.save();
+        Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
 
-        finish();
+        pickupLocationRadioGroup.clearCheck();
+        itemPickedUpRadioGroup.clearCheck();
+        itemPlacedRadioGroup.clearCheck();
+        defenseCheckbox.setChecked(false);
 
-
+        return true;
     }
 
-    public void goToNextCycle(View view) {
+    private void goToEndGame() {
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
         if (unfinishedQuestionId != -1) {
             ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
@@ -126,13 +151,13 @@ public class CycleActivity extends AppCompatActivity {
         String saveResponse = viewModel.save();
         Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
 
-        viewModel.clearAllAnswers();
-        
-        pickupLocationRadioGroup.clearCheck();
-        itemPickedUpRadioGroup.clearCheck();
-        itemPlacedRadioGroup.clearCheck();
-        defenseCheckbox.setChecked(false);
+        final Intent intent = new Intent(this, EndGameActivity.class);
+        startActivity(intent);
 
         finish();
+    }
+
+    public void goToNextCycle(View view) {
+        startNewCycle();
     }
 }

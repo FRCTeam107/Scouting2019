@@ -1,7 +1,7 @@
 package com.frc107.scouting2019.model.question;
 
 public class NumberQuestion extends Question<Integer> {
-    private int answer;
+    private Integer answer;
 
     public NumberQuestion(int id) {
         super(id);
@@ -19,16 +19,16 @@ public class NumberQuestion extends Question<Integer> {
 
     @Override
     public void setAnswer(Integer answer) {
-        if (answer == null) {
-            setHasAnswer(false);
-            return;
-        }
-
         this.answer = answer;
     }
 
     @Override
-    public String getAnswer() {
+    public Integer getAnswer() {
+        return answer;
+    }
+
+    @Override
+    public String getAnswerAsString() {
         return String.valueOf(answer);
     }
 }

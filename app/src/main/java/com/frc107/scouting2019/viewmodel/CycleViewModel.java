@@ -9,6 +9,10 @@ public class CycleViewModel extends ScoutViewModel {
         model = new CycleModel(questions);
     }
 
+    public void enterTeleop() {
+        ((CycleModel) model).enterTeleop();
+    }
+
     public void finish() {
         ((CycleModel) model).finish();
     }

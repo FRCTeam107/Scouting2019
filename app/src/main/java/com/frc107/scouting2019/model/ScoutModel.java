@@ -1,8 +1,5 @@
 package com.frc107.scouting2019.model;
 
-import android.os.Environment;
-import android.util.Log;
-
 import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.model.question.NumberQuestion;
@@ -11,9 +8,6 @@ import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.model.question.TextQuestion;
 import com.frc107.scouting2019.utils.StringUtils;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -97,7 +91,7 @@ public abstract class ScoutModel {
         if (question == null)
             return null;
 
-        return question.getAnswer();
+        return question.getAnswerAsString();
     }
 
     public abstract String getCSVRowHeader();
@@ -111,7 +105,7 @@ public abstract class ScoutModel {
             stringBuilder.append(',');
 
         for (int i = 0; i < questions.size(); i++) {
-            stringBuilder.append(questions.get(i).getAnswer());
+            stringBuilder.append(questions.get(i).getAnswerAsString());
             if (i < questions.size() - 1) {
                 stringBuilder.append(',');
             }

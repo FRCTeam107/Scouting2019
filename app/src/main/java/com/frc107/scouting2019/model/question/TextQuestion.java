@@ -22,14 +22,16 @@ public class TextQuestion extends Question<String> {
 
     @Override
     public void setAnswer(String answer) {
-        if (answer == null)
-            setHasAnswer(false);
-
         this.answer = answer;
     }
 
     @Override
     public String getAnswer() {
+        return answer;
+    }
+
+    @Override
+    public String getAnswerAsString() {
         return answer;
     }
 }
