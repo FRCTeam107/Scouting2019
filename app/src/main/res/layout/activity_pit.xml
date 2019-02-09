@@ -225,7 +225,8 @@
                     android:layout_weight="1"
                     android:text="@string/bottomHabitatLevel"
                     android:background="@drawable/toggle_drawable"
-                    android:button="@null"/>
+                    android:button="@null"
+                    android:textAlignment="center"/>
                 <RadioButton
                     android:id="@+id/noHabitatLevel_Radiobtn"
                     android:layout_width="match_parent"
