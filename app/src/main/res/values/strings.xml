@@ -71,6 +71,8 @@
     <string name="endGameDefenseAllMatch">All Match</string>
     <string name="endGameDefenseEffective">Effective</string>
     <string name="endGameDefenseIneffective">Ineffective</string>
+    <string name="endGameDefenseNone">None</string>
+    <string name="endGameFoulsChkbxText">Fouls</string>
     <string name="endGameButton">Endgame</string>
     <string name="nextCycleButton">Next Cycle</string>
 

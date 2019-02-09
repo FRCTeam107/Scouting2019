@@ -83,14 +83,17 @@
                 android:layout_margin="10dp"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/endGameDefenseAllMatch_Radiobtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
-                    android:text="@string/endGameDefenseAllMatch" />
+                <TextView
+                    android:id="@+id/endGameDefenseAllMatch_chkbxText"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/endGameDefenseAllMatch_chkbxText" />
+
+                <CheckBox
+                    android:id="@+id/endGameDefenseAllMatch_chkbx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal" />
 
                 <RadioButton
                     android:id="@+id/endGameDefenseEffective_Radiobtn"
@@ -109,7 +112,27 @@
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
                     android:text="@string/endGameDefenseIneffective" />
+                <RadioButton
+                    android:id="@+id/endGameDefenseNone_Radiobtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"
+                    android:text="@string/endGameDefenseNone" />
             </RadioGroup>
+
+            <TextView
+                android:id="@+id/endGameFouls_chkbxText"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/endGameFoulsChkbxText" />
+
+            <CheckBox
+                android:id="@+id/endGameFouls_chkbx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
 
 
             <Button
