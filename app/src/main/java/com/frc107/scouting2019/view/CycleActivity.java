@@ -124,7 +124,7 @@ public class CycleActivity extends AppCompatActivity {
             return false;
         }
 
-        String saveResponse = viewModel.save();
+        String saveResponse = viewModel.newCycle();
         Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
 
         pickupLocationRadioGroup.clearCheck();

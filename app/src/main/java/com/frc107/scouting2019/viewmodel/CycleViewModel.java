@@ -16,4 +16,8 @@ public class CycleViewModel extends ScoutViewModel {
     public void finish() {
         ((CycleModel) model).finish();
     }
+
+    public String newCycle() {
+        return ((CycleModel) model).newCycle();
+    }
 }

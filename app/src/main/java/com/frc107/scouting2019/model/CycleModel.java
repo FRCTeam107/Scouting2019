@@ -3,8 +3,11 @@ package com.frc107.scouting2019.model;
 import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 
+import java.util.Locale;
+
 public class CycleModel extends ScoutModel {
     private boolean isTeleop;
+    private int cycleNum;
 
     public CycleModel(Question... questions) {
         super(questions);
@@ -13,7 +16,12 @@ public class CycleModel extends ScoutModel {
 
     @Override
     public String getCSVRowHeader() {
-        String header = isTeleop ? "Teleop" : "Sandstorm";
+        String type = isTeleop ? "Teleop" : "Sandstorm";
+        String header = String.format(Locale.getDefault(), "%d, %d, %d, %s",
+                                                        Scouting.getMatchNumber(),
+                                                        Scouting.getTeamNumber(),
+                                                        cycleNum,
+                                                        type);
         return header;
     }
 
@@ -23,5 +31,11 @@ public class CycleModel extends ScoutModel {
 
     public void enterTeleop() {
         isTeleop = true;
+    }
+
+    public String newCycle() {
+        cycleNum++;
+        String saveResponse = save();
+        return saveResponse;
     }
 }
