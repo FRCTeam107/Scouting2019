@@ -14,6 +14,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
@@ -21,7 +23,7 @@
                 android:id="@+id/teamNumberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="@dimen/top_margin"
                 android:hint="@string/teamNumberHeading"
                 android:inputType="number" />
 
@@ -29,7 +31,7 @@
                 android:id="@+id/matchNumberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="@dimen/top_margin"
                 android:hint="@string/matchNumberHeading"
                 android:inputType="number" />
 
@@ -38,15 +40,15 @@
                 android:id="@+id/sandstormStartingPositionText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/startingPositionHeading" />
+                android:text="@string/startingPositionHeading"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"/>
 
             <RadioGroup
                 android:id="@+id/sandstormStartingPositionRadioQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
                 android:orientation="horizontal">
-
 
                 <RadioButton
                     android:id="@+id/habOneSandstorm_Radiobtn"
@@ -71,13 +73,14 @@
                 android:id="@+id/sandstormStartingGamePieceText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sandstormStartingGamePiece" />
+                android:text="@string/sandstormStartingGamePiece"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"/>
 
             <RadioGroup
                 android:id="@+id/sandstormStartingGamePieceRadioQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -113,7 +116,7 @@
                 android:id="@+id/next_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="@dimen/top_margin"
                 android:onClick="goToCycle"
                 android:text="@string/goToCycleButton" />
 

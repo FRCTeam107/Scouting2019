@@ -14,6 +14,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
@@ -22,13 +24,14 @@
                 android:id="@+id/endGameHabitatLevelText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
                 android:text="@string/endGameHabitatLevelHeading" />
 
             <RadioGroup
                 android:id="@+id/endGameHabitatLevelRadioQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
                 android:orientation="horizontal">
 
 
@@ -74,13 +77,14 @@
                 android:id="@+id/endGameDefenseText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
                 android:text="@string/endGameDefenseHeading" />
 
             <RadioGroup
                 android:id="@+id/endGameDefenseRadioQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_margin="10dp"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -116,7 +120,7 @@
                 android:id="@+id/save_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="@dimen/top_margin"
                 android:onClick="saveData"
                 android:text="@string/saveButton" />
 
