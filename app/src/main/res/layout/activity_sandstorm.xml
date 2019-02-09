@@ -47,7 +47,7 @@
             <RadioGroup
                 android:id="@+id/sandstormStartingPositionRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/radiogroup_height"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -57,7 +57,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/habOneSandstorm" />
+                    android:text="@string/habOneSandstorm"
+                    android:textAlignment="center" />
 
                 <RadioButton
                     android:id="@+id/habTwoSandstorm_Radiobtn"
@@ -66,7 +67,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/habTwoSandstorm" />
+                    android:text="@string/habTwoSandstorm"
+                    android:textAlignment="center" />
             </RadioGroup>
 
             <TextView
@@ -80,7 +82,7 @@
             <RadioGroup
                 android:id="@+id/sandstormStartingGamePieceRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/radiogroup_height"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -90,7 +92,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/cargoSandstormStartingGamePiece" />
+                    android:text="@string/cargoSandstormStartingGamePiece"
+                    android:textAlignment="center" />
 
                 <RadioButton
                     android:id="@+id/panelSandstormStartingGamePiece_Radiobtn"
@@ -99,7 +102,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/panelSandstormStartingGamePiece" />
+                    android:text="@string/panelSandstormStartingGamePiece"
+                    android:textAlignment="center" />
 
                 <RadioButton
                     android:id="@+id/noSandstormStartingGamePiece_Radiobtn"
@@ -108,7 +112,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/noSandstormStartingGamePiece" />
+                    android:text="@string/noSandstormStartingGamePiece"
+                    android:textAlignment="center" />
             </RadioGroup>
 
 

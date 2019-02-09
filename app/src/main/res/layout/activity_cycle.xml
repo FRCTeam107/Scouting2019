@@ -28,7 +28,7 @@
         <RadioGroup
             android:id="@+id/pickupLocationRadioQuestion"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/radiogroup_height"
             android:orientation="horizontal">
 
             <RadioButton
@@ -38,7 +38,8 @@
                 android:layout_weight="1"
                 android:text="@string/portPickupLocation"
                 android:background="@drawable/toggle_drawable"
-                android:button="@null"/>
+                android:button="@null"
+                android:textAlignment="center"/>
 
             <RadioButton
                 android:id="@+id/floorPickupLocation_Radiobtn"
@@ -47,7 +48,8 @@
                 android:layout_weight="1"
                 android:text="@string/floorPickupLocation"
                 android:background="@drawable/toggle_drawable"
-                android:button="@null"/>
+                android:button="@null"
+                android:textAlignment="center"/>
         </RadioGroup>
 
         <TextView
@@ -61,7 +63,7 @@
         <RadioGroup
             android:id="@+id/itemPickedUpRadioQuestion"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/radiogroup_height"
             android:orientation="horizontal">
 
             <RadioButton
@@ -71,7 +73,8 @@
                 android:layout_weight="1"
                 android:text="@string/cargoPickedUp"
                 android:background="@drawable/toggle_drawable"
-                android:button="@null"/>
+                android:button="@null"
+                android:textAlignment="center"/>
 
             <RadioButton
                 android:id="@+id/hatchItemPickedUp_Radiobtn"
@@ -80,7 +83,8 @@
                 android:layout_weight="1"
                 android:text="@string/hatchPickedUp"
                 android:background="@drawable/toggle_drawable"
-                android:button="@null"/>
+                android:button="@null"
+                android:textAlignment="center"/>
         </RadioGroup>
 
         <TextView
@@ -95,7 +99,7 @@
         <RadioGroup
             android:id="@+id/itemPlacedRadioQuestion"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/radiogroup_height"
             android:orientation="horizontal">
 
             <RadioButton
@@ -105,7 +109,8 @@
                 android:layout_weight="1"
                 android:text="@string/topRocketItemPlaced"
                 android:background="@drawable/toggle_drawable"
-                android:button="@null"/>
+                android:button="@null"
+                android:textAlignment="center"/>
             <RadioButton
                 android:id="@+id/middleRocketItemPlaced_Radiobtn"
                 android:layout_width="match_parent"
@@ -113,7 +118,8 @@
                 android:layout_weight="1"
                 android:text="@string/middleRocketItemPlaced"
                 android:background="@drawable/toggle_drawable"
-                android:button="@null"/>
+                android:button="@null"
+                android:textAlignment="center"/>
             <RadioButton
                 android:id="@+id/bottomRocketItemPlaced_Radiobtn"
                 android:layout_width="match_parent"
@@ -121,7 +127,8 @@
                 android:layout_weight="1"
                 android:text="@string/bottomRocketItemPlaced"
                 android:background="@drawable/toggle_drawable"
-                android:button="@null"/>
+                android:button="@null"
+                android:textAlignment="center"/>
             <RadioButton
                 android:id="@+id/cargoshipItemPlaced_Radiobtn"
                 android:layout_width="match_parent"
@@ -129,7 +136,8 @@
                 android:layout_weight="1"
                 android:text="@string/cargoshipItemPlaced"
                 android:background="@drawable/toggle_drawable"
-                android:button="@null"/>
+                android:button="@null"
+                android:textAlignment="center"/>
             <RadioButton
                 android:id="@+id/floorItemPlaced_Radiobtn"
                 android:layout_width="match_parent"
@@ -137,7 +145,8 @@
                 android:layout_weight="1"
                 android:text="@string/floorItemPlaced"
                 android:background="@drawable/toggle_drawable"
-                android:button="@null"/>
+                android:button="@null"
+                android:textAlignment="center"/>
         </RadioGroup>
 
         <TextView
