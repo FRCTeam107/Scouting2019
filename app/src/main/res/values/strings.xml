@@ -68,6 +68,7 @@
 
 
     <string name="endGameDefenseHeading">Defense</string>
+    <string name="endGameDefenseAllMatch_chkbxText">Defense All Match</string>
     <string name="endGameDefenseAllMatch">All Match</string>
     <string name="endGameDefenseEffective">Effective</string>
     <string name="endGameDefenseIneffective">Ineffective</string>

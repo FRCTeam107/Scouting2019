@@ -78,6 +78,22 @@
                     android:textAlignment="center" />
             </RadioGroup>
 
+
+            <TextView
+                android:id="@+id/endGameDefenseAllMatch_chkbxText"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                android:text="@string/endGameDefenseAllMatch_chkbxText" />
+
+            <CheckBox
+                android:id="@+id/endGameDefenseAllMatch_chkbx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+
             <TextView
                 android:id="@+id/endGameDefenseText"
                 android:layout_width="wrap_content"
@@ -93,31 +109,8 @@
                 android:layout_height="@dimen/radiogroup_height"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/endGameDefenseAllMatch_chkbxText"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="@string/endGameDefenseAllMatch_chkbxText" />
-
-                <CheckBox
-                    android:id="@+id/endGameDefenseAllMatch_chkbx"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal" />
-
                 <RadioButton
                     android:id="@+id/endGameDefenseEffective_Radiobtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
-                    android:text="@string/endGameDefenseAllMatch"
-                    android:textAlignment="center" />
-                    android:text="@string/endGameDefenseEffective" />
-
-                <RadioButton
-                    android:id="@+id/endGameDefenseIneffective_Radiobtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -126,9 +119,8 @@
                     android:text="@string/endGameDefenseEffective"
                     android:textAlignment="center" />
 
-                    android:text="@string/endGameDefenseIneffective" />
                 <RadioButton
-                    android:id="@+id/endGameDefenseNone_Radiobtn"
+                    android:id="@+id/endGameDefenseIneffective_Radiobtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -136,13 +128,24 @@
                     android:button="@null"
                     android:text="@string/endGameDefenseIneffective"
                     android:textAlignment="center" />
-                    android:text="@string/endGameDefenseNone" />
+
+                <RadioButton
+                    android:id="@+id/endGameDefenseNone_Radiobtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"
+                    android:text="@string/endGameDefenseNone"
+                    android:textAlignment="center" />
             </RadioGroup>
 
             <TextView
                 android:id="@+id/endGameFouls_chkbxText"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
                 android:text="@string/endGameFoulsChkbxText" />
 
             <CheckBox
