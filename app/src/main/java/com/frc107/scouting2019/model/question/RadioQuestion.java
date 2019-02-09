@@ -26,6 +26,13 @@ public class RadioQuestion extends Question<Integer> {
 
     @Override
     public void setAnswer(Integer answerId) {
+        // We check for -1 here because when the check is cleared from the RadioGroup, it sets it as being checked to id -1. It's
+        // more efficient to just set the answer to null when the id is -1 because then we avoid looping through the options.
+        if (answerId == null || answerId == -1) {
+            selectedOption = null;
+            return;
+        }
+
         for (Option option : options) {
             if (option.getId() == answerId) {
                 selectedOption = option;
@@ -34,7 +41,12 @@ public class RadioQuestion extends Question<Integer> {
     }
 
     @Override
-    public String getAnswer() {
+    public Integer getAnswer() {
+        return selectedOption.getId();
+    }
+
+    @Override
+    public String getAnswerAsString() {
         if (selectedOption == null)
             return "";
 

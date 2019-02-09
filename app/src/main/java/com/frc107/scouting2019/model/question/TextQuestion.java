@@ -29,4 +29,9 @@ public class TextQuestion extends Question<String> {
     public String getAnswer() {
         return answer;
     }
+
+    @Override
+    public String getAnswerAsString() {
+        return answer;
+    }
 }

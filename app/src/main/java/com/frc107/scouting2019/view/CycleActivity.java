@@ -3,7 +3,6 @@ package com.frc107.scouting2019.view;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,21 +16,27 @@ import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
-import com.frc107.scouting2019.viewmodel.TeleopViewModel;
+import com.frc107.scouting2019.viewmodel.CycleViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class TeleopActivity extends AppCompatActivity {
-    private CheckBox foulsCheckBox;
 
-    private TeleopViewModel viewModel;
+
+public class CycleActivity extends AppCompatActivity {
+    private RadioGroup pickupLocationRadioGroup;
+    private RadioGroup itemPickedUpRadioGroup;
+    private RadioGroup itemPlacedRadioGroup;
+    private CheckBox defenseCheckbox;
+
+    private CycleViewModel viewModel;
+
+    private boolean isTeleop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teleop);
+        setContentView(R.layout.activity_cycle);
 
-        Bundle bundle = getIntent().getExtras();
         Question[] questions = {
                 new RadioQuestion(R.id.pickupLocationRadioQuestion, true,
                         new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, getString(R.string.portPickupLocation)),
@@ -47,33 +52,33 @@ public class TeleopActivity extends AppCompatActivity {
                         new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, getString(R.string.floorItemPlaced))),
                 new ToggleQuestion(R.id.defense_chkbx)
         };
-        viewModel = new TeleopViewModel(questions);
+        viewModel = new CycleViewModel(questions);
 
-        RadioGroup pickupLocationRadioQuestion = findViewById(R.id.pickupLocationRadioQuestion);
-        pickupLocationRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
+        pickupLocationRadioGroup = findViewById(R.id.pickupLocationRadioQuestion);
+        pickupLocationRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
 
-        RadioGroup itemPickedUpRadioQuestion = findViewById(R.id.itemPickedUpRadioQuestion);
-        itemPickedUpRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPickedUpRadioQuestion, checkedId));
+        itemPickedUpRadioGroup = findViewById(R.id.itemPickedUpRadioQuestion);
+        itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPickedUpRadioQuestion, checkedId));
 
-        RadioGroup itemPlacedRadioQuestion = findViewById(R.id.itemPlacedRadioQuestion);
-        itemPlacedRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPlacedRadioQuestion, checkedId));
+        itemPlacedRadioGroup = findViewById(R.id.itemPlacedRadioQuestion);
+        itemPlacedRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPlacedRadioQuestion, checkedId));
 
-        foulsCheckBox = findViewById(R.id.defense_chkbx);
-        foulsCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.defense_chkbx, isChecked));
+        defenseCheckbox = findViewById(R.id.defense_chkbx);
+        defenseCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.defense_chkbx, isChecked));
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        foulsCheckBox.setOnCheckedChangeListener(null);
-        foulsCheckBox = null;
-
         viewModel = null;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        if (isTeleop)
+            getMenuInflater().inflate(R.menu.cycle_teleop_menu, menu);
+        else
+            getMenuInflater().inflate(R.menu.cycle_sandstorm_menu, menu);
         return true;
     }
 
@@ -86,12 +91,51 @@ public class TeleopActivity extends AppCompatActivity {
             case R.id.send_data:
                 startActivity(new Intent(this, SendDataActivity.class));
                 return true;
+            case R.id.enter_teleop_cycle:
+                goToTeleop();
+                return true;
+            case R.id.go_to_endgame:
+                goToEndGame();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    public void saveData(View view) {
+    private void goToTeleop() {
+        boolean newCycleSuccess = startNewCycle();
+        if (!newCycleSuccess)
+            return;
+
+        isTeleop = true;
+        invalidateOptionsMenu(); // Calling this tells Android to call onCreateOptionsMenu.
+    }
+
+    private boolean startNewCycle() {
+        int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
+        if (unfinishedQuestionId != -1) {
+            ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
+            return false;
+        }
+
+        boolean hasWritePermissions = PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (!hasWritePermissions) {
+            Toast.makeText(getApplicationContext(), "No write permissions.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        String saveResponse = viewModel.save();
+        Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
+
+        pickupLocationRadioGroup.clearCheck();
+        itemPickedUpRadioGroup.clearCheck();
+        itemPlacedRadioGroup.clearCheck();
+        defenseCheckbox.setChecked(false);
+
+        return true;
+    }
+
+    private void goToEndGame() {
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
         if (unfinishedQuestionId != -1) {
             ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
@@ -105,11 +149,15 @@ public class TeleopActivity extends AppCompatActivity {
         }
 
         String saveResponse = viewModel.save();
-
         Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
 
-        setResult(RESULT_OK);
+        final Intent intent = new Intent(this, EndGameActivity.class);
+        startActivity(intent);
 
         finish();
+    }
+
+    public void goToNextCycle(View view) {
+        startNewCycle();
     }
 }

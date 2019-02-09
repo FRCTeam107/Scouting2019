@@ -1,0 +1,128 @@
+package com.frc107.scouting2019.view;
+
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.model.question.Question;
+import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.utils.PermissionUtils;
+import com.frc107.scouting2019.utils.ViewUtils;
+import com.frc107.scouting2019.viewmodel.EndGameViewModel;
+import com.frc107.scouting2019.viewmodel.SandstormViewModel;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+public class EndGameActivity extends AppCompatActivity {
+
+    private EndGameViewModel viewModel;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_endgame);
+
+        Question[] questions = {
+
+                new RadioQuestion(R.id.endGameHabitatLevelRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.habOneEndGame_Radiobtn, getString(R.string.habOneEndGame)),
+                        new RadioQuestion.Option(R.id.habTwoEndGame_Radiobtn, getString(R.string.habTwoEndGame)),
+                        new RadioQuestion.Option(R.id.habThreeEndGame_Radiobtn, getString(R.string.habThreeEndGame)),
+                        new RadioQuestion.Option(R.id.habNoneEndGame_Radiobtn, getString(R.string.habNoneEndGame))),
+                new RadioQuestion(R.id.endGameDefenseRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.endGameDefenseAllMatch_Radiobtn, getString(R.string.endGameDefenseAllMatch)),
+                        new RadioQuestion.Option(R.id.endGameDefenseEffective_Radiobtn, getString(R.string.endGameDefenseEffective)),
+                        new RadioQuestion.Option(R.id.endGameDefenseIneffective_Radiobtn, getString(R.string.endGameDefenseIneffective))),
+
+        };
+
+        viewModel = new EndGameViewModel(questions);
+
+
+        RadioGroup endGameHabitatLevelRadioQuestion = findViewById(R.id.endGameHabitatLevelRadioQuestion);
+        endGameHabitatLevelRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameHabitatLevelRadioQuestion, checkedId));
+
+        RadioGroup endGameDefenseRadioQuestion = findViewById(R.id.endGameDefenseRadioQuestion);
+        endGameDefenseRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameDefenseRadioQuestion, checkedId));
+
+
+        checkForPermissions();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+
+        viewModel = null;
+    }
+
+    /* This method will display the options menu when the icon is pressed
+     * and this will inflate the menu options for the user to choose
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    /*This method will launch the correct activity
+     *based on the menu option user presses
+      */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.main_activity:
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            case R.id.send_data:
+                startActivity(new Intent(this, SendDataActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void checkForPermissions() {
+        int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (writePermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+        }
+    }
+
+
+    public void saveData(View view) {
+        int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
+        if (unfinishedQuestionId != -1) {
+            ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
+            return;
+        }
+
+        boolean hasWritePermissions = PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (!hasWritePermissions) {
+            Toast.makeText(getApplicationContext(), "No write permissions.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        String saveResponse = viewModel.save();
+
+        Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
+
+
+
+        finish();
+    }
+}

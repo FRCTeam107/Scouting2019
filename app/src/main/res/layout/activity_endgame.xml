@@ -17,31 +17,15 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <EditText
-                android:id="@+id/teamNumberEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="@string/teamNumberHeading"
-                android:inputType="number" />
-
-            <EditText
-                android:id="@+id/matchNumberEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="@string/matchNumberHeading"
-                android:inputType="number" />
-
 
             <TextView
-                android:id="@+id/sandstormStartingPositionText"
+                android:id="@+id/endGameHabitatLevelText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/startingPositionHeading" />
+                android:text="@string/endGameHabitatLevelHeading" />
 
             <RadioGroup
-                android:id="@+id/sandstormStartingPositionRadioQuestion"
+                android:id="@+id/endGameHabitatLevelRadioQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
@@ -49,73 +33,92 @@
 
 
                 <RadioButton
-                    android:id="@+id/habOneSandstorm_Radiobtn"
+                    android:id="@+id/habOneEndGame_Radiobtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/habOneSandstorm" />
+                    android:text="@string/habOneEndGame" />
 
                 <RadioButton
-                    android:id="@+id/habTwoSandstorm_Radiobtn"
+                    android:id="@+id/habTwoEndGame_Radiobtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/habTwoSandstorm" />
+                    android:text="@string/habTwoEndGame" />
+
+
+                <RadioButton
+                    android:id="@+id/habThreeEndGame_Radiobtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"
+                    android:text="@string/habThreeEndGame" />
+
+                <RadioButton
+                    android:id="@+id/habNoneEndGame_Radiobtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"
+                    android:text="@string/habNoneEndGame" />
             </RadioGroup>
 
             <TextView
-                android:id="@+id/sandstormStartingGamePieceText"
+                android:id="@+id/endGameDefenseText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sandstormStartingGamePiece" />
+                android:text="@string/endGameDefenseHeading" />
 
             <RadioGroup
-                android:id="@+id/sandstormStartingGamePieceRadioQuestion"
+                android:id="@+id/endGameDefenseRadioQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/cargoSandstormStartingGamePiece_Radiobtn"
+                    android:id="@+id/endGameDefenseAllMatch_Radiobtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/cargoSandstormStartingGamePiece" />
+                    android:text="@string/endGameDefenseAllMatch" />
 
                 <RadioButton
-                    android:id="@+id/panelSandstormStartingGamePiece_Radiobtn"
+                    android:id="@+id/endGameDefenseEffective_Radiobtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/panelSandstormStartingGamePiece" />
+                    android:text="@string/endGameDefenseEffective" />
 
                 <RadioButton
-                    android:id="@+id/noSandstormStartingGamePiece_Radiobtn"
+                    android:id="@+id/endGameDefenseIneffective_Radiobtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/noSandstormStartingGamePiece" />
+                    android:text="@string/endGameDefenseIneffective" />
             </RadioGroup>
 
 
             <Button
-                android:id="@+id/next_button"
+                android:id="@+id/save_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:onClick="goToCycle"
-                android:text="@string/goToCycleButton" />
+                android:onClick="saveData"
+                android:text="@string/saveButton" />
 
 
         </LinearLayout>

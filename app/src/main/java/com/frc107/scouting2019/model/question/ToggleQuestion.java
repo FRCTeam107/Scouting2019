@@ -21,11 +21,16 @@ public class ToggleQuestion extends Question<Boolean> {
 
     @Override
     public void setAnswer(Boolean answer) {
-        this.answer = answer;
+        this.answer = answer == null ? false : answer;
     }
 
     @Override
-    public String getAnswer() {
+    public Boolean getAnswer() {
+        return answer;
+    }
+
+    @Override
+    public String getAnswerAsString() {
         return String.valueOf(answer);
     }
 }

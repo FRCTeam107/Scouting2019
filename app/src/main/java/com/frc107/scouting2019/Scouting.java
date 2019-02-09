@@ -36,4 +36,8 @@ public class Scouting {
     public static String getSandstormData() {
         return sandstormData;
     }
+
+    // TODO: Go through radiogroups and fix formatting
+    // TODO: naming conventions
+    // TODO: update button strings, example being save button in cycle
 }

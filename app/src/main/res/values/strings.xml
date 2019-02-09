@@ -15,17 +15,17 @@
     <string name="teamNumberHeading">Team Number</string>
     <string name="matchNumberHeading">Match Number</string>
 
-
-
     <string name="startingPositionHeading">Starting Location</string>
     <string name="habOneSandstorm">Hab One</string>
     <string name="habTwoSandstorm">Hab Two</string>
 
-<string name="sandstormStartingGamePiece">Starting Game Piece</string>
+    <string name="sandstormStartingGamePiece">Starting Game Piece</string>
     <string name="cargoSandstormStartingGamePiece">Cargo</string>
-<string name="panelSandstormStartingGamePiece">Panel</string>
+    <string name="panelSandstormStartingGamePiece">Panel</string>
     <string name="noSandstormStartingGamePiece">None</string>
     <string name="saveButton">Save</string>
+
+    <string name="enterTeleopCycle">Enter Teleop Cycle</string>
 
 
     <!--Auton Error Strings-->
@@ -52,60 +52,73 @@
 
     <string name="defenseChkbxText">Defense</string>
 
-    <string name="nextButton">Move To Teleop</string>
+    <string name="goToCycleButton">Start Cycles</string>
 
     <string name="scouterInitials">Scouter Initials</string>
 
 
     <!--Teleop Error Strings-->
 
+    <!--End Game Strings-->
+    <string name="endGameHabitatLevelHeading">Habitat Level</string>
+    <string name="habOneEndGame">Level One</string>
+    <string name="habTwoEndGame">Level Two</string>
+    <string name="habThreeEndGame">Level Three</string>
+    <string name="habNoneEndGame">No Level</string>
+
+
+    <string name="endGameDefenseHeading">Defense</string>
+    <string name="endGameDefenseAllMatch">All Match</string>
+    <string name="endGameDefenseEffective">Effective</string>
+    <string name="endGameDefenseIneffective">Ineffective</string>
+    <string name="endGameButton">Endgame</string>
+    <string name="nextCycleButton">Next Cycle</string>
 
     <!--Menu Strings-->
     <string name="matchScouting">Match</string>
     <string name="pitScouting">Pit</string>
 
     <!--Pit Scouting Strings-->
-  <string name="pitTeamNumber">Team Number</string>
+    <string name="pitTeamNumber">Team Number</string>
 
-  <string name="pitSandstormOperation">Sandstorm Operation</string>
-  <string name="visionSystemSandstorm">Vision</string>
-  <string name="cameraDrivingSandstorm">Camera</string>
-  <string name="blindDrivingSandstorm">Blind</string>
-  <string name="noDrivingSandstorm">None</string>
+    <string name="pitSandstormOperation">Sandstorm Operation</string>
+    <string name="visionSystemSandstorm">Vision</string>
+    <string name="cameraDrivingSandstorm">Camera</string>
+    <string name="blindDrivingSandstorm">Blind</string>
+    <string name="noDrivingSandstorm">None</string>
 
 
+    <string name="pitSandstormPreference">Sandstorm Preference</string>
+    <string name="cargoshipPreferenceSandstorm">Cargoship</string>
+    <string name="rocketshipPreferenceSandstorm">Rocketship</string>
+    <string name="noPreferenceSandstorm">None</string>
 
-  <string name="pitSandstormPreference">Sandstorm Preference</string>
-  <string name="cargoshipPreferenceSandstorm">Cargoship</string>
-  <string name="rocketshipPreferenceSandstorm">Rocketship</string>
-  <string name="noPreferenceSandstorm">None</string>
+    <string name="pitRocketLevelSandstorm">Rocket Level Sandstorm</string>
+    <string name="topRocketLevelSandstorm">Top Rocket</string>
+    <string name="middleRocketLevelSandstorm">Middle Rocket</string>
+    <string name="bottomRocketLevelSandstorm">Bottom Rocket</string>
+    <string name="noRocketLevelSandstorm">None</string>
 
-  <string name="pitRocketLevelSandstorm">Rocket Level Sandstorm</string>
-  <string name="topRocketLevelSandstorm">Top Rocket</string>
-  <string name="middleRocketLevelSandstorm">Middle Rocket</string>
-  <string name="bottomRocketLevelSandstorm">Bottom Rocket</string>
-  <string name="noRocketLevelSandstorm">None</string>
+    <string name="pitHabitatLevel">Habitat Level</string>
+    <string name="topHabitatLevel">Top</string>
+    <string name="middleHabitatLevel">Middle</string>
+    <string name="bottomHabitatLevel">Bottom</string>
+    <string name="noHabitatLevel">None</string>
 
-  <string name="pitHabitatLevel">Habitat Level</string>
-  <string name="topHabitatLevel">Top</string>
-  <string name="middleHabitatLevel">Middle</string>
-  <string name="bottomHabitatLevel">Bottom</string>
-  <string name="noHabitatLevel">None</string>
+    <string name="pitHabitatLevelTime">Habitat Level Time</string>
 
-  <string name="pitHabitatLevelTime">Habitat Level Time</string>
+    <string name="pitprogrammingLanguage">Programming Language</string>
+    <string name="javaProgrammingLanguage">Java</string>
+    <string name="cppProgrammingLanguage">C++</string>
+    <string name="labviewProgrammingLanguage">LabVIEW</string>
+    <string name="otherProgrammingLanguage">Other</string>
 
-  <string name="pitprogrammingLanguage">Programming Language</string>
-  <string name="javaProgrammingLanguage">Java</string>
-  <string name="cppProgrammingLanguage">C++</string>
-  <string name="labviewProgrammingLanguage">LabVIEW</string>
-  <string name="otherProgrammingLanguage">Other</string>
+    <string name="pitArcadeGameText">Arcade Game</string>
+    <string name="pit_comments_Text">Comments</string>
 
-  <string name="pitArcadeGameText">Arcade Game</string>
-  <string name="pit_comments_Text">Comments</string>
+    <string name="savePitButton">Save</string>
 
-  <string name="savePitButton">Save</string>
-
-  <string name="takePhotoButton">Take Photo</string>
+    <string name="takePhotoButton">Take Photo</string>
 
     <!--Pit Error Strings-->
 
