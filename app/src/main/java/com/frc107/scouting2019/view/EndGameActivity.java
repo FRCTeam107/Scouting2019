@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.EndGameViewModel;
@@ -29,6 +31,7 @@ import androidx.core.content.ContextCompat;
 public class EndGameActivity extends AppCompatActivity {
 
     private EndGameViewModel viewModel;
+    private CheckBox endGameDefenseAllMatchCheckbox, endGameFoulsCheckbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +45,12 @@ public class EndGameActivity extends AppCompatActivity {
                         new RadioQuestion.Option(R.id.habTwoEndGame_Radiobtn, getString(R.string.habTwoEndGame)),
                         new RadioQuestion.Option(R.id.habThreeEndGame_Radiobtn, getString(R.string.habThreeEndGame)),
                         new RadioQuestion.Option(R.id.habNoneEndGame_Radiobtn, getString(R.string.habNoneEndGame))),
+                new ToggleQuestion(R.id.endGameDefenseAllMatch_chkbx),
                 new RadioQuestion(R.id.endGameDefenseRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.endGameDefenseAllMatch_Radiobtn, getString(R.string.endGameDefenseAllMatch)),
                         new RadioQuestion.Option(R.id.endGameDefenseEffective_Radiobtn, getString(R.string.endGameDefenseEffective)),
-                        new RadioQuestion.Option(R.id.endGameDefenseIneffective_Radiobtn, getString(R.string.endGameDefenseIneffective))),
+                        new RadioQuestion.Option(R.id.endGameDefenseIneffective_Radiobtn, getString(R.string.endGameDefenseIneffective)),
+                        new RadioQuestion.Option(R.id.endGameDefenseNone_Radiobtn, getString(R.string.endGameDefenseNone))),
+                new ToggleQuestion(R.id.endGameFouls_chkbx)
 
         };
 
@@ -58,6 +63,12 @@ public class EndGameActivity extends AppCompatActivity {
         RadioGroup endGameDefenseRadioQuestion = findViewById(R.id.endGameDefenseRadioQuestion);
         endGameDefenseRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameDefenseRadioQuestion, checkedId));
 
+        endGameDefenseAllMatchCheckbox = findViewById(R.id.endGameDefenseAllMatch_chkbx);
+        endGameDefenseAllMatchCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.endGameDefenseAllMatch_chkbx, isChecked));
+
+
+        endGameFoulsCheckbox = findViewById(R.id.endGameFouls_chkbx);
+        endGameFoulsCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.endGameFouls_chkbx, isChecked));
 
         checkForPermissions();
     }
