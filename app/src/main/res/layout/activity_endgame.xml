@@ -14,6 +14,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
@@ -22,13 +24,15 @@
                 android:id="@+id/endGameHabitatLevelText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/endGameHabitatLevelHeading" />
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                android:text="@string/endGameHabitatLevelHeading"
+                android:textSize="@dimen/label_text_size"/>
 
             <RadioGroup
                 android:id="@+id/endGameHabitatLevelRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
+                android:layout_height="@dimen/radiogroup_height"
                 android:orientation="horizontal">
 
 
@@ -39,7 +43,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/habOneEndGame" />
+                    android:text="@string/habOneEndGame"
+                    android:textAlignment="center" />
 
                 <RadioButton
                     android:id="@+id/habTwoEndGame_Radiobtn"
@@ -48,7 +53,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/habTwoEndGame" />
+                    android:text="@string/habTwoEndGame"
+                    android:textAlignment="center" />
 
 
                 <RadioButton
@@ -58,7 +64,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/habThreeEndGame" />
+                    android:text="@string/habThreeEndGame"
+                    android:textAlignment="center" />
 
                 <RadioButton
                     android:id="@+id/habNoneEndGame_Radiobtn"
@@ -67,20 +74,23 @@
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/habNoneEndGame" />
+                    android:text="@string/habNoneEndGame"
+                    android:textAlignment="center" />
             </RadioGroup>
 
             <TextView
                 android:id="@+id/endGameDefenseText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/endGameDefenseHeading" />
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                android:text="@string/endGameDefenseHeading"
+                android:textSize="@dimen/label_text_size"/>
 
             <RadioGroup
                 android:id="@+id/endGameDefenseRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
+                android:layout_height="@dimen/radiogroup_height"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -90,7 +100,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/endGameDefenseAllMatch" />
+                    android:text="@string/endGameDefenseAllMatch"
+                    android:textAlignment="center" />
 
                 <RadioButton
                     android:id="@+id/endGameDefenseEffective_Radiobtn"
@@ -99,7 +110,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/endGameDefenseEffective" />
+                    android:text="@string/endGameDefenseEffective"
+                    android:textAlignment="center" />
 
                 <RadioButton
                     android:id="@+id/endGameDefenseIneffective_Radiobtn"
@@ -108,7 +120,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:text="@string/endGameDefenseIneffective" />
+                    android:text="@string/endGameDefenseIneffective"
+                    android:textAlignment="center" />
             </RadioGroup>
 
 
@@ -116,7 +129,7 @@
                 android:id="@+id/save_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="@dimen/top_margin"
                 android:onClick="saveData"
                 android:text="@string/saveButton" />
 
