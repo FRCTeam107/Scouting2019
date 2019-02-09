@@ -33,7 +33,8 @@
                 android:layout_width="wrap_content"
                 android:layout_marginTop="@dimen/top_margin"
                 android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-                android:text="@string/pitSandstormOperation" />
+                android:text="@string/pitSandstormOperation"
+                android:textSize="@dimen/label_text_size"/>
 
             <RadioGroup
                 android:id="@+id/sandstormOperationsRadioQuestion"
@@ -88,7 +89,8 @@
                 android:layout_width="wrap_content"
                 android:layout_marginTop="@dimen/top_margin"
                 android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-                android:text="@string/pitSandstormPreference" />
+                android:text="@string/pitSandstormPreference"
+                android:textSize="@dimen/label_text_size"/>
 
             <RadioGroup
                 android:id="@+id/sandstormPreferenceRadioQuestion"
@@ -135,7 +137,8 @@
                 android:layout_width="wrap_content"
                 android:layout_marginTop="@dimen/top_margin"
                 android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-                android:text="@string/pitRocketLevelSandstorm" />
+                android:text="@string/pitRocketLevelSandstorm"
+                android:textSize="@dimen/label_text_size"/>
 
             <RadioGroup
                 android:id="@+id/highestRocketLevelSandstormRadioQuestion"
@@ -190,7 +193,8 @@
                 android:layout_width="wrap_content"
                 android:layout_marginTop="@dimen/top_margin"
                 android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-                android:text="@string/pitHabitatLevel" />
+                android:text="@string/pitHabitatLevel"
+                android:textSize="@dimen/label_text_size"/>
 
             <RadioGroup
                 android:id="@+id/highestHabitatLevelRadioQuestion"
@@ -252,7 +256,8 @@
                 android:layout_width="wrap_content"
                 android:layout_marginTop="@dimen/top_margin"
                 android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-                android:text="@string/pitprogrammingLanguage" />
+                android:text="@string/pitprogrammingLanguage"
+                android:textSize="@dimen/label_text_size"/>
 
             <RadioGroup
                 android:id="@+id/programmingLanguageRadioQuestion"

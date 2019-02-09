@@ -42,7 +42,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/startingPositionHeading"
                 android:layout_marginTop="@dimen/top_margin"
-                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"/>
+                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                android:textSize="@dimen/label_text_size"/>
 
             <RadioGroup
                 android:id="@+id/sandstormStartingPositionRadioQuestion"
@@ -77,7 +78,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sandstormStartingGamePiece"
                 android:layout_marginTop="@dimen/top_margin"
-                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"/>
+                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                android:textSize="@dimen/label_text_size"/>
 
             <RadioGroup
                 android:id="@+id/sandstormStartingGamePieceRadioQuestion"

@@ -22,7 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_marginTop="@dimen/top_margin"
             android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-            android:text="@string/pickupLocation" />
+            android:text="@string/pickupLocation"
+            android:textSize="@dimen/label_text_size"/>
 
 
         <RadioGroup
@@ -58,7 +59,8 @@
             android:layout_width="wrap_content"
             android:layout_marginTop="@dimen/top_margin"
             android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-            android:text="@string/itemPickedUpLocationText" />
+            android:text="@string/itemPickedUpLocationText"
+            android:textSize="@dimen/label_text_size"/>
 
         <RadioGroup
             android:id="@+id/itemPickedUpRadioQuestion"
@@ -93,7 +95,8 @@
             android:layout_width="wrap_content"
             android:layout_marginTop="@dimen/top_margin"
             android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-            android:text="@string/itemPlacedLocationText" />
+            android:text="@string/itemPlacedLocationText"
+            android:textSize="@dimen/label_text_size"/>
 
 
         <RadioGroup
@@ -154,13 +157,14 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_marginTop="@dimen/top_margin"
-            android:text="@string/defenseChkbxText" />
+            android:text="@string/defenseChkbxText"
+            android:textSize="@dimen/label_text_size"/>
 
         <CheckBox
             android:id="@+id/defense_chkbx"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"/>
 
         <Button
             android:id="@+id/save_btn"
