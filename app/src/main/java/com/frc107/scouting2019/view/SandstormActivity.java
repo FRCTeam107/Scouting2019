@@ -62,7 +62,7 @@ public class SandstormActivity extends AppCompatActivity {
         teamNumberTextWatcher = new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 int teamNumber = Integer.valueOf(s.toString());
-                Scouting.setTeamNumber(teamNumber);
+                Scouting.getInstance().setTeamNumber(teamNumber);
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }
@@ -73,7 +73,7 @@ public class SandstormActivity extends AppCompatActivity {
         matchNumberTextWatcher = new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 int matchNumber = Integer.valueOf(s.toString());
-                Scouting.setMatchNumber(matchNumber);
+                Scouting.getInstance().setMatchNumber(matchNumber);
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }

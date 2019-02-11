@@ -23,7 +23,7 @@ public class CsvWriter {
             if (!directory.exists())
                 directory.mkdirs();
 
-            String uniqueId = Scouting.getUniqueId();
+            String uniqueId = Scouting.getInstance().getUniqueId();
             File file = new File(directory, fileNameHeader + uniqueId + ".csv");
 
             String message = data + "\n";

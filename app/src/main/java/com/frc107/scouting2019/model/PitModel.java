@@ -14,8 +14,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static com.frc107.scouting2019.Scouting.getTeamNumber;
-
 public class PitModel extends ScoutModel {
     public PitModel(Question... questions) {
         super(questions);
@@ -26,7 +24,7 @@ public class PitModel extends ScoutModel {
         File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
         dir.mkdirs();
 
-        int teamNumber = getTeamNumber();
+        int teamNumber = Scouting.getInstance().getTeamNumber();
         File file = new File(dir, teamNumber + ".jpg");
 
         try {
@@ -41,7 +39,7 @@ public class PitModel extends ScoutModel {
 
     public boolean compressPhoto() {
         File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
-        int teamNumber = getTeamNumber();
+        int teamNumber = Scouting.getInstance().getTeamNumber();
         File file = new File(dir, teamNumber + ".jpg");
 
         try (FileInputStream fileInputStream = new FileInputStream(file);
@@ -65,6 +63,6 @@ public class PitModel extends ScoutModel {
 
     @Override
     public String getCSVRowHeader() {
-        return String.valueOf(Scouting.getTeamNumber());
+        return String.valueOf(Scouting.getInstance().getTeamNumber());
     }
 }

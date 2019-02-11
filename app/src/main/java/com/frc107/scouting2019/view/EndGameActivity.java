@@ -118,7 +118,7 @@ public class EndGameActivity extends AppCompatActivity {
     public void saveData(View view) {
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
         if (unfinishedQuestionId != -1) {
-            ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
+            ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
             return;
         }
 
@@ -128,11 +128,9 @@ public class EndGameActivity extends AppCompatActivity {
             return;
         }
 
-        String saveResponse = viewModel.save();
+        String saveResponse = viewModel.finish();
 
         Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
-
-
 
         finish();
     }

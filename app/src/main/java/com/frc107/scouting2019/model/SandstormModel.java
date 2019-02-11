@@ -10,11 +10,11 @@ public class SandstormModel extends ScoutModel {
 
     @Override
     public String getCSVRowHeader() {
-        return Scouting.getTeamNumber() + "," + Scouting.getMatchNumber();
+        return Scouting.getInstance().getMatchNumber() + "," + Scouting.getInstance().getTeamNumber();
     }
 
     public void finish() {
-        String csvRow = getAnswerCSVRow();
-        Scouting.setSandstormData(csvRow);
+        String sandstormData = getCSVRowHeader() + ',' + getAnswerCSVRow();
+        Scouting.getInstance().setSandstormData(sandstormData);
     }
 }

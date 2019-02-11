@@ -11,31 +11,30 @@ public class CycleModel extends ScoutModel {
 
     public CycleModel(Question... questions) {
         super(questions);
-        setFileNameHeader("Cycle");
     }
 
     @Override
     public String getCSVRowHeader() {
-        String type = isTeleop ? "Teleop" : "Sandstorm";
-        String header = String.format(Locale.getDefault(), "%d, %d, %d, %s",
-                                                        Scouting.getMatchNumber(),
-                                                        Scouting.getTeamNumber(),
-                                                        cycleNum,
-                                                        type);
-        return header;
+        return "";
     }
 
-    public void finish() {
-        save();
-    }
-
-    public void enterTeleop() {
+    public void turnTeleopOn() {
         isTeleop = true;
+        cycleNum = 0;
     }
 
-    public String newCycle() {
+    public boolean isTeleop() {
+        return isTeleop;
+    }
+
+    public void finishCycle() {
         cycleNum++;
-        String saveResponse = save();
-        return saveResponse;
+        saveCycle();
+    }
+
+    private void saveCycle() {
+        String type = isTeleop ? "1" : "0";
+        String csvRow = getAnswerCSVRow();
+        Scouting.getInstance().addCycle(cycleNum + "," + type + "," + csvRow);
     }
 }

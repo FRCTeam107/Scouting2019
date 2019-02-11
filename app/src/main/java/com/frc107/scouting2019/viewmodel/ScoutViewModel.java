@@ -11,6 +11,10 @@ public abstract class ScoutViewModel extends ViewModel {
         return model.getFirstUnfinishedQuestionId();
     }
 
+    public boolean areNoQuestionsAnswered() {
+        return model.areNoQuestionsAnswered();
+    }
+
     public boolean setAnswer(int questionId, String answer) {
         return model.setAnswer(questionId, answer);
     }
