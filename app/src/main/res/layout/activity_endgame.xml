@@ -24,7 +24,7 @@
                 android:id="@+id/endGameHabitatLevelText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginTop="@dimen/top_of_screen_margin"
                 android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
                 android:text="@string/endGameHabitatLevelHeading"
                 android:textSize="@dimen/label_text_size"/>
