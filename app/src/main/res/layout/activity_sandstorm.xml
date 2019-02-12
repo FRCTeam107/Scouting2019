@@ -23,7 +23,7 @@
                 android:id="@+id/teamNumberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginTop="@dimen/top_of_screen_margin"
                 android:hint="@string/teamNumberHeading"
                 android:inputType="number" />
 
@@ -48,7 +48,7 @@
             <RadioGroup
                 android:id="@+id/sandstormStartingPositionRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/radiogroup_height"
+                android:layout_height="@dimen/question_height"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -84,7 +84,7 @@
             <RadioGroup
                 android:id="@+id/sandstormStartingGamePieceRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/radiogroup_height"
+                android:layout_height="@dimen/question_height"
                 android:orientation="horizontal">
 
                 <RadioButton
