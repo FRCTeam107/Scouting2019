@@ -41,15 +41,15 @@ public class EndGameActivity extends AppCompatActivity {
         Question[] questions = {
 
                 new RadioQuestion(R.id.endGameHabitatLevelRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.habOneEndGame_Radiobtn, getString(R.string.habOneEndGame)),
-                        new RadioQuestion.Option(R.id.habTwoEndGame_Radiobtn, getString(R.string.habTwoEndGame)),
-                        new RadioQuestion.Option(R.id.habThreeEndGame_Radiobtn, getString(R.string.habThreeEndGame)),
-                        new RadioQuestion.Option(R.id.habNoneEndGame_Radiobtn, getString(R.string.habNoneEndGame))),
+                        new RadioQuestion.Option(R.id.habOneEndGame_Radiobtn, 0),
+                        new RadioQuestion.Option(R.id.habTwoEndGame_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.habThreeEndGame_Radiobtn, 2),
+                        new RadioQuestion.Option(R.id.habNoneEndGame_Radiobtn, 3)),
                 new ToggleQuestion(R.id.endGameDefenseAllMatch_chkbx),
                 new RadioQuestion(R.id.endGameDefenseRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.endGameDefenseEffective_Radiobtn, getString(R.string.endGameDefenseEffective)),
-                        new RadioQuestion.Option(R.id.endGameDefenseIneffective_Radiobtn, getString(R.string.endGameDefenseIneffective)),
-                        new RadioQuestion.Option(R.id.endGameDefenseNone_Radiobtn, getString(R.string.endGameDefenseNone))),
+                        new RadioQuestion.Option(R.id.endGameDefenseEffective_Radiobtn, 0),
+                        new RadioQuestion.Option(R.id.endGameDefenseIneffective_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.endGameDefenseNone_Radiobtn, 2)),
                 new ToggleQuestion(R.id.endGameFouls_chkbx)
 
         };

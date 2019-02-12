@@ -36,17 +36,17 @@ public class CycleActivity extends AppCompatActivity {
 
         Question[] questions = {
                 new RadioQuestion(R.id.pickupLocationRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, getString(R.string.portPickupLocation)),
-                        new RadioQuestion.Option(R.id.floorPickupLocation_Radiobtn, getString(R.string.floorPickupLocation))),
+                        new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, 0),
+                        new RadioQuestion.Option(R.id.floorPickupLocation_Radiobtn, 1)),
                 new RadioQuestion(R.id.itemPickedUpRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.cargoItemPickedUp_Radiobtn, getString(R.string.cargoPickedUp)),
-                        new RadioQuestion.Option(R.id.hatchItemPickedUp_Radiobtn, getString(R.string.hatchPickedUp))),
+                        new RadioQuestion.Option(R.id.cargoItemPickedUp_Radiobtn, 0),
+                        new RadioQuestion.Option(R.id.hatchItemPickedUp_Radiobtn, 1)),
                 new RadioQuestion(R.id.itemPlacedRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.topRocketItemPlaced_Radiobtn, getString(R.string.topRocketItemPlaced)),
-                        new RadioQuestion.Option(R.id.middleRocketItemPlaced_Radiobtn, getString(R.string.middleRocketItemPlaced)),
-                        new RadioQuestion.Option(R.id.bottomRocketItemPlaced_Radiobtn, getString(R.string.bottomRocketItemPlaced)),
-                        new RadioQuestion.Option(R.id.cargoshipItemPlaced_Radiobtn, getString(R.string.cargoshipItemPlaced)),
-                        new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, getString(R.string.floorItemPlaced))),
+                        new RadioQuestion.Option(R.id.topRocketItemPlaced_Radiobtn, 0),
+                        new RadioQuestion.Option(R.id.middleRocketItemPlaced_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.bottomRocketItemPlaced_Radiobtn, 2),
+                        new RadioQuestion.Option(R.id.cargoshipItemPlaced_Radiobtn, 3),
+                        new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, 4)),
                 new ToggleQuestion(R.id.defense_chkbx)
         };
         viewModel = new CycleViewModel(questions);

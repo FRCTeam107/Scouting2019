@@ -7,11 +7,13 @@ public class RadioQuestion extends Question<Integer> {
     private ArrayList<Option> options;
     private Option selectedOption;
     private boolean needsAnswer;
+    private int answerFormat;
 
     public RadioQuestion(int id, boolean needsAnswer, Option... options) {
         super(id);
         this.needsAnswer = needsAnswer;
         this.options = new ArrayList<>(Arrays.asList(options));
+        this.answerFormat = answerFormat;
     }
 
     @Override
@@ -50,24 +52,24 @@ public class RadioQuestion extends Question<Integer> {
         if (selectedOption == null)
             return "";
 
-        return selectedOption.getText();
+        return selectedOption.getNum() + "";
     }
 
     public static class Option {
         private int id;
-        private String text;
+        private int num;
 
-        public Option(int id, String text) {
+        public Option(int id, int num) {
             this.id = id;
-            this.text = text;
+            this.num = num;
         }
 
         public int getId() {
             return id;
         }
 
-        public String getText() {
-            return text;
+        public int getNum() {
+            return num;
         }
     }
 }

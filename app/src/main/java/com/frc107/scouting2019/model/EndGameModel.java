@@ -22,10 +22,13 @@ public class EndGameModel extends ScoutModel {
 
         String sandstormData = Scouting.getInstance().getSandstormData();
         ArrayList<String> cycles = Scouting.getInstance().getCycles();
-        for (String cycle : cycles) {
+        for (int i = 0; i < cycles.size(); i++) {
+            String cycle = cycles.get(i);
             String row = sandstormData + "," + cycle + "," + getAnswerCSVRow();
             builder.append(row);
-            builder.append("\n");
+
+            if (i < cycles.size() - 1)
+                builder.append("\n");
         }
         String saveResponse = Scouting.CSV_GENERATOR.writeData(FILE_NAME_HEADER, builder.toString());
         return saveResponse;
