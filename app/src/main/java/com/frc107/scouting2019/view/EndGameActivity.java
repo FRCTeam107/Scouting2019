@@ -40,7 +40,6 @@ public class EndGameActivity extends AppCompatActivity {
 
         viewModel = new EndGameViewModel();
 
-
         RadioGroup endGameHabitatLevelRadioQuestion = findViewById(R.id.endGameHabitatLevelRadioQuestion);
         endGameHabitatLevelRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameHabitatLevelRadioQuestion, checkedId));
 
