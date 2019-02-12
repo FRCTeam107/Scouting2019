@@ -31,6 +31,7 @@ public class ToggleQuestion extends Question<Boolean> {
 
     @Override
     public String getAnswerAsString() {
-        return String.valueOf(answer);
+        int asInt = answer ? 1 : 0;
+        return asInt + "";
     }
 }

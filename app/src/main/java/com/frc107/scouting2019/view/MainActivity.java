@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String uniqueId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-        Scouting.setUniqueId(uniqueId);
+        Scouting.getInstance().setUniqueId(uniqueId);
     }
 
     @Override

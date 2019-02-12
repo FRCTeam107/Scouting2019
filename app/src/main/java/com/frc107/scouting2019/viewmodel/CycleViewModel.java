@@ -1,7 +1,6 @@
 package com.frc107.scouting2019.viewmodel;
 
 import com.frc107.scouting2019.model.CycleModel;
-import com.frc107.scouting2019.model.SandstormModel;
 import com.frc107.scouting2019.model.question.Question;
 
 public class CycleViewModel extends ScoutViewModel {
@@ -9,11 +8,15 @@ public class CycleViewModel extends ScoutViewModel {
         model = new CycleModel(questions);
     }
 
-    public void enterTeleop() {
-        ((CycleModel) model).enterTeleop();
+    public void turnTeleopOn() {
+        ((CycleModel) model).turnTeleopOn();
     }
 
-    public void finish() {
-        ((CycleModel) model).finish();
+    public boolean isTeleop() {
+        return ((CycleModel) model).isTeleop();
+    }
+
+    public void finishCycle() {
+        ((CycleModel) model).finishCycle();
     }
 }

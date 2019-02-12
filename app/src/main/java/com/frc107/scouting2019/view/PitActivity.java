@@ -6,22 +6,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.Settings;
-import androidx.annotation.NonNull;
-
-import com.frc107.scouting2019.BuildConfig;
-import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.Scouting;
-import com.frc107.scouting2019.model.question.Question;
-import com.frc107.scouting2019.model.question.RadioQuestion;
-import com.frc107.scouting2019.model.question.TextQuestion;
-import com.frc107.scouting2019.viewmodel.PitViewModel;
-import com.google.android.material.textfield.TextInputLayout;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -31,12 +15,23 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.io.File;
-
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.frc107.scouting2019.BuildConfig;
+import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.model.question.Question;
+import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.model.question.TextQuestion;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
+import com.frc107.scouting2019.viewmodel.PitViewModel;
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.io.File;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 /**
  * Created by Matt on 9/30/2017.
@@ -65,30 +60,30 @@ public class PitActivity extends AppCompatActivity {
         Question[] questions = {
                 new TextQuestion(R.id.pit_teamNumber_editText, true),
                 new RadioQuestion(R.id.sandstormOperationsRadioQuestion, true,
-                    new RadioQuestion.Option(R.id.visionSystemSandstorm_Radiobtn, getString(R.string.visionSystemSandstorm)),
-                    new RadioQuestion.Option(R.id.cameraDrivingSandstorm_Radiobtn, getString(R.string.cameraDrivingSandstorm)),
-                    new RadioQuestion.Option(R.id.blindDrivingSandstorm_Radiobtn, getString(R.string.blindDrivingSandstorm)),
-                        new RadioQuestion.Option(R.id.noDrivingSandstorm_Radiobtn, getString(R.string.noDrivingSandstorm))),
+                        new RadioQuestion.Option(R.id.visionSystemSandstorm_Radiobtn, 0),
+                        new RadioQuestion.Option(R.id.cameraDrivingSandstorm_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.blindDrivingSandstorm_Radiobtn, 2),
+                        new RadioQuestion.Option(R.id.noDrivingSandstorm_Radiobtn, 3)),
                 new RadioQuestion(R.id.sandstormPreferenceRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.cargoshipPreferenceSandstorm_Radiobtn, getString(R.string.cargoshipPreferenceSandstorm)),
-                        new RadioQuestion.Option(R.id.rocketshipPreferenceSandstorm_Radiobtn, getString(R.string.rocketshipPreferenceSandstorm)),
-                        new RadioQuestion.Option(R.id.noPreferenceSandstorm_Radiobtn, getString(R.string.noPreferenceSandstorm))),
+                        new RadioQuestion.Option(R.id.cargoshipPreferenceSandstorm_Radiobtn, 0),
+                        new RadioQuestion.Option(R.id.rocketshipPreferenceSandstorm_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.noPreferenceSandstorm_Radiobtn, 2)),
                 new RadioQuestion(R.id.highestRocketLevelSandstormRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.topRocketLevelSandstorm_Radiobtn, getString(R.string.topRocketLevelSandstorm)),
-                        new RadioQuestion.Option(R.id.middleRocketLevelSandstorm_Radiobtn, getString(R.string.middleRocketLevelSandstorm)),
-                        new RadioQuestion.Option(R.id.bottomRocketLevelSandstorm_Radiobtn, getString(R.string.bottomRocketLevelSandstorm)),
-                        new RadioQuestion.Option(R.id.noRocketLevelSandstorm_Radiobtn, getString(R.string.noRocketLevelSandstorm))),
+                        new RadioQuestion.Option(R.id.topRocketLevelSandstorm_Radiobtn, 0),
+                        new RadioQuestion.Option(R.id.middleRocketLevelSandstorm_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.bottomRocketLevelSandstorm_Radiobtn, 2),
+                        new RadioQuestion.Option(R.id.noRocketLevelSandstorm_Radiobtn, 3)),
                 new RadioQuestion(R.id.highestHabitatLevelRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.topHabitatLevel_Radiobtn, getString(R.string.topHabitatLevel)),
-                        new RadioQuestion.Option(R.id.middleHabitatLevel_Radiobtn, getString(R.string.middleHabitatLevel)),
-                        new RadioQuestion.Option(R.id.bottomHabitatLevel_Radiobtn, getString(R.string.bottomHabitatLevel)),
-                        new RadioQuestion.Option(R.id.noHabitatLevel_Radiobtn, getString(R.string.noHabitatLevel))),
+                        new RadioQuestion.Option(R.id.topHabitatLevel_Radiobtn, 0),
+                        new RadioQuestion.Option(R.id.middleHabitatLevel_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.bottomHabitatLevel_Radiobtn, 2),
+                        new RadioQuestion.Option(R.id.noHabitatLevel_Radiobtn, 3)),
                 new TextQuestion(R.id.pit_habitatTime_editText, true),
                 new RadioQuestion(R.id.programmingLanguageRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.javaProgrammingLanguage_Radiobtn, getString(R.string.javaProgrammingLanguage)),
-                        new RadioQuestion.Option(R.id.cppProgrammingLanguage_Radiobtn, getString(R.string.cppProgrammingLanguage)),
-                        new RadioQuestion.Option(R.id.labviewProgrammingLanguage_Radiobtn, getString(R.string.labviewProgrammingLanguage)),
-                        new RadioQuestion.Option(R.id.otherProgrammingLanguage_Radiobtn, getString(R.string.otherProgrammingLanguage))),
+                        new RadioQuestion.Option(R.id.javaProgrammingLanguage_Radiobtn, 0),
+                        new RadioQuestion.Option(R.id.cppProgrammingLanguage_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.labviewProgrammingLanguage_Radiobtn, 2),
+                        new RadioQuestion.Option(R.id.otherProgrammingLanguage_Radiobtn, 3)),
 
                 new TextQuestion(R.id.pit_arcadeGame_editText, true),
                 new TextQuestion(R.id.pit_comments_editText, true)

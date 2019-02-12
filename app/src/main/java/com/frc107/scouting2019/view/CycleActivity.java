@@ -1,6 +1,5 @@
 package com.frc107.scouting2019.view;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -30,8 +29,6 @@ public class CycleActivity extends AppCompatActivity {
 
     private CycleViewModel viewModel;
 
-    private boolean isTeleop;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,17 +36,17 @@ public class CycleActivity extends AppCompatActivity {
 
         Question[] questions = {
                 new RadioQuestion(R.id.pickupLocationRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, getString(R.string.portPickupLocation)),
-                        new RadioQuestion.Option(R.id.floorPickupLocation_Radiobtn, getString(R.string.floorPickupLocation))),
+                        new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, 0),
+                        new RadioQuestion.Option(R.id.floorPickupLocation_Radiobtn, 1)),
                 new RadioQuestion(R.id.itemPickedUpRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.cargoItemPickedUp_Radiobtn, getString(R.string.cargoPickedUp)),
-                        new RadioQuestion.Option(R.id.hatchItemPickedUp_Radiobtn, getString(R.string.hatchPickedUp))),
+                        new RadioQuestion.Option(R.id.cargoItemPickedUp_Radiobtn, 0),
+                        new RadioQuestion.Option(R.id.hatchItemPickedUp_Radiobtn, 1)),
                 new RadioQuestion(R.id.itemPlacedRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.topRocketItemPlaced_Radiobtn, getString(R.string.topRocketItemPlaced)),
-                        new RadioQuestion.Option(R.id.middleRocketItemPlaced_Radiobtn, getString(R.string.middleRocketItemPlaced)),
-                        new RadioQuestion.Option(R.id.bottomRocketItemPlaced_Radiobtn, getString(R.string.bottomRocketItemPlaced)),
-                        new RadioQuestion.Option(R.id.cargoshipItemPlaced_Radiobtn, getString(R.string.cargoshipItemPlaced)),
-                        new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, getString(R.string.floorItemPlaced))),
+                        new RadioQuestion.Option(R.id.topRocketItemPlaced_Radiobtn, 0),
+                        new RadioQuestion.Option(R.id.middleRocketItemPlaced_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.bottomRocketItemPlaced_Radiobtn, 2),
+                        new RadioQuestion.Option(R.id.cargoshipItemPlaced_Radiobtn, 3),
+                        new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, 4)),
                 new ToggleQuestion(R.id.defense_chkbx)
         };
         viewModel = new CycleViewModel(questions);
@@ -75,7 +72,7 @@ public class CycleActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (isTeleop)
+        if (viewModel.isTeleop())
             getMenuInflater().inflate(R.menu.cycle_teleop_menu, menu);
         else
             getMenuInflater().inflate(R.menu.cycle_sandstorm_menu, menu);
@@ -103,53 +100,41 @@ public class CycleActivity extends AppCompatActivity {
     }
 
     private void goToTeleop() {
-        boolean newCycleSuccess = startNewCycle();
-        if (!newCycleSuccess)
+        boolean allQuestionsAreUnanswered = viewModel.areNoQuestionsAnswered();
+
+        int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
+        if (!allQuestionsAreUnanswered && unfinishedQuestionId != -1) {
+            ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
+            return;
+        }
+
+        if (!PermissionUtils.verifyWritePermissions(this))
             return;
 
-        isTeleop = true;
+        if (!allQuestionsAreUnanswered)
+            viewModel.finishCycle();
+
+        viewModel.turnTeleopOn();
+
+        clearAnswers();
+
         invalidateOptionsMenu(); // Calling this tells Android to call onCreateOptionsMenu.
     }
 
-    private boolean startNewCycle() {
-        int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
-        if (unfinishedQuestionId != -1) {
-            ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
-            return false;
-        }
-
-        boolean hasWritePermissions = PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (!hasWritePermissions) {
-            Toast.makeText(getApplicationContext(), "No write permissions.", Toast.LENGTH_LONG).show();
-            return false;
-        }
-
-        String saveResponse = viewModel.save();
-        Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
-
-        pickupLocationRadioGroup.clearCheck();
-        itemPickedUpRadioGroup.clearCheck();
-        itemPlacedRadioGroup.clearCheck();
-        defenseCheckbox.setChecked(false);
-
-        return true;
-    }
-
     private void goToEndGame() {
+        boolean allQuestionsAreUnanswered = viewModel.areNoQuestionsAnswered();
+
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
-        if (unfinishedQuestionId != -1) {
-            ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
+        if (!allQuestionsAreUnanswered && unfinishedQuestionId != -1) {
+            ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
             return;
         }
 
-        boolean hasWritePermissions = PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (!hasWritePermissions) {
-            Toast.makeText(getApplicationContext(), "No write permissions.", Toast.LENGTH_LONG).show();
+        if (!PermissionUtils.verifyWritePermissions(this))
             return;
-        }
 
-        String saveResponse = viewModel.save();
-        Toast.makeText(getApplicationContext(), saveResponse, Toast.LENGTH_LONG).show();
+        if (!allQuestionsAreUnanswered)
+            viewModel.finishCycle();
 
         final Intent intent = new Intent(this, EndGameActivity.class);
         startActivity(intent);
@@ -158,6 +143,23 @@ public class CycleActivity extends AppCompatActivity {
     }
 
     public void goToNextCycle(View view) {
-        startNewCycle();
+        int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
+        if (unfinishedQuestionId != -1) {
+            ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
+            return;
+        }
+
+        if (!PermissionUtils.verifyWritePermissions(this))
+            return;
+
+        viewModel.finishCycle();
+        clearAnswers();
+    }
+
+    private void clearAnswers() {
+        pickupLocationRadioGroup.clearCheck();
+        itemPickedUpRadioGroup.clearCheck();
+        itemPlacedRadioGroup.clearCheck();
+        defenseCheckbox.setChecked(false);
     }
 }

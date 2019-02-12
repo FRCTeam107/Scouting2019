@@ -9,7 +9,7 @@ public class EndGameViewModel extends ScoutViewModel {
         model = new EndGameModel(questions);
     }
 
-    public void finish() {
-        ((EndGameModel) model).finish();
+    public String finish() {
+        return ((EndGameModel) model).finish();
     }
 }

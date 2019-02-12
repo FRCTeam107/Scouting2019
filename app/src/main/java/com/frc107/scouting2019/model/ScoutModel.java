@@ -34,6 +34,17 @@ public abstract class ScoutModel {
         return -1;
     }
 
+    public boolean areNoQuestionsAnswered() {
+        for (Question question : questions) {
+            if (question instanceof ToggleQuestion)
+                continue;
+
+            if (question.hasAnswer())
+                return false;
+        }
+        return true;
+    }
+
     public boolean setAnswer(int questionId, String answer) {
         Question question = getQuestion(questionId);
         if (question == null)
@@ -98,12 +109,6 @@ public abstract class ScoutModel {
 
     public String getAnswerCSVRow() {
         StringBuilder stringBuilder = new StringBuilder();
-        String header = getCSVRowHeader();
-        stringBuilder.append(header);
-
-        if (!StringUtils.isEmptyOrNull(header))
-            stringBuilder.append(',');
-
         for (int i = 0; i < questions.size(); i++) {
             stringBuilder.append(questions.get(i).getAnswerAsString());
             if (i < questions.size() - 1) {
@@ -114,7 +119,8 @@ public abstract class ScoutModel {
     }
 
     public String save() {
-        String result = Scouting.CSV_GENERATOR.writeData(fileNameHeader, getAnswerCSVRow());
+        String dataToWrite = getCSVRowHeader() + ',' + getAnswerCSVRow();
+        String result = Scouting.CSV_GENERATOR.writeData(fileNameHeader, dataToWrite);
         return result;
     }
 
