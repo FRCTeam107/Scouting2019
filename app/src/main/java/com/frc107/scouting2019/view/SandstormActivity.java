@@ -39,14 +39,12 @@ public class SandstormActivity extends AppCompatActivity {
 
         Question[] questions = {
                 new RadioQuestion(R.id.sandstormStartingPositionRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.habTwoSandstorm_Radiobtn, 0),
-                        new RadioQuestion.Option(R.id.habOneSandstorm_Radiobtn, 1)),
+                        new RadioQuestion.Option(R.id.habTwoSandstorm_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.habOneSandstorm_Radiobtn, 0)),
                 new RadioQuestion(R.id.sandstormStartingGamePieceRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.cargoSandstormStartingGamePiece_Radiobtn, 0),
-                        new RadioQuestion.Option(R.id.panelSandstormStartingGamePiece_Radiobtn, 1),
-                        new RadioQuestion.Option(R.id.noSandstormStartingGamePiece_Radiobtn, 2)),
-
-
+                        new RadioQuestion.Option(R.id.cargoSandstormStartingGamePiece_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.panelSandstormStartingGamePiece_Radiobtn, 2),
+                        new RadioQuestion.Option(R.id.noSandstormStartingGamePiece_Radiobtn, 0)),
         };
 
         viewModel = new SandstormViewModel(questions);
