@@ -39,7 +39,7 @@
             <RadioGroup
                 android:id="@+id/sandstormOperationsRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/radiogroup_height"
+                android:layout_height="@dimen/question_height"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -95,7 +95,7 @@
             <RadioGroup
                 android:id="@+id/sandstormPreferenceRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/radiogroup_height"
+                android:layout_height="@dimen/question_height"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -143,7 +143,7 @@
             <RadioGroup
                 android:id="@+id/highestRocketLevelSandstormRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/radiogroup_height"
+                android:layout_height="@dimen/question_height"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -199,7 +199,7 @@
             <RadioGroup
                 android:id="@+id/highestHabitatLevelRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/radiogroup_height"
+                android:layout_height="@dimen/question_height"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -262,7 +262,7 @@
             <RadioGroup
                 android:id="@+id/programmingLanguageRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/radiogroup_height"
+                android:layout_height="@dimen/question_height"
                 android:orientation="horizontal">
 
                 <RadioButton

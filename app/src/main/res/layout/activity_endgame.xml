@@ -32,7 +32,7 @@
             <RadioGroup
                 android:id="@+id/endGameHabitatLevelRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/radiogroup_height"
+                android:layout_height="@dimen/question_height"
                 android:orientation="horizontal">
 
 
@@ -78,20 +78,17 @@
                     android:textAlignment="center" />
             </RadioGroup>
 
-
-            <TextView
-                android:id="@+id/endGameDefenseAllMatch_chkbxText"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="@dimen/top_margin"
-                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-                android:text="@string/endGameDefenseAllMatch_chkbxText" />
-
             <CheckBox
                 android:id="@+id/endGameDefenseAllMatch_chkbx"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/question_height"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"
+                android:text="@string/endGameDefenseAllMatch_chkbxText"
+                android:textAlignment="center" />
 
 
             <TextView
@@ -106,7 +103,7 @@
             <RadioGroup
                 android:id="@+id/endGameDefenseRadioQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/radiogroup_height"
+                android:layout_height="@dimen/question_height"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -140,20 +137,17 @@
                     android:textAlignment="center" />
             </RadioGroup>
 
-            <TextView
-                android:id="@+id/endGameFouls_chkbxText"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="@dimen/top_margin"
-                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-                android:text="@string/endGameFoulsChkbxText" />
-
             <CheckBox
                 android:id="@+id/endGameFouls_chkbx"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal" />
-
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/question_height"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"
+                android:text="@string/endGameFoulsChkbxText"
+                android:textAlignment="center" />
 
             <Button
                 android:id="@+id/save_button"
