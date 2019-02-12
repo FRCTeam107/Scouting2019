@@ -34,22 +34,7 @@ public class CycleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cycle);
 
-        Question[] questions = {
-                new RadioQuestion(R.id.pickupLocationRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, 0),
-                        new RadioQuestion.Option(R.id.floorPickupLocation_Radiobtn, 1)),
-                new RadioQuestion(R.id.itemPickedUpRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.cargoItemPickedUp_Radiobtn, 0),
-                        new RadioQuestion.Option(R.id.hatchItemPickedUp_Radiobtn, 1)),
-                new RadioQuestion(R.id.itemPlacedRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.topRocketItemPlaced_Radiobtn, 3),
-                        new RadioQuestion.Option(R.id.middleRocketItemPlaced_Radiobtn, 2),
-                        new RadioQuestion.Option(R.id.bottomRocketItemPlaced_Radiobtn, 1),
-                        new RadioQuestion.Option(R.id.cargoshipItemPlaced_Radiobtn, 0),
-                        new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, 4)),
-                new ToggleQuestion(R.id.defense_chkbx)
-        };
-        viewModel = new CycleViewModel(questions);
+        viewModel = new CycleViewModel();
 
         pickupLocationRadioGroup = findViewById(R.id.pickupLocationRadioQuestion);
         pickupLocationRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
