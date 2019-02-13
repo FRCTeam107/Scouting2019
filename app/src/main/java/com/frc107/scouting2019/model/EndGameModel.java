@@ -1,15 +1,34 @@
 package com.frc107.scouting2019.model;
 
+import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
+import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.model.question.ToggleQuestion;
 
 import java.util.ArrayList;
 
 public class EndGameModel extends ScoutModel {
     private static final String FILE_NAME_HEADER = "Match";
 
-    public EndGameModel(Question... questions) {
-        super(questions);
+    @Override
+    public Question[] getQuestions() {
+        Question[] questions = {
+
+                new RadioQuestion(R.id.endGameHabitatLevelRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.habOneEndGame_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.habTwoEndGame_Radiobtn, 2),
+                        new RadioQuestion.Option(R.id.habThreeEndGame_Radiobtn, 3),
+                        new RadioQuestion.Option(R.id.habNoneEndGame_Radiobtn, 0)),
+                new ToggleQuestion(R.id.endGameDefenseAllMatch_chkbx),
+                new RadioQuestion(R.id.endGameDefenseRadioQuestion, true,
+                        new RadioQuestion.Option(R.id.endGameDefenseEffective_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.endGameDefenseIneffective_Radiobtn, 2),
+                        new RadioQuestion.Option(R.id.endGameDefenseNone_Radiobtn, 0)),
+                new ToggleQuestion(R.id.endGameFouls_chkbx)
+
+        };
+        return questions;
     }
 
     @Override

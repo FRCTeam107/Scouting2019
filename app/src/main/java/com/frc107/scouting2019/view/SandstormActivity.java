@@ -37,18 +37,7 @@ public class SandstormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sandstorm);
 
-        Question[] questions = {
-                new RadioQuestion(R.id.sandstormStartingPositionRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.habTwoSandstorm_Radiobtn, 1),
-                        new RadioQuestion.Option(R.id.habOneSandstorm_Radiobtn, 0)),
-                new RadioQuestion(R.id.sandstormStartingGamePieceRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.cargoSandstormStartingGamePiece_Radiobtn, 1),
-                        new RadioQuestion.Option(R.id.panelSandstormStartingGamePiece_Radiobtn, 2),
-                        new RadioQuestion.Option(R.id.noSandstormStartingGamePiece_Radiobtn, 0)),
-        };
-
-        viewModel = new SandstormViewModel(questions);
-
+        viewModel = new SandstormViewModel();
 
         RadioGroup sandstormStartingPositionRadioQuestion = findViewById(R.id.sandstormStartingPositionRadioQuestion);
         sandstormStartingPositionRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingPositionRadioQuestion, checkedId));

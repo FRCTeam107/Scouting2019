@@ -15,9 +15,11 @@ public abstract class ScoutModel {
     private ArrayList<Question> questions;
     private String fileNameHeader;
 
-    public ScoutModel(Question... questions) {
-        this.questions = new ArrayList<>(Arrays.asList(questions));
+    public ScoutModel() {
+        this.questions = new ArrayList<>(Arrays.asList(getQuestions()));
     }
+
+    public abstract Question[] getQuestions();
 
     public void setFileNameHeader(String fileNameHeader) {
         this.fileNameHeader = fileNameHeader;

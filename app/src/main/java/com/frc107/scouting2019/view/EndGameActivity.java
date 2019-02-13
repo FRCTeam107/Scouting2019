@@ -38,24 +38,7 @@ public class EndGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_endgame);
 
-        Question[] questions = {
-
-                new RadioQuestion(R.id.endGameHabitatLevelRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.habOneEndGame_Radiobtn, 1),
-                        new RadioQuestion.Option(R.id.habTwoEndGame_Radiobtn, 2),
-                        new RadioQuestion.Option(R.id.habThreeEndGame_Radiobtn, 3),
-                        new RadioQuestion.Option(R.id.habNoneEndGame_Radiobtn, 0)),
-                new ToggleQuestion(R.id.endGameDefenseAllMatch_chkbx),
-                new RadioQuestion(R.id.endGameDefenseRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.endGameDefenseEffective_Radiobtn, 1),
-                        new RadioQuestion.Option(R.id.endGameDefenseIneffective_Radiobtn, 2),
-                        new RadioQuestion.Option(R.id.endGameDefenseNone_Radiobtn, 0)),
-                new ToggleQuestion(R.id.endGameFouls_chkbx)
-
-        };
-
-        viewModel = new EndGameViewModel(questions);
-
+        viewModel = new EndGameViewModel();
 
         RadioGroup endGameHabitatLevelRadioQuestion = findViewById(R.id.endGameHabitatLevelRadioQuestion);
         endGameHabitatLevelRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameHabitatLevelRadioQuestion, checkedId));

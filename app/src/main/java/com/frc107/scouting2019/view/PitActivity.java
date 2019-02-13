@@ -57,38 +57,7 @@ public class PitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pit);
 
-        Question[] questions = {
-                new TextQuestion(R.id.pit_teamNumber_editText, true),
-                new RadioQuestion(R.id.sandstormOperationsRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.visionSystemSandstorm_Radiobtn, 0),
-                        new RadioQuestion.Option(R.id.cameraDrivingSandstorm_Radiobtn, 1),
-                        new RadioQuestion.Option(R.id.blindDrivingSandstorm_Radiobtn, 2),
-                        new RadioQuestion.Option(R.id.noDrivingSandstorm_Radiobtn, 3)),
-                new RadioQuestion(R.id.sandstormPreferenceRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.cargoshipPreferenceSandstorm_Radiobtn, 0),
-                        new RadioQuestion.Option(R.id.rocketshipPreferenceSandstorm_Radiobtn, 1),
-                        new RadioQuestion.Option(R.id.noPreferenceSandstorm_Radiobtn, 2)),
-                new RadioQuestion(R.id.highestRocketLevelSandstormRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.topRocketLevelSandstorm_Radiobtn, 0),
-                        new RadioQuestion.Option(R.id.middleRocketLevelSandstorm_Radiobtn, 1),
-                        new RadioQuestion.Option(R.id.bottomRocketLevelSandstorm_Radiobtn, 2),
-                        new RadioQuestion.Option(R.id.noRocketLevelSandstorm_Radiobtn, 3)),
-                new RadioQuestion(R.id.highestHabitatLevelRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.topHabitatLevel_Radiobtn, 0),
-                        new RadioQuestion.Option(R.id.middleHabitatLevel_Radiobtn, 1),
-                        new RadioQuestion.Option(R.id.bottomHabitatLevel_Radiobtn, 2),
-                        new RadioQuestion.Option(R.id.noHabitatLevel_Radiobtn, 3)),
-                new TextQuestion(R.id.pit_habitatTime_editText, true),
-                new RadioQuestion(R.id.programmingLanguageRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.javaProgrammingLanguage_Radiobtn, 0),
-                        new RadioQuestion.Option(R.id.cppProgrammingLanguage_Radiobtn, 1),
-                        new RadioQuestion.Option(R.id.labviewProgrammingLanguage_Radiobtn, 2),
-                        new RadioQuestion.Option(R.id.otherProgrammingLanguage_Radiobtn, 3)),
-
-                new TextQuestion(R.id.pit_arcadeGame_editText, true),
-                new TextQuestion(R.id.pit_comments_editText, true)
-        };
-        viewModel = new PitViewModel(questions);
+        viewModel = new PitViewModel();
 
         RadioGroup sandstormOperationsRadioQuestion = findViewById(R.id.sandstormOperationsRadioQuestion);
         sandstormOperationsRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormOperationsRadioQuestion, checkedId));

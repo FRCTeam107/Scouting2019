@@ -6,8 +6,8 @@ import com.frc107.scouting2019.model.question.Question;
 import java.io.File;
 
 public class PitViewModel extends ScoutViewModel {
-    public PitViewModel(Question... questions) {
-        model = new PitModel(questions);
+    public PitViewModel() {
+        model = new PitModel();
     }
 
     public File createPhotoFile() {

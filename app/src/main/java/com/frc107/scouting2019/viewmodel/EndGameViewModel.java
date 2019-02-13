@@ -5,8 +5,8 @@ import com.frc107.scouting2019.model.SandstormModel;
 import com.frc107.scouting2019.model.question.Question;
 
 public class EndGameViewModel extends ScoutViewModel {
-    public EndGameViewModel(Question... questions) {
-        model = new EndGameModel(questions);
+    public EndGameViewModel() {
+        model = new EndGameModel();
     }
 
     public String finish() {
