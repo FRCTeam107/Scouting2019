@@ -2,6 +2,8 @@ package com.frc107.scouting2019.view;
 
 import android.Manifest;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -23,7 +25,9 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -158,6 +162,26 @@ public class SendDataActivity extends AppCompatActivity {
         }
     }
 
+    private boolean compressPhoto(File file) {
+        try (FileInputStream fileInputStream = new FileInputStream(file);
+             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+             FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+            Bitmap bitmap = BitmapFactory.decodeStream(fileInputStream);
+            if (bitmap == null) {
+                Log.d("Scouting", "Bitmap is null");
+                return false;
+            }
+
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 25, byteArrayOutputStream);
+
+            fileOutputStream.write(byteArrayOutputStream.toByteArray());
+            return true;
+        } catch (IOException e) {
+            Log.d("Scouting", e.getMessage());
+            return false;
+        }
+    }
+
     public void sendRobotPhotos(View view) {
         if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
@@ -167,6 +191,12 @@ public class SendDataActivity extends AppCompatActivity {
 
             File folder = new File(dir);
             File[] photos = folder.listFiles();
+
+            for (File photo : photos) {
+                boolean compressedPhoto = compressPhoto(photo);
+                if (!compressedPhoto)
+                    Log.d("Scouting", "Failed to compress photo " + photo.getName());
+            }
 
             if(photos != null) {
                 ArrayList<Uri> toSend = new ArrayList<>();

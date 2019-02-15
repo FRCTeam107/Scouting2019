@@ -13,8 +13,4 @@ public class PitViewModel extends ScoutViewModel {
     public File createPhotoFile() {
         return ((PitModel) model).createPhotoFile();
     }
-
-    public boolean compressPhoto() {
-        return ((PitModel) model).compressPhoto();
-    }
 }

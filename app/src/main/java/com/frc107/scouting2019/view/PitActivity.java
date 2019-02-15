@@ -1,6 +1,7 @@
 package com.frc107.scouting2019.view;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -28,6 +29,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.io.File;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -51,6 +53,8 @@ public class PitActivity extends AppCompatActivity {
     private EditText commentsEditText;
 
     private PitViewModel viewModel;
+
+    private static final int REQUEST_CODE_CAMERA = 107;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,15 +190,10 @@ public class PitActivity extends AppCompatActivity {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
-            startActivityForResult(takePictureIntent, 0);
+            startActivityForResult(takePictureIntent, REQUEST_CODE_CAMERA);
         } else {
             Toast.makeText(getApplicationContext(), "Failure trying to take picture.", Toast.LENGTH_LONG).show();
             return;
-        }
-
-        boolean didCompressPhoto = viewModel.compressPhoto();
-        if (!didCompressPhoto) {
-            Toast.makeText(getApplicationContext(), "Failure while compressing picture.", Toast.LENGTH_LONG).show();
         }
     }
 
