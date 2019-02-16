@@ -29,6 +29,8 @@ public class SandstormActivity extends AppCompatActivity {
     private TextWatcher teamNumberTextWatcher;
     private EditText matchNumberEditText;
     private TextWatcher matchNumberTextWatcher;
+    private RadioGroup sandstormStartingPositionRadioQuestion;
+    private RadioGroup itemPickedUpRadioGroup;
 
     private SandstormViewModel viewModel;
 
@@ -39,11 +41,11 @@ public class SandstormActivity extends AppCompatActivity {
 
         viewModel = new SandstormViewModel();
 
-        RadioGroup sandstormStartingPositionRadioQuestion = findViewById(R.id.sandstormStartingPositionRadioQuestion);
+        sandstormStartingPositionRadioQuestion = findViewById(R.id.sandstormStartingPositionRadioQuestion);
         sandstormStartingPositionRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingPositionRadioQuestion, checkedId));
 
-        RadioGroup sandstormStartingGamePieceRadioQuestion = findViewById(R.id.sandstormStartingGamePieceRadioQuestion);
-        sandstormStartingGamePieceRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingGamePieceRadioQuestion, checkedId));
+        itemPickedUpRadioGroup = findViewById(R.id.sandstormStartingGamePieceRadioQuestion);
+        itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingGamePieceRadioQuestion, checkedId));
 
         teamNumberEditText = findViewById(R.id.teamNumberEditText);
         teamNumberTextWatcher = new TextWatcher() {
@@ -127,9 +129,22 @@ public class SandstormActivity extends AppCompatActivity {
         }
 
         viewModel.finish();
+        clearAnswers();
 
         final Intent intent = new Intent(this, CycleActivity.class);
 
         startActivity(intent);
+
+    }
+
+    private void clearAnswers() {
+
+        teamNumberEditText.setText("");
+
+
+        matchNumberEditText.setText("");
+
+        sandstormStartingPositionRadioQuestion.clearCheck();
+        itemPickedUpRadioGroup.clearCheck();
     }
 }

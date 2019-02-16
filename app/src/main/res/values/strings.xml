@@ -47,7 +47,7 @@
     <string name="topRocketItemPlaced">Top Rocket</string>
     <string name="middleRocketItemPlaced">Middle Rocket</string>
     <string name="bottomRocketItemPlaced">Bottom Rocket</string>
-    <string name="cargoshipItemPlaced">Cargoship</string>
+    <string name="cargoshipItemPlaced">Cargo Ship</string>
     <string name="floorItemPlaced">Dropped</string>
 
     <string name="defenseChkbxText">Defense</string>
@@ -92,7 +92,7 @@
 
 
     <string name="pitSandstormPreference">Sandstorm Preference</string>
-    <string name="cargoshipPreferenceSandstorm">Cargoship</string>
+    <string name="cargoshipPreferenceSandstorm">Cargo Ship</string>
     <string name="rocketshipPreferenceSandstorm">Rocketship</string>
     <string name="noPreferenceSandstorm">None</string>
 
