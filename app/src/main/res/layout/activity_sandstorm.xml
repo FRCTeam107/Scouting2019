@@ -25,7 +25,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/top_of_screen_margin"
                 android:hint="@string/teamNumberHeading"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="4"/>
 
             <EditText
                 android:id="@+id/matchNumberEditText"
@@ -33,7 +34,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/top_margin"
                 android:hint="@string/matchNumberHeading"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="3"/>
 
 
             <TextView

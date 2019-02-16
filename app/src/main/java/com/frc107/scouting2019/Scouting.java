@@ -26,19 +26,19 @@ public class Scouting {
         return uniqueId;
     }
 
-    private String teamNumber;
-    public void setTeamNumber(String newTeamNumber) {
+    private int teamNumber;
+    public void setTeamNumber(int newTeamNumber) {
         teamNumber = newTeamNumber;
     }
-    public String getTeamNumber() {
+    public int getTeamNumber() {
         return teamNumber;
     }
 
-    private String matchNumber;
-    public void setMatchNumber(String newMatchNumber) {
+    private int matchNumber;
+    public void setMatchNumber(int newMatchNumber) {
         matchNumber = newMatchNumber;
     }
-    public String getMatchNumber() {
+    public int getMatchNumber() {
         return matchNumber;
     }
 

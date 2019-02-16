@@ -27,7 +27,7 @@ public class PitModel extends ScoutModel {
         File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
         dir.mkdirs();
 
-        String teamNumber = Scouting.getInstance().getTeamNumber();
+        int teamNumber = Scouting.getInstance().getTeamNumber();
         File file = new File(dir, teamNumber + ".jpg");
 
         try {
@@ -42,7 +42,7 @@ public class PitModel extends ScoutModel {
 
     public boolean compressPhoto() {
         File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
-        String teamNumber = Scouting.getInstance().getTeamNumber();
+        int teamNumber = Scouting.getInstance().getTeamNumber();
         File file = new File(dir, teamNumber + ".jpg");
 
         try (FileInputStream fileInputStream = new FileInputStream(file);
