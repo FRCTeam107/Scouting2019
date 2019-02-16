@@ -39,9 +39,7 @@ public class CycleActivity extends AppCompatActivity {
 
         viewModel = new CycleViewModel();
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(Scouting.getInstance().getTeamNumber());
-        }
+        getSupportActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
 
         pickupLocationRadioGroup = findViewById(R.id.pickupLocationRadioQuestion);
         pickupLocationRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
