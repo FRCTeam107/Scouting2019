@@ -10,12 +10,15 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.CycleViewModel;
+
+import java.util.Objects;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,6 +38,8 @@ public class CycleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cycle);
 
         viewModel = new CycleViewModel();
+
+        getSupportActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
 
         pickupLocationRadioGroup = findViewById(R.id.pickupLocationRadioQuestion);
         pickupLocationRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));

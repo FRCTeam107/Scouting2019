@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.model.question.ToggleQuestion;
@@ -39,6 +40,8 @@ public class EndGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_endgame);
 
         viewModel = new EndGameViewModel();
+
+        getSupportActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
 
         RadioGroup endGameHabitatLevelRadioQuestion = findViewById(R.id.endGameHabitatLevelRadioQuestion);
         endGameHabitatLevelRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameHabitatLevelRadioQuestion, checkedId));
