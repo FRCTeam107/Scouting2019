@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/top_of_screen_margin"
                 android:hint="@string/teamNumberHeading"
+                android:maxLength="4"
                 android:inputType="number" />
 
             <EditText
@@ -33,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/top_margin"
                 android:hint="@string/matchNumberHeading"
+                android:maxLength="3"
                 android:inputType="number" />
 
 
