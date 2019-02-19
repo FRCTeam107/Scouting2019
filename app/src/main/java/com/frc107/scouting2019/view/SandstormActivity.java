@@ -31,6 +31,7 @@ public class SandstormActivity extends AppCompatActivity {
     private TextWatcher matchNumberTextWatcher;
     private RadioGroup sandstormStartingPositionRadioQuestion;
     private RadioGroup itemPickedUpRadioGroup;
+    private RadioGroup itemPlacedSandstormRadioGroup;
 
     private SandstormViewModel viewModel;
 
@@ -46,6 +47,9 @@ public class SandstormActivity extends AppCompatActivity {
 
         itemPickedUpRadioGroup = findViewById(R.id.sandstormStartingGamePieceRadioQuestion);
         itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingGamePieceRadioQuestion, checkedId));
+
+        itemPlacedSandstormRadioGroup = findViewById(R.id.sandstormItemPlacedRadioQuestion);
+        itemPlacedSandstormRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormItemPlacedRadioQuestion, checkedId));
 
         teamNumberEditText = findViewById(R.id.teamNumberEditText);
         teamNumberTextWatcher = new TextWatcher() {
@@ -146,5 +150,6 @@ public class SandstormActivity extends AppCompatActivity {
 
         sandstormStartingPositionRadioQuestion.clearCheck();
         itemPickedUpRadioGroup.clearCheck();
+        itemPlacedSandstormRadioGroup.clearCheck();
     }
 }

@@ -23,6 +23,18 @@
     <string name="cargoSandstormStartingGamePiece">Cargo</string>
     <string name="panelSandstormStartingGamePiece">Panel</string>
     <string name="noSandstormStartingGamePiece">None</string>
+
+    <string name="sandstormItemPlacedHeading">Item Placed</string>
+    <string name="sandstormTopRocketItemPlaced">Top Rocket</string>
+    <string name="sandstormMiddleRocketItemPlaced">Middle Rocket</string>
+    <string name="sandstormBottomRocketItemPlaced">Bottom Rocket</string>
+    <string name="sandstormCargoshipItemPlaced">Cargo Ship</string>
+    <string name="sandstormFloorItemPlaced">Floor</string>
+
+
+
+
+
     <string name="saveButton">Save</string>
 
     <string name="enterTeleopCycle">Enter Teleop Cycle</string>
