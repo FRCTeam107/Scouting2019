@@ -25,7 +25,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/top_of_screen_margin"
                 android:hint="@string/teamNumberHeading"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="5"/>
 
             <EditText
                 android:id="@+id/matchNumberEditText"
@@ -33,7 +34,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/top_margin"
                 android:hint="@string/matchNumberHeading"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="3"/>
 
 
             <TextView
@@ -118,6 +120,70 @@
                     android:textAlignment="center" />
             </RadioGroup>
 
+
+            <TextView
+                android:id="@+id/sandstormItemPlacedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sandstormItemPlacedHeading"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                android:textSize="@dimen/label_text_size"/>
+
+            <RadioGroup
+                android:id="@+id/sandstormItemPlacedRadioQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/question_height"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/sandstormTopRocketItemPlaced_Radiobtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"
+                    android:text="@string/sandstormTopRocketItemPlaced"
+                    android:textAlignment="center" />
+
+                <RadioButton
+                    android:id="@+id/sandstormMiddleRocketItemPlaced_Radiobtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"
+                    android:text="@string/sandstormMiddleRocketItemPlaced"
+                    android:textAlignment="center" />
+
+                <RadioButton
+                    android:id="@+id/sandstormBottomRocketItemPlaced_Radiobtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"
+                    android:text="@string/sandstormBottomRocketItemPlaced"
+                    android:textAlignment="center" />
+                <RadioButton
+                    android:id="@+id/sandstormCargoshipItemPlaced_Radiobtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"
+                    android:text="@string/sandstormCargoshipItemPlaced"
+                    android:textAlignment="center" />
+                <RadioButton
+                    android:id="@+id/sandstormFloorItemPlaced_Radiobtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"
+                    android:text="@string/sandstormFloorItemPlaced"
+                    android:textAlignment="center" />
+            </RadioGroup>
 
             <Button
                 android:id="@+id/next_button"

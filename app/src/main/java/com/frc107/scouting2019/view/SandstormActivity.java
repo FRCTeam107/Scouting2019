@@ -29,6 +29,9 @@ public class SandstormActivity extends AppCompatActivity {
     private TextWatcher teamNumberTextWatcher;
     private EditText matchNumberEditText;
     private TextWatcher matchNumberTextWatcher;
+    private RadioGroup sandstormStartingPositionRadioQuestion;
+    private RadioGroup itemPickedUpRadioGroup;
+    private RadioGroup itemPlacedSandstormRadioGroup;
 
     private SandstormViewModel viewModel;
 
@@ -39,16 +42,19 @@ public class SandstormActivity extends AppCompatActivity {
 
         viewModel = new SandstormViewModel();
 
-        RadioGroup sandstormStartingPositionRadioQuestion = findViewById(R.id.sandstormStartingPositionRadioQuestion);
+        sandstormStartingPositionRadioQuestion = findViewById(R.id.sandstormStartingPositionRadioQuestion);
         sandstormStartingPositionRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingPositionRadioQuestion, checkedId));
 
-        RadioGroup sandstormStartingGamePieceRadioQuestion = findViewById(R.id.sandstormStartingGamePieceRadioQuestion);
-        sandstormStartingGamePieceRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingGamePieceRadioQuestion, checkedId));
+        itemPickedUpRadioGroup = findViewById(R.id.sandstormStartingGamePieceRadioQuestion);
+        itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingGamePieceRadioQuestion, checkedId));
+
+        itemPlacedSandstormRadioGroup = findViewById(R.id.sandstormItemPlacedRadioQuestion);
+        itemPlacedSandstormRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormItemPlacedRadioQuestion, checkedId));
 
         teamNumberEditText = findViewById(R.id.teamNumberEditText);
         teamNumberTextWatcher = new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int teamNumber = Integer.valueOf(s.toString());
+                int teamNumber = s.length() > 0 ? Integer.parseInt(s.toString()) : -1;
                 Scouting.getInstance().setTeamNumber(teamNumber);
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -59,7 +65,7 @@ public class SandstormActivity extends AppCompatActivity {
         matchNumberEditText = findViewById(R.id.matchNumberEditText);
         matchNumberTextWatcher = new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int matchNumber = Integer.valueOf(s.toString());
+                int matchNumber = s.length() > 0 ? Integer.parseInt(s.toString()) : -1;
                 Scouting.getInstance().setMatchNumber(matchNumber);
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -127,9 +133,23 @@ public class SandstormActivity extends AppCompatActivity {
         }
 
         viewModel.finish();
+        clearAnswers();
 
         final Intent intent = new Intent(this, CycleActivity.class);
 
         startActivity(intent);
+
+    }
+
+    private void clearAnswers() {
+
+        teamNumberEditText.setText("");
+
+
+        matchNumberEditText.setText("");
+
+        sandstormStartingPositionRadioQuestion.clearCheck();
+        itemPickedUpRadioGroup.clearCheck();
+        itemPlacedSandstormRadioGroup.clearCheck();
     }
 }

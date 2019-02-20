@@ -23,6 +23,18 @@
     <string name="cargoSandstormStartingGamePiece">Cargo</string>
     <string name="panelSandstormStartingGamePiece">Panel</string>
     <string name="noSandstormStartingGamePiece">None</string>
+
+    <string name="sandstormItemPlacedHeading">Item Placed</string>
+    <string name="sandstormTopRocketItemPlaced">Top Rocket</string>
+    <string name="sandstormMiddleRocketItemPlaced">Middle Rocket</string>
+    <string name="sandstormBottomRocketItemPlaced">Bottom Rocket</string>
+    <string name="sandstormCargoshipItemPlaced">Cargo Ship</string>
+    <string name="sandstormFloorItemPlaced">Floor</string>
+
+
+
+
+
     <string name="saveButton">Save</string>
 
     <string name="enterTeleopCycle">Enter Teleop Cycle</string>
@@ -47,7 +59,7 @@
     <string name="topRocketItemPlaced">Top Rocket</string>
     <string name="middleRocketItemPlaced">Middle Rocket</string>
     <string name="bottomRocketItemPlaced">Bottom Rocket</string>
-    <string name="cargoshipItemPlaced">Cargoship</string>
+    <string name="cargoshipItemPlaced">Cargo Ship</string>
     <string name="floorItemPlaced">Dropped</string>
 
     <string name="defenseChkbxText">Defense</string>
@@ -92,7 +104,7 @@
 
 
     <string name="pitSandstormPreference">Sandstorm Preference</string>
-    <string name="cargoshipPreferenceSandstorm">Cargoship</string>
+    <string name="cargoshipPreferenceSandstorm">Cargo Ship</string>
     <string name="rocketshipPreferenceSandstorm">Rocketship</string>
     <string name="noPreferenceSandstorm">None</string>
 
