@@ -135,6 +135,8 @@ public class SandstormActivity extends AppCompatActivity {
         viewModel.finish();
         clearAnswers();
 
+        ViewUtils.requestFocusToUnfinishedQuestion(teamNumberEditText, this);
+
         final Intent intent = new Intent(this, CycleActivity.class);
 
         startActivity(intent);
@@ -143,10 +145,10 @@ public class SandstormActivity extends AppCompatActivity {
 
     private void clearAnswers() {
 
-        teamNumberEditText.setText("");
 
 
         matchNumberEditText.setText("");
+        teamNumberEditText.setText("");
 
         sandstormStartingPositionRadioQuestion.clearCheck();
         itemPickedUpRadioGroup.clearCheck();
