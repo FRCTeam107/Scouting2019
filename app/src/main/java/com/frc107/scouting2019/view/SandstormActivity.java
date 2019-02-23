@@ -72,7 +72,7 @@ public class SandstormActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) { }
         };
         matchNumberEditText.addTextChangedListener(matchNumberTextWatcher);
-        
+
         checkForPermissions();
     }
 
