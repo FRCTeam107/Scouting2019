@@ -73,7 +73,6 @@ public class SandstormActivity extends AppCompatActivity {
         };
         matchNumberEditText.addTextChangedListener(matchNumberTextWatcher);
 
-
         checkForPermissions();
     }
 
@@ -131,23 +130,17 @@ public class SandstormActivity extends AppCompatActivity {
             ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
             return;
         }
-
         viewModel.finish();
         clearAnswers();
-
+        ViewUtils.requestFocusToUnfinishedQuestion(teamNumberEditText, this);
         final Intent intent = new Intent(this, CycleActivity.class);
-
         startActivity(intent);
 
     }
 
     private void clearAnswers() {
-
         teamNumberEditText.setText("");
-
-
         matchNumberEditText.setText("");
-
         sandstormStartingPositionRadioQuestion.clearCheck();
         itemPickedUpRadioGroup.clearCheck();
         itemPlacedSandstormRadioGroup.clearCheck();
