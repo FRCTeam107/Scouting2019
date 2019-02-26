@@ -6,7 +6,6 @@ import com.frc107.scouting2019.model.question.NumberQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.model.question.TextQuestion;
-import com.frc107.scouting2019.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -122,7 +121,7 @@ public abstract class ScoutModel {
 
     public String save() {
         String dataToWrite = getCSVRowHeader() + ',' + getAnswerCSVRow();
-        String result = Scouting.CSV_GENERATOR.writeData(fileNameHeader, dataToWrite);
+        String result = Scouting.FILE_UTILS.writeData(fileNameHeader, dataToWrite);
         return result;
     }
 

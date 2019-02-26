@@ -1,11 +1,11 @@
 package com.frc107.scouting2019;
 
-import com.frc107.scouting2019.model.csv.CsvWriter;
+import com.frc107.scouting2019.utils.FileUtils;
 
 import java.util.ArrayList;
 
 public class Scouting {
-    public static final CsvWriter CSV_GENERATOR = new CsvWriter();
+    public static final FileUtils FILE_UTILS = new FileUtils();
 
     private static Scouting scouting;
     public static Scouting getInstance() {

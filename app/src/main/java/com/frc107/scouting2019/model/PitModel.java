@@ -23,12 +23,15 @@ public class PitModel extends ScoutModel {
         setFileNameHeader("Pit");
     }
 
+    private String getTeamNumber() {
+        return getAnswerForQuestion(R.id.pit_teamNumber_editText);
+    }
+
     public File createPhotoFile() {
         File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
         dir.mkdirs();
 
-        int teamNumber = Scouting.getInstance().getTeamNumber();
-        File file = new File(dir, teamNumber + ".jpg");
+        File file = new File(dir, getTeamNumber() + ".jpg");
 
         try {
             file.createNewFile();
@@ -41,27 +44,7 @@ public class PitModel extends ScoutModel {
     }
 
     public boolean compressPhoto() {
-        File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
-        int teamNumber = Scouting.getInstance().getTeamNumber();
-        File file = new File(dir, teamNumber + ".jpg");
-
-        try (FileInputStream fileInputStream = new FileInputStream(file);
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                FileOutputStream fileOutputStream = new FileOutputStream(file)) {
-            Bitmap bitmap = BitmapFactory.decodeStream(fileInputStream);
-
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 25, byteArrayOutputStream);
-
-            fileOutputStream.write(byteArrayOutputStream.toByteArray());
-            fileInputStream.close();
-            byteArrayOutputStream.close();
-            fileOutputStream.close();
-
-            return true;
-        } catch (IOException e) {
-            Log.d("Scouting", e.getMessage());
-            return false;
-        }
+        return Scouting.FILE_UTILS.compressPhoto(getTeamNumber());
     }
 
     @Override

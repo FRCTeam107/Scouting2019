@@ -1,8 +1,10 @@
 package com.frc107.scouting2019.view;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -28,6 +30,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.io.File;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -51,6 +54,8 @@ public class PitActivity extends AppCompatActivity {
     private EditText commentsEditText;
 
     private PitViewModel viewModel;
+
+    private static final int REQUEST_CODE_CAMERA = 107;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,7 +158,7 @@ public class PitActivity extends AppCompatActivity {
         finish();
     }
 
-    public void takeAndCompressPhoto(View view) {
+    public void openCamera(View view) {
         String teamNumber = viewModel.getAnswerForQuestion(R.id.pit_teamNumber_editText);
         if (teamNumber == null) {
             ViewUtils.requestFocus(findViewById(R.id.pit_teamNumber_editText), this);
@@ -186,15 +191,17 @@ public class PitActivity extends AppCompatActivity {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
-            startActivityForResult(takePictureIntent, 0);
+            startActivityForResult(takePictureIntent, REQUEST_CODE_CAMERA);
         } else {
             Toast.makeText(getApplicationContext(), "Failure trying to take picture.", Toast.LENGTH_LONG).show();
-            return;
         }
+    }
 
-        boolean didCompressPhoto = viewModel.compressPhoto();
-        if (!didCompressPhoto) {
-            Toast.makeText(getApplicationContext(), "Failure while compressing picture.", Toast.LENGTH_LONG).show();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK) {
+            if (!viewModel.compressPhoto())
+                Toast.makeText(this, "Failure while compressing photo.", Toast.LENGTH_SHORT);
         }
     }
 
@@ -203,10 +210,5 @@ public class PitActivity extends AppCompatActivity {
         if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
         }
-    }
-
-    private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
-        final EditText editText = textInputLayout.getEditText();
-        return editText != null && editText.getText() != null ? editText.getText().toString() : "";
     }
 }

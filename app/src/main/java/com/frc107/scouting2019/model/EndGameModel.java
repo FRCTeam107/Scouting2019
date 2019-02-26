@@ -49,7 +49,7 @@ public class EndGameModel extends ScoutModel {
             if (i < cycles.size() - 1)
                 builder.append("\n");
         }
-        String saveResponse = Scouting.CSV_GENERATOR.writeData(FILE_NAME_HEADER, builder.toString());
+        String saveResponse = Scouting.FILE_UTILS.writeData(FILE_NAME_HEADER, builder.toString());
         return saveResponse;
     }
 }
