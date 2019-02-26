@@ -2,40 +2,25 @@ package com.frc107.scouting2019.view;
 
 import android.Manifest;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.Settings;
-import androidx.annotation.NonNull;
-
-import com.frc107.scouting2019.BuildConfig;
-import com.frc107.scouting2019.R;
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.core.content.FileProvider;
-import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
+import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.utils.PermissionUtils;
+import com.frc107.scouting2019.viewmodel.SendDataViewModel;
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import com.frc107.scouting2019.utils.PermissionUtils;
 
 /**
  * Created by Matt on 10/9/2017.
@@ -49,12 +34,14 @@ public class SendDataActivity extends AppCompatActivity {
     @BindView(R.id.concatFolder_editText)
     public EditText concatFolderEditText;
 
+    private SendDataViewModel viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_data);
 
-        ButterKnife.bind(this);
+        viewModel = new SendDataViewModel();
     }
 
     /* This method will display the options menu when the icon is pressed
@@ -83,138 +70,41 @@ public class SendDataActivity extends AppCompatActivity {
         }
     }
 
-    public void concatenateData(View view) {
-        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE) &&
-                PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            RadioButton radioButton = findViewById(matchOrPitRadiobtnGrp.getCheckedRadioButtonId());
 
-            if(radioButton != null) {
-                String dir = Environment.getExternalStorageDirectory() + "/" + concatFolderEditText.getText().toString();
-
-                File folder = new File(dir);
-
-                if(folder.exists() && concatFolderEditText.getText().toString().length() > 0) {
-                    File[] files = folder.listFiles();
-
-                    StringBuilder builder = new StringBuilder();
-                    FileReader fileReader;
-                    BufferedReader bufferedReader;
-                    FileOutputStream fileOutputStream;
-
-                    String type = radioButton.getText().toString().contains("Match") ? "Match" : "Pit";
-
-                    if (files != null) {
-                        try {
-                            int fileCount = 0;
-                            for (File file : files) {
-                                if (file.getName().contains(type)) {
-                                    fileCount++;
-                                    fileReader = new FileReader(file);
-                                    bufferedReader = new BufferedReader(fileReader);
-
-                                    String line;
-                                    while ((line = bufferedReader.readLine()) != null) {
-                                        builder.append(line + '\n');
-                                    }
-                                }
-                            }
-                            fileOutputStream = new FileOutputStream(new File(dir, "new.csv"), false);
-                            fileOutputStream.write("teamNumber,matchNumber,startingLocation,baseline,autoCubesInSwitch,autoCubesInScale,numberOfCubesInExchange,numberOfCubesInTheirSwitch,numberOfCubesInOpSwitch,NumberOfCubesInScale,cubePickup,climb,canHelpOthersClimb,onPlatform,defense,fouls,scouterInitials".getBytes());
-                            fileOutputStream.write(builder.toString().getBytes());
-                            fileOutputStream.close();
-
-                            Toast.makeText(this, "Successfully concatenated " + fileCount + " " + type + " files to new.csv!", Toast.LENGTH_LONG).show();
-
-                        } catch (IOException e) {
-                            Log.d("Scouting", e.getMessage());
-                            Toast.makeText(this, "Failed to concatenate data.", Toast.LENGTH_LONG).show();
-                        }
-                    }
-
-                } else {
-                    Toast.makeText(this, "Invalid folder name!", Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Toast.makeText(this, "Select an option!", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    public void sendMatchData(View view) {
-        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            String file = "storage/emulated/0/Scouting/Match" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv";
-            intent.setType("text/plain");
-            intent.setPackage("com.android.bluetooth");
-            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(file)));
-            startActivity(Intent.createChooser(intent, "Share app"));
-        }
-    }
-
-    public void sendPitData(View view) {
-        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            String file = "storage/emulated/0/Scouting/Pit" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv";
-            intent.setType("text/plain");
-            intent.setPackage("com.android.bluetooth");
-            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(file)));
-            startActivity(Intent.createChooser(intent, "Share app"));
-        }
-    }
-
-    private boolean compressPhoto(File file) {
-        try (FileInputStream fileInputStream = new FileInputStream(file);
-             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-             FileOutputStream fileOutputStream = new FileOutputStream(file)) {
-            Bitmap bitmap = BitmapFactory.decodeStream(fileInputStream);
-            if (bitmap == null) {
-                Log.d("Scouting", "Bitmap is null");
-                return false;
-            }
-
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 25, byteArrayOutputStream);
-
-            fileOutputStream.write(byteArrayOutputStream.toByteArray());
-            return true;
-        } catch (IOException e) {
-            Log.d("Scouting", e.getMessage());
-            return false;
-        }
-    }
-
-    public void sendRobotPhotos(View view) {
-        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-            intent.setType("image/jpeg");
-            intent.setPackage("com.android.bluetooth");
-            String dir = "storage/emulated/0/Scouting/Photos/";
-
-            File folder = new File(dir);
-            File[] photos = folder.listFiles();
-
-            for (File photo : photos) {
-                boolean compressedPhoto = compressPhoto(photo);
-                if (!compressedPhoto)
-                    Log.d("Scouting", "Failed to compress photo " + photo.getName());
-            }
-
-            if(photos != null) {
-                ArrayList<Uri> toSend = new ArrayList<>();
-
-                for (int i = 0; i < photos.length; i++) {
-                    toSend.add(FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", photos[i]));
-                }
-
-                intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, toSend);
-                startActivity(Intent.createChooser(intent, "Share app"));
-            } else {
-                Toast.makeText(this, "No photos!", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
 
     private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
         final EditText editText = textInputLayout.getEditText();
         return editText != null && editText.getText() != null ? editText.getText().toString() : "";
+    }
+
+    public void concatenateData(View view) {
+        String result = "Failure concatenating data.";
+        if (viewModel.concatenateMatchData()) {
+            result = "Successfully concatenated data.";
+        }
+        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+    }
+
+    public void sendRobotPhotos(View view) {
+        if (!PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            return;
+        }
+
+        /*if (!viewModel.compressPhotos()) {
+            Toast.makeText(this, "Failure compressing photos.", Toast.LENGTH_SHORT).show();
+            return;
+        }*/
+
+        Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        intent.setType("image/jpeg");
+        intent.setPackage("com.android.bluetooth");
+
+        ArrayList<Uri> uriList = viewModel.getPhotoUriList(this);
+        if (uriList.isEmpty()) {
+            Toast.makeText(this, "No photos!", Toast.LENGTH_SHORT).show();
+        } else {
+            intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uriList);
+            startActivity(Intent.createChooser(intent, "Share app"));
+        }
     }
 }

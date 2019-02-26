@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -157,7 +158,7 @@ public class PitActivity extends AppCompatActivity {
         finish();
     }
 
-    public void takeAndCompressPhoto(View view) {
+    public void openCamera(View view) {
         String teamNumber = viewModel.getAnswerForQuestion(R.id.pit_teamNumber_editText);
         if (teamNumber == null) {
             ViewUtils.requestFocus(findViewById(R.id.pit_teamNumber_editText), this);
@@ -193,7 +194,14 @@ public class PitActivity extends AppCompatActivity {
             startActivityForResult(takePictureIntent, REQUEST_CODE_CAMERA);
         } else {
             Toast.makeText(getApplicationContext(), "Failure trying to take picture.", Toast.LENGTH_LONG).show();
-            return;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK) {
+            if (!viewModel.compressPhoto())
+                Toast.makeText(this, "Failure while compressing photo.", Toast.LENGTH_SHORT);
         }
     }
 
@@ -202,10 +210,5 @@ public class PitActivity extends AppCompatActivity {
         if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
         }
-    }
-
-    private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
-        final EditText editText = textInputLayout.getEditText();
-        return editText != null && editText.getText() != null ? editText.getText().toString() : "";
     }
 }
