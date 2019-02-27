@@ -54,8 +54,8 @@ public class SandstormActivity extends AppCompatActivity {
         teamNumberEditText = findViewById(R.id.teamNumberEditText);
         teamNumberTextWatcher = new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int teamNumber = s.length() > 0 ? Integer.parseInt(s.toString()) : -1;
-                Scouting.getInstance().setTeamNumber(teamNumber);
+                if (s.length() > 0)
+                    Scouting.getInstance().setTeamNumber(Integer.parseInt(s.toString()));
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }
@@ -127,12 +127,12 @@ public class SandstormActivity extends AppCompatActivity {
     public void goToCycle(View view) {
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
         if (unfinishedQuestionId != -1) {
-            ViewUtils.requestFocus(findViewById(unfinishedQuestionId), this);
+            ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
             return;
         }
         viewModel.finish();
         clearAnswers();
-        ViewUtils.requestFocusToUnfinishedQuestion(teamNumberEditText, this);
+        ViewUtils.requestFocus(teamNumberEditText, this);
         final Intent intent = new Intent(this, CycleActivity.class);
         startActivity(intent);
 
