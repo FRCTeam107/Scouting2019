@@ -8,50 +8,29 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send Match Data"
+        android:text="@string/sendMatchData"
         android:onClick="sendMatchData"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send Pit Data"
+        android:text="@string/sendPitData"
         android:onClick="sendPitData"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send Robot Photos"
+        android:text="@string/sendRobotPhotos"
         android:onClick="sendRobotPhotos"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Concatenate Data"
-        android:onClick="concatenateData"/>
-
-    <RadioGroup
-        android:id="@+id/matchOrPit_RadiobtnGrp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/match_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/concatenateMatch" />
-
-        <RadioButton
-            android:id="@+id/pit_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/concatenatePit" />
-
-    </RadioGroup>
-
-    <EditText
+        android:text="@string/concatenateMatchData"
+        android:onClick="concatenateMatchData"/>
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/concatFolder_editText"
-        android:hint="@string/concatFolder" />
+        android:text="@string/concatenatePitData"
+        android:onClick="concatenatePitData"/>
 
 </LinearLayout>

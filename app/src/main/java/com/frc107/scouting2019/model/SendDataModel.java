@@ -21,6 +21,9 @@ import java.util.ArrayList;
 import androidx.core.content.FileProvider;
 
 public class SendDataModel {
+    public static final int MATCH = 0,
+                            PIT = 1;
+
     public boolean compressPhotos() {
         FileUtils fileUtils = Scouting.FILE_UTILS;
         File[] photos = fileUtils.getPhotos();
@@ -81,7 +84,11 @@ public class SendDataModel {
         return uriList;
     }
 
-    public boolean concatenateData() {
+    public boolean concatenateData(int type) {
+        String prefix = "Match";
+        if (type == PIT)
+            prefix = "Pit";
+
         StringBuilder builder = new StringBuilder();
         String header = "\n";
         builder.append(header);
@@ -96,11 +103,15 @@ public class SendDataModel {
 
         for (int i = 0; i < files.length; i++) {
             File file = files[i];
+            if (!file.getName().startsWith(prefix))
+                continue;
+
             String content = fileUtils.getContentFromFile(file);
             builder.append(content);
         }
 
-        File newFile = new File(fileUtils.getScoutingDirectory(), "concatenated_match.csv");
+        String fileName = prefix + "Concatenated.csv";
+        File newFile = new File(fileUtils.getScoutingDirectory(), fileName);
         try (FileOutputStream fileOutputStream = new FileOutputStream(newFile, false)) {
             fileOutputStream.write(builder.toString().getBytes());
             return true;
@@ -111,25 +122,11 @@ public class SendDataModel {
         return false;
     }
 
-    /*public void sendMatchData(View view) {
-        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            String file = "storage/emulated/0/Scouting/Match" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv";
-            intent.setType("text/plain");
-            intent.setPackage("com.android.bluetooth");
-            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(file)));
-            startActivity(Intent.createChooser(intent, "Share app"));
-        }
+    public File getMatchFile() {
+        return Scouting.FILE_UTILS.getDeviceMatchFile();
     }
 
-    public void sendPitData(View view) {
-        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            String file = "storage/emulated/0/Scouting/Pit" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv";
-            intent.setType("text/plain");
-            intent.setPackage("com.android.bluetooth");
-            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(file)));
-            startActivity(Intent.createChooser(intent, "Share app"));
-        }
-    }*/
+    public File getPitFile() {
+        return Scouting.FILE_UTILS.getDevicePitFile();
+    }
 }

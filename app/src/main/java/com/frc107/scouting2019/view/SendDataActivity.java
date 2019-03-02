@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.frc107.scouting2019.BuildConfig;
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.viewmodel.SendDataViewModel;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import butterknife.BindView;
 
 /**
@@ -27,13 +29,6 @@ import butterknife.BindView;
  */
 
 public class SendDataActivity extends AppCompatActivity {
-
-    @BindView(R.id.matchOrPit_RadiobtnGrp)
-    public RadioGroup matchOrPitRadiobtnGrp;
-
-    @BindView(R.id.concatFolder_editText)
-    public EditText concatFolderEditText;
-
     private SendDataViewModel viewModel;
 
     @Override
@@ -70,16 +65,17 @@ public class SendDataActivity extends AppCompatActivity {
         }
     }
 
-
-
-    private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
-        final EditText editText = textInputLayout.getEditText();
-        return editText != null && editText.getText() != null ? editText.getText().toString() : "";
-    }
-
-    public void concatenateData(View view) {
+    public void concatenateMatchData(View view) {
         String result = "Failure concatenating data.";
         if (viewModel.concatenateMatchData()) {
+            result = "Successfully concatenated data.";
+        }
+        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+    }
+
+    public void concatenatePitData(View view) {
+        String result = "Failure concatenating data.";
+        if (viewModel.concatenatePitData()) {
             result = "Successfully concatenated data.";
         }
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
@@ -90,11 +86,6 @@ public class SendDataActivity extends AppCompatActivity {
             return;
         }
 
-        /*if (!viewModel.compressPhotos()) {
-            Toast.makeText(this, "Failure compressing photos.", Toast.LENGTH_SHORT).show();
-            return;
-        }*/
-
         Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
         intent.setType("image/jpeg");
         intent.setPackage("com.android.bluetooth");
@@ -104,6 +95,26 @@ public class SendDataActivity extends AppCompatActivity {
             Toast.makeText(this, "No photos!", Toast.LENGTH_SHORT).show();
         } else {
             intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uriList);
+            startActivity(Intent.createChooser(intent, "Share app"));
+        }
+    }
+
+    public void sendMatchData(View view) {
+        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.setPackage("com.android.bluetooth");
+            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", viewModel.getMatchFile()));
+            startActivity(Intent.createChooser(intent, "Share app"));
+        }
+    }
+
+    public void sendPitData(View view) {
+        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.setPackage("com.android.bluetooth");
+            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", viewModel.getPitFile()));
             startActivity(Intent.createChooser(intent, "Share app"));
         }
     }
