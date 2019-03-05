@@ -24,10 +24,6 @@ public class SendDataViewModel {
         return model.concatenateData(SendDataModel.PIT);
     }
 
-    public boolean compressPhotos() {
-        return model.compressPhotos();
-    }
-
     public ArrayList<Uri> getPhotoUriList(Context context) {
         return model.getPhotoUriList(context);
     }
