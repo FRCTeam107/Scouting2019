@@ -7,10 +7,6 @@
 
     <string name="mainAuthor">Developed by FRC Team 107</string>
 
-    <string name="concatenateMatch">Concatenate Match</string>
-    <string name="concatenatePit">Concatenate Pit</string>
-    <string name="concatFolder">Enter concatenation folder name</string>
-
     <!--Sandstorm Strings-->
     <string name="teamNumberHeading">Team Number</string>
     <string name="matchNumberHeading">Match Number</string>
@@ -136,6 +132,14 @@
     <string name="takePhotoButton">Take Photo</string>
 
     <!--Pit Error Strings-->
+
+
+    <!--Send Data Strings-->
+    <string name="concatenateMatchData">Concatenate Match Data</string>
+    <string name="concatenatePitData">Concatenate Pit Data</string>
+    <string name="sendRobotPhotos">Send Robot Photos</string>
+    <string name="sendPitData">Send Pit Data</string>
+    <string name="sendMatchData">Send Match Data</string>
 
 
 </resources>

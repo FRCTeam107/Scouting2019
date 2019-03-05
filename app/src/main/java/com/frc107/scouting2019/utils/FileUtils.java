@@ -49,6 +49,22 @@ public class FileUtils {
         return photo;
     }
 
+    public File getDeviceMatchFile() {
+        File file = new File(directory, "Match" + Scouting.getInstance().getUniqueId() + ".csv");
+        if (!file.exists())
+            return null;
+
+        return file;
+    }
+
+    public File getDevicePitFile() {
+        File file = new File(directory, "Pit" + Scouting.getInstance().getUniqueId() + ".csv");
+        if (!file.exists())
+            return null;
+
+        return file;
+    }
+
     public boolean compressPhoto(String teamNumber) {
         try {
             File file = getPhoto(teamNumber);
