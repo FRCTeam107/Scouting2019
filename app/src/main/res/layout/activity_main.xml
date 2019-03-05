@@ -40,11 +40,11 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
-                android:id="@+id/send_data_button"
+                android:id="@+id/admin_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:onClick="sendData"
-                android:text="@string/sendData"
+                android:onClick="showAdmin"
+                android:text="@string/goToAdmin"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"

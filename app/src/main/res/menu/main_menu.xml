@@ -3,4 +3,6 @@
         android:title="Return Home" />
     <item android:id="@+id/send_data"
         android:title="Send Data"/>
+    <item android:id="@+id/admin_activity"
+        android:title="@string/goToAdmin"/>
 </menu>

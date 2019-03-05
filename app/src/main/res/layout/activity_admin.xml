@@ -8,23 +8,6 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sendMatchData"
-        android:onClick="sendMatchData"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sendPitData"
-        android:onClick="sendPitData"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sendRobotPhotos"
-        android:onClick="sendRobotPhotos"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="@string/concatenateMatchData"
         android:onClick="concatenateMatchData"/>
     <Button
@@ -32,6 +15,19 @@
         android:layout_height="wrap_content"
         android:text="@string/concatenatePitData"
         android:onClick="concatenatePitData"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/sendRobotPhotos"
+        android:onClick="sendRobotPhotos"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sendPitData"
+        android:onClick="sendPitData"/>
 
     <Button
         android:layout_width="match_parent"

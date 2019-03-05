@@ -7,13 +7,9 @@ import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
 
 import android.provider.Settings;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,26 +20,6 @@ public class MainActivity extends AppCompatActivity {
         Scouting.getInstance().setUniqueId(uniqueId);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_activity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
     public void showMatch(View view) {
         startActivity(new Intent(this, ScouterInitialsActivity.class));
     }
@@ -52,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, PitActivity.class));
     }
 
-    public void sendData(View view) {
-        startActivity(new Intent(this, SendDataActivity.class));
+    public void showAdmin(View view) {
+        startActivity(new Intent(this, AdminActivity.class));
     }
 }

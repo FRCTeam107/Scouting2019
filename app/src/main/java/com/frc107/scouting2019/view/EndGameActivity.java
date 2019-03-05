@@ -29,7 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-public class EndGameActivity extends AppCompatActivity {
+public class EndGameActivity extends BaseActivity {
 
     private EndGameViewModel viewModel;
     private CheckBox endGameDefenseAllMatchCheckbox, endGameFoulsCheckbox;
@@ -41,7 +41,7 @@ public class EndGameActivity extends AppCompatActivity {
 
         viewModel = new EndGameViewModel();
 
-        getSupportActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
+        getActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
 
         RadioGroup endGameHabitatLevelRadioQuestion = findViewById(R.id.endGameHabitatLevelRadioQuestion);
         endGameHabitatLevelRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameHabitatLevelRadioQuestion, checkedId));
@@ -65,32 +65,6 @@ public class EndGameActivity extends AppCompatActivity {
 
 
         viewModel = null;
-    }
-
-    /* This method will display the options menu when the icon is pressed
-     * and this will inflate the menu options for the user to choose
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    /*This method will launch the correct activity
-     *based on the menu option user presses
-      */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_activity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     private void checkForPermissions() {

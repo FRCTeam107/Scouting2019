@@ -40,7 +40,7 @@ import androidx.core.content.FileProvider;
  * Created by Matt on 9/30/2017.
  */
 
-public class PitActivity extends AppCompatActivity {
+public class PitActivity extends BaseActivity {
     private EditText teamNumberEditText;
     private RadioGroup teleopPreferenceRadioGroup;
     private EditText cubeNumberInSwitchEditText;
@@ -114,26 +114,6 @@ public class PitActivity extends AppCompatActivity {
         });
 
         checkForPermissions();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_activity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     public void savePitData(View view) {
