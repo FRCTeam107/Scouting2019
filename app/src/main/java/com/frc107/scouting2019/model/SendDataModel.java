@@ -72,10 +72,18 @@ public class SendDataModel {
     }
 
     public File getMatchFile() {
-        return Scouting.FILE_UTILS.getDeviceMatchFile();
+        return Scouting.FILE_UTILS.getFile("Match" + Scouting.getInstance().getUniqueId() + ".csv");
     }
 
     public File getPitFile() {
-        return Scouting.FILE_UTILS.getDevicePitFile();
+        return Scouting.FILE_UTILS.getFile("Pit" + Scouting.getInstance().getUniqueId() + ".csv");
+    }
+
+    public File getConcatMatchFile() {
+        return Scouting.FILE_UTILS.getFile("ConcatenatedMatch.csv");
+    }
+
+    public File getConcatPitFile() {
+        return Scouting.FILE_UTILS.getFile("ConcatenatedPit.csv");
     }
 }

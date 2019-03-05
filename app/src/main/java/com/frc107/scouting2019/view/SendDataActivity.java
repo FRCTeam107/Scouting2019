@@ -14,9 +14,11 @@ import android.widget.Toast;
 import com.frc107.scouting2019.BuildConfig;
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.utils.PermissionUtils;
+import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.SendDataViewModel;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -100,21 +102,32 @@ public class SendDataActivity extends AppCompatActivity {
     }
 
     public void sendMatchData(View view) {
-        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("text/plain");
-            intent.setPackage("com.android.bluetooth");
-            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", viewModel.getMatchFile()));
-            startActivity(Intent.createChooser(intent, "Share app"));
-        }
+        sendFile(viewModel.getMatchFile());
     }
 
     public void sendPitData(View view) {
+        sendFile(viewModel.getPitFile());
+    }
+
+    public void sendConcatMatchData(View view) {
+        sendFile(viewModel.getConcatMatchFile());
+    }
+
+    public void sendConcatPitData(View view) {
+        sendFile(viewModel.getConcatPitFile());
+    }
+
+    private void sendFile(File file) {
+        if (file == null) {
+            Toast.makeText(this, "File does not exist.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.setPackage("com.android.bluetooth");
-            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", viewModel.getPitFile()));
+            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", file));
             startActivity(Intent.createChooser(intent, "Share app"));
         }
     }

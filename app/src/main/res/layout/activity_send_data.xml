@@ -33,4 +33,15 @@
         android:text="@string/concatenatePitData"
         android:onClick="concatenatePitData"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sendConcatMatchData"
+        android:onClick="sendConcatMatchData"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sendConcatPitData"
+        android:onClick="sendConcatPitData"/>
+
 </LinearLayout>

@@ -35,4 +35,12 @@ public class SendDataViewModel {
     public File getPitFile() {
         return model.getPitFile();
     }
+
+    public File getConcatMatchFile() {
+        return model.getConcatMatchFile();
+    }
+
+    public File getConcatPitFile() {
+        return model.getConcatPitFile();
+    }
 }

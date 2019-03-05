@@ -140,6 +140,7 @@
     <string name="sendRobotPhotos">Send Robot Photos</string>
     <string name="sendPitData">Send Pit Data</string>
     <string name="sendMatchData">Send Match Data</string>
-
+    <string name="sendConcatMatchData">Send Concatenated Match File</string>
+    <string name="sendConcatPitData">Send Concatenated Pit File</string>
 
 </resources>

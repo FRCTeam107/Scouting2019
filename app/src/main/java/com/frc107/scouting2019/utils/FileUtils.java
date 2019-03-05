@@ -49,16 +49,8 @@ public class FileUtils {
         return photo;
     }
 
-    public File getDeviceMatchFile() {
-        File file = new File(directory, "Match" + Scouting.getInstance().getUniqueId() + ".csv");
-        if (!file.exists())
-            return null;
-
-        return file;
-    }
-
-    public File getDevicePitFile() {
-        File file = new File(directory, "Pit" + Scouting.getInstance().getUniqueId() + ".csv");
+    public File getFile(String name) {
+        File file = new File(directory, name);
         if (!file.exists())
             return null;
 
