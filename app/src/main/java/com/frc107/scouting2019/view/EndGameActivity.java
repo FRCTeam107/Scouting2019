@@ -41,7 +41,7 @@ public class EndGameActivity extends BaseActivity {
 
         viewModel = new EndGameViewModel();
 
-        getActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
+        getSupportActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
 
         RadioGroup endGameHabitatLevelRadioQuestion = findViewById(R.id.endGameHabitatLevelRadioQuestion);
         endGameHabitatLevelRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameHabitatLevelRadioQuestion, checkedId));
