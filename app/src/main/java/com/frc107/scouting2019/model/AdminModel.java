@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.frc107.scouting2019.BuildConfig;
 import com.frc107.scouting2019.Scouting;
+import com.frc107.scouting2019.ScoutingStrings;
 import com.frc107.scouting2019.utils.FileUtils;
 
 import java.io.File;
@@ -31,12 +32,15 @@ public class AdminModel {
 
     public boolean concatenateData(int type) {
         String prefix = "Match";
-        if (type == PIT)
+        String header = ScoutingStrings.MATCH_HEADER;
+        if (type == PIT) {
             prefix = "Pit";
+            header = ScoutingStrings.PIT_HEADER;
+        }
 
         StringBuilder builder = new StringBuilder();
-        String header = "header\n";
         builder.append(header);
+        builder.append("\n");
 
         FileUtils fileUtils = Scouting.FILE_UTILS;
 

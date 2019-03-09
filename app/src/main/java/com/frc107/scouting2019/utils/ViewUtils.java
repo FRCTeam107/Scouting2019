@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.frc107.scouting2019.ScoutingConstants;
+import com.frc107.scouting2019.ScoutingStrings;
 
 public class ViewUtils {
     public static boolean requestFocus(View v, Activity activity){
@@ -18,6 +18,6 @@ public class ViewUtils {
 
     public static void requestFocusToUnfinishedQuestion(View view, Activity activity) {
         requestFocus(view, activity);
-        Toast.makeText(activity.getApplicationContext(), ScoutingConstants.UNFINISHED_QUESTION_MESSAGE, Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity.getApplicationContext(), ScoutingStrings.UNFINISHED_QUESTION_MESSAGE, Toast.LENGTH_SHORT).show();
     }
 }
