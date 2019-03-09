@@ -7,18 +7,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
-import com.frc107.scouting2019.model.question.RadioQuestion;
-import com.frc107.scouting2019.model.question.ToggleQuestion;
-import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.CycleViewModel;
-
-import java.util.Objects;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -76,7 +70,7 @@ public class CycleActivity extends AppCompatActivity {
                 startActivity(new Intent(this, MainActivity.class));
                 return true;
             case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
+                startActivity(new Intent(this, AdminActivity.class));
                 return true;
             case R.id.enter_teleop_cycle:
                 goToTeleop();

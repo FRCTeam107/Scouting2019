@@ -38,6 +38,9 @@ public class FileUtils {
 
     public File[] getPhotos() {
         File directory = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
+        if (!directory.exists() || directory.list() == null)
+            return new File[0];
+
         return directory.listFiles();
     }
 
@@ -49,20 +52,28 @@ public class FileUtils {
         return photo;
     }
 
-    public File getDeviceMatchFile() {
-        File file = new File(directory, "Match" + Scouting.getInstance().getUniqueId() + ".csv");
+    public File getFile(String name) {
+        File file = new File(directory, name);
         if (!file.exists())
             return null;
 
         return file;
     }
 
-    public File getDevicePitFile() {
-        File file = new File(directory, "Pit" + Scouting.getInstance().getUniqueId() + ".csv");
-        if (!file.exists())
-            return null;
+    public File getMatchFile() {
+        return getFile("Match" + Scouting.getInstance().getUniqueId() + ".csv");
+    }
 
-        return file;
+    public File getPitFile() {
+        return getFile("Pit" + Scouting.getInstance().getUniqueId() + ".csv");
+    }
+
+    public File getConcatMatchFile() {
+        return getFile("ConcatenatedMatch.csv");
+    }
+
+    public File getConcatPitFile() {
+        return getFile("ConcatenatedPit.csv");
     }
 
     public boolean compressPhoto(String teamNumber) {

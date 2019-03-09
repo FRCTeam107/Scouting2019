@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import androidx.core.content.FileProvider;
 
-public class SendDataModel {
+public class AdminModel {
     public static final int MATCH = 0;
     public static final int PIT = 1;
 
@@ -71,11 +71,19 @@ public class SendDataModel {
         return false;
     }
 
-    public File getMatchFile() {
-        return Scouting.FILE_UTILS.getDeviceMatchFile();
+    public File getMatchFile(boolean concatenated) {
+        if (concatenated) {
+            return Scouting.FILE_UTILS.getConcatMatchFile();
+        } else {
+            return Scouting.FILE_UTILS.getMatchFile();
+        }
     }
 
-    public File getPitFile() {
-        return Scouting.FILE_UTILS.getDevicePitFile();
+    public File getPitFile(boolean concatenated) {
+        if (concatenated) {
+            return Scouting.FILE_UTILS.getConcatPitFile();
+        } else {
+            return Scouting.FILE_UTILS.getPitFile();
+        }
     }
 }
