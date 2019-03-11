@@ -1,37 +1,24 @@
 package com.frc107.scouting2019.view;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.frc107.scouting2019.BuildConfig;
 import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.model.question.Question;
-import com.frc107.scouting2019.model.question.RadioQuestion;
-import com.frc107.scouting2019.model.question.TextQuestion;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
+import com.frc107.scouting2019.view.wrappers.TextWrapper;
 import com.frc107.scouting2019.viewmodel.PitViewModel;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.File;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -41,17 +28,10 @@ import androidx.core.content.FileProvider;
  */
 
 public class PitActivity extends BaseActivity {
-    private EditText teamNumberEditText;
-    private RadioGroup teleopPreferenceRadioGroup;
-    private EditText cubeNumberInSwitchEditText;
-    private EditText cubeNumberInScaleEditText;
-    private EditText cubeNumberInExchangeEditText;
-    private RadioGroup climbRadioGroup;
-    private RadioGroup climbHelpRadioGroup;
-    private RadioGroup programmingLanguageRadioGroup;
-    private EditText habitatTimeEditText;
-    private EditText arcadeGameEditText;
-    private EditText commentsEditText;
+    private TextWrapper teamNumWrapper;
+    private TextWrapper habTimeWrapper;
+    private TextWrapper arcadeGameWrapper;
+    private TextWrapper commentsWrapper;
 
     private PitViewModel viewModel;
 
@@ -75,45 +55,21 @@ public class PitActivity extends BaseActivity {
         RadioGroup programmingLanguageRadioQuestion = findViewById(R.id.programmingLanguageRadioQuestion);
         programmingLanguageRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.programmingLanguageRadioQuestion, checkedId));
 
-        teamNumberEditText = findViewById(R.id.pit_teamNumber_editText);
-        habitatTimeEditText = findViewById(R.id.pit_habitatTime_editText);
-        arcadeGameEditText = findViewById(R.id.pit_arcadeGame_editText);
-        commentsEditText = findViewById(R.id.pit_comments_editText);
-
-        teamNumberEditText.addTextChangedListener(new TextWatcher() {
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setAnswer(R.id.pit_teamNumber_editText, s.toString());
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void afterTextChanged(Editable s) { }
-        });
-
-
-        habitatTimeEditText.addTextChangedListener(new TextWatcher() {
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setAnswer(R.id.pit_habitatTime_editText, s.toString());
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void afterTextChanged(Editable s) { }
-        });
-
-
-        arcadeGameEditText.addTextChangedListener(new TextWatcher() {
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setAnswer(R.id.pit_arcadeGame_editText, s.toString());
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void afterTextChanged(Editable s) { }
-        });
-        commentsEditText.addTextChangedListener(new TextWatcher() {
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setAnswer(R.id.pit_comments_editText, s.toString());
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void afterTextChanged(Editable s) { }
-        });
+        teamNumWrapper = new TextWrapper(this, viewModel, R.id.pit_teamNumber_editText);
+        habTimeWrapper = new TextWrapper(this, viewModel, R.id.pit_habitatTime_editText);
+        arcadeGameWrapper = new TextWrapper(this, viewModel, R.id.pit_arcadeGame_editText);
+        commentsWrapper = new TextWrapper(this, viewModel, R.id.pit_comments_editText);
 
         checkForPermissions();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        teamNumWrapper.cleanUp();
+        habTimeWrapper.cleanUp();
+        arcadeGameWrapper.cleanUp();
+        commentsWrapper.cleanUp();
     }
 
     public void savePitData(View view) {

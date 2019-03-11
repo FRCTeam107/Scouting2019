@@ -30,6 +30,7 @@ public class ScouterInitialsActivity extends BaseActivity {
         scouterInitialsEditText.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 viewModel.setInitials(s.toString());
+                // TODO: move this special behavior to model. Just call setAnswer and do a switch statement in the model where it handles questions being answered.
             }
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
             public void afterTextChanged(Editable s) { }
