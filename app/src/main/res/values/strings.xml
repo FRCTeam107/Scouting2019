@@ -27,6 +27,7 @@
     <string name="sandstormBottomRocketItemPlaced">Bottom Rocket</string>
     <string name="sandstormCargoshipItemPlaced">Cargo Ship</string>
     <string name="sandstormFloorItemPlaced">Floor</string>
+    <string name="nothingPlacedItemPlaced">Not Placed</string>
 
 
 

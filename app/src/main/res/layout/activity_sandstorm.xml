@@ -183,6 +183,15 @@
                     android:button="@null"
                     android:text="@string/sandstormFloorItemPlaced"
                     android:textAlignment="center" />
+                <RadioButton
+                    android:id="@+id/sandstormNothingPlacedItemPlaced_Radiobtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_drawable"
+                    android:button="@null"
+                    android:text="@string/nothingPlacedItemPlaced"
+                    android:textAlignment="center" />
             </RadioGroup>
 
             <Button
