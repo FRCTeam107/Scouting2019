@@ -1,19 +1,12 @@
 package com.frc107.scouting2019.model;
 
-import android.os.Environment;
-import android.util.Log;
-
 import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.model.question.NumberQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.model.question.TextQuestion;
-import com.frc107.scouting2019.utils.StringUtils;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -21,9 +14,11 @@ public abstract class ScoutModel {
     private ArrayList<Question> questions;
     private String fileNameHeader;
 
-    public ScoutModel(Question... questions) {
-        this.questions = new ArrayList<>(Arrays.asList(questions));
+    public ScoutModel() {
+        this.questions = new ArrayList<>(Arrays.asList(getQuestions()));
     }
+
+    public abstract Question[] getQuestions();
 
     public void setFileNameHeader(String fileNameHeader) {
         this.fileNameHeader = fileNameHeader;
@@ -38,6 +33,17 @@ public abstract class ScoutModel {
                 return question.getId();
         }
         return -1;
+    }
+
+    public boolean areNoQuestionsAnswered() {
+        for (Question question : questions) {
+            if (question instanceof ToggleQuestion)
+                continue;
+
+            if (question.hasAnswer())
+                return false;
+        }
+        return true;
     }
 
     public boolean setAnswer(int questionId, String answer) {
@@ -84,7 +90,7 @@ public abstract class ScoutModel {
         return false;
     }
 
-    private Question getQuestion(int id) {
+    public Question getQuestion(int id) {
         for (Question question : questions) {
             if (question.getId() == id)
                 return question;
@@ -97,21 +103,19 @@ public abstract class ScoutModel {
         if (question == null)
             return null;
 
-        return question.getAnswer();
+        return question.getAnswerAsString();
     }
 
     public abstract String getCSVRowHeader();
 
     public String getAnswerCSVRow() {
         StringBuilder stringBuilder = new StringBuilder();
-        String header = getCSVRowHeader();
-        stringBuilder.append(header);
-
-        if (!StringUtils.isEmptyOrNull(header))
-            stringBuilder.append(',');
-
         for (int i = 0; i < questions.size(); i++) {
-            stringBuilder.append(questions.get(i).getAnswer());
+            Question question = questions.get(i);
+            if (question.answerCanBeIgnored())
+                continue;
+
+            stringBuilder.append(question.getAnswerAsString());
             if (i < questions.size() - 1) {
                 stringBuilder.append(',');
             }
@@ -120,7 +124,14 @@ public abstract class ScoutModel {
     }
 
     public String save() {
-        String result = Scouting.CSV_GENERATOR.writeData(fileNameHeader, getAnswerCSVRow());
+        String dataToWrite = getCSVRowHeader() + ',' + getAnswerCSVRow();
+        String result = Scouting.FILE_UTILS.writeData(fileNameHeader, dataToWrite);
         return result;
+    }
+
+    public void clearAllQuestions() {
+        for (Question question : questions) {
+            question.setAnswer(null);
+        }
     }
 }

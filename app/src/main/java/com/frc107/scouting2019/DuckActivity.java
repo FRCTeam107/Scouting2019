@@ -3,10 +3,10 @@ package com.frc107.scouting2019;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.frc107.scouting2019.view.AdminActivity;
 import com.frc107.scouting2019.view.MainActivity;
 import com.frc107.scouting2019.view.PitActivity;
 import com.frc107.scouting2019.view.ScouterInitialsActivity;
-import com.frc107.scouting2019.view.SendDataActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -39,7 +39,7 @@ public class DuckActivity extends AppCompatActivity {
                 startActivity(new Intent(this, MainActivity.class));
                 return true;
             case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
+                startActivity(new Intent(this, AdminActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

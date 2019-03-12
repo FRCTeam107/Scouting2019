@@ -1,27 +1,13 @@
 package com.frc107.scouting2019.view;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.Settings;
-import androidx.annotation.NonNull;
-
-import com.frc107.scouting2019.BuildConfig;
-import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.Scouting;
-import com.frc107.scouting2019.model.question.Question;
-import com.frc107.scouting2019.model.question.RadioQuestion;
-import com.frc107.scouting2019.model.question.TextQuestion;
-import com.frc107.scouting2019.viewmodel.PitViewModel;
-import com.google.android.material.textfield.TextInputLayout;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -31,18 +17,30 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.io.File;
-
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.frc107.scouting2019.BuildConfig;
+import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.model.question.Question;
+import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.model.question.TextQuestion;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
+import com.frc107.scouting2019.viewmodel.PitViewModel;
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.io.File;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 /**
  * Created by Matt on 9/30/2017.
  */
 
-public class PitActivity extends AppCompatActivity {
+public class PitActivity extends BaseActivity {
     private EditText teamNumberEditText;
     private RadioGroup teleopPreferenceRadioGroup;
     private EditText cubeNumberInSwitchEditText;
@@ -57,43 +55,14 @@ public class PitActivity extends AppCompatActivity {
 
     private PitViewModel viewModel;
 
+    private static final int REQUEST_CODE_CAMERA = 107;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pit);
 
-        Question[] questions = {
-                new TextQuestion(R.id.pit_teamNumber_editText, true),
-                new RadioQuestion(R.id.sandstormOperationsRadioQuestion, true,
-                    new RadioQuestion.Option(R.id.visionSystemSandstorm_Radiobtn, getString(R.string.visionSystemSandstorm)),
-                    new RadioQuestion.Option(R.id.cameraDrivingSandstorm_Radiobtn, getString(R.string.cameraDrivingSandstorm)),
-                    new RadioQuestion.Option(R.id.blindDrivingSandstorm_Radiobtn, getString(R.string.blindDrivingSandstorm)),
-                        new RadioQuestion.Option(R.id.noDrivingSandstorm_Radiobtn, getString(R.string.noDrivingSandstorm))),
-                new RadioQuestion(R.id.sandstormPreferenceRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.cargoshipPreferenceSandstorm_Radiobtn, getString(R.string.cargoshipPreferenceSandstorm)),
-                        new RadioQuestion.Option(R.id.rocketshipPreferenceSandstorm_Radiobtn, getString(R.string.rocketshipPreferenceSandstorm)),
-                        new RadioQuestion.Option(R.id.noPreferenceSandstorm_Radiobtn, getString(R.string.noPreferenceSandstorm))),
-                new RadioQuestion(R.id.highestRocketLevelSandstormRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.topRocketLevelSandstorm_Radiobtn, getString(R.string.topRocketLevelSandstorm)),
-                        new RadioQuestion.Option(R.id.middleRocketLevelSandstorm_Radiobtn, getString(R.string.middleRocketLevelSandstorm)),
-                        new RadioQuestion.Option(R.id.bottomRocketLevelSandstorm_Radiobtn, getString(R.string.bottomRocketLevelSandstorm)),
-                        new RadioQuestion.Option(R.id.noRocketLevelSandstorm_Radiobtn, getString(R.string.noRocketLevelSandstorm))),
-                new RadioQuestion(R.id.highestHabitatLevelRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.topHabitatLevel_Radiobtn, getString(R.string.topHabitatLevel)),
-                        new RadioQuestion.Option(R.id.middleHabitatLevel_Radiobtn, getString(R.string.middleHabitatLevel)),
-                        new RadioQuestion.Option(R.id.bottomHabitatLevel_Radiobtn, getString(R.string.bottomHabitatLevel)),
-                        new RadioQuestion.Option(R.id.noHabitatLevel_Radiobtn, getString(R.string.noHabitatLevel))),
-                new TextQuestion(R.id.pit_habitatTime_editText, true),
-                new RadioQuestion(R.id.programmingLanguageRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.javaProgrammingLanguage_Radiobtn, getString(R.string.javaProgrammingLanguage)),
-                        new RadioQuestion.Option(R.id.cppProgrammingLanguage_Radiobtn, getString(R.string.cppProgrammingLanguage)),
-                        new RadioQuestion.Option(R.id.labviewProgrammingLanguage_Radiobtn, getString(R.string.labviewProgrammingLanguage)),
-                        new RadioQuestion.Option(R.id.otherProgrammingLanguage_Radiobtn, getString(R.string.otherProgrammingLanguage))),
-
-                new TextQuestion(R.id.pit_arcadeGame_editText, true),
-                new TextQuestion(R.id.pit_comments_editText, true)
-        };
-        viewModel = new PitViewModel(questions);
+        viewModel = new PitViewModel();
 
         RadioGroup sandstormOperationsRadioQuestion = findViewById(R.id.sandstormOperationsRadioQuestion);
         sandstormOperationsRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormOperationsRadioQuestion, checkedId));
@@ -147,26 +116,6 @@ public class PitActivity extends AppCompatActivity {
         checkForPermissions();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_activity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
     public void savePitData(View view) {
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
         if (unfinishedQuestionId != -1) {
@@ -189,7 +138,7 @@ public class PitActivity extends AppCompatActivity {
         finish();
     }
 
-    public void takeAndCompressPhoto(View view) {
+    public void openCamera(View view) {
         String teamNumber = viewModel.getAnswerForQuestion(R.id.pit_teamNumber_editText);
         if (teamNumber == null) {
             ViewUtils.requestFocus(findViewById(R.id.pit_teamNumber_editText), this);
@@ -222,15 +171,17 @@ public class PitActivity extends AppCompatActivity {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
-            startActivityForResult(takePictureIntent, 0);
+            startActivityForResult(takePictureIntent, REQUEST_CODE_CAMERA);
         } else {
             Toast.makeText(getApplicationContext(), "Failure trying to take picture.", Toast.LENGTH_LONG).show();
-            return;
         }
+    }
 
-        boolean didCompressPhoto = viewModel.compressPhoto();
-        if (!didCompressPhoto) {
-            Toast.makeText(getApplicationContext(), "Failure while compressing picture.", Toast.LENGTH_LONG).show();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK) {
+            if (!viewModel.compressPhoto())
+                Toast.makeText(this, "Failure while compressing photo.", Toast.LENGTH_SHORT);
         }
     }
 
@@ -239,10 +190,5 @@ public class PitActivity extends AppCompatActivity {
         if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
         }
-    }
-
-    private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
-        final EditText editText = textInputLayout.getEditText();
-        return editText != null && editText.getText() != null ? editText.getText().toString() : "";
     }
 }

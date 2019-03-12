@@ -11,6 +11,10 @@ public abstract class ScoutViewModel extends ViewModel {
         return model.getFirstUnfinishedQuestionId();
     }
 
+    public boolean areNoQuestionsAnswered() {
+        return model.areNoQuestionsAnswered();
+    }
+
     public boolean setAnswer(int questionId, String answer) {
         return model.setAnswer(questionId, answer);
     }
@@ -27,12 +31,11 @@ public abstract class ScoutViewModel extends ViewModel {
         return model.getAnswerForQuestion(questionId);
     }
 
-    public String getAnswerCSVRow() {
-        return model.getAnswerCSVRow();
+    public String save() {
+        return model.save();
     }
 
-    public String save() {
-        // TODO: At some point, since this is disgusting, make it so that ScoutModel is never instantiated and a view-specific model is used instead.
-        return model.save();
+    public void clearAllAnswers() {
+        model.clearAllQuestions();
     }
 }

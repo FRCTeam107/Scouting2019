@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/pickupLocationText"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/top_of_screen_margin"
+            android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+            android:text="@string/pickupLocation"
+            android:textSize="@dimen/label_text_size"/>
+
+
+        <RadioGroup
+            android:id="@+id/pickupLocationRadioQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/question_height"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/portPickupLocation_Radiobtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"
+                android:text="@string/portPickupLocation"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/floorPickupLocation_Radiobtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"
+                android:text="@string/floorPickupLocation"
+                android:textAlignment="center" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/itemPickedUpText"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/top_margin"
+            android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+            android:text="@string/itemPickedUpLocationText"
+            android:textSize="@dimen/label_text_size"/>
+
+        <RadioGroup
+            android:id="@+id/itemPickedUpRadioQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/question_height"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/cargoItemPickedUp_Radiobtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/cargoPickedUp"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"
+                android:textAlignment="center"/>
+
+            <RadioButton
+                android:id="@+id/hatchItemPickedUp_Radiobtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/hatchPickedUp"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"
+                android:textAlignment="center"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/itemPlacedText"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/top_margin"
+            android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+            android:text="@string/itemPlacedLocationText"
+            android:textSize="@dimen/label_text_size"/>
+
+
+        <RadioGroup
+            android:id="@+id/itemPlacedRadioQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/question_height"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/topRocketItemPlaced_Radiobtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/topRocketItemPlaced"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"
+                android:textAlignment="center"/>
+            <RadioButton
+                android:id="@+id/middleRocketItemPlaced_Radiobtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/middleRocketItemPlaced"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"
+                android:textAlignment="center"/>
+            <RadioButton
+                android:id="@+id/bottomRocketItemPlaced_Radiobtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/bottomRocketItemPlaced"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"
+                android:textAlignment="center"/>
+            <RadioButton
+                android:id="@+id/cargoshipItemPlaced_Radiobtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/cargoshipItemPlaced"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"
+                android:textAlignment="center"/>
+            <RadioButton
+                android:id="@+id/floorItemPlaced_Radiobtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/floorItemPlaced"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"
+                android:textAlignment="center"/>
+        </RadioGroup>
+
+
+        <CheckBox
+            android:id="@+id/defense_chkbx"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/question_height"
+            android:layout_marginTop="@dimen/top_margin"
+            android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/toggle_drawable"
+            android:button="@null"
+            android:text="@string/defenseChkbxText"
+            android:textAlignment="center" />
+
+        <CheckBox
+            android:id="@+id/allDefense_chkbx"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/question_height"
+            android:layout_marginTop="@dimen/top_margin"
+            android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/toggle_drawable"
+            android:button="@null"
+            android:text="@string/allDefenseChkbxText"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_margin"
+            android:onClick="goToNextCycle"
+            android:text="@string/nextCycleButton" />
+    </LinearLayout>
+</ScrollView>
+
+
+
+
+
+

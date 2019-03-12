@@ -4,13 +4,7 @@ public class ToggleQuestion extends Question<Boolean> {
     private boolean answer;
 
     public ToggleQuestion(int id) {
-        super(id);
-    }
-
-    @Override
-    public boolean needsAnswer() {
-        // Since it's a toggle, it'll always have an answer: true or false.
-        return false;
+        super(id, false);
     }
 
     @Override
@@ -21,11 +15,17 @@ public class ToggleQuestion extends Question<Boolean> {
 
     @Override
     public void setAnswer(Boolean answer) {
-        this.answer = answer;
+        this.answer = answer == null ? false : answer;
     }
 
     @Override
-    public String getAnswer() {
-        return String.valueOf(answer);
+    public Boolean getAnswer() {
+        return answer;
+    }
+
+    @Override
+    public String getAnswerAsString() {
+        int asInt = answer ? 1 : 0;
+        return asInt + "";
     }
 }

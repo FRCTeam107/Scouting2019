@@ -1,8 +1,0 @@
-
-˜squid:S1186>"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(íÑíÍ
-—squid:S1186="€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô—½4
-˜squid:S1186H"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(íÑíÍ
-—squid:S1186G"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô—½4
-€squid:S3008"]Rename this field "AUTON_STRING_EXTRA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×Ý¤¸ûÿÿÿÿ8²š¥¶‡-
-[squid:S1444"8Make this "public static AUTON_STRING_EXTRA" field final(×Ý¤¸ûÿÿÿÿ8²š¥¶‡-
-˜"squid:ClassVariableVisibilityCheck"^Make AUTON_STRING_EXTRA a static final constant or non-public and provide accessors if needed.(×Ý¤¸ûÿÿÿÿ8²š¥¶‡-

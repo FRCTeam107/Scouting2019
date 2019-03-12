@@ -8,9 +8,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -24,11 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ScouterInitialsActivity" />
-        <activity android:name=".view.SandstormActivity" />
-        <activity android:name=".view.TeleopActivity" />
-        <activity android:name=".view.PitActivity" />
-        <activity android:name=".view.SendDataActivity" />
+        <activity android:name=".view.ScouterInitialsActivity"></activity>
+        <activity android:name=".view.SandstormActivity"></activity>
+        <activity android:name=".view.CycleActivity"></activity>
+        <activity android:name=".view.PitActivity"></activity>
+        <activity android:name=".view.EndGameActivity"></activity>
+        <activity android:name=".view.AdminActivity"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
