@@ -25,7 +25,8 @@ public class SandstormModel extends ScoutModel {
                         new RadioQuestion.Option(R.id.sandstormMiddleRocketItemPlaced_Radiobtn, 2),
                         new RadioQuestion.Option(R.id.sandstormBottomRocketItemPlaced_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.sandstormCargoshipItemPlaced_Radiobtn, 0),
-                        new RadioQuestion.Option(R.id.sandstormFloorItemPlaced_Radiobtn, 4)),
+                        new RadioQuestion.Option(R.id.sandstormFloorItemPlaced_Radiobtn, 4),
+                        new RadioQuestion.Option(R.id.sandstormNothingPlacedItemPlaced_Radiobtn, 5))
         };
         return questions;
     }
