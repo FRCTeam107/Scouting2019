@@ -23,6 +23,7 @@ public class CycleActivity extends AppCompatActivity {
     private RadioGroup itemPickedUpRadioGroup;
     private RadioGroup itemPlacedRadioGroup;
     private CheckBox defenseCheckbox;
+    private CheckBox allDefenseCheckbox;
 
     private CycleViewModel viewModel;
 
@@ -46,6 +47,9 @@ public class CycleActivity extends AppCompatActivity {
 
         defenseCheckbox = findViewById(R.id.defense_chkbx);
         defenseCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.defense_chkbx, isChecked));
+
+        allDefenseCheckbox = findViewById(R.id.allDefense_chkbx);
+        allDefenseCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.allDefense_chkbx, isChecked));
     }
 
     @Override
