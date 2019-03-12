@@ -57,4 +57,15 @@ public class CycleModel extends ScoutModel {
         String csvRow = getAnswerCSVRow();
         Scouting.getInstance().addCycle(cycleNum + "," + type + "," + csvRow);
     }
+
+    public void setAllDefense(boolean allDefense) {
+        Question pickupLocationQuestion = getQuestion(R.id.pickupLocationRadioQuestion);
+        Question itemPickedUpQuestion = getQuestion(R.id.itemPickedUpRadioQuestion);
+        Question itemPlacedRadioQuestion = getQuestion(R.id.itemPlacedRadioQuestion);
+
+        boolean needsAnswers = !allDefense;
+        pickupLocationQuestion.setNeedsAnswer(needsAnswers);
+        itemPickedUpQuestion.setNeedsAnswer(needsAnswers);
+        itemPlacedRadioQuestion.setNeedsAnswer(needsAnswers);
+    }
 }

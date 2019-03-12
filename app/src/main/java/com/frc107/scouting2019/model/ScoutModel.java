@@ -90,7 +90,7 @@ public abstract class ScoutModel {
         return false;
     }
 
-    private Question getQuestion(int id) {
+    public Question getQuestion(int id) {
         for (Question question : questions) {
             if (question.getId() == id)
                 return question;

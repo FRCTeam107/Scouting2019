@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
@@ -37,19 +38,48 @@ public class CycleActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
 
         pickupLocationRadioGroup = findViewById(R.id.pickupLocationRadioQuestion);
-        pickupLocationRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
-
         itemPickedUpRadioGroup = findViewById(R.id.itemPickedUpRadioQuestion);
-        itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPickedUpRadioQuestion, checkedId));
-
         itemPlacedRadioGroup = findViewById(R.id.itemPlacedRadioQuestion);
-        itemPlacedRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPlacedRadioQuestion, checkedId));
-
         defenseCheckbox = findViewById(R.id.defense_chkbx);
-        defenseCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.defense_chkbx, isChecked));
-
         allDefenseCheckbox = findViewById(R.id.allDefense_chkbx);
-        allDefenseCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.allDefense_chkbx, isChecked));
+
+        defenseCheckbox.setVisibility(View.INVISIBLE);
+        allDefenseCheckbox.setVisibility(View.INVISIBLE);
+
+        pickupLocationRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
+        itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPickedUpRadioQuestion, checkedId));
+        itemPlacedRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPlacedRadioQuestion, checkedId));
+        defenseCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.defense_chkbx, isChecked));
+        allDefenseCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            viewModel.setAnswer(R.id.allDefense_chkbx, isChecked);
+            setAllDefense(isChecked);
+        });
+    }
+
+    private void setAllDefense(boolean allDefense) {
+        boolean questionsEnabled = !allDefense;
+        setRadioGroupEnabled(pickupLocationRadioGroup, questionsEnabled);
+        setRadioGroupEnabled(itemPickedUpRadioGroup, questionsEnabled);
+        setRadioGroupEnabled(itemPlacedRadioGroup, questionsEnabled);
+
+        defenseCheckbox.setChecked(allDefense);
+
+        if (allDefense) {
+            pickupLocationRadioGroup.clearCheck();
+            itemPickedUpRadioGroup.clearCheck();
+            itemPlacedRadioGroup.clearCheck();
+        }
+
+        viewModel.setAllDefense(allDefense);
+    }
+
+    private void setRadioGroupEnabled(RadioGroup radioGroup, boolean enabled) {
+        radioGroup.setEnabled(enabled);
+        int childCount = radioGroup.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            RadioButton button = (RadioButton) radioGroup.getChildAt(i);
+            button.setEnabled(enabled);
+        }
     }
 
     @Override
@@ -107,6 +137,9 @@ public class CycleActivity extends AppCompatActivity {
         clearAnswers();
 
         invalidateOptionsMenu(); // Calling this tells Android to call onCreateOptionsMenu.
+
+        defenseCheckbox.setVisibility(View.VISIBLE);
+        allDefenseCheckbox.setVisibility(View.VISIBLE);
     }
 
     private void goToEndGame() {
@@ -149,5 +182,6 @@ public class CycleActivity extends AppCompatActivity {
         itemPickedUpRadioGroup.clearCheck();
         itemPlacedRadioGroup.clearCheck();
         defenseCheckbox.setChecked(false);
+        allDefenseCheckbox.setChecked(false);
     }
 }

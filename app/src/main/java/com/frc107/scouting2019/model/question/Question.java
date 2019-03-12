@@ -6,16 +6,26 @@ package com.frc107.scouting2019.model.question;
 public abstract class Question<T> {
     private String name; // TODO: remove this
     private int id;
+    private boolean needsAnswer;
 
-    public Question(int id) {
+    public Question(int id, boolean needsAnswer) {
         this.name = "";
         this.id = id;
+        this.needsAnswer = needsAnswer;
     }
 
-    public abstract boolean needsAnswer();
+    public boolean needsAnswer() {
+        return needsAnswer;
+    }
+
+    public void setNeedsAnswer(boolean needsAnswer) {
+        this.needsAnswer = needsAnswer;
+    }
+
     public boolean hasAnswer() {
         return getAnswer() != null;
     }
+
     public abstract void setAnswer(T answer);
     public abstract T getAnswer();
     public abstract String getAnswerAsString();

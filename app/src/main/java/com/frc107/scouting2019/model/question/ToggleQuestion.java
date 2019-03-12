@@ -4,13 +4,7 @@ public class ToggleQuestion extends Question<Boolean> {
     private boolean answer;
 
     public ToggleQuestion(int id) {
-        super(id);
-    }
-
-    @Override
-    public boolean needsAnswer() {
-        // Since it's a toggle, it'll always have an answer: true or false.
-        return false;
+        super(id, false);
     }
 
     @Override

@@ -6,19 +6,10 @@ import java.util.Arrays;
 public class RadioQuestion extends Question<Integer> {
     private ArrayList<Option> options;
     private Option selectedOption;
-    private boolean needsAnswer;
-    private int answerFormat;
 
     public RadioQuestion(int id, boolean needsAnswer, Option... options) {
-        super(id);
-        this.needsAnswer = needsAnswer;
+        super(id, needsAnswer);
         this.options = new ArrayList<>(Arrays.asList(options));
-        this.answerFormat = answerFormat;
-    }
-
-    @Override
-    public boolean needsAnswer() {
-        return needsAnswer;
     }
 
     @Override
@@ -50,7 +41,7 @@ public class RadioQuestion extends Question<Integer> {
     @Override
     public String getAnswerAsString() {
         if (selectedOption == null)
-            return "";
+            return "-1";
 
         return selectedOption.getNum() + "";
     }
