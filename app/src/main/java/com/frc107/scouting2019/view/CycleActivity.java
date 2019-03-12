@@ -68,6 +68,8 @@ public class CycleActivity extends AppCompatActivity {
             pickupLocationRadioGroup.clearCheck();
             itemPickedUpRadioGroup.clearCheck();
             itemPlacedRadioGroup.clearCheck();
+        } else {
+            findViewById(R.id.nothingPlacedItemPlaced_Radiobtn).setEnabled(false);
         }
 
         viewModel.setAllDefense(allDefense);
@@ -131,6 +133,8 @@ public class CycleActivity extends AppCompatActivity {
 
         defenseCheckbox.setVisibility(View.VISIBLE);
         allDefenseCheckbox.setVisibility(View.VISIBLE);
+
+        findViewById(R.id.nothingPlacedItemPlaced_Radiobtn).setEnabled(false);
     }
 
     private void goToEndGame() {

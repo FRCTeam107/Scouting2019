@@ -110,10 +110,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/topRocketItemPlaced"
                 android:background="@drawable/toggle_drawable"
                 android:button="@null"
-                android:textAlignment="center"/>
+                android:text="@string/topRocketItemPlaced"
+                android:textAlignment="center"
+                android:autoSizeMinTextSize="@dimen/min_text_size"
+                android:autoSizeMaxTextSize="@dimen/max_text_size"
+                android:autoSizeTextType="uniform"
+                android:autoSizeStepGranularity="@dimen/text_size_step"/>
             <RadioButton
                 android:id="@+id/middleRocketItemPlaced_Radiobtn"
                 android:layout_width="match_parent"
@@ -122,7 +126,11 @@
                 android:text="@string/middleRocketItemPlaced"
                 android:background="@drawable/toggle_drawable"
                 android:button="@null"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:autoSizeMinTextSize="@dimen/min_text_size"
+                android:autoSizeMaxTextSize="@dimen/max_text_size"
+                android:autoSizeTextType="uniform"
+                android:autoSizeStepGranularity="@dimen/text_size_step"/>
             <RadioButton
                 android:id="@+id/bottomRocketItemPlaced_Radiobtn"
                 android:layout_width="match_parent"
@@ -131,7 +139,11 @@
                 android:text="@string/bottomRocketItemPlaced"
                 android:background="@drawable/toggle_drawable"
                 android:button="@null"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:autoSizeMinTextSize="@dimen/min_text_size"
+                android:autoSizeMaxTextSize="@dimen/max_text_size"
+                android:autoSizeTextType="uniform"
+                android:autoSizeStepGranularity="@dimen/text_size_step"/>
             <RadioButton
                 android:id="@+id/cargoshipItemPlaced_Radiobtn"
                 android:layout_width="match_parent"
@@ -140,7 +152,11 @@
                 android:text="@string/cargoshipItemPlaced"
                 android:background="@drawable/toggle_drawable"
                 android:button="@null"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:autoSizeMinTextSize="@dimen/min_text_size"
+                android:autoSizeMaxTextSize="@dimen/max_text_size"
+                android:autoSizeTextType="uniform"
+                android:autoSizeStepGranularity="@dimen/text_size_step"/>
             <RadioButton
                 android:id="@+id/floorItemPlaced_Radiobtn"
                 android:layout_width="match_parent"
@@ -149,7 +165,24 @@
                 android:text="@string/floorItemPlaced"
                 android:background="@drawable/toggle_drawable"
                 android:button="@null"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:autoSizeMinTextSize="@dimen/min_text_size"
+                android:autoSizeMaxTextSize="@dimen/max_text_size"
+                android:autoSizeTextType="uniform"
+                android:autoSizeStepGranularity="@dimen/text_size_step"/>
+            <RadioButton
+                android:id="@+id/nothingPlacedItemPlaced_Radiobtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_drawable"
+                android:button="@null"
+                android:text="@string/nothingPlacedItemPlaced"
+                android:textAlignment="center"
+                android:autoSizeMinTextSize="@dimen/min_text_size"
+                android:autoSizeMaxTextSize="@dimen/max_text_size"
+                android:autoSizeTextType="uniform"
+                android:autoSizeStepGranularity="@dimen/text_size_step"/>
         </RadioGroup>
 
 

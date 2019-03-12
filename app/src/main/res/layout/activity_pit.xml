@@ -51,7 +51,11 @@
                     android:text="@string/visionSystemSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
                 <RadioButton
                     android:id="@+id/cameraDrivingSandstorm_Radiobtn"
@@ -61,7 +65,11 @@
                     android:text="@string/cameraDrivingSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
                 <RadioButton
                     android:id="@+id/blindDrivingSandstorm_Radiobtn"
@@ -71,7 +79,11 @@
                     android:text="@string/blindDrivingSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
                 <RadioButton
                     android:id="@+id/noDrivingSandstorm_Radiobtn"
@@ -81,7 +93,11 @@
                     android:text="@string/noDrivingSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
             </RadioGroup>
 
             <TextView
@@ -107,7 +123,11 @@
                     android:text="@string/rocketshipPreferenceSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
                 <RadioButton
                     android:id="@+id/cargoshipPreferenceSandstorm_Radiobtn"
@@ -117,7 +137,11 @@
                     android:text="@string/cargoshipPreferenceSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
                 <RadioButton
                     android:id="@+id/noPreferenceSandstorm_Radiobtn"
@@ -127,7 +151,11 @@
                     android:text="@string/noPreferenceSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
 
             </RadioGroup>
@@ -155,7 +183,11 @@
                     android:text="@string/topRocketLevelSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
                 <RadioButton
                     android:id="@+id/middleRocketLevelSandstorm_Radiobtn"
@@ -165,7 +197,11 @@
                     android:text="@string/middleRocketLevelSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
                 <RadioButton
                     android:id="@+id/bottomRocketLevelSandstorm_Radiobtn"
@@ -175,7 +211,11 @@
                     android:text="@string/bottomRocketLevelSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
                 <RadioButton
                     android:id="@+id/noRocketLevelSandstorm_Radiobtn"
@@ -185,7 +225,11 @@
                     android:text="@string/noRocketLevelSandstorm"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
             </RadioGroup>
 
             <TextView
@@ -211,7 +255,11 @@
                     android:text="@string/topHabitatLevel"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
                 <RadioButton
                     android:id="@+id/middleHabitatLevel_Radiobtn"
@@ -221,7 +269,11 @@
                     android:text="@string/middleHabitatLevel"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
                 <RadioButton
                     android:id="@+id/bottomHabitatLevel_Radiobtn"
@@ -231,7 +283,11 @@
                     android:text="@string/bottomHabitatLevel"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
                 <RadioButton
                     android:id="@+id/noHabitatLevel_Radiobtn"
                     android:layout_width="match_parent"
@@ -240,7 +296,11 @@
                     android:text="@string/noHabitatLevel"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
             </RadioGroup>
 
             <EditText
@@ -274,7 +334,11 @@
                     android:text="@string/javaProgrammingLanguage"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
                 <RadioButton
                     android:id="@+id/cppProgrammingLanguage_Radiobtn"
@@ -284,7 +348,11 @@
                     android:text="@string/cppProgrammingLanguage"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
                 <RadioButton
                     android:id="@+id/labviewProgrammingLanguage_Radiobtn"
@@ -294,7 +362,11 @@
                     android:text="@string/labviewProgrammingLanguage"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
 
                 <RadioButton
                     android:id="@+id/otherProgrammingLanguage_Radiobtn"
@@ -304,7 +376,11 @@
                     android:text="@string/otherProgrammingLanguage"
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step"/>
             </RadioGroup>
 
             <EditText
