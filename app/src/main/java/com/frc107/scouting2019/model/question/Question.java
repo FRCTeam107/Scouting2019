@@ -7,6 +7,7 @@ public abstract class Question<T> {
     private String name; // TODO: remove this
     private int id;
     private boolean needsAnswer;
+    private boolean ignoreAnswer;
 
     public Question(int id, boolean needsAnswer) {
         this.name = "";
@@ -20,6 +21,14 @@ public abstract class Question<T> {
 
     public void setNeedsAnswer(boolean needsAnswer) {
         this.needsAnswer = needsAnswer;
+    }
+
+    public void setIgnoreAnswer(boolean ignoreAnswer) {
+        this.ignoreAnswer = ignoreAnswer;
+    }
+
+    public boolean answerCanBeIgnored() {
+        return ignoreAnswer;
     }
 
     public boolean hasAnswer() {

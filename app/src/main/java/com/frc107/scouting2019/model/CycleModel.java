@@ -14,6 +14,9 @@ public class CycleModel extends ScoutModel {
 
     @Override
     public Question[] getQuestions() {
+        ToggleQuestion allDefenseQuestion = new ToggleQuestion(R.id.allDefense_chkbx);
+        allDefenseQuestion.setIgnoreAnswer(true);
+
         Question[] questions = {
                 new RadioQuestion(R.id.pickupLocationRadioQuestion, true,
                         new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, 0),
@@ -28,7 +31,7 @@ public class CycleModel extends ScoutModel {
                         new RadioQuestion.Option(R.id.cargoshipItemPlaced_Radiobtn, 0),
                         new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, 4)),
                 new ToggleQuestion(R.id.defense_chkbx),
-                new ToggleQuestion(R.id.allDefense_chkbx)
+                allDefenseQuestion
         };
         return questions;
     }
