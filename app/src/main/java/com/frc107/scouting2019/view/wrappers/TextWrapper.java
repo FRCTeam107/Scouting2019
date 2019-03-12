@@ -22,6 +22,10 @@ public class TextWrapper {
         this.editText.addTextChangedListener(textWatcher);
     }
 
+    public EditText getEditText() {
+        return editText;
+    }
+
     private TextWatcher getTextWatcher() {
         return new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -40,5 +44,9 @@ public class TextWrapper {
         editText.removeTextChangedListener(textWatcher);
         editText = null;
         textWatcher = null;
+    }
+
+    public void clear() {
+        editText.setText("");
     }
 }

@@ -46,15 +46,18 @@ public abstract class ScoutModel {
         return true;
     }
 
+    public abstract boolean handleTextAnswer(int questionId, String answer);
+
     public boolean setAnswer(int questionId, String answer) {
         Question question = getQuestion(questionId);
         if (question == null)
             return false;
 
-        if (question instanceof TextQuestion) {
-            ((TextQuestion) question).setAnswer(answer);
-            return true;
-        }
+        if (!(question instanceof TextQuestion))
+            return false;
+
+        if (!handleTextAnswer(questionId, answer))
+            question.setAnswer(answer);
 
         return false;
     }

@@ -17,6 +17,7 @@ import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.utils.ViewUtils;
+import com.frc107.scouting2019.view.wrappers.TextWrapper;
 import com.frc107.scouting2019.viewmodel.SandstormViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,13 +26,12 @@ import androidx.core.content.ContextCompat;
 
 public class SandstormActivity extends BaseActivity {
 
-    private EditText teamNumberEditText;
-    private TextWatcher teamNumberTextWatcher;
-    private EditText matchNumberEditText;
-    private TextWatcher matchNumberTextWatcher;
     private RadioGroup sandstormStartingPositionRadioQuestion;
     private RadioGroup itemPickedUpRadioGroup;
     private RadioGroup itemPlacedSandstormRadioGroup;
+
+    private TextWrapper teamNumWrapper;
+    private TextWrapper matchNumWrapper;
 
     private SandstormViewModel viewModel;
 
@@ -51,27 +51,8 @@ public class SandstormActivity extends BaseActivity {
         itemPlacedSandstormRadioGroup = findViewById(R.id.sandstormItemPlacedRadioQuestion);
         itemPlacedSandstormRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormItemPlacedRadioQuestion, checkedId));
 
-        teamNumberEditText = findViewById(R.id.teamNumberEditText);
-        teamNumberTextWatcher = new TextWatcher() {
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0)
-                    Scouting.getInstance().setTeamNumber(Integer.parseInt(s.toString()));
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void afterTextChanged(Editable s) { }
-        };
-        teamNumberEditText.addTextChangedListener(teamNumberTextWatcher);
-
-        matchNumberEditText = findViewById(R.id.matchNumberEditText);
-        matchNumberTextWatcher = new TextWatcher() {
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int matchNumber = s.length() > 0 ? Integer.parseInt(s.toString()) : -1;
-                Scouting.getInstance().setMatchNumber(matchNumber);
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void afterTextChanged(Editable s) { }
-        };
-        matchNumberEditText.addTextChangedListener(matchNumberTextWatcher);
+        teamNumWrapper = new TextWrapper(this, viewModel, R.id.teamNumberEditText);
+        matchNumWrapper = new TextWrapper(this, viewModel, R.id.matchNumberEditText);
 
         checkForPermissions();
     }
@@ -80,13 +61,8 @@ public class SandstormActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        teamNumberEditText.removeTextChangedListener(teamNumberTextWatcher);
-        teamNumberEditText = null;
-        teamNumberTextWatcher = null;
-
-        matchNumberEditText.removeTextChangedListener(matchNumberTextWatcher);
-        matchNumberEditText = null;
-        matchNumberTextWatcher = null;
+        teamNumWrapper.cleanUp();
+        matchNumWrapper.cleanUp();
 
         viewModel = null;
     }
@@ -106,15 +82,15 @@ public class SandstormActivity extends BaseActivity {
         }
         viewModel.finish();
         clearAnswers();
-        ViewUtils.requestFocus(teamNumberEditText, this);
+        ViewUtils.requestFocus(teamNumWrapper.getEditText(), this);
         final Intent intent = new Intent(this, CycleActivity.class);
         startActivity(intent);
 
     }
 
     private void clearAnswers() {
-        teamNumberEditText.setText("");
-        matchNumberEditText.setText("");
+        teamNumWrapper.clear();
+        matchNumWrapper.clear();
         sandstormStartingPositionRadioQuestion.clearCheck();
         itemPickedUpRadioGroup.clearCheck();
         itemPlacedSandstormRadioGroup.clearCheck();

@@ -31,6 +31,27 @@ public class SandstormModel extends ScoutModel {
     }
 
     @Override
+    public boolean handleTextAnswer(int questionId, String answer) {
+        switch (questionId) {
+            case R.id.teamNumberEditText:
+                return setTeamNumber(answer);
+            case R.id.matchNumberEditText:
+                int matchNumber = !answer.isEmpty() ? -1 : Integer.parseInt(answer);
+                Scouting.getInstance().setMatchNumber(matchNumber);
+                return true;
+        }
+        return false;
+    }
+
+    private boolean setTeamNumber(String teamNumber) {
+        if (teamNumber.isEmpty())
+            return false;
+
+        Scouting.getInstance().setTeamNumber(Integer.parseInt(teamNumber));
+        return true;
+    }
+
+    @Override
     public String getCSVRowHeader() {
         return Scouting.getInstance().getMatchNumber() + "," + Scouting.getInstance().getTeamNumber();
     }
