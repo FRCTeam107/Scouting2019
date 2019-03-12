@@ -58,9 +58,9 @@ public class CycleActivity extends AppCompatActivity {
 
     private void setAllDefense(boolean allDefense) {
         boolean questionsEnabled = !allDefense;
-        setRadioGroupEnabled(pickupLocationRadioGroup, questionsEnabled);
-        setRadioGroupEnabled(itemPickedUpRadioGroup, questionsEnabled);
-        setRadioGroupEnabled(itemPlacedRadioGroup, questionsEnabled);
+        ViewUtils.setRadioGroupEnabled(pickupLocationRadioGroup, questionsEnabled);
+        ViewUtils.setRadioGroupEnabled(itemPickedUpRadioGroup, questionsEnabled);
+        ViewUtils.setRadioGroupEnabled(itemPlacedRadioGroup, questionsEnabled);
 
         defenseCheckbox.setChecked(allDefense);
 
@@ -71,15 +71,6 @@ public class CycleActivity extends AppCompatActivity {
         }
 
         viewModel.setAllDefense(allDefense);
-    }
-
-    private void setRadioGroupEnabled(RadioGroup radioGroup, boolean enabled) {
-        radioGroup.setEnabled(enabled);
-        int childCount = radioGroup.getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            RadioButton button = (RadioButton) radioGroup.getChildAt(i);
-            button.setEnabled(enabled);
-        }
     }
 
     @Override
