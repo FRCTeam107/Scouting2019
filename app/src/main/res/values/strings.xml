@@ -61,6 +61,8 @@
 
     <string name="defenseChkbxText">Defense</string>
 
+    <string name="allDefenseChkbxText">Only Defense</string>
+
     <string name="goToCycleButton">Start Cycles</string>
 
     <string name="scouterInitials">Scouter Initials</string>

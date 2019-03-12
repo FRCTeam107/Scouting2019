@@ -14,6 +14,9 @@ public class CycleModel extends ScoutModel {
 
     @Override
     public Question[] getQuestions() {
+        ToggleQuestion allDefenseQuestion = new ToggleQuestion(R.id.allDefense_chkbx);
+        allDefenseQuestion.setIgnoreAnswer(true);
+
         Question[] questions = {
                 new RadioQuestion(R.id.pickupLocationRadioQuestion, true,
                         new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, 0),
@@ -27,7 +30,8 @@ public class CycleModel extends ScoutModel {
                         new RadioQuestion.Option(R.id.bottomRocketItemPlaced_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.cargoshipItemPlaced_Radiobtn, 0),
                         new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, 4)),
-                new ToggleQuestion(R.id.defense_chkbx)
+                new ToggleQuestion(R.id.defense_chkbx),
+                allDefenseQuestion
         };
         return questions;
     }
@@ -55,5 +59,16 @@ public class CycleModel extends ScoutModel {
         String type = isTeleop ? "1" : "0";
         String csvRow = getAnswerCSVRow();
         Scouting.getInstance().addCycle(cycleNum + "," + type + "," + csvRow);
+    }
+
+    public void setAllDefense(boolean allDefense) {
+        Question pickupLocationQuestion = getQuestion(R.id.pickupLocationRadioQuestion);
+        Question itemPickedUpQuestion = getQuestion(R.id.itemPickedUpRadioQuestion);
+        Question itemPlacedRadioQuestion = getQuestion(R.id.itemPlacedRadioQuestion);
+
+        boolean needsAnswers = !allDefense;
+        pickupLocationQuestion.setNeedsAnswer(needsAnswers);
+        itemPickedUpQuestion.setNeedsAnswer(needsAnswers);
+        itemPlacedRadioQuestion.setNeedsAnswer(needsAnswers);
     }
 }

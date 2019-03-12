@@ -90,7 +90,7 @@ public abstract class ScoutModel {
         return false;
     }
 
-    private Question getQuestion(int id) {
+    public Question getQuestion(int id) {
         for (Question question : questions) {
             if (question.getId() == id)
                 return question;
@@ -111,7 +111,11 @@ public abstract class ScoutModel {
     public String getAnswerCSVRow() {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < questions.size(); i++) {
-            stringBuilder.append(questions.get(i).getAnswerAsString());
+            Question question = questions.get(i);
+            if (question.answerCanBeIgnored())
+                continue;
+
+            stringBuilder.append(question.getAnswerAsString());
             if (i < questions.size() - 1) {
                 stringBuilder.append(',');
             }
