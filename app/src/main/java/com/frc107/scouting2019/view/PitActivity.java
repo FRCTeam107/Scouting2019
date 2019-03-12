@@ -14,6 +14,7 @@ import com.frc107.scouting2019.BuildConfig;
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
+import com.frc107.scouting2019.view.wrappers.RadioWrapper;
 import com.frc107.scouting2019.view.wrappers.TextWrapper;
 import com.frc107.scouting2019.viewmodel.PitViewModel;
 
@@ -28,6 +29,11 @@ import androidx.core.content.FileProvider;
  */
 
 public class PitActivity extends BaseActivity {
+    private RadioWrapper sandstormOpWrapper;
+    private RadioWrapper sandstormPrefWrapper;
+    private RadioWrapper highestRocketLevelWrapper;
+    private RadioWrapper highestHabLevelWrapper;
+    private RadioWrapper programmingLangWrapper;
     private TextWrapper teamNumWrapper;
     private TextWrapper habTimeWrapper;
     private TextWrapper arcadeGameWrapper;
@@ -44,21 +50,16 @@ public class PitActivity extends BaseActivity {
 
         viewModel = new PitViewModel();
 
-        RadioGroup sandstormOperationsRadioQuestion = findViewById(R.id.sandstormOperationsRadioQuestion);
-        sandstormOperationsRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormOperationsRadioQuestion, checkedId));
-        RadioGroup sandstormPreferenceRadioQuestion = findViewById(R.id.sandstormPreferenceRadioQuestion);
-        sandstormPreferenceRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormPreferenceRadioQuestion, checkedId));
-        RadioGroup highestRocketLevelSandstormRadioQuestion = findViewById(R.id.highestRocketLevelSandstormRadioQuestion);
-        highestRocketLevelSandstormRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.highestRocketLevelSandstormRadioQuestion, checkedId));
-        RadioGroup highestHabitatLevelRadioQuestion = findViewById(R.id.highestHabitatLevelRadioQuestion);
-        highestHabitatLevelRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.highestHabitatLevelRadioQuestion, checkedId));
-        RadioGroup programmingLanguageRadioQuestion = findViewById(R.id.programmingLanguageRadioQuestion);
-        programmingLanguageRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.programmingLanguageRadioQuestion, checkedId));
+        sandstormOpWrapper = new RadioWrapper(findViewById(R.id.sandstormOperationsRadioQuestion), viewModel);
+        sandstormPrefWrapper = new RadioWrapper(findViewById(R.id.sandstormPreferenceRadioQuestion), viewModel);
+        highestRocketLevelWrapper = new RadioWrapper(findViewById(R.id.highestRocketLevelSandstormRadioQuestion), viewModel);
+        highestHabLevelWrapper = new RadioWrapper(findViewById(R.id.highestHabitatLevelRadioQuestion), viewModel);
+        programmingLangWrapper = new RadioWrapper(findViewById(R.id.programmingLanguageRadioQuestion), viewModel);
 
-        teamNumWrapper = new TextWrapper(this, viewModel, R.id.pit_teamNumber_editText);
-        habTimeWrapper = new TextWrapper(this, viewModel, R.id.pit_habitatTime_editText);
-        arcadeGameWrapper = new TextWrapper(this, viewModel, R.id.pit_arcadeGame_editText);
-        commentsWrapper = new TextWrapper(this, viewModel, R.id.pit_comments_editText);
+        teamNumWrapper = new TextWrapper(findViewById(R.id.pit_teamNumber_editText), viewModel);
+        habTimeWrapper = new TextWrapper(findViewById(R.id.pit_habitatTime_editText), viewModel);
+        arcadeGameWrapper = new TextWrapper(findViewById(R.id.pit_arcadeGame_editText), viewModel);
+        commentsWrapper = new TextWrapper(findViewById(R.id.pit_comments_editText), viewModel);
 
         checkForPermissions();
     }
@@ -66,10 +67,18 @@ public class PitActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        sandstormOpWrapper.cleanUp();
+        sandstormPrefWrapper.cleanUp();
+        highestRocketLevelWrapper.cleanUp();
+        highestHabLevelWrapper.cleanUp();
+        programmingLangWrapper.cleanUp();
         teamNumWrapper.cleanUp();
         habTimeWrapper.cleanUp();
         arcadeGameWrapper.cleanUp();
         commentsWrapper.cleanUp();
+
+        viewModel = null;
     }
 
     public void savePitData(View view) {

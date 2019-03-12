@@ -1,6 +1,5 @@
 package com.frc107.scouting2019.view.wrappers;
 
-import android.app.Activity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
@@ -13,20 +12,16 @@ public class TextWrapper {
     private ScoutViewModel viewModel;
     private int id;
 
-    public TextWrapper(Activity activity, ScoutViewModel viewModel, int id) {
+    public TextWrapper(EditText editText, ScoutViewModel viewModel) {
         this.viewModel = viewModel;
-        this.id = id;
-        this.editText = activity.findViewById(id);
+        this.editText = editText;
+        this.id = editText.getId();
 
-        textWatcher = getTextWatcher();
+        textWatcher = createTextWatcher();
         this.editText.addTextChangedListener(textWatcher);
     }
 
-    public EditText getEditText() {
-        return editText;
-    }
-
-    private TextWatcher getTextWatcher() {
+    private TextWatcher createTextWatcher() {
         return new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 handleText(s.toString());
@@ -34,6 +29,10 @@ public class TextWrapper {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }
         };
+    }
+
+    public EditText getEditText() {
+        return editText;
     }
 
     public void handleText(String text) {

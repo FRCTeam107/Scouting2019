@@ -12,6 +12,7 @@ import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
+import com.frc107.scouting2019.view.wrappers.RadioWrapper;
 import com.frc107.scouting2019.viewmodel.CycleViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,9 +20,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class CycleActivity extends AppCompatActivity {
-    private RadioGroup pickupLocationRadioGroup;
-    private RadioGroup itemPickedUpRadioGroup;
-    private RadioGroup itemPlacedRadioGroup;
+    private RadioWrapper pickupLocationWrapper;
+    private RadioWrapper itemPickedUpWrapper;
+    private RadioWrapper itemPlacedWrapper;
     private CheckBox defenseCheckbox;
 
     private CycleViewModel viewModel;
@@ -35,14 +36,9 @@ public class CycleActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
 
-        pickupLocationRadioGroup = findViewById(R.id.pickupLocationRadioQuestion);
-        pickupLocationRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
-
-        itemPickedUpRadioGroup = findViewById(R.id.itemPickedUpRadioQuestion);
-        itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPickedUpRadioQuestion, checkedId));
-
-        itemPlacedRadioGroup = findViewById(R.id.itemPlacedRadioQuestion);
-        itemPlacedRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPlacedRadioQuestion, checkedId));
+        pickupLocationWrapper = new RadioWrapper(findViewById(R.id.pickupLocationRadioQuestion), viewModel);
+        itemPickedUpWrapper = new RadioWrapper(findViewById(R.id.itemPickedUpRadioQuestion), viewModel);
+        itemPlacedWrapper = new RadioWrapper(findViewById(R.id.itemPlacedRadioQuestion), viewModel);
 
         defenseCheckbox = findViewById(R.id.defense_chkbx);
         defenseCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.defense_chkbx, isChecked));
@@ -51,6 +47,12 @@ public class CycleActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        pickupLocationWrapper.cleanUp();
+        itemPickedUpWrapper.cleanUp();
+        itemPlacedWrapper.cleanUp();
+        defenseCheckbox.setOnCheckedChangeListener(null);
+
         viewModel = null;
     }
 
@@ -141,9 +143,9 @@ public class CycleActivity extends AppCompatActivity {
     }
 
     private void clearAnswers() {
-        pickupLocationRadioGroup.clearCheck();
-        itemPickedUpRadioGroup.clearCheck();
-        itemPlacedRadioGroup.clearCheck();
+        pickupLocationWrapper.clear();
+        itemPickedUpWrapper.clear();
+        itemPlacedWrapper.clear();
         defenseCheckbox.setChecked(false);
     }
 }

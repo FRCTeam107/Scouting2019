@@ -1,38 +1,30 @@
 package com.frc107.scouting2019.view;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
-import com.frc107.scouting2019.model.question.Question;
-import com.frc107.scouting2019.model.question.RadioQuestion;
-import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
+import com.frc107.scouting2019.view.wrappers.RadioWrapper;
 import com.frc107.scouting2019.viewmodel.EndGameViewModel;
-import com.frc107.scouting2019.viewmodel.SandstormViewModel;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 public class EndGameActivity extends BaseActivity {
+    private RadioWrapper habLevelWrapper;
+    private RadioWrapper defenseWrapper;
+
+    private CheckBox defenseAllMatchCheckbox;
+    private CheckBox foulsCheckbox;
 
     private EndGameViewModel viewModel;
-    private CheckBox endGameDefenseAllMatchCheckbox, endGameFoulsCheckbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +35,14 @@ public class EndGameActivity extends BaseActivity {
 
         getSupportActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
 
-        RadioGroup endGameHabitatLevelRadioQuestion = findViewById(R.id.endGameHabitatLevelRadioQuestion);
-        endGameHabitatLevelRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameHabitatLevelRadioQuestion, checkedId));
+        habLevelWrapper = new RadioWrapper(findViewById(R.id.endGameHabitatLevelRadioQuestion), viewModel);
+        defenseWrapper = new RadioWrapper(findViewById(R.id.endGameDefenseRadioQuestion), viewModel);
 
-        RadioGroup endGameDefenseRadioQuestion = findViewById(R.id.endGameDefenseRadioQuestion);
-        endGameDefenseRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.endGameDefenseRadioQuestion, checkedId));
+        defenseAllMatchCheckbox = findViewById(R.id.endGameDefenseAllMatch_chkbx);
+        defenseAllMatchCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.endGameDefenseAllMatch_chkbx, isChecked));
 
-        endGameDefenseAllMatchCheckbox = findViewById(R.id.endGameDefenseAllMatch_chkbx);
-        endGameDefenseAllMatchCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.endGameDefenseAllMatch_chkbx, isChecked));
-
-
-        endGameFoulsCheckbox = findViewById(R.id.endGameFouls_chkbx);
-        endGameFoulsCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.endGameFouls_chkbx, isChecked));
+        foulsCheckbox = findViewById(R.id.endGameFouls_chkbx);
+        foulsCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.endGameFouls_chkbx, isChecked));
 
         checkForPermissions();
     }
@@ -63,6 +51,10 @@ public class EndGameActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
 
+        habLevelWrapper.cleanUp();
+        defenseWrapper.cleanUp();
+        defenseAllMatchCheckbox.setOnCheckedChangeListener(null);
+        foulsCheckbox.setOnCheckedChangeListener(null);
 
         viewModel = null;
     }
@@ -73,7 +65,6 @@ public class EndGameActivity extends BaseActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         }
     }
-
 
     public void saveData(View view) {
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();

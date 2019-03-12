@@ -84,6 +84,11 @@ public class PitModel extends ScoutModel {
     }
 
     @Override
+    public boolean handleTextAnswer(int questionId, String answer) {
+        return false;
+    }
+
+    @Override
     public String getCSVRowHeader() {
         return String.valueOf(Scouting.getInstance().getTeamNumber());
     }

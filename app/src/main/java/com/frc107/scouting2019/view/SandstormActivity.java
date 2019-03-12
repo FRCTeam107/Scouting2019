@@ -4,32 +4,21 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.Scouting;
-import com.frc107.scouting2019.model.question.Question;
-import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.utils.ViewUtils;
+import com.frc107.scouting2019.view.wrappers.RadioWrapper;
 import com.frc107.scouting2019.view.wrappers.TextWrapper;
 import com.frc107.scouting2019.viewmodel.SandstormViewModel;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 public class SandstormActivity extends BaseActivity {
-
-    private RadioGroup sandstormStartingPositionRadioQuestion;
-    private RadioGroup itemPickedUpRadioGroup;
-    private RadioGroup itemPlacedSandstormRadioGroup;
-
+    private RadioWrapper startingPosWrapper;
+    private RadioWrapper startingPieceWrapper;
+    private RadioWrapper itemPlacedWrapper;
     private TextWrapper teamNumWrapper;
     private TextWrapper matchNumWrapper;
 
@@ -42,17 +31,12 @@ public class SandstormActivity extends BaseActivity {
 
         viewModel = new SandstormViewModel();
 
-        sandstormStartingPositionRadioQuestion = findViewById(R.id.sandstormStartingPositionRadioQuestion);
-        sandstormStartingPositionRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingPositionRadioQuestion, checkedId));
+        startingPosWrapper = new RadioWrapper(findViewById(R.id.sandstormStartingPositionRadioQuestion), viewModel);
+        startingPieceWrapper = new RadioWrapper(findViewById(R.id.sandstormStartingGamePieceRadioQuestion), viewModel);
+        itemPlacedWrapper = new RadioWrapper(findViewById(R.id.sandstormItemPlacedRadioQuestion), viewModel);
 
-        itemPickedUpRadioGroup = findViewById(R.id.sandstormStartingGamePieceRadioQuestion);
-        itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingGamePieceRadioQuestion, checkedId));
-
-        itemPlacedSandstormRadioGroup = findViewById(R.id.sandstormItemPlacedRadioQuestion);
-        itemPlacedSandstormRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormItemPlacedRadioQuestion, checkedId));
-
-        teamNumWrapper = new TextWrapper(this, viewModel, R.id.teamNumberEditText);
-        matchNumWrapper = new TextWrapper(this, viewModel, R.id.matchNumberEditText);
+        teamNumWrapper = new TextWrapper(findViewById(R.id.teamNumberEditText), viewModel);
+        matchNumWrapper = new TextWrapper(findViewById(R.id.matchNumberEditText), viewModel);
 
         checkForPermissions();
     }
@@ -61,6 +45,9 @@ public class SandstormActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
 
+        startingPosWrapper.cleanUp();
+        startingPieceWrapper.cleanUp();
+        itemPlacedWrapper.cleanUp();
         teamNumWrapper.cleanUp();
         matchNumWrapper.cleanUp();
 
@@ -91,8 +78,8 @@ public class SandstormActivity extends BaseActivity {
     private void clearAnswers() {
         teamNumWrapper.clear();
         matchNumWrapper.clear();
-        sandstormStartingPositionRadioQuestion.clearCheck();
-        itemPickedUpRadioGroup.clearCheck();
-        itemPlacedSandstormRadioGroup.clearCheck();
+        startingPosWrapper.clear();
+        startingPieceWrapper.clear();
+        itemPlacedWrapper.clear();
     }
 }
