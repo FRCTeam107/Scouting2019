@@ -62,6 +62,7 @@ public class CycleActivity extends AppCompatActivity {
         ViewUtils.setRadioGroupEnabled(itemPickedUpRadioGroup, questionsEnabled);
         ViewUtils.setRadioGroupEnabled(itemPlacedRadioGroup, questionsEnabled);
 
+        defenseCheckbox.setEnabled(questionsEnabled);
         defenseCheckbox.setChecked(allDefense);
 
         if (allDefense) {
