@@ -169,7 +169,6 @@
             android:id="@+id/allDefense_chkbx"
             android:layout_width="match_parent"
             android:layout_height="@dimen/question_height"
-            android:layout_marginTop="@dimen/top_margin"
             android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/toggle_drawable"
