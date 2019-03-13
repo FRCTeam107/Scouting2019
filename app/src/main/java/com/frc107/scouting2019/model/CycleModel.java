@@ -29,7 +29,8 @@ public class CycleModel extends ScoutModel {
                         new RadioQuestion.Option(R.id.middleRocketItemPlaced_Radiobtn, 2),
                         new RadioQuestion.Option(R.id.bottomRocketItemPlaced_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.cargoshipItemPlaced_Radiobtn, 0),
-                        new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, 4)),
+                        new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, 4),
+                        new RadioQuestion.Option(R.id.nothingPlacedItemPlaced_Radiobtn, 5)),
                 new ToggleQuestion(R.id.defense_chkbx),
                 allDefenseQuestion
         };

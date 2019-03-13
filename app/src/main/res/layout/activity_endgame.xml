@@ -44,7 +44,11 @@
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
                     android:text="@string/habOneEndGame"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step" />
 
                 <RadioButton
                     android:id="@+id/habTwoEndGame_Radiobtn"
@@ -54,7 +58,11 @@
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
                     android:text="@string/habTwoEndGame"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step" />
 
 
                 <RadioButton
@@ -65,7 +73,11 @@
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
                     android:text="@string/habThreeEndGame"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step" />
 
                 <RadioButton
                     android:id="@+id/habNoneEndGame_Radiobtn"
@@ -75,7 +87,11 @@
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
                     android:text="@string/habNoneEndGame"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step" />
             </RadioGroup>
 
             <CheckBox
@@ -114,7 +130,11 @@
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
                     android:text="@string/endGameDefenseEffective"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step" />
 
                 <RadioButton
                     android:id="@+id/endGameDefenseIneffective_Radiobtn"
@@ -124,7 +144,11 @@
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
                     android:text="@string/endGameDefenseIneffective"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step" />
 
                 <RadioButton
                     android:id="@+id/endGameDefenseNone_Radiobtn"
@@ -134,7 +158,11 @@
                     android:background="@drawable/toggle_drawable"
                     android:button="@null"
                     android:text="@string/endGameDefenseNone"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:autoSizeMinTextSize="@dimen/min_text_size"
+                    android:autoSizeMaxTextSize="@dimen/max_text_size"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeStepGranularity="@dimen/text_size_step" />
             </RadioGroup>
 
             <CheckBox
