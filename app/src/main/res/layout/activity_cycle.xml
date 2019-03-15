@@ -45,7 +45,11 @@
                         android:background="@drawable/toggle_drawable"
                         android:button="@null"
                         android:text="@string/portPickupLocation"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:autoSizeMinTextSize="@dimen/min_text_size"
+                        android:autoSizeMaxTextSize="@dimen/max_text_size"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeStepGranularity="@dimen/text_size_step" />
 
                     <RadioButton
                         android:id="@+id/floorPickupLocation_Radiobtn"
@@ -55,7 +59,11 @@
                         android:background="@drawable/toggle_drawable"
                         android:button="@null"
                         android:text="@string/floorPickupLocation"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:autoSizeMinTextSize="@dimen/min_text_size"
+                        android:autoSizeMaxTextSize="@dimen/max_text_size"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeStepGranularity="@dimen/text_size_step" />
                 </RadioGroup>
 
                 <TextView
@@ -81,7 +89,11 @@
                         android:background="@drawable/toggle_drawable"
                         android:button="@null"
                         android:text="@string/cargoPickedUp"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:autoSizeMinTextSize="@dimen/min_text_size"
+                        android:autoSizeMaxTextSize="@dimen/max_text_size"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeStepGranularity="@dimen/text_size_step" />
 
                     <RadioButton
                         android:id="@+id/hatchItemPickedUp_Radiobtn"
@@ -91,7 +103,11 @@
                         android:background="@drawable/toggle_drawable"
                         android:button="@null"
                         android:text="@string/hatchPickedUp"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:autoSizeMinTextSize="@dimen/min_text_size"
+                        android:autoSizeMaxTextSize="@dimen/max_text_size"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeStepGranularity="@dimen/text_size_step" />
                 </RadioGroup>
 
                 <TextView
@@ -118,7 +134,11 @@
                         android:background="@drawable/toggle_drawable"
                         android:button="@null"
                         android:text="@string/topRocketItemPlaced"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:autoSizeMinTextSize="@dimen/min_text_size"
+                        android:autoSizeMaxTextSize="@dimen/max_text_size"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeStepGranularity="@dimen/text_size_step" />
 
                     <RadioButton
                         android:id="@+id/middleRocketItemPlaced_Radiobtn"
@@ -128,7 +148,11 @@
                         android:background="@drawable/toggle_drawable"
                         android:button="@null"
                         android:text="@string/middleRocketItemPlaced"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:autoSizeMinTextSize="@dimen/min_text_size"
+                        android:autoSizeMaxTextSize="@dimen/max_text_size"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeStepGranularity="@dimen/text_size_step" />
 
                     <RadioButton
                         android:id="@+id/bottomRocketItemPlaced_Radiobtn"
@@ -138,7 +162,11 @@
                         android:background="@drawable/toggle_drawable"
                         android:button="@null"
                         android:text="@string/bottomRocketItemPlaced"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:autoSizeMinTextSize="@dimen/min_text_size"
+                        android:autoSizeMaxTextSize="@dimen/max_text_size"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeStepGranularity="@dimen/text_size_step" />
 
                     <RadioButton
                         android:id="@+id/cargoshipItemPlaced_Radiobtn"
@@ -148,7 +176,11 @@
                         android:background="@drawable/toggle_drawable"
                         android:button="@null"
                         android:text="@string/cargoshipItemPlaced"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:autoSizeMinTextSize="@dimen/min_text_size"
+                        android:autoSizeMaxTextSize="@dimen/max_text_size"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeStepGranularity="@dimen/text_size_step" />
 
                     <RadioButton
                         android:id="@+id/floorItemPlaced_Radiobtn"
@@ -158,7 +190,24 @@
                         android:background="@drawable/toggle_drawable"
                         android:button="@null"
                         android:text="@string/floorItemPlaced"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:autoSizeMinTextSize="@dimen/min_text_size"
+                        android:autoSizeMaxTextSize="@dimen/max_text_size"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeStepGranularity="@dimen/text_size_step" />
+                    <RadioButton
+                        android:id="@+id/nothingPlacedItemPlaced_Radiobtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/toggle_drawable"
+                        android:button="@null"
+                        android:text="@string/nothingPlacedItemPlaced"
+                        android:textAlignment="center"
+                        android:autoSizeMinTextSize="@dimen/min_text_size"
+                        android:autoSizeMaxTextSize="@dimen/max_text_size"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeStepGranularity="@dimen/text_size_step"/>
                 </RadioGroup>
 
 
