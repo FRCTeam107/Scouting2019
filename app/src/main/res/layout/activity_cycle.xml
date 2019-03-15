@@ -42,28 +42,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/toggle_drawable"
-                        android:button="@null"
                         android:text="@string/portPickupLocation"
-                        android:textAlignment="center"
-                        android:autoSizeMinTextSize="@dimen/min_text_size"
-                        android:autoSizeMaxTextSize="@dimen/max_text_size"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeStepGranularity="@dimen/text_size_step" />
+                        style="@style/scoutingRadioButtonTheme" />
 
                     <RadioButton
                         android:id="@+id/floorPickupLocation_Radiobtn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/toggle_drawable"
-                        android:button="@null"
                         android:text="@string/floorPickupLocation"
-                        android:textAlignment="center"
-                        android:autoSizeMinTextSize="@dimen/min_text_size"
-                        android:autoSizeMaxTextSize="@dimen/max_text_size"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeStepGranularity="@dimen/text_size_step" />
+                        style="@style/scoutingRadioButtonTheme" />
                 </RadioGroup>
 
                 <TextView
@@ -86,28 +74,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/toggle_drawable"
-                        android:button="@null"
                         android:text="@string/cargoPickedUp"
-                        android:textAlignment="center"
-                        android:autoSizeMinTextSize="@dimen/min_text_size"
-                        android:autoSizeMaxTextSize="@dimen/max_text_size"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeStepGranularity="@dimen/text_size_step" />
+                        style="@style/scoutingRadioButtonTheme" />
 
                     <RadioButton
                         android:id="@+id/hatchItemPickedUp_Radiobtn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/toggle_drawable"
-                        android:button="@null"
                         android:text="@string/hatchPickedUp"
-                        android:textAlignment="center"
-                        android:autoSizeMinTextSize="@dimen/min_text_size"
-                        android:autoSizeMaxTextSize="@dimen/max_text_size"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeStepGranularity="@dimen/text_size_step" />
+                        style="@style/scoutingRadioButtonTheme" />
                 </RadioGroup>
 
                 <TextView
@@ -131,83 +107,48 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/toggle_drawable"
-                        android:button="@null"
                         android:text="@string/topRocketItemPlaced"
-                        android:textAlignment="center"
-                        android:autoSizeMinTextSize="@dimen/min_text_size"
-                        android:autoSizeMaxTextSize="@dimen/max_text_size"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeStepGranularity="@dimen/text_size_step" />
+                        style="@style/scoutingRadioButtonTheme" />
 
                     <RadioButton
                         android:id="@+id/middleRocketItemPlaced_Radiobtn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/toggle_drawable"
-                        android:button="@null"
                         android:text="@string/middleRocketItemPlaced"
-                        android:textAlignment="center"
-                        android:autoSizeMinTextSize="@dimen/min_text_size"
-                        android:autoSizeMaxTextSize="@dimen/max_text_size"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeStepGranularity="@dimen/text_size_step" />
+                        style="@style/scoutingRadioButtonTheme" />
 
                     <RadioButton
                         android:id="@+id/bottomRocketItemPlaced_Radiobtn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/toggle_drawable"
-                        android:button="@null"
                         android:text="@string/bottomRocketItemPlaced"
-                        android:textAlignment="center"
-                        android:autoSizeMinTextSize="@dimen/min_text_size"
-                        android:autoSizeMaxTextSize="@dimen/max_text_size"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeStepGranularity="@dimen/text_size_step" />
+                        style="@style/scoutingRadioButtonTheme" />
 
                     <RadioButton
                         android:id="@+id/cargoshipItemPlaced_Radiobtn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/toggle_drawable"
-                        android:button="@null"
                         android:text="@string/cargoshipItemPlaced"
-                        android:textAlignment="center"
-                        android:autoSizeMinTextSize="@dimen/min_text_size"
-                        android:autoSizeMaxTextSize="@dimen/max_text_size"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeStepGranularity="@dimen/text_size_step" />
+                        style="@style/scoutingRadioButtonTheme" />
 
                     <RadioButton
                         android:id="@+id/floorItemPlaced_Radiobtn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/toggle_drawable"
-                        android:button="@null"
                         android:text="@string/floorItemPlaced"
-                        android:textAlignment="center"
-                        android:autoSizeMinTextSize="@dimen/min_text_size"
-                        android:autoSizeMaxTextSize="@dimen/max_text_size"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeStepGranularity="@dimen/text_size_step" />
+                        style="@style/scoutingRadioButtonTheme" />
+
                     <RadioButton
                         android:id="@+id/nothingPlacedItemPlaced_Radiobtn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/toggle_drawable"
-                        android:button="@null"
                         android:text="@string/nothingPlacedItemPlaced"
-                        android:textAlignment="center"
-                        android:autoSizeMinTextSize="@dimen/min_text_size"
-                        android:autoSizeMaxTextSize="@dimen/max_text_size"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeStepGranularity="@dimen/text_size_step"/>
+                        style="@style/scoutingRadioButtonTheme" />
                 </RadioGroup>
 
 
@@ -218,10 +159,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/top_margin"
                     android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
                     android:text="@string/defenseChkbxText"
-                    android:textAlignment="center" />
+                    style="@style/scoutingRadioButtonTheme" />
 
                 <CheckBox
                     android:id="@+id/allDefense_chkbx"
@@ -229,10 +168,8 @@
                     android:layout_height="@dimen/question_height"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
                     android:text="@string/allDefenseChkbxText"
-                    android:textAlignment="center" />
+                    style="@style/scoutingRadioButtonTheme" />
 
             </LinearLayout>
 
