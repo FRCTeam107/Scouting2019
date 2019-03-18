@@ -385,11 +385,11 @@
                 </RadioGroup>
 
                 <EditText
-                    android:id="@+id/pit_arcadeGame_editText"
+                    android:id="@+id/pit_bonusQuestion_editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/top_margin"
-                    android:hint="@string/pitArcadeGameText"
+                    android:hint="@string/pitBonusQuestion"
                     android:inputType="text"/>
 
                 <EditText

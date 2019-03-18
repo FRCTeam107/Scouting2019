@@ -77,7 +77,7 @@ public class PitModel extends ScoutModel {
                         new RadioQuestion.Option(R.id.labviewProgrammingLanguage_Radiobtn, 2),
                         new RadioQuestion.Option(R.id.otherProgrammingLanguage_Radiobtn, 3)),
 
-                new TextQuestion(R.id.pit_arcadeGame_editText, true),
+                new TextQuestion(R.id.pit_bonusQuestion_editText, true),
                 new TextQuestion(R.id.pit_comments_editText, true)
         };
         return questions;

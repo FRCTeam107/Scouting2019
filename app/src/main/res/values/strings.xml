@@ -128,7 +128,7 @@
     <string name="labviewProgrammingLanguage">LabVIEW</string>
     <string name="otherProgrammingLanguage">Other</string>
 
-    <string name="pitArcadeGameText">Arcade Game</string>
+    <string name="pitBonusQuestion">What planet would they go to?</string>
     <string name="pit_comments_Text">Comments</string>
 
     <string name="savePitButton">Save</string>
