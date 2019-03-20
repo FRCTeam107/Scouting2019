@@ -57,6 +57,9 @@ public class Scouting {
     public ArrayList<String> getCycles() {
         return cycles;
     }
+    public void clearCycles() {
+        cycles.clear();
+    }
 
     // TODO: Go through radiogroups and fix formatting
     // TODO: naming conventions

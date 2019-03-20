@@ -7,8 +7,8 @@ public class RadioQuestion extends Question<Integer> {
     private ArrayList<Option> options;
     private Option selectedOption;
 
-    public RadioQuestion(int id, boolean needsAnswer, Option... options) {
-        super(id, needsAnswer);
+    public RadioQuestion(String name, int id, boolean needsAnswer, Option... options) {
+        super(name, id, needsAnswer);
         this.options = new ArrayList<>(Arrays.asList(options));
     }
 

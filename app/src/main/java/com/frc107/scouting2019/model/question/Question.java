@@ -9,8 +9,8 @@ public abstract class Question<T> {
     private boolean needsAnswer;
     private boolean ignoreAnswer;
 
-    public Question(int id, boolean needsAnswer) {
-        this.name = "";
+    public Question(String name, int id, boolean needsAnswer) {
+        this.name = name;
         this.id = id;
         this.needsAnswer = needsAnswer;
     }

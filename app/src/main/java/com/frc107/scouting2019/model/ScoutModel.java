@@ -35,7 +35,17 @@ public abstract class ScoutModel {
         return -1;
     }
 
-    // TODO: Add method canFormBeFinished, it'll take into account answerCanBeIgnored, needsAnswer, hasAnswer, etc
+    // TODO: This should probably have an implementation per-model, so we can avoid things like cycleCanBeFinished. It's bad pattern.
+    public boolean isFormComplete() {
+        for (Question question : questions) {
+            if (!question.needsAnswer())
+                continue;
+
+            if (!question.hasAnswer())
+                return false;
+        }
+        return true;
+    }
 
     public boolean areNoQuestionsAnswered() {
         for (Question question : questions) {
@@ -121,7 +131,7 @@ public abstract class ScoutModel {
                 if (i > 0)
                     stringBuilder.append(',');
 
-                stringBuilder.append(question.getAnswerAsString());
+                stringBuilder.append(question.getName());//.getAnswerAsString());
             }
         }
         return stringBuilder.toString();

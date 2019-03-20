@@ -1,5 +1,7 @@
 package com.frc107.scouting2019.model;
 
+import android.content.Context;
+
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
@@ -14,24 +16,24 @@ public class CycleModel extends ScoutModel {
 
     @Override
     public Question[] getQuestions() {
-        ToggleQuestion allDefenseQuestion = new ToggleQuestion(R.id.allDefense_chkbx);
+        ToggleQuestion allDefenseQuestion = new ToggleQuestion("cycleAllDefense", R.id.allDefense_chkbx);
         allDefenseQuestion.setIgnoreAnswer(true);
 
         Question[] questions = {
-                new RadioQuestion(R.id.pickupLocationRadioQuestion, true,
+                new RadioQuestion("cyclePickupLoc", R.id.pickupLocationRadioQuestion, true,
                         new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, 0),
                         new RadioQuestion.Option(R.id.floorPickupLocation_Radiobtn, 1)),
-                new RadioQuestion(R.id.itemPickedUpRadioQuestion, true,
+                new RadioQuestion("cycleItemPickedUp", R.id.itemPickedUpRadioQuestion, true,
                         new RadioQuestion.Option(R.id.cargoItemPickedUp_Radiobtn, 0),
                         new RadioQuestion.Option(R.id.hatchItemPickedUp_Radiobtn, 1)),
-                new RadioQuestion(R.id.itemPlacedRadioQuestion, true,
+                new RadioQuestion("cycleItemPlaced", R.id.itemPlacedRadioQuestion, true,
                         new RadioQuestion.Option(R.id.topRocketItemPlaced_Radiobtn, 3),
                         new RadioQuestion.Option(R.id.middleRocketItemPlaced_Radiobtn, 2),
                         new RadioQuestion.Option(R.id.bottomRocketItemPlaced_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.cargoshipItemPlaced_Radiobtn, 0),
                         new RadioQuestion.Option(R.id.floorItemPlaced_Radiobtn, 4),
                         new RadioQuestion.Option(R.id.nothingPlacedItemPlaced_Radiobtn, 5)),
-                new ToggleQuestion(R.id.defense_chkbx),
+                new ToggleQuestion("cycleDefense", R.id.defense_chkbx),
                 allDefenseQuestion
         };
         return questions;
@@ -71,5 +73,12 @@ public class CycleModel extends ScoutModel {
         pickupLocationQuestion.setNeedsAnswer(needsAnswers);
         itemPickedUpQuestion.setNeedsAnswer(needsAnswers);
         itemPlacedRadioQuestion.setNeedsAnswer(needsAnswers);
+    }
+
+    public boolean cycleCanBeFinished() {
+        if (areNoQuestionsAnswered() || isFormComplete())
+            return true;
+
+        return false;
     }
 }
