@@ -43,7 +43,7 @@ public class EndGameModel extends ScoutModel {
         ArrayList<String> cycles = Scouting.getInstance().getCycles();
         for (int i = 0; i < cycles.size(); i++) {
             String cycle = cycles.get(i);
-            String row = sandstormData + "," + cycle + "," + getAnswerCSVRow();
+            String row = sandstormData + "," + cycle + "," + cycles.size() + "," + getAnswerCSVRow();
             builder.append(row);
 
             if (i < cycles.size() - 1)

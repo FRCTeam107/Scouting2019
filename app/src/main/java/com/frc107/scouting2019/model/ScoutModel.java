@@ -35,8 +35,13 @@ public abstract class ScoutModel {
         return -1;
     }
 
+    // TODO: Add method canFormBeFinished, it'll take into account answerCanBeIgnored, needsAnswer, hasAnswer, etc
+
     public boolean areNoQuestionsAnswered() {
         for (Question question : questions) {
+            if (!question.needsAnswer())
+                continue;
+
             if (question instanceof ToggleQuestion)
                 continue;
 
@@ -112,12 +117,11 @@ public abstract class ScoutModel {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < questions.size(); i++) {
             Question question = questions.get(i);
-            if (question.answerCanBeIgnored())
-                continue;
+            if (!question.answerCanBeIgnored()) {
+                if (i > 0)
+                    stringBuilder.append(',');
 
-            stringBuilder.append(question.getAnswerAsString());
-            if (i < questions.size() - 1) {
-                stringBuilder.append(',');
+                stringBuilder.append(question.getAnswerAsString());
             }
         }
         return stringBuilder.toString();
