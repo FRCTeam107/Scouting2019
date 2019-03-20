@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Scouting {
     public static final FileUtils FILE_UTILS = new FileUtils();
+    public static final boolean SAVE_QUESTION_NAMES_AS_ANSWERS = false;
 
     private static Scouting scouting;
     public static Scouting getInstance() {

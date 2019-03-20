@@ -131,7 +131,10 @@ public abstract class ScoutModel {
                 if (i > 0)
                     stringBuilder.append(',');
 
-                stringBuilder.append(question.getName());//.getAnswerAsString());
+                if (Scouting.SAVE_QUESTION_NAMES_AS_ANSWERS)
+                    stringBuilder.append(question.getName());
+                else
+                    stringBuilder.append(question.getAnswerAsString());
             }
         }
         return stringBuilder.toString();

@@ -4,7 +4,11 @@ package com.frc107.scouting2019.model.question;
  * @param <T> The type of the answer.
  */
 public abstract class Question<T> {
-    private String name; // TODO: remove this
+    /**
+     * name is used for debugging, so that we can easily have a way to make
+     * sure that questions are being saved in the correct order.
+     */
+    private String name;
     private int id;
     private boolean needsAnswer;
     private boolean ignoreAnswer;
