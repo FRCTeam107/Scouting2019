@@ -66,6 +66,9 @@
 
     <string name="goToCycleButton">Start Cycles</string>
 
+    <string name="nextCycleButton">Next Cycle</string>
+    <string name="clearCycleButton">Clear Cycle</string>
+
     <string name="scouterInitials">Scouter Initials</string>
 
 
@@ -87,7 +90,6 @@
     <string name="endGameDefenseNone">None</string>
     <string name="endGameFoulsChkbxText">Fouls</string>
     <string name="endGameButton">Endgame</string>
-    <string name="nextCycleButton">Next Cycle</string>
 
     <!--Menu Strings-->
     <string name="matchScouting">Match</string>

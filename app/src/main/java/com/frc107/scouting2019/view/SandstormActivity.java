@@ -6,20 +6,16 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
-import com.frc107.scouting2019.model.question.Question;
-import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.SandstormViewModel;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -32,6 +28,7 @@ public class SandstormActivity extends BaseActivity {
     private RadioGroup sandstormStartingPositionRadioQuestion;
     private RadioGroup itemPickedUpRadioGroup;
     private RadioGroup itemPlacedSandstormRadioGroup;
+    private CheckBox crossedBaselineCheckbox;
 
     private SandstormViewModel viewModel;
 
@@ -72,6 +69,10 @@ public class SandstormActivity extends BaseActivity {
             public void afterTextChanged(Editable s) { }
         };
         matchNumberEditText.addTextChangedListener(matchNumberTextWatcher);
+
+        crossedBaselineCheckbox = findViewById(R.id.sandstormBaseline_chkbx);
+        crossedBaselineCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.sandstormBaseline_chkbx, isChecked));
+
 
         checkForPermissions();
     }
@@ -118,5 +119,6 @@ public class SandstormActivity extends BaseActivity {
         sandstormStartingPositionRadioQuestion.clearCheck();
         itemPickedUpRadioGroup.clearCheck();
         itemPlacedSandstormRadioGroup.clearCheck();
+        crossedBaselineCheckbox.setChecked(false);
     }
 }
