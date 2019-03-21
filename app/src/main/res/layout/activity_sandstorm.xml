@@ -196,7 +196,6 @@
             android:id="@+id/next_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/top_margin"
             android:onClick="goToCycle"
             android:text="@string/goToCycleButton" />
     </LinearLayout>
