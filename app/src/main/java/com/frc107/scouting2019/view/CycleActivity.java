@@ -174,6 +174,10 @@ public class CycleActivity extends AppCompatActivity {
         clearAnswers();
     }
 
+    public void clearCycle(View view) {
+        clearAnswers();
+    }
+
     private void clearAnswers() {
         pickupLocationRadioGroup.clearCheck();
         itemPickedUpRadioGroup.clearCheck();
