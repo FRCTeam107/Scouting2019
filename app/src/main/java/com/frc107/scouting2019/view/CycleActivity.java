@@ -112,10 +112,9 @@ public class CycleActivity extends AppCompatActivity {
     }
 
     private void goToTeleop() {
-        boolean allQuestionsAreUnanswered = viewModel.areNoQuestionsAnswered();
-
+        boolean cycleCanBeFinished = viewModel.cycleCanBeFinished();
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
-        if (!allQuestionsAreUnanswered && unfinishedQuestionId != -1) {
+        if (!cycleCanBeFinished && unfinishedQuestionId != -1) {
             ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
             return;
         }
@@ -123,7 +122,7 @@ public class CycleActivity extends AppCompatActivity {
         if (!PermissionUtils.verifyWritePermissions(this))
             return;
 
-        if (!allQuestionsAreUnanswered)
+        if (cycleCanBeFinished && unfinishedQuestionId == -1)
             viewModel.finishCycle();
 
         viewModel.turnTeleopOn();
@@ -139,10 +138,9 @@ public class CycleActivity extends AppCompatActivity {
     }
 
     private void goToEndGame() {
-        boolean allQuestionsAreUnanswered = viewModel.areNoQuestionsAnswered();
-
+        boolean cycleCanBeFinished = viewModel.cycleCanBeFinished();
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
-        if (!allQuestionsAreUnanswered && unfinishedQuestionId != -1) {
+        if (!cycleCanBeFinished && unfinishedQuestionId != -1) {
             ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
             return;
         }
@@ -150,7 +148,7 @@ public class CycleActivity extends AppCompatActivity {
         if (!PermissionUtils.verifyWritePermissions(this))
             return;
 
-        if (!allQuestionsAreUnanswered)
+        if (cycleCanBeFinished && unfinishedQuestionId == -1)
             viewModel.finishCycle();
 
         final Intent intent = new Intent(this, EndGameActivity.class);
@@ -160,8 +158,9 @@ public class CycleActivity extends AppCompatActivity {
     }
 
     public void goToNextCycle(View view) {
+        boolean cycleCanBeFinished = viewModel.cycleCanBeFinished();
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
-        if (unfinishedQuestionId != -1) {
+        if (!cycleCanBeFinished && unfinishedQuestionId != -1) {
             ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
             return;
         }
@@ -169,7 +168,9 @@ public class CycleActivity extends AppCompatActivity {
         if (!PermissionUtils.verifyWritePermissions(this))
             return;
 
-        viewModel.finishCycle();
+        if (cycleCanBeFinished && unfinishedQuestionId == -1)
+            viewModel.finishCycle();
+
         clearAnswers();
     }
 

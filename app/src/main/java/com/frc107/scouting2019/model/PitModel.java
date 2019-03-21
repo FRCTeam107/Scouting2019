@@ -50,35 +50,35 @@ public class PitModel extends ScoutModel {
     @Override
     public Question[] getQuestions() {
         Question[] questions = {
-                new TextQuestion(R.id.pit_teamNumber_editText, true),
-                new RadioQuestion(R.id.sandstormOperationsRadioQuestion, true,
+                new TextQuestion("pitTeamNum", R.id.pit_teamNumber_editText, true),
+                new RadioQuestion("pitSandstormOp", R.id.sandstormOperationsRadioQuestion, true,
                         new RadioQuestion.Option(R.id.visionSystemSandstorm_Radiobtn, 0),
                         new RadioQuestion.Option(R.id.cameraDrivingSandstorm_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.blindDrivingSandstorm_Radiobtn, 2),
                         new RadioQuestion.Option(R.id.noDrivingSandstorm_Radiobtn, 3)),
-                new RadioQuestion(R.id.sandstormPreferenceRadioQuestion, true,
+                new RadioQuestion("pitSandstormPref", R.id.sandstormPreferenceRadioQuestion, true,
                         new RadioQuestion.Option(R.id.cargoshipPreferenceSandstorm_Radiobtn, 0),
                         new RadioQuestion.Option(R.id.rocketshipPreferenceSandstorm_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.noPreferenceSandstorm_Radiobtn, 2)),
-                new RadioQuestion(R.id.highestRocketLevelSandstormRadioQuestion, true,
+                new RadioQuestion("pitHighestRocketLevel", R.id.highestRocketLevelSandstormRadioQuestion, true,
                         new RadioQuestion.Option(R.id.topRocketLevelSandstorm_Radiobtn, 0),
                         new RadioQuestion.Option(R.id.middleRocketLevelSandstorm_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.bottomRocketLevelSandstorm_Radiobtn, 2),
                         new RadioQuestion.Option(R.id.noRocketLevelSandstorm_Radiobtn, 3)),
-                new RadioQuestion(R.id.highestHabitatLevelRadioQuestion, true,
+                new RadioQuestion("pitHighestHabLevel", R.id.highestHabitatLevelRadioQuestion, true,
                         new RadioQuestion.Option(R.id.topHabitatLevel_Radiobtn, 0),
                         new RadioQuestion.Option(R.id.middleHabitatLevel_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.bottomHabitatLevel_Radiobtn, 2),
                         new RadioQuestion.Option(R.id.noHabitatLevel_Radiobtn, 3)),
-                new TextQuestion(R.id.pit_habitatTime_editText, true),
-                new RadioQuestion(R.id.programmingLanguageRadioQuestion, true,
+                new TextQuestion("pitHabTime", R.id.pit_habitatTime_editText, true),
+                new RadioQuestion("pitLanguage", R.id.programmingLanguageRadioQuestion, true,
                         new RadioQuestion.Option(R.id.javaProgrammingLanguage_Radiobtn, 0),
                         new RadioQuestion.Option(R.id.cppProgrammingLanguage_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.labviewProgrammingLanguage_Radiobtn, 2),
                         new RadioQuestion.Option(R.id.otherProgrammingLanguage_Radiobtn, 3)),
 
-                new TextQuestion(R.id.pit_bonusQuestion_editText, true),
-                new TextQuestion(R.id.pit_comments_editText, true)
+                new TextQuestion("pitBonus", R.id.pit_bonusQuestion_editText, true),
+                new TextQuestion("pitComments", R.id.pit_comments_editText, true)
         };
         return questions;
     }

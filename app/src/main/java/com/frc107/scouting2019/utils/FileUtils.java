@@ -112,11 +112,9 @@ public class FileUtils {
             String uniqueId = Scouting.getInstance().getUniqueId();
             File file = new File(directory, fileNameHeader + uniqueId + ".csv");
 
-            String message = data + "\n";
-
             try {
                 fileOutputStream = new FileOutputStream(file, true);
-                fileOutputStream.write(message.getBytes());
+                fileOutputStream.write(data.getBytes());
                 fileOutputStream.flush();
             } catch (IOException e) {
                 Log.d("Scouting", e.getMessage());
