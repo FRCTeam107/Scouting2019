@@ -122,7 +122,7 @@ public class CycleActivity extends AppCompatActivity {
         if (!PermissionUtils.verifyWritePermissions(this))
             return;
 
-        if (cycleCanBeFinished)
+        if (cycleCanBeFinished && unfinishedQuestionId == -1)
             viewModel.finishCycle();
 
         viewModel.turnTeleopOn();
@@ -148,7 +148,8 @@ public class CycleActivity extends AppCompatActivity {
         if (!PermissionUtils.verifyWritePermissions(this))
             return;
 
-        viewModel.finishCycle();
+        if (cycleCanBeFinished && unfinishedQuestionId == -1)
+            viewModel.finishCycle();
 
         final Intent intent = new Intent(this, EndGameActivity.class);
         startActivity(intent);
@@ -167,7 +168,9 @@ public class CycleActivity extends AppCompatActivity {
         if (!PermissionUtils.verifyWritePermissions(this))
             return;
 
-        viewModel.finishCycle();
+        if (cycleCanBeFinished && unfinishedQuestionId == -1)
+            viewModel.finishCycle();
+
         clearAnswers();
     }
 

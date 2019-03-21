@@ -62,6 +62,12 @@ public class Scouting {
         cycles.clear();
     }
 
+    private String initials;
+    public void setInitials(String initials) {
+        this.initials = initials;
+    }
+    public String getInitials() { return initials; }
+
     // TODO: Go through radiogroups and fix formatting
     // TODO: naming conventions
     // TODO: update button strings, example being save button in cycle

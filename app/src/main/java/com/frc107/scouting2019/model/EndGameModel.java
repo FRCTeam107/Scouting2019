@@ -41,14 +41,28 @@ public class EndGameModel extends ScoutModel {
 
         String sandstormData = Scouting.getInstance().getSandstormData();
         ArrayList<String> cycles = Scouting.getInstance().getCycles();
+        if (cycles.size() == 0) {
+            String cycle = "-1,-1,-1,-1,-1,-1";
+            String maxCycles = cycles.size() + "";
+            if (Scouting.SAVE_QUESTION_NAMES_AS_ANSWERS)
+                maxCycles = "maxCycles";
+
+            String row = sandstormData + "," + cycle + "," + getAnswerCSVRow() + "," + maxCycles + "," + Scouting.getInstance().getInitials();
+            builder.append(row);
+            builder.append("\n");
+        }
+
         for (int i = 0; i < cycles.size(); i++) {
             String cycle = cycles.get(i);
-            String row = sandstormData + "," + cycle + "," + getAnswerCSVRow() + "," + cycles.size();
-            builder.append(row);
+            String maxCycles = cycles.size() + "";
+            if (Scouting.SAVE_QUESTION_NAMES_AS_ANSWERS)
+                maxCycles = "maxCycles";
 
-            if (i < cycles.size() - 1)
-                builder.append("\n");
+            String row = sandstormData + "," + cycle + "," + getAnswerCSVRow() + "," + maxCycles + "," + Scouting.getInstance().getInitials();
+            builder.append(row);
+            builder.append("\n");
         }
+
         Scouting.getInstance().clearCycles();
         return Scouting.FILE_UTILS.writeData(FILE_NAME_HEADER, builder.toString());
     }
