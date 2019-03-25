@@ -35,6 +35,8 @@ public class CycleActivity extends AppCompatActivity {
 
         viewModel = new CycleViewModel();
 
+        viewModel.turnTeleopOn();
+
         getSupportActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
 
         pickupLocationRadioGroup = findViewById(R.id.pickupLocationRadioQuestion);
@@ -43,8 +45,8 @@ public class CycleActivity extends AppCompatActivity {
         defenseCheckbox = findViewById(R.id.defense_chkbx);
         allDefenseCheckbox = findViewById(R.id.allDefense_chkbx);
 
-        defenseCheckbox.setVisibility(View.INVISIBLE);
-        allDefenseCheckbox.setVisibility(View.INVISIBLE);
+        // defenseCheckbox.setVisibility(View.GONE);
+        // allDefenseCheckbox.setVisibility(View.GONE);
 
         pickupLocationRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
         itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPickedUpRadioQuestion, checkedId));
@@ -69,8 +71,6 @@ public class CycleActivity extends AppCompatActivity {
             pickupLocationRadioGroup.clearCheck();
             itemPickedUpRadioGroup.clearCheck();
             itemPlacedRadioGroup.clearCheck();
-        } else {
-            findViewById(R.id.nothingPlacedItemPlaced_Radiobtn).setEnabled(false);
         }
 
         viewModel.setAllDefense(allDefense);
@@ -84,10 +84,10 @@ public class CycleActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (viewModel.isTeleop())
+        // if (viewModel.isTeleop())
             getMenuInflater().inflate(R.menu.cycle_teleop_menu, menu);
-        else
-            getMenuInflater().inflate(R.menu.cycle_sandstorm_menu, menu);
+        // else
+        //  getMenuInflater().inflate(R.menu.cycle_sandstorm_menu, menu);
         return true;
     }
 
@@ -100,11 +100,14 @@ public class CycleActivity extends AppCompatActivity {
             case R.id.send_data:
                 startActivity(new Intent(this, AdminActivity.class));
                 return true;
-            case R.id.enter_teleop_cycle:
+            /*case R.id.enter_teleop_cycle:
                 goToTeleop();
-                return true;
+                return true;*/
             case R.id.go_to_endgame:
                 goToEndGame();
+                return true;
+            case R.id.clear_cycle:
+                clearAnswers();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -134,7 +137,9 @@ public class CycleActivity extends AppCompatActivity {
         defenseCheckbox.setVisibility(View.VISIBLE);
         allDefenseCheckbox.setVisibility(View.VISIBLE);
 
-        findViewById(R.id.nothingPlacedItemPlaced_Radiobtn).setEnabled(false);
+        /*RadioButton startedWithItemButton = findViewById(R.id.startedWithItem_Radiobtn);
+        startedWithItemButton.setVisibility(View.GONE);
+        startedWithItemButton.setEnabled(false);*/
     }
 
     private void goToEndGame() {
@@ -160,6 +165,10 @@ public class CycleActivity extends AppCompatActivity {
     public void goToNextCycle(View view) {
         boolean cycleCanBeFinished = viewModel.cycleCanBeFinished();
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
+        /**
+         * TODO: I think you don't need to check unfinishedQuestionId. Just check cycleCanBeFinished
+         * and then use unfinishedQuestionId inside the if block
+         */
         if (!cycleCanBeFinished && unfinishedQuestionId != -1) {
             ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
             return;
@@ -172,10 +181,10 @@ public class CycleActivity extends AppCompatActivity {
             viewModel.finishCycle();
 
         clearAnswers();
-    }
 
-    public void clearCycle(View view) {
-        clearAnswers();
+        /*RadioButton startedWithItemButton = findViewById(R.id.startedWithItem_Radiobtn);
+        startedWithItemButton.setVisibility(View.GONE);
+        startedWithItemButton.setEnabled(false);*/
     }
 
     private void clearAnswers() {

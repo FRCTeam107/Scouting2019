@@ -52,6 +52,14 @@
                         android:layout_weight="1"
                         android:text="@string/floorPickupLocation"
                         style="@style/scoutingRadioButtonTheme" />
+
+                    <RadioButton
+                        android:id="@+id/startedWithItem_Radiobtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/startedWithItem"
+                        style="@style/scoutingRadioButtonTheme" />
                 </RadioGroup>
 
                 <TextView
@@ -174,13 +182,6 @@
             </LinearLayout>
 
         </ScrollView>
-
-        <Button
-            android:id="@+id/clear_cycle_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="clearCycle"
-            android:text="@string/clearCycleButton"/>
 
         <Button
             android:id="@+id/save_btn"

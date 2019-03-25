@@ -23,23 +23,22 @@
                 android:gravity="center_horizontal">
 
                 <EditText
-                    android:id="@+id/teamNumberEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/top_of_screen_margin"
-                    android:hint="@string/teamNumberHeading"
-                    android:inputType="number"
-                    android:maxLength="5"/>
-
-                <EditText
                     android:id="@+id/matchNumberEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/top_margin"
+                    android:layout_marginTop="@dimen/top_of_screen_margin"
                     android:hint="@string/matchNumberHeading"
                     android:inputType="number"
                     android:maxLength="3"/>
 
+                <EditText
+                    android:id="@+id/teamNumberEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/top_margin"
+                    android:hint="@string/teamNumberHeading"
+                    android:inputType="number"
+                    android:maxLength="5"/>
 
                 <TextView
                     android:id="@+id/sandstormStartingPositionText"
