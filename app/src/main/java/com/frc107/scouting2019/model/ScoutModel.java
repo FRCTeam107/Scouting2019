@@ -144,7 +144,11 @@ public abstract class ScoutModel {
     }
 
     public String save() {
-        String dataToWrite = getCSVRowHeader() + ',' + getAnswerCSVRow();
+        String header = getCSVRowHeader();
+        if (header.length() > 0)
+            header += ',';
+
+        String dataToWrite = header + getAnswerCSVRow() + '\n';
         String result = Scouting.FILE_UTILS.writeData(fileNameHeader, dataToWrite);
         return result;
     }

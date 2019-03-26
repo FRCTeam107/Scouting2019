@@ -5,6 +5,8 @@
         android:title="Return Home" />
     <item android:id="@+id/send_data"
         android:title="Send Data"/>
+    <item android:id="@+id/clear_cycle"
+        android:title="@string/clearCycleButton"/>
     <item android:id="@+id/go_to_endgame"
         android:title="@string/endGameButton"
         app:showAsAction="ifRoom"/>

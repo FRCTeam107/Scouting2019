@@ -11,8 +11,8 @@ import com.frc107.scouting2019.model.question.ToggleQuestion;
 import java.util.Locale;
 
 public class CycleModel extends ScoutModel {
-    private boolean isTeleop;
     private int cycleNum;
+    private boolean isFirstCycle = true;
 
     @Override
     public Question[] getQuestions() {
@@ -22,7 +22,8 @@ public class CycleModel extends ScoutModel {
         Question[] questions = {
                 new RadioQuestion("cyclePickupLoc", R.id.pickupLocationRadioQuestion, true,
                         new RadioQuestion.Option(R.id.portPickupLocation_Radiobtn, 0),
-                        new RadioQuestion.Option(R.id.floorPickupLocation_Radiobtn, 1)),
+                        new RadioQuestion.Option(R.id.floorPickupLocation_Radiobtn, 1),
+                        new RadioQuestion.Option(R.id.startedWithItem_Radiobtn, 2)),
                 new RadioQuestion("cycleItemPickedUp", R.id.itemPickedUpRadioQuestion, true,
                         new RadioQuestion.Option(R.id.cargoItemPickedUp_Radiobtn, 0),
                         new RadioQuestion.Option(R.id.hatchItemPickedUp_Radiobtn, 1)),
@@ -49,30 +50,21 @@ public class CycleModel extends ScoutModel {
         return "";
     }
 
-    public void turnTeleopOn() {
-        isTeleop = true;
-        cycleNum = 0;
-    }
-
-    public boolean isTeleop() {
-        return isTeleop;
-    }
-
     public void finishCycle() {
         cycleNum++;
         saveCycle();
+        isFirstCycle = false;
     }
 
     private void saveCycle() {
         // TODO: This would be cleaner if you:
         // 1: renamed Questions to Fields
         // 2: for type and cycleNum, made a kind of Field that's just called VariableField or something, something that's just controlled in-code, not outside of code
-        String type = isTeleop ? "1" : "0";
         String csvRow = getAnswerCSVRow();
-        String cycle = cycleNum + "," + type + "," + csvRow;
+        String cycle = cycleNum + "," + csvRow;
 
         if (Scouting.SAVE_QUESTION_NAMES_AS_ANSWERS) {
-            cycle = "cycleNum,cycleType," + csvRow;
+            cycle = "cycleNum," + csvRow;
         }
 
         Scouting.getInstance().addCycle(cycle);

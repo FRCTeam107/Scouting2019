@@ -12,10 +12,12 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.view.wrappers.RadioWrapper;
 import com.frc107.scouting2019.view.wrappers.TextWrapper;
 import com.frc107.scouting2019.viewmodel.SandstormViewModel;
+import com.frc107.scouting2019.viewmodel.ScoutViewModel;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -27,6 +29,8 @@ public class SandstormActivity extends BaseActivity {
     private TextWrapper teamNumWrapper;
     private TextWrapper matchNumWrapper;
 
+    private EditText matchNumberEditText;
+
     private CheckBox crossedBaselineCheckbox;
 
     private SandstormViewModel viewModel;
@@ -37,6 +41,8 @@ public class SandstormActivity extends BaseActivity {
         setContentView(R.layout.activity_sandstorm);
 
         viewModel = new SandstormViewModel();
+
+        matchNumberEditText = findViewById(R.id.matchNumberEditText);
 
         startingPosWrapper = new RadioWrapper(findViewById(R.id.sandstormStartingPositionRadioQuestion), viewModel);
         startingPieceWrapper = new RadioWrapper(findViewById(R.id.sandstormStartingGamePieceRadioQuestion), viewModel);
@@ -63,6 +69,16 @@ public class SandstormActivity extends BaseActivity {
         matchNumWrapper.cleanUp();
 
         viewModel = null;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String currentText = matchNumberEditText.getText().toString();
+        if (currentText.length() > 0) {
+            int newMatchNum = Scouting.getInstance().getMatchNumber() + 1;
+            matchNumberEditText.setText(String.valueOf(newMatchNum));
+        }
     }
 
     private void checkForPermissions() {

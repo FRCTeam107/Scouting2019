@@ -90,6 +90,6 @@ public class PitModel extends ScoutModel {
 
     @Override
     public String getCSVRowHeader() {
-        return String.valueOf(Scouting.getInstance().getTeamNumber());
+        return "";
     }
 }
