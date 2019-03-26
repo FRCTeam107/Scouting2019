@@ -15,6 +15,7 @@ import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.SandstormViewModel;
+import com.frc107.scouting2019.viewmodel.ScoutViewModel;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -92,6 +93,16 @@ public class SandstormActivity extends BaseActivity {
         viewModel = null;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String currentText = matchNumberEditText.getText().toString();
+        if (currentText.length() > 0) {
+            int newMatchNum = Scouting.getInstance().getMatchNumber() + 1;
+            matchNumberEditText.setText(String.valueOf(newMatchNum));
+        }
+    }
+
     private void checkForPermissions() {
         int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (writePermission != PackageManager.PERMISSION_GRANTED) {
@@ -115,7 +126,6 @@ public class SandstormActivity extends BaseActivity {
 
     private void clearAnswers() {
         teamNumberEditText.setText("");
-        matchNumberEditText.setText("");
         sandstormStartingPositionRadioQuestion.clearCheck();
         itemPickedUpRadioGroup.clearCheck();
         itemPlacedSandstormRadioGroup.clearCheck();

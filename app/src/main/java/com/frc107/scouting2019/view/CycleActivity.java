@@ -43,9 +43,6 @@ public class CycleActivity extends AppCompatActivity {
         defenseCheckbox = findViewById(R.id.defense_chkbx);
         allDefenseCheckbox = findViewById(R.id.allDefense_chkbx);
 
-        defenseCheckbox.setVisibility(View.INVISIBLE);
-        allDefenseCheckbox.setVisibility(View.INVISIBLE);
-
         pickupLocationRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
         itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPickedUpRadioQuestion, checkedId));
         itemPlacedRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPlacedRadioQuestion, checkedId));
@@ -69,8 +66,6 @@ public class CycleActivity extends AppCompatActivity {
             pickupLocationRadioGroup.clearCheck();
             itemPickedUpRadioGroup.clearCheck();
             itemPlacedRadioGroup.clearCheck();
-        } else {
-            findViewById(R.id.nothingPlacedItemPlaced_Radiobtn).setEnabled(false);
         }
 
         viewModel.setAllDefense(allDefense);
@@ -84,10 +79,7 @@ public class CycleActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (viewModel.isTeleop())
-            getMenuInflater().inflate(R.menu.cycle_teleop_menu, menu);
-        else
-            getMenuInflater().inflate(R.menu.cycle_sandstorm_menu, menu);
+        getMenuInflater().inflate(R.menu.cycle_teleop_menu, menu);
         return true;
     }
 
@@ -100,41 +92,15 @@ public class CycleActivity extends AppCompatActivity {
             case R.id.send_data:
                 startActivity(new Intent(this, AdminActivity.class));
                 return true;
-            case R.id.enter_teleop_cycle:
-                goToTeleop();
-                return true;
             case R.id.go_to_endgame:
                 goToEndGame();
+                return true;
+            case R.id.clear_cycle:
+                clearAnswers();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    private void goToTeleop() {
-        boolean cycleCanBeFinished = viewModel.cycleCanBeFinished();
-        int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
-        if (!cycleCanBeFinished && unfinishedQuestionId != -1) {
-            ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
-            return;
-        }
-
-        if (!PermissionUtils.verifyWritePermissions(this))
-            return;
-
-        if (cycleCanBeFinished && unfinishedQuestionId == -1)
-            viewModel.finishCycle();
-
-        viewModel.turnTeleopOn();
-
-        clearAnswers();
-
-        invalidateOptionsMenu(); // Calling this tells Android to call onCreateOptionsMenu.
-
-        defenseCheckbox.setVisibility(View.VISIBLE);
-        allDefenseCheckbox.setVisibility(View.VISIBLE);
-
-        findViewById(R.id.nothingPlacedItemPlaced_Radiobtn).setEnabled(false);
     }
 
     private void goToEndGame() {
@@ -160,6 +126,10 @@ public class CycleActivity extends AppCompatActivity {
     public void goToNextCycle(View view) {
         boolean cycleCanBeFinished = viewModel.cycleCanBeFinished();
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
+        /**
+         * TODO: I think you don't need to check unfinishedQuestionId. Just check cycleCanBeFinished
+         * and then use unfinishedQuestionId inside the if block
+         */
         if (!cycleCanBeFinished && unfinishedQuestionId != -1) {
             ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
             return;
@@ -168,13 +138,9 @@ public class CycleActivity extends AppCompatActivity {
         if (!PermissionUtils.verifyWritePermissions(this))
             return;
 
-        if (cycleCanBeFinished && unfinishedQuestionId == -1)
+        if (unfinishedQuestionId == -1)
             viewModel.finishCycle();
 
-        clearAnswers();
-    }
-
-    public void clearCycle(View view) {
         clearAnswers();
     }
 

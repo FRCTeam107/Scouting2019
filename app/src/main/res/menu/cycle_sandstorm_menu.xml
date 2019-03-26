@@ -8,4 +8,7 @@
     <item android:id="@+id/enter_teleop_cycle"
         android:title="@string/enterTeleopCycle"
         app:showAsAction="ifRoom"/>
+    <item android:id="@+id/clear_cycle"
+        android:title="@string/clearCycleButton"
+        app:showAsAction="ifRoom"/>
 </menu>
