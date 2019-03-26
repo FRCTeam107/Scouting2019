@@ -11,7 +11,6 @@ import com.frc107.scouting2019.model.question.ToggleQuestion;
 import java.util.Locale;
 
 public class CycleModel extends ScoutModel {
-    private boolean isTeleop;
     private int cycleNum;
     private boolean isFirstCycle = true;
 
@@ -46,15 +45,6 @@ public class CycleModel extends ScoutModel {
         return "";
     }
 
-    public void turnTeleopOn() {
-        isTeleop = true;
-        cycleNum = 0;
-    }
-
-    public boolean isTeleop() {
-        return isTeleop;
-    }
-
     public void finishCycle() {
         cycleNum++;
         saveCycle();
@@ -65,12 +55,11 @@ public class CycleModel extends ScoutModel {
         // TODO: This would be cleaner if you:
         // 1: renamed Questions to Fields
         // 2: for type and cycleNum, made a kind of Field that's just called VariableField or something, something that's just controlled in-code, not outside of code
-        String type = isTeleop ? "1" : "0";
         String csvRow = getAnswerCSVRow();
-        String cycle = cycleNum + "," + type + "," + csvRow;
+        String cycle = cycleNum + "," + csvRow;
 
         if (Scouting.SAVE_QUESTION_NAMES_AS_ANSWERS) {
-            cycle = "cycleNum,cycleType," + csvRow;
+            cycle = "cycleNum," + csvRow;
         }
 
         Scouting.getInstance().addCycle(cycle);
