@@ -61,19 +61,23 @@ public abstract class ScoutModel {
         return true;
     }
 
-    public abstract boolean handleTextAnswer(int questionId, String answer);
+    public abstract void onTextQuestionAnswered(int questionId, String answer);
+    public abstract void onRadioQuestionAnswered(int questionId, int answerId);
 
     public boolean setAnswer(int questionId, String answer) {
         Question question = getQuestion(questionId);
         if (question == null)
             return false;
 
-        if (!(question instanceof TextQuestion))
-            return false;
-
-        if (!handleTextAnswer(questionId, answer))
+        if (question instanceof NumberQuestion) {
+            Integer numAnswer = answer.length() == 0 ? null : Integer.valueOf(answer);
+            question.setAnswer(numAnswer);
+            return true;
+        } else if (question instanceof TextQuestion) {
+            onTextQuestionAnswered(questionId, answer);
             question.setAnswer(answer);
-
+            return true;
+        }
         return false;
     }
 
@@ -82,13 +86,9 @@ public abstract class ScoutModel {
         if (question == null)
             return false;
 
-        if (question instanceof NumberQuestion) {
-            ((NumberQuestion) question).setAnswer(answer);
-            return true;
-        }
-
         if (question instanceof RadioQuestion) {
-            ((RadioQuestion) question).setAnswer(answer);
+            onRadioQuestionAnswered(questionId, answer);
+            question.setAnswer(answer);
             return true;
         }
 
@@ -124,7 +124,13 @@ public abstract class ScoutModel {
         return question.getAnswerAsString();
     }
 
-    public abstract String getCSVRowHeader();
+    public Object getRawAnswerForQuestion(int id) {
+        Question question = getQuestion(id);
+        if (question == null)
+            return null;
+
+        return question.getAnswer();
+    }
 
     public String getAnswerCSVRow() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -144,11 +150,7 @@ public abstract class ScoutModel {
     }
 
     public String save() {
-        String header = getCSVRowHeader();
-        if (header.length() > 0)
-            header += ',';
-
-        String dataToWrite = header + getAnswerCSVRow() + '\n';
+        String dataToWrite = getAnswerCSVRow() + '\n';
         String result = Scouting.FILE_UTILS.writeData(fileNameHeader, dataToWrite);
         return result;
     }

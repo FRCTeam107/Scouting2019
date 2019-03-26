@@ -19,4 +19,12 @@ public class CycleViewModel extends ScoutViewModel {
     public boolean cycleCanBeFinished() {
         return ((CycleModel) model).cycleCanBeFinished();
     }
+
+    public boolean hasUsedStartingItem() {
+        return ((CycleModel) model).hasUsedStartingItem();
+    }
+
+    public void disableStartingItem() {
+        ((CycleModel) model).disableStartingItem();
+    }
 }

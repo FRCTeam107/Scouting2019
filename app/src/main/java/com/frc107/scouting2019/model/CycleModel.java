@@ -1,18 +1,16 @@
 package com.frc107.scouting2019.model;
 
-import android.content.Context;
-
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.model.question.TextQuestion;
 import com.frc107.scouting2019.model.question.ToggleQuestion;
-
-import java.util.Locale;
 
 public class CycleModel extends ScoutModel {
     private int cycleNum;
     private boolean isFirstCycle = true;
+    private boolean hasUsedStartingItem;
 
     @Override
     public Question[] getQuestions() {
@@ -41,13 +39,17 @@ public class CycleModel extends ScoutModel {
     }
 
     @Override
-    public boolean handleTextAnswer(int questionId, String answer) {
-        return false;
-    }
+    public void onTextQuestionAnswered(int questionId, String answer) { }
 
     @Override
-    public String getCSVRowHeader() {
-        return "";
+    public void onRadioQuestionAnswered(int questionId, int answerId) {
+        if (questionId == R.id.pickupLocationRadioQuestion) {
+            if (answerId == R.id.startedWithItem_Radiobtn) {
+                hasUsedStartingItem = true;
+            } else {
+                hasUsedStartingItem = false;
+            }
+        }
     }
 
     public void finishCycle() {
@@ -86,5 +88,13 @@ public class CycleModel extends ScoutModel {
             return true;
 
         return false;
+    }
+
+    public boolean hasUsedStartingItem() {
+        return hasUsedStartingItem;
+    }
+
+    public void disableStartingItem() {
+        hasUsedStartingItem = true;
     }
 }

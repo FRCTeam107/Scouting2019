@@ -71,7 +71,7 @@ public class PitActivity extends BaseActivity {
 
         teamNumWrapper = new TextWrapper(findViewById(R.id.pit_teamNumber_editText), viewModel);
         habTimeWrapper = new TextWrapper(findViewById(R.id.pit_habitatTime_editText), viewModel);
-        arcadeGameWrapper = new TextWrapper(findViewById(R.id.pit_arcadeGame_editText), viewModel);
+        arcadeGameWrapper = new TextWrapper(findViewById(R.id.pit_bonusQuestion_editText), viewModel);
         commentsWrapper = new TextWrapper(findViewById(R.id.pit_comments_editText), viewModel);
 
         checkForPermissions();

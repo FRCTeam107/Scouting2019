@@ -36,6 +36,9 @@ public class TextWrapper {
     }
 
     public void handleText(String text) {
+        if (text == null)
+            text = "";
+
         viewModel.setAnswer(id, text);
     }
 

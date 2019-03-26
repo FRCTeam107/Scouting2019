@@ -4,20 +4,17 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
+import com.frc107.scouting2019.ScoutingStrings;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.view.wrappers.RadioWrapper;
 import com.frc107.scouting2019.view.wrappers.TextWrapper;
 import com.frc107.scouting2019.viewmodel.SandstormViewModel;
-import com.frc107.scouting2019.viewmodel.ScoutViewModel;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -49,7 +46,7 @@ public class SandstormActivity extends BaseActivity {
         itemPlacedWrapper = new RadioWrapper(findViewById(R.id.sandstormItemPlacedRadioQuestion), viewModel);
 
         teamNumWrapper = new TextWrapper(findViewById(R.id.teamNumberEditText), viewModel);
-        matchNumWrapper = new TextWrapper(findViewById(R.id.matchNumberEditText), viewModel);
+        matchNumWrapper = new TextWrapper(matchNumberEditText, viewModel);
 
         crossedBaselineCheckbox = findViewById(R.id.sandstormBaseline_chkbx);
         crossedBaselineCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.sandstormBaseline_chkbx, isChecked));
@@ -95,9 +92,17 @@ public class SandstormActivity extends BaseActivity {
             return;
         }
         viewModel.finish();
+
+        int teamNumber = viewModel.getTeamNumber();
+        boolean shouldAllowStartingPiece = viewModel.shouldAllowStartingPiece();
+
         clearAnswers();
+
         ViewUtils.requestFocus(teamNumWrapper.getEditText(), this);
-        final Intent intent = new Intent(this, CycleActivity.class);
+
+        Intent intent = new Intent(this, CycleActivity.class);
+        intent.putExtra(ScoutingStrings.EXTRA_TEAM_NUM_SANDSTORM, teamNumber);
+        intent.putExtra(ScoutingStrings.EXTRA_SHOULD_ALLOW_STARTING_PIECE_SANDSTORM, shouldAllowStartingPiece);
         startActivity(intent);
 
     }

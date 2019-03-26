@@ -10,15 +10,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.Scouting;
+import com.frc107.scouting2019.ScoutingStrings;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.view.wrappers.RadioWrapper;
 import com.frc107.scouting2019.viewmodel.CycleViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-
 
 public class CycleActivity extends AppCompatActivity {
     private RadioWrapper pickupLocationWrapper;
@@ -41,7 +39,8 @@ public class CycleActivity extends AppCompatActivity {
 
         viewModel = new CycleViewModel();
 
-        getSupportActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
+        int teamNumber = getIntent().getIntExtra(ScoutingStrings.EXTRA_TEAM_NUM_SANDSTORM, -1);
+        getSupportActionBar().setTitle("Team: " + teamNumber);
 
         pickupLocationWrapper = new RadioWrapper(findViewById(R.id.pickupLocationRadioQuestion), viewModel);
         itemPickedUpWrapper = new RadioWrapper(findViewById(R.id.itemPickedUpRadioQuestion), viewModel);
@@ -50,8 +49,14 @@ public class CycleActivity extends AppCompatActivity {
         pickupLocationRadioGroup = findViewById(R.id.pickupLocationRadioQuestion);
         itemPickedUpRadioGroup = findViewById(R.id.itemPickedUpRadioQuestion);
         itemPlacedRadioGroup = findViewById(R.id.itemPlacedRadioQuestion);
+
         defenseCheckbox = findViewById(R.id.defense_chkbx);
         allDefenseCheckbox = findViewById(R.id.allDefense_chkbx);
+
+        boolean shouldAllowStartingPiece = getIntent().getBooleanExtra(ScoutingStrings.EXTRA_SHOULD_ALLOW_STARTING_PIECE_SANDSTORM, true);
+        if (shouldAllowStartingPiece) {
+            enableStartedWithItem();
+        }
 
         pickupLocationRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
         itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPickedUpRadioQuestion, checkedId));
@@ -157,7 +162,35 @@ public class CycleActivity extends AppCompatActivity {
         if (unfinishedQuestionId == -1)
             viewModel.finishCycle();
 
+        if (viewModel.hasUsedStartingItem()) {
+            disableStartedWithItem();
+        }
+
         clearAnswers();
+    }
+
+    private void enableStartedWithItem() {
+        RadioButton portRadioButton = findViewById(R.id.portPickupLocation_Radiobtn);
+        portRadioButton.setEnabled(false);
+        portRadioButton.setVisibility(View.GONE);
+
+        RadioButton floorRadioButton = findViewById(R.id.floorPickupLocation_Radiobtn);
+        floorRadioButton.setEnabled(false);
+        floorRadioButton.setVisibility(View.GONE);
+    }
+
+    private void disableStartedWithItem() {
+        RadioButton portRadioButton = findViewById(R.id.portPickupLocation_Radiobtn);
+        portRadioButton.setEnabled(true);
+        portRadioButton.setVisibility(View.VISIBLE);
+
+        RadioButton floorRadioButton = findViewById(R.id.floorPickupLocation_Radiobtn);
+        floorRadioButton.setEnabled(true);
+        floorRadioButton.setVisibility(View.VISIBLE);
+
+        RadioButton startedWithItemButton = findViewById(R.id.startedWithItem_Radiobtn);
+        startedWithItemButton.setVisibility(View.GONE);
+        startedWithItemButton.setEnabled(false);
     }
 
     private void clearAnswers() {
