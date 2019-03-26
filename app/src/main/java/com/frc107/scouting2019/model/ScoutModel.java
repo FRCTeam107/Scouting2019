@@ -35,8 +35,23 @@ public abstract class ScoutModel {
         return -1;
     }
 
+    // TODO: This should probably have an implementation per-model, so we can avoid things like cycleCanBeFinished. It's bad pattern.
+    public boolean isFormComplete() {
+        for (Question question : questions) {
+            if (!question.needsAnswer())
+                continue;
+
+            if (!question.hasAnswer())
+                return false;
+        }
+        return true;
+    }
+
     public boolean areNoQuestionsAnswered() {
         for (Question question : questions) {
+            if (!question.needsAnswer())
+                continue;
+
             if (question instanceof ToggleQuestion)
                 continue;
 
@@ -93,7 +108,7 @@ public abstract class ScoutModel {
         return false;
     }
 
-    private Question getQuestion(int id) {
+    public Question getQuestion(int id) {
         for (Question question : questions) {
             if (question.getId() == id)
                 return question;
@@ -114,9 +129,15 @@ public abstract class ScoutModel {
     public String getAnswerCSVRow() {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < questions.size(); i++) {
-            stringBuilder.append(questions.get(i).getAnswerAsString());
-            if (i < questions.size() - 1) {
-                stringBuilder.append(',');
+            Question question = questions.get(i);
+            if (!question.answerCanBeIgnored()) {
+                if (i > 0)
+                    stringBuilder.append(',');
+
+                if (Scouting.SAVE_QUESTION_NAMES_AS_ANSWERS)
+                    stringBuilder.append(question.getName());
+                else
+                    stringBuilder.append(question.getAnswerAsString());
             }
         }
         return stringBuilder.toString();

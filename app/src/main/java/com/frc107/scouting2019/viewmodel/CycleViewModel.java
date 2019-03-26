@@ -19,4 +19,12 @@ public class CycleViewModel extends ScoutViewModel {
     public void finishCycle() {
         ((CycleModel) model).finishCycle();
     }
+
+    public void setAllDefense(boolean allDefense) {
+        ((CycleModel) model).setAllDefense(allDefense);
+    }
+
+    public boolean cycleCanBeFinished() {
+        return ((CycleModel) model).cycleCanBeFinished();
+    }
 }

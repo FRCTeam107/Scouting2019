@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -38,6 +39,18 @@ public class PitActivity extends BaseActivity {
     private TextWrapper habTimeWrapper;
     private TextWrapper arcadeGameWrapper;
     private TextWrapper commentsWrapper;
+
+    private EditText teamNumberEditText;
+    private RadioGroup teleopPreferenceRadioGroup;
+    private EditText cubeNumberInSwitchEditText;
+    private EditText cubeNumberInScaleEditText;
+    private EditText cubeNumberInExchangeEditText;
+    private RadioGroup climbRadioGroup;
+    private RadioGroup climbHelpRadioGroup;
+    private RadioGroup programmingLanguageRadioGroup;
+    private EditText habitatTimeEditText;
+    private EditText bonusQuestionEditText;
+    private EditText commentsEditText;
 
     private PitViewModel viewModel;
 
@@ -151,9 +164,13 @@ public class PitActivity extends BaseActivity {
     }
 
     private void checkForPermissions() {
+        int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
-        if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
+        if (writePermission != PackageManager.PERMISSION_GRANTED || cameraPermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] {
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.CAMERA
+            }, 1);
         }
     }
 }

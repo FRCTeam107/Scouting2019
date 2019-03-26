@@ -3,14 +3,8 @@ package com.frc107.scouting2019.model.question;
 public class ToggleQuestion extends Question<Boolean> {
     private boolean answer;
 
-    public ToggleQuestion(int id) {
-        super(id);
-    }
-
-    @Override
-    public boolean needsAnswer() {
-        // Since it's a toggle, it'll always have an answer: true or false.
-        return false;
+    public ToggleQuestion(String name, int id) {
+        super(name, id, false);
     }
 
     @Override

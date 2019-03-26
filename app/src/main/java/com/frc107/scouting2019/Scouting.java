@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Scouting {
     public static final FileUtils FILE_UTILS = new FileUtils();
+    public static final boolean SAVE_QUESTION_NAMES_AS_ANSWERS = false;
 
     private static Scouting scouting;
     public static Scouting getInstance() {
@@ -57,6 +58,15 @@ public class Scouting {
     public ArrayList<String> getCycles() {
         return cycles;
     }
+    public void clearCycles() {
+        cycles.clear();
+    }
+
+    private String initials;
+    public void setInitials(String initials) {
+        this.initials = initials;
+    }
+    public String getInitials() { return initials; }
 
     // TODO: Go through radiogroups and fix formatting
     // TODO: naming conventions

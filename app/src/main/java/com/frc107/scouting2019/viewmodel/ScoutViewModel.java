@@ -12,6 +12,10 @@ public abstract class ScoutViewModel extends BaseObservable {
         return model.getFirstUnfinishedQuestionId();
     }
 
+    public boolean isFormComplete() {
+        return model.isFormComplete();
+    }
+
     public boolean areNoQuestionsAnswered() {
         return model.areNoQuestionsAnswered();
     }

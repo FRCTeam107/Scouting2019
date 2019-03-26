@@ -28,18 +28,18 @@ public class ScouterInitialsActivity extends BaseActivity {
 
         scouterInitialsEditText = findViewById(R.id.scouterInitials_input);
         scouterInitialsEditText.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 viewModel.setInitials(s.toString());
                 // TODO: move this special behavior to model. Just call setAnswer and do a switch statement in the model where it handles questions being answered.
             }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
             public void afterTextChanged(Editable s) { }
         });
     }
 
     public void submitInitials(View view) {
-        String initals = viewModel.getInitials();
-        if (initals.length() == 0)
+        String initials = viewModel.getInitials();
+        if (initials.length() == 0)
             return;
 
         startActivity(new Intent(this, SandstormActivity.class));

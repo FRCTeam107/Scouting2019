@@ -4,7 +4,12 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.utils.ViewUtils;
@@ -22,6 +27,8 @@ public class SandstormActivity extends BaseActivity {
     private TextWrapper teamNumWrapper;
     private TextWrapper matchNumWrapper;
 
+    private CheckBox crossedBaselineCheckbox;
+
     private SandstormViewModel viewModel;
 
     @Override
@@ -37,6 +44,10 @@ public class SandstormActivity extends BaseActivity {
 
         teamNumWrapper = new TextWrapper(findViewById(R.id.teamNumberEditText), viewModel);
         matchNumWrapper = new TextWrapper(findViewById(R.id.matchNumberEditText), viewModel);
+
+        crossedBaselineCheckbox = findViewById(R.id.sandstormBaseline_chkbx);
+        crossedBaselineCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.sandstormBaseline_chkbx, isChecked));
+
 
         checkForPermissions();
     }
@@ -81,5 +92,6 @@ public class SandstormActivity extends BaseActivity {
         startingPosWrapper.clear();
         startingPieceWrapper.clear();
         itemPlacedWrapper.clear();
+        crossedBaselineCheckbox.setChecked(false);
     }
 }

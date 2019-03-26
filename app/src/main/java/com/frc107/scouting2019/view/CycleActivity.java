@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
@@ -23,7 +24,13 @@ public class CycleActivity extends AppCompatActivity {
     private RadioWrapper pickupLocationWrapper;
     private RadioWrapper itemPickedUpWrapper;
     private RadioWrapper itemPlacedWrapper;
+
+    private RadioGroup pickupLocationRadioGroup;
+    private RadioGroup itemPickedUpRadioGroup;
+    private RadioGroup itemPlacedRadioGroup;
+
     private CheckBox defenseCheckbox;
+    private CheckBox allDefenseCheckbox;
 
     private CycleViewModel viewModel;
 
@@ -40,8 +47,43 @@ public class CycleActivity extends AppCompatActivity {
         itemPickedUpWrapper = new RadioWrapper(findViewById(R.id.itemPickedUpRadioQuestion), viewModel);
         itemPlacedWrapper = new RadioWrapper(findViewById(R.id.itemPlacedRadioQuestion), viewModel);
 
+        pickupLocationRadioGroup = findViewById(R.id.pickupLocationRadioQuestion);
+        itemPickedUpRadioGroup = findViewById(R.id.itemPickedUpRadioQuestion);
+        itemPlacedRadioGroup = findViewById(R.id.itemPlacedRadioQuestion);
         defenseCheckbox = findViewById(R.id.defense_chkbx);
+        allDefenseCheckbox = findViewById(R.id.allDefense_chkbx);
+
+        defenseCheckbox.setVisibility(View.INVISIBLE);
+        allDefenseCheckbox.setVisibility(View.INVISIBLE);
+
+        pickupLocationRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
+        itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPickedUpRadioQuestion, checkedId));
+        itemPlacedRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPlacedRadioQuestion, checkedId));
         defenseCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.defense_chkbx, isChecked));
+        allDefenseCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            viewModel.setAnswer(R.id.allDefense_chkbx, isChecked);
+            setAllDefense(isChecked);
+        });
+    }
+
+    private void setAllDefense(boolean allDefense) {
+        boolean questionsEnabled = !allDefense;
+        ViewUtils.setRadioGroupEnabled(pickupLocationRadioGroup, questionsEnabled);
+        ViewUtils.setRadioGroupEnabled(itemPickedUpRadioGroup, questionsEnabled);
+        ViewUtils.setRadioGroupEnabled(itemPlacedRadioGroup, questionsEnabled);
+
+        defenseCheckbox.setEnabled(questionsEnabled);
+        defenseCheckbox.setChecked(allDefense);
+
+        if (allDefense) {
+            pickupLocationRadioGroup.clearCheck();
+            itemPickedUpRadioGroup.clearCheck();
+            itemPlacedRadioGroup.clearCheck();
+        } else {
+            findViewById(R.id.nothingPlacedItemPlaced_Radiobtn).setEnabled(false);
+        }
+
+        viewModel.setAllDefense(allDefense);
     }
 
     @Override
@@ -86,10 +128,9 @@ public class CycleActivity extends AppCompatActivity {
     }
 
     private void goToTeleop() {
-        boolean allQuestionsAreUnanswered = viewModel.areNoQuestionsAnswered();
-
+        boolean cycleCanBeFinished = viewModel.cycleCanBeFinished();
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
-        if (!allQuestionsAreUnanswered && unfinishedQuestionId != -1) {
+        if (!cycleCanBeFinished && unfinishedQuestionId != -1) {
             ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
             return;
         }
@@ -97,7 +138,7 @@ public class CycleActivity extends AppCompatActivity {
         if (!PermissionUtils.verifyWritePermissions(this))
             return;
 
-        if (!allQuestionsAreUnanswered)
+        if (cycleCanBeFinished && unfinishedQuestionId == -1)
             viewModel.finishCycle();
 
         viewModel.turnTeleopOn();
@@ -105,13 +146,17 @@ public class CycleActivity extends AppCompatActivity {
         clearAnswers();
 
         invalidateOptionsMenu(); // Calling this tells Android to call onCreateOptionsMenu.
+
+        defenseCheckbox.setVisibility(View.VISIBLE);
+        allDefenseCheckbox.setVisibility(View.VISIBLE);
+
+        findViewById(R.id.nothingPlacedItemPlaced_Radiobtn).setEnabled(false);
     }
 
     private void goToEndGame() {
-        boolean allQuestionsAreUnanswered = viewModel.areNoQuestionsAnswered();
-
+        boolean cycleCanBeFinished = viewModel.cycleCanBeFinished();
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
-        if (!allQuestionsAreUnanswered && unfinishedQuestionId != -1) {
+        if (!cycleCanBeFinished && unfinishedQuestionId != -1) {
             ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
             return;
         }
@@ -119,7 +164,7 @@ public class CycleActivity extends AppCompatActivity {
         if (!PermissionUtils.verifyWritePermissions(this))
             return;
 
-        if (!allQuestionsAreUnanswered)
+        if (cycleCanBeFinished && unfinishedQuestionId == -1)
             viewModel.finishCycle();
 
         final Intent intent = new Intent(this, EndGameActivity.class);
@@ -129,8 +174,9 @@ public class CycleActivity extends AppCompatActivity {
     }
 
     public void goToNextCycle(View view) {
+        boolean cycleCanBeFinished = viewModel.cycleCanBeFinished();
         int unfinishedQuestionId = viewModel.getFirstUnfinishedQuestionId();
-        if (unfinishedQuestionId != -1) {
+        if (!cycleCanBeFinished && unfinishedQuestionId != -1) {
             ViewUtils.requestFocusToUnfinishedQuestion(findViewById(unfinishedQuestionId), this);
             return;
         }
@@ -138,7 +184,13 @@ public class CycleActivity extends AppCompatActivity {
         if (!PermissionUtils.verifyWritePermissions(this))
             return;
 
-        viewModel.finishCycle();
+        if (cycleCanBeFinished && unfinishedQuestionId == -1)
+            viewModel.finishCycle();
+
+        clearAnswers();
+    }
+
+    public void clearCycle(View view) {
         clearAnswers();
     }
 
@@ -147,5 +199,6 @@ public class CycleActivity extends AppCompatActivity {
         itemPickedUpWrapper.clear();
         itemPlacedWrapper.clear();
         defenseCheckbox.setChecked(false);
+        allDefenseCheckbox.setChecked(false);
     }
 }
