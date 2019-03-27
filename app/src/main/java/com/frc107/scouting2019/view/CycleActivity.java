@@ -56,6 +56,8 @@ public class CycleActivity extends AppCompatActivity {
         boolean shouldAllowStartingPiece = getIntent().getBooleanExtra(ScoutingStrings.EXTRA_SHOULD_ALLOW_STARTING_PIECE_SANDSTORM, true);
         if (shouldAllowStartingPiece) {
             enableStartedWithItem();
+        } else {
+            disableStartedWithItem();
         }
 
         pickupLocationRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
