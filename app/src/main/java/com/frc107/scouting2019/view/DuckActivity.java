@@ -1,8 +1,9 @@
-package com.frc107.scouting2019;
+package com.frc107.scouting2019.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.view.AdminActivity;
 import com.frc107.scouting2019.view.MainActivity;
 import com.frc107.scouting2019.view.PitActivity;

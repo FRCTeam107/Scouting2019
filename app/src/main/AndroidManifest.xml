@@ -14,9 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".DuckActivity"
-            android:label="@string/title_activity_duck"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".view.DuckActivity"
+            android:label="@string/title_activity_duck"></activity>
         <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

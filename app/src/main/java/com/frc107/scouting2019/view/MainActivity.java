@@ -3,7 +3,6 @@ package com.frc107.scouting2019.view;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.frc107.scouting2019.DuckActivity;
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
 
