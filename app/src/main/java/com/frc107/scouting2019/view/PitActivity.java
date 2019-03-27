@@ -1,17 +1,13 @@
 package com.frc107.scouting2019.view;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -19,19 +15,12 @@ import android.widget.Toast;
 
 import com.frc107.scouting2019.BuildConfig;
 import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.model.question.Question;
-import com.frc107.scouting2019.model.question.RadioQuestion;
-import com.frc107.scouting2019.model.question.TextQuestion;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.viewmodel.PitViewModel;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.File;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -50,7 +39,7 @@ public class PitActivity extends BaseActivity {
     private RadioGroup climbHelpRadioGroup;
     private RadioGroup programmingLanguageRadioGroup;
     private EditText habitatTimeEditText;
-    private EditText arcadeGameEditText;
+    private EditText bonusQuestionEditText;
     private EditText commentsEditText;
 
     private PitViewModel viewModel;
@@ -77,7 +66,7 @@ public class PitActivity extends BaseActivity {
 
         teamNumberEditText = findViewById(R.id.pit_teamNumber_editText);
         habitatTimeEditText = findViewById(R.id.pit_habitatTime_editText);
-        arcadeGameEditText = findViewById(R.id.pit_arcadeGame_editText);
+        bonusQuestionEditText = findViewById(R.id.pit_bonusQuestion_editText);
         commentsEditText = findViewById(R.id.pit_comments_editText);
 
         teamNumberEditText.addTextChangedListener(new TextWatcher() {
@@ -98,9 +87,9 @@ public class PitActivity extends BaseActivity {
         });
 
 
-        arcadeGameEditText.addTextChangedListener(new TextWatcher() {
+        bonusQuestionEditText.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.setAnswer(R.id.pit_arcadeGame_editText, s.toString());
+                viewModel.setAnswer(R.id.pit_bonusQuestion_editText, s.toString());
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void afterTextChanged(Editable s) { }
@@ -186,9 +175,13 @@ public class PitActivity extends BaseActivity {
     }
 
     private void checkForPermissions() {
+        int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
-        if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
+        if (writePermission != PackageManager.PERMISSION_GRANTED || cameraPermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] {
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.CAMERA
+            }, 1);
         }
     }
 }

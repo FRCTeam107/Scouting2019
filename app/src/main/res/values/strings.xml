@@ -18,7 +18,7 @@
 
     <string name="sandstormStartingGamePiece">Starting Game Piece</string>
     <string name="cargoSandstormStartingGamePiece">Cargo</string>
-    <string name="panelSandstormStartingGamePiece">Panel</string>
+    <string name="panelSandstormStartingGamePiece">Hatch Panel</string>
     <string name="noSandstormStartingGamePiece">None</string>
 
     <string name="sandstormItemPlacedHeading">Item Placed</string>
@@ -28,7 +28,7 @@
     <string name="sandstormCargoshipItemPlaced">Cargo Ship</string>
     <string name="sandstormFloorItemPlaced">Floor</string>
     <string name="nothingPlacedItemPlaced">Not Placed</string>
-
+    <string name="sandstormBaseline_chkbxText">Crossed Baseline</string>
 
 
 
@@ -48,10 +48,11 @@
     <string name="pickupLocation">Pickup Location</string>
     <string name="portPickupLocation">Port</string>
     <string name="floorPickupLocation">Floor</string>
+    <string name="startedWithItem">Started With Item</string>
 
     <string name="itemPickedUpLocationText">Item Picked Up</string>
     <string name="cargoPickedUp">Cargo</string>
-    <string name="hatchPickedUp">Hatch</string>
+    <string name="hatchPickedUp">Hatch Panel</string>
 
     <string name="itemPlacedLocationText">Location Placed</string>
     <string name="topRocketItemPlaced">Top Rocket</string>
@@ -65,6 +66,9 @@
     <string name="allDefenseChkbxText">Only Defense</string>
 
     <string name="goToCycleButton">Start Cycles</string>
+
+    <string name="nextCycleButton">Next Cycle</string>
+    <string name="clearCycleButton">Clear Cycle</string>
 
     <string name="scouterInitials">Scouter Initials</string>
 
@@ -87,7 +91,6 @@
     <string name="endGameDefenseNone">None</string>
     <string name="endGameFoulsChkbxText">Fouls</string>
     <string name="endGameButton">Endgame</string>
-    <string name="nextCycleButton">Next Cycle</string>
 
     <!--Menu Strings-->
     <string name="matchScouting">Match</string>
@@ -128,7 +131,7 @@
     <string name="labviewProgrammingLanguage">LabVIEW</string>
     <string name="otherProgrammingLanguage">Other</string>
 
-    <string name="pitArcadeGameText">Arcade Game</string>
+    <string name="pitBonusQuestion">What planet would they go to?</string>
     <string name="pit_comments_Text">Comments</string>
 
     <string name="savePitButton">Save</string>

@@ -3,8 +3,8 @@ package com.frc107.scouting2019.model.question;
 public class NumberQuestion extends Question<Integer> {
     private Integer answer;
 
-    public NumberQuestion(int id, boolean needsAnswer) {
-        super(id, needsAnswer);
+    public NumberQuestion(String name, int id, boolean needsAnswer) {
+        super(name, id, needsAnswer);
     }
 
     @Override

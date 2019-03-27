@@ -11,6 +11,10 @@ public abstract class ScoutViewModel extends ViewModel {
         return model.getFirstUnfinishedQuestionId();
     }
 
+    public boolean isFormComplete() {
+        return model.isFormComplete();
+    }
+
     public boolean areNoQuestionsAnswered() {
         return model.areNoQuestionsAnswered();
     }

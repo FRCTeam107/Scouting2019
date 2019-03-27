@@ -4,207 +4,199 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:id="@+id/ScrollView01"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:scrollbars="vertical">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <EditText
+                    android:id="@+id/matchNumberEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/top_of_screen_margin"
+                    android:hint="@string/matchNumberHeading"
+                    android:inputType="number"
+                    android:maxLength="3"/>
+
+                <EditText
+                    android:id="@+id/teamNumberEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/top_margin"
+                    android:hint="@string/teamNumberHeading"
+                    android:inputType="number"
+                    android:maxLength="5"/>
+
+                <TextView
+                    android:id="@+id/sandstormStartingPositionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/startingPositionHeading"
+                    android:layout_marginTop="@dimen/top_margin"
+                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:textSize="@dimen/label_text_size"/>
+
+                <RadioGroup
+                    android:id="@+id/sandstormStartingPositionRadioQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/question_height"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/habOneSandstorm_Radiobtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/habOneSandstorm"
+                        style="@style/scoutingRadioButtonTheme" />
+
+                    <RadioButton
+                        android:id="@+id/habTwoSandstorm_Radiobtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/habTwoSandstorm"
+                        style="@style/scoutingRadioButtonTheme" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/sandstormStartingGamePieceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sandstormStartingGamePiece"
+                    android:layout_marginTop="@dimen/top_margin"
+                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:textSize="@dimen/label_text_size"/>
+
+                <RadioGroup
+                    android:id="@+id/sandstormStartingGamePieceRadioQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/question_height"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/cargoSandstormStartingGamePiece_Radiobtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/cargoSandstormStartingGamePiece"
+                        style="@style/scoutingRadioButtonTheme" />
+
+                    <RadioButton
+                        android:id="@+id/panelSandstormStartingGamePiece_Radiobtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/panelSandstormStartingGamePiece"
+                        style="@style/scoutingRadioButtonTheme" />
+
+                    <RadioButton
+                        android:id="@+id/noSandstormStartingGamePiece_Radiobtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/noSandstormStartingGamePiece"
+                        style="@style/scoutingRadioButtonTheme" />
+                </RadioGroup>
+
+
+                <TextView
+                    android:id="@+id/sandstormItemPlacedText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sandstormItemPlacedHeading"
+                    android:layout_marginTop="@dimen/top_margin"
+                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:textSize="@dimen/label_text_size"/>
+
+                <RadioGroup
+                    android:id="@+id/sandstormItemPlacedRadioQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/question_height"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/sandstormTopRocketItemPlaced_Radiobtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/sandstormTopRocketItemPlaced"
+                        style="@style/scoutingRadioButtonTheme" />
+
+                    <RadioButton
+                        android:id="@+id/sandstormMiddleRocketItemPlaced_Radiobtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/sandstormMiddleRocketItemPlaced"
+                        style="@style/scoutingRadioButtonTheme" />
+
+                    <RadioButton
+                        android:id="@+id/sandstormBottomRocketItemPlaced_Radiobtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/sandstormBottomRocketItemPlaced"
+                        style="@style/scoutingRadioButtonTheme" />
+
+                    <RadioButton
+                        android:id="@+id/sandstormCargoshipItemPlaced_Radiobtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/sandstormCargoshipItemPlaced"
+                        style="@style/scoutingRadioButtonTheme" />
+
+                    <RadioButton
+                        android:id="@+id/sandstormFloorItemPlaced_Radiobtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/sandstormFloorItemPlaced"
+                        style="@style/scoutingRadioButtonTheme" />
+
+                    <RadioButton
+                        android:id="@+id/sandstormNothingPlacedItemPlaced_Radiobtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/nothingPlacedItemPlaced"
+                        style="@style/scoutingRadioButtonTheme" />
+                </RadioGroup>
+
+                <CheckBox
+                    android:id="@+id/sandstormBaseline_chkbx"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/question_height"
+                    android:layout_marginTop="@dimen/top_margin"
+                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/sandstormBaseline_chkbxText"
+                    style="@style/scoutingRadioButtonTheme" />
+            </LinearLayout>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/next_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
-
-            <EditText
-                android:id="@+id/teamNumberEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/top_of_screen_margin"
-                android:hint="@string/teamNumberHeading"
-                android:inputType="number"
-                android:maxLength="5"/>
-
-            <EditText
-                android:id="@+id/matchNumberEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/top_margin"
-                android:hint="@string/matchNumberHeading"
-                android:inputType="number"
-                android:maxLength="3"/>
-
-
-            <TextView
-                android:id="@+id/sandstormStartingPositionText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/startingPositionHeading"
-                android:layout_marginTop="@dimen/top_margin"
-                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-                android:textSize="@dimen/label_text_size"/>
-
-            <RadioGroup
-                android:id="@+id/sandstormStartingPositionRadioQuestion"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/question_height"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/habOneSandstorm_Radiobtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
-                    android:text="@string/habOneSandstorm"
-                    android:textAlignment="center" />
-
-                <RadioButton
-                    android:id="@+id/habTwoSandstorm_Radiobtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
-                    android:text="@string/habTwoSandstorm"
-                    android:textAlignment="center" />
-            </RadioGroup>
-
-            <TextView
-                android:id="@+id/sandstormStartingGamePieceText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sandstormStartingGamePiece"
-                android:layout_marginTop="@dimen/top_margin"
-                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-                android:textSize="@dimen/label_text_size"/>
-
-            <RadioGroup
-                android:id="@+id/sandstormStartingGamePieceRadioQuestion"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/question_height"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/cargoSandstormStartingGamePiece_Radiobtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
-                    android:text="@string/cargoSandstormStartingGamePiece"
-                    android:textAlignment="center" />
-
-                <RadioButton
-                    android:id="@+id/panelSandstormStartingGamePiece_Radiobtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
-                    android:text="@string/panelSandstormStartingGamePiece"
-                    android:textAlignment="center" />
-
-                <RadioButton
-                    android:id="@+id/noSandstormStartingGamePiece_Radiobtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
-                    android:text="@string/noSandstormStartingGamePiece"
-                    android:textAlignment="center" />
-            </RadioGroup>
-
-
-            <TextView
-                android:id="@+id/sandstormItemPlacedText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sandstormItemPlacedHeading"
-                android:layout_marginTop="@dimen/top_margin"
-                android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
-                android:textSize="@dimen/label_text_size"/>
-
-            <RadioGroup
-                android:id="@+id/sandstormItemPlacedRadioQuestion"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/question_height"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/sandstormTopRocketItemPlaced_Radiobtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
-                    android:text="@string/sandstormTopRocketItemPlaced"
-                    android:textAlignment="center" />
-
-                <RadioButton
-                    android:id="@+id/sandstormMiddleRocketItemPlaced_Radiobtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
-                    android:text="@string/sandstormMiddleRocketItemPlaced"
-                    android:textAlignment="center" />
-
-                <RadioButton
-                    android:id="@+id/sandstormBottomRocketItemPlaced_Radiobtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
-                    android:text="@string/sandstormBottomRocketItemPlaced"
-                    android:textAlignment="center" />
-                <RadioButton
-                    android:id="@+id/sandstormCargoshipItemPlaced_Radiobtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
-                    android:text="@string/sandstormCargoshipItemPlaced"
-                    android:textAlignment="center" />
-                <RadioButton
-                    android:id="@+id/sandstormFloorItemPlaced_Radiobtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
-                    android:text="@string/sandstormFloorItemPlaced"
-                    android:textAlignment="center" />
-                <RadioButton
-                    android:id="@+id/sandstormNothingPlacedItemPlaced_Radiobtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/toggle_drawable"
-                    android:button="@null"
-                    android:text="@string/nothingPlacedItemPlaced"
-                    android:textAlignment="center" />
-            </RadioGroup>
-
-            <Button
-                android:id="@+id/next_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/top_margin"
-                android:onClick="goToCycle"
-                android:text="@string/goToCycleButton" />
-
-
-        </LinearLayout>
-
-    </ScrollView>
+            android:onClick="goToCycle"
+            android:text="@string/goToCycleButton" />
+    </LinearLayout>
 
 </FrameLayout>
