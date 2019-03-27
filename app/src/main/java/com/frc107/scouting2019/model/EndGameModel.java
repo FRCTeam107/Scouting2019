@@ -32,6 +32,9 @@ public class EndGameModel extends ScoutModel {
     }
 
     @Override
+    public void onNumberQuestionAnswered(int questionId, Integer answer) { }
+
+    @Override
     public void onTextQuestionAnswered(int questionId, String answer) { }
 
     @Override

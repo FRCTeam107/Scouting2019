@@ -46,6 +46,14 @@ public class SandstormModel extends ScoutModel {
     }
 
     @Override
+    public void onNumberQuestionAnswered(int questionId, Integer answer) {
+        /*if (questionId == R.id.teamNumberEditText) {
+            int teamNum = answer == null ? -1 : answer;
+            Scouting.getInstance().setTeamNumber(teamNum);
+        }*/
+    }
+
+    @Override
     public void onTextQuestionAnswered(int questionId, String answer) { }
 
     @Override

@@ -51,7 +51,6 @@ public class SandstormActivity extends BaseActivity {
         crossedBaselineCheckbox = findViewById(R.id.sandstormBaseline_chkbx);
         crossedBaselineCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.sandstormBaseline_chkbx, isChecked));
 
-
         checkForPermissions();
     }
 
@@ -101,7 +100,7 @@ public class SandstormActivity extends BaseActivity {
         ViewUtils.requestFocus(teamNumWrapper.getEditText(), this);
 
         Intent intent = new Intent(this, CycleActivity.class);
-        intent.putExtra(ScoutingStrings.EXTRA_TEAM_NUM_SANDSTORM, teamNumber);
+        intent.putExtra(ScoutingStrings.EXTRA_TEAM_NUM, teamNumber);
         intent.putExtra(ScoutingStrings.EXTRA_SHOULD_ALLOW_STARTING_PIECE_SANDSTORM, shouldAllowStartingPiece);
         startActivity(intent);
 

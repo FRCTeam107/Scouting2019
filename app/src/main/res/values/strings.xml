@@ -6,6 +6,8 @@
     <string name="submitInitials">Submit</string>
     <string name="goToAdmin">Admin</string>
 
+    <string name="versionNumber">X.X.X - XXX</string>
+
     <string name="mainAuthor">Developed by FRC Team 107</string>
 
     <!--Sandstorm Strings-->

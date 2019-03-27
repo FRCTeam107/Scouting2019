@@ -11,6 +11,12 @@ public class CycleModel extends ScoutModel {
     private int cycleNum;
     private boolean isFirstCycle = true;
     private boolean hasUsedStartingItem;
+    private int teamNumber;
+
+    public CycleModel(int teamNumber) {
+        super();
+        this.teamNumber = teamNumber;
+    }
 
     @Override
     public Question[] getQuestions() {
@@ -37,6 +43,9 @@ public class CycleModel extends ScoutModel {
         };
         return questions;
     }
+
+    @Override
+    public void onNumberQuestionAnswered(int questionId, Integer answer) { }
 
     @Override
     public void onTextQuestionAnswered(int questionId, String answer) { }
@@ -96,5 +105,9 @@ public class CycleModel extends ScoutModel {
 
     public void disableStartingItem() {
         hasUsedStartingItem = true;
+    }
+
+    public int getTeamNumber() {
+        return teamNumber;
     }
 }

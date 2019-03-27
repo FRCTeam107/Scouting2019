@@ -8,7 +8,7 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.Scouting;
+import com.frc107.scouting2019.ScoutingStrings;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.view.wrappers.RadioWrapper;
@@ -33,7 +33,8 @@ public class EndGameActivity extends BaseActivity {
 
         viewModel = new EndGameViewModel();
 
-        getSupportActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
+        int teamNumber = getIntent().getIntExtra(ScoutingStrings.EXTRA_TEAM_NUM, -1);
+        getSupportActionBar().setTitle("Team: " + teamNumber);
 
         habLevelWrapper = new RadioWrapper(findViewById(R.id.endGameHabitatLevelRadioQuestion), viewModel);
         defenseWrapper = new RadioWrapper(findViewById(R.id.endGameDefenseRadioQuestion), viewModel);

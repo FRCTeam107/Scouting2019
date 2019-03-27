@@ -61,6 +61,7 @@ public abstract class ScoutModel {
         return true;
     }
 
+    public abstract void onNumberQuestionAnswered(int questionId, Integer answer);
     public abstract void onTextQuestionAnswered(int questionId, String answer);
     public abstract void onRadioQuestionAnswered(int questionId, int answerId);
 
@@ -71,6 +72,7 @@ public abstract class ScoutModel {
 
         if (question instanceof NumberQuestion) {
             Integer numAnswer = answer.length() == 0 ? null : Integer.valueOf(answer);
+            onNumberQuestionAnswered(questionId, numAnswer);
             question.setAnswer(numAnswer);
             return true;
         } else if (question instanceof TextQuestion) {

@@ -37,10 +37,10 @@ public class CycleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cycle);
 
-        viewModel = new CycleViewModel();
-
-        int teamNumber = getIntent().getIntExtra(ScoutingStrings.EXTRA_TEAM_NUM_SANDSTORM, -1);
+        int teamNumber = getIntent().getIntExtra(ScoutingStrings.EXTRA_TEAM_NUM, -1);
         getSupportActionBar().setTitle("Team: " + teamNumber);
+
+        viewModel = new CycleViewModel(teamNumber);
 
         pickupLocationWrapper = new RadioWrapper(findViewById(R.id.pickupLocationRadioQuestion), viewModel);
         itemPickedUpWrapper = new RadioWrapper(findViewById(R.id.itemPickedUpRadioQuestion), viewModel);
@@ -138,7 +138,10 @@ public class CycleActivity extends AppCompatActivity {
         if (cycleCanBeFinished && unfinishedQuestionId == -1)
             viewModel.finishCycle();
 
+        int teamNumber = viewModel.getTeamNumber();
+
         final Intent intent = new Intent(this, EndGameActivity.class);
+        intent.putExtra(ScoutingStrings.EXTRA_TEAM_NUM, teamNumber);
         startActivity(intent);
 
         finish();
@@ -191,6 +194,8 @@ public class CycleActivity extends AppCompatActivity {
         RadioButton startedWithItemButton = findViewById(R.id.startedWithItem_Radiobtn);
         startedWithItemButton.setVisibility(View.GONE);
         startedWithItemButton.setEnabled(false);
+
+        viewModel.disableStartingItem();
     }
 
     private void clearAnswers() {
