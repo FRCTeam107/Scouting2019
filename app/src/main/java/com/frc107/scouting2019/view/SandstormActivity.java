@@ -4,31 +4,30 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
+import com.frc107.scouting2019.ScoutingStrings;
 import com.frc107.scouting2019.utils.ViewUtils;
+import com.frc107.scouting2019.view.wrappers.RadioWrapper;
+import com.frc107.scouting2019.view.wrappers.TextWrapper;
 import com.frc107.scouting2019.viewmodel.SandstormViewModel;
-import com.frc107.scouting2019.viewmodel.ScoutViewModel;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 public class SandstormActivity extends BaseActivity {
+    private RadioWrapper startingPosWrapper;
+    private RadioWrapper startingPieceWrapper;
+    private RadioWrapper itemPlacedWrapper;
+    private TextWrapper teamNumWrapper;
+    private TextWrapper matchNumWrapper;
 
-    private EditText teamNumberEditText;
-    private TextWatcher teamNumberTextWatcher;
     private EditText matchNumberEditText;
-    private TextWatcher matchNumberTextWatcher;
-    private RadioGroup sandstormStartingPositionRadioQuestion;
-    private RadioGroup itemPickedUpRadioGroup;
-    private RadioGroup itemPlacedSandstormRadioGroup;
+
     private CheckBox crossedBaselineCheckbox;
 
     private SandstormViewModel viewModel;
@@ -40,40 +39,17 @@ public class SandstormActivity extends BaseActivity {
 
         viewModel = new SandstormViewModel();
 
-        sandstormStartingPositionRadioQuestion = findViewById(R.id.sandstormStartingPositionRadioQuestion);
-        sandstormStartingPositionRadioQuestion.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingPositionRadioQuestion, checkedId));
-
-        itemPickedUpRadioGroup = findViewById(R.id.sandstormStartingGamePieceRadioQuestion);
-        itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormStartingGamePieceRadioQuestion, checkedId));
-
-        itemPlacedSandstormRadioGroup = findViewById(R.id.sandstormItemPlacedRadioQuestion);
-        itemPlacedSandstormRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.sandstormItemPlacedRadioQuestion, checkedId));
-
-        teamNumberEditText = findViewById(R.id.teamNumberEditText);
-        teamNumberTextWatcher = new TextWatcher() {
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0)
-                    Scouting.getInstance().setTeamNumber(Integer.parseInt(s.toString()));
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void afterTextChanged(Editable s) { }
-        };
-        teamNumberEditText.addTextChangedListener(teamNumberTextWatcher);
-
         matchNumberEditText = findViewById(R.id.matchNumberEditText);
-        matchNumberTextWatcher = new TextWatcher() {
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                int matchNumber = s.length() > 0 ? Integer.parseInt(s.toString()) : -1;
-                Scouting.getInstance().setMatchNumber(matchNumber);
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void afterTextChanged(Editable s) { }
-        };
-        matchNumberEditText.addTextChangedListener(matchNumberTextWatcher);
+
+        startingPosWrapper = new RadioWrapper(findViewById(R.id.sandstormStartingPositionRadioQuestion), viewModel);
+        startingPieceWrapper = new RadioWrapper(findViewById(R.id.sandstormStartingGamePieceRadioQuestion), viewModel);
+        itemPlacedWrapper = new RadioWrapper(findViewById(R.id.sandstormItemPlacedRadioQuestion), viewModel);
+
+        teamNumWrapper = new TextWrapper(findViewById(R.id.teamNumberEditText), viewModel);
+        matchNumWrapper = new TextWrapper(matchNumberEditText, viewModel);
 
         crossedBaselineCheckbox = findViewById(R.id.sandstormBaseline_chkbx);
         crossedBaselineCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.sandstormBaseline_chkbx, isChecked));
-
 
         checkForPermissions();
     }
@@ -82,13 +58,11 @@ public class SandstormActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        teamNumberEditText.removeTextChangedListener(teamNumberTextWatcher);
-        teamNumberEditText = null;
-        teamNumberTextWatcher = null;
-
-        matchNumberEditText.removeTextChangedListener(matchNumberTextWatcher);
-        matchNumberEditText = null;
-        matchNumberTextWatcher = null;
+        startingPosWrapper.cleanUp();
+        startingPieceWrapper.cleanUp();
+        itemPlacedWrapper.cleanUp();
+        teamNumWrapper.cleanUp();
+        matchNumWrapper.cleanUp();
 
         viewModel = null;
     }
@@ -117,18 +91,27 @@ public class SandstormActivity extends BaseActivity {
             return;
         }
         viewModel.finish();
+
+        int teamNumber = viewModel.getTeamNumber();
+        boolean shouldAllowStartingPiece = viewModel.shouldAllowStartingPiece();
+
         clearAnswers();
-        ViewUtils.requestFocus(teamNumberEditText, this);
-        final Intent intent = new Intent(this, CycleActivity.class);
+
+        ViewUtils.requestFocus(teamNumWrapper.getEditText(), this);
+
+        Intent intent = new Intent(this, CycleActivity.class);
+        intent.putExtra(ScoutingStrings.EXTRA_TEAM_NUM, teamNumber);
+        intent.putExtra(ScoutingStrings.EXTRA_SHOULD_ALLOW_STARTING_PIECE_SANDSTORM, shouldAllowStartingPiece);
         startActivity(intent);
 
     }
 
     private void clearAnswers() {
-        teamNumberEditText.setText("");
-        sandstormStartingPositionRadioQuestion.clearCheck();
-        itemPickedUpRadioGroup.clearCheck();
-        itemPlacedSandstormRadioGroup.clearCheck();
+        teamNumWrapper.clear();
+        matchNumWrapper.clear();
+        startingPosWrapper.clear();
+        startingPieceWrapper.clear();
+        itemPlacedWrapper.clear();
         crossedBaselineCheckbox.setChecked(false);
     }
 }
