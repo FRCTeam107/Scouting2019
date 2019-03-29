@@ -6,8 +6,8 @@ public class NumberQuestion extends Question<Integer> {
     private Integer answer;
     private ArrayList<Integer> illegalValues;
 
-    public NumberQuestion(String name, int id, boolean needsAnswer) {
-        super(name, id, needsAnswer);
+    public NumberQuestion(String name, int id, boolean needsAnswer, int position) {
+        super(name, id, needsAnswer, position);
         illegalValues = new ArrayList<>();
     }
 

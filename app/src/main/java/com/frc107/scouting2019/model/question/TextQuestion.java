@@ -3,8 +3,8 @@ package com.frc107.scouting2019.model.question;
 public class TextQuestion extends Question<String> {
     private String answer;
 
-    public TextQuestion(String name, int id, boolean needsAnswer) {
-        super(name, id, needsAnswer);
+    public TextQuestion(String name, int id, boolean needsAnswer, int position) {
+        super(name, id, needsAnswer, position);
         this.answer = "";
     }
 

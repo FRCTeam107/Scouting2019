@@ -15,17 +15,17 @@ public class EndGameModel extends ScoutModel {
     public Question[] getQuestions() {
         Question[] questions = {
 
-                new RadioQuestion("endgameHabitatLevel", R.id.endGameHabitatLevelRadioQuestion, true,
+                new RadioQuestion("endgameHabitatLevel", R.id.endGameHabitatLevelRadioQuestion, true, 0,
                         new RadioQuestion.Option(R.id.habOneEndGame_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.habTwoEndGame_Radiobtn, 2),
                         new RadioQuestion.Option(R.id.habThreeEndGame_Radiobtn, 3),
                         new RadioQuestion.Option(R.id.habNoneEndGame_Radiobtn, 0)),
-                new ToggleQuestion("endgameDefenseAllMatch", R.id.endGameDefenseAllMatch_chkbx),
-                new RadioQuestion("endgameDefense", R.id.endGameDefenseRadioQuestion, true,
+                new ToggleQuestion("endgameDefenseAllMatch", R.id.endGameDefenseAllMatch_chkbx, 1),
+                new RadioQuestion("endgameDefense", R.id.endGameDefenseRadioQuestion, true, 2,
                         new RadioQuestion.Option(R.id.endGameDefenseEffective_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.endGameDefenseIneffective_Radiobtn, 2),
                         new RadioQuestion.Option(R.id.endGameDefenseNone_Radiobtn, 0)),
-                new ToggleQuestion("endgameFouls", R.id.endGameFouls_chkbx)
+                new ToggleQuestion("endgameFouls", R.id.endGameFouls_chkbx, 3)
 
         };
         return questions;

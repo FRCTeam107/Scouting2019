@@ -12,11 +12,13 @@ public abstract class Question<T> {
     private int id;
     private boolean needsAnswer;
     private boolean ignoreAnswer;
+    private int position;
 
-    public Question(String name, int id, boolean needsAnswer) {
+    public Question(String name, int id, boolean needsAnswer, int position) {
         this.name = name;
         this.id = id;
         this.needsAnswer = needsAnswer;
+        this.position = position;
     }
 
     public boolean needsAnswer() {
@@ -49,5 +51,9 @@ public abstract class Question<T> {
 
     public int getId() {
         return id;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

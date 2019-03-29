@@ -18,29 +18,29 @@ public class SandstormModel extends ScoutModel {
 
     @Override
     public Question[] getQuestions() {
-        NumberQuestion matchNumQuestion = new NumberQuestion("sandstormMatchNumber", R.id.matchNumberEditText, true);
-        NumberQuestion teamNumQuestion = new NumberQuestion("sandstormTeamNumber", R.id.teamNumberEditText, true);
+        NumberQuestion matchNumQuestion = new NumberQuestion("sandstormMatchNumber", R.id.matchNumberEditText, true, 0);
+        NumberQuestion teamNumQuestion = new NumberQuestion("sandstormTeamNumber", R.id.teamNumberEditText, true, 1);
         matchNumQuestion.addIllegalValue(0);
         teamNumQuestion.addIllegalValue(0);
 
         Question[] questions = {
                 matchNumQuestion,
                 teamNumQuestion,
-                new RadioQuestion("sandstormStartPos", R.id.sandstormStartingPositionRadioQuestion, true,
+                new RadioQuestion("sandstormStartPos", R.id.sandstormStartingPositionRadioQuestion, true, 2,
                         new RadioQuestion.Option(R.id.habTwoSandstorm_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.habOneSandstorm_Radiobtn, 0)),
-                new RadioQuestion("sandstormStartPiece", R.id.sandstormStartingGamePieceRadioQuestion, true,
+                new RadioQuestion("sandstormStartPiece", R.id.sandstormStartingGamePieceRadioQuestion, true, 3,
                         new RadioQuestion.Option(R.id.cargoSandstormStartingGamePiece_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.panelSandstormStartingGamePiece_Radiobtn, 2),
                         new RadioQuestion.Option(R.id.noSandstormStartingGamePiece_Radiobtn, 0)),
-                new RadioQuestion("sandstormItemPlaced", R.id.sandstormItemPlacedRadioQuestion, true,
+                new RadioQuestion("sandstormItemPlaced", R.id.sandstormItemPlacedRadioQuestion, true, 4,
                         new RadioQuestion.Option(R.id.sandstormTopRocketItemPlaced_Radiobtn, 3),
                         new RadioQuestion.Option(R.id.sandstormMiddleRocketItemPlaced_Radiobtn, 2),
                         new RadioQuestion.Option(R.id.sandstormBottomRocketItemPlaced_Radiobtn, 1),
                         new RadioQuestion.Option(R.id.sandstormCargoshipItemPlaced_Radiobtn, 0),
                         new RadioQuestion.Option(R.id.sandstormFloorItemPlaced_Radiobtn, 4),
                         new RadioQuestion.Option(R.id.sandstormNothingPlacedItemPlaced_Radiobtn, 5)),
-                new ToggleQuestion("sandstormBaseline", R.id.sandstormBaseline_chkbx)
+                new ToggleQuestion("sandstormBaseline", R.id.sandstormBaseline_chkbx, 5)
         };
         return questions;
     }

@@ -1,5 +1,7 @@
 package com.frc107.scouting2019.model;
 
+import android.os.Build;
+
 import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.ToggleQuestion;
 import com.frc107.scouting2019.model.question.NumberQuestion;
@@ -135,9 +137,14 @@ public abstract class ScoutModel {
     }
 
     public String getAnswerCSVRow() {
+        ArrayList<Question> sortedQuestions = new ArrayList<Question>(questions);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            sortedQuestions.sort((Question q1, Question q2) -> q1.getPosition() - q2.getPosition());
+        }
+
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < questions.size(); i++) {
-            Question question = questions.get(i);
+        for (int i = 0; i < sortedQuestions.size(); i++) {
+            Question question = sortedQuestions.get(i);
             if (!question.answerCanBeIgnored()) {
                 if (i > 0)
                     stringBuilder.append(',');
