@@ -28,14 +28,6 @@ public class MainActivity extends BaseActivity {
         String uniqueId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
 
         Scouting.getInstance().setUniqueId(uniqueId);
-
-        Intent duckIntent = new Intent(this, DuckActivity.class);
-
-        Button sendDataButton = findViewById(R.id.admin_button);
-        sendDataButton.setOnLongClickListener(v -> {
-            startActivity(duckIntent);
-            return true;
-        });
     }
 
     public void showMatch(View view) {

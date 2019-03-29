@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.frc107.scouting2019.BuildConfig;
@@ -30,6 +31,14 @@ public class AdminActivity extends BaseActivity {
         setContentView(R.layout.activity_admin);
 
         viewModel = new AdminViewModel();
+
+        Intent duckIntent = new Intent(this, DuckActivity.class);
+
+        Button sendPitData = findViewById(R.id.send_pit_data);
+        sendPitData.setOnLongClickListener(v -> {
+            startActivity(duckIntent);
+            return true;
+        });
     }
 
     public void concatenateMatchData(View view) {
