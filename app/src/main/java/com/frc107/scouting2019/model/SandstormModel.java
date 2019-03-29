@@ -47,10 +47,10 @@ public class SandstormModel extends ScoutModel {
 
     @Override
     public void onNumberQuestionAnswered(int questionId, Integer answer) {
-        /*if (questionId == R.id.teamNumberEditText) {
-            int teamNum = answer == null ? -1 : answer;
-            Scouting.getInstance().setTeamNumber(teamNum);
-        }*/
+        if (questionId == R.id.matchNumberEditText) {
+            int matchNum = answer == null ? -1 : answer;
+            Scouting.getInstance().setMatchNumber(matchNum);
+        }
     }
 
     @Override

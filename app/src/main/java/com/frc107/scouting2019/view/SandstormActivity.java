@@ -70,11 +70,12 @@ public class SandstormActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        String currentText = matchNumberEditText.getText().toString();
-        if (currentText.length() > 0) {
-            int newMatchNum = Scouting.getInstance().getMatchNumber() + 1;
-            matchNumberEditText.setText(String.valueOf(newMatchNum));
-        }
+        int matchNum = Scouting.getInstance().getMatchNumber();
+        if (matchNum == -1)
+            return;
+
+        int newMatchNum = Scouting.getInstance().getMatchNumber() + 1;
+        matchNumberEditText.setText(String.valueOf(newMatchNum));
     }
 
     private void checkForPermissions() {
@@ -108,7 +109,6 @@ public class SandstormActivity extends BaseActivity {
 
     private void clearAnswers() {
         teamNumWrapper.clear();
-        matchNumWrapper.clear();
         startingPosWrapper.clear();
         startingPieceWrapper.clear();
         itemPlacedWrapper.clear();
