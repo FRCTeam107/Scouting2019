@@ -138,15 +138,16 @@ public abstract class ScoutModel {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < questions.size(); i++) {
             Question question = questions.get(i);
-            if (!question.answerCanBeIgnored()) {
-                if (i > 0)
-                    stringBuilder.append(',');
+            if (question.answerCanBeIgnored())
+                continue;
 
-                if (Scouting.SAVE_QUESTION_NAMES_AS_ANSWERS)
-                    stringBuilder.append(question.getName());
-                else
-                    stringBuilder.append(question.getAnswerAsString());
-            }
+            if (i > 0)
+                stringBuilder.append(',');
+
+            if (Scouting.SAVE_QUESTION_NAMES_AS_ANSWERS)
+                stringBuilder.append(question.getName());
+            else
+                stringBuilder.append(question.getAnswerAsString());
         }
         return stringBuilder.toString();
     }

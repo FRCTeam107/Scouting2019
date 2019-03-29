@@ -13,6 +13,9 @@ public abstract class Question<T> {
     private boolean needsAnswer;
     private boolean ignoreAnswer;
 
+    /**
+     * Creates a basic question. Don't use this.
+     */
     public Question(String name, int id, boolean needsAnswer) {
         this.name = name;
         this.id = id;
@@ -27,10 +30,16 @@ public abstract class Question<T> {
         this.needsAnswer = needsAnswer;
     }
 
+    /**
+     * @param ignoreAnswer Whether the answer shouldn't be saved.
+     */
     public void setIgnoreAnswer(boolean ignoreAnswer) {
         this.ignoreAnswer = ignoreAnswer;
     }
 
+    /**
+     * @return Whether the answer shouldn't be saved or not.
+     */
     public boolean answerCanBeIgnored() {
         return ignoreAnswer;
     }
@@ -41,6 +50,10 @@ public abstract class Question<T> {
 
     public abstract void setAnswer(T answer);
     public abstract T getAnswer();
+
+    /**
+     * @return The answer in a saveable format.
+     */
     public abstract String getAnswerAsString();
 
     public String getName() {

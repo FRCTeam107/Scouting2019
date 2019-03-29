@@ -7,6 +7,13 @@ public class RadioQuestion extends Question<Integer> {
     private ArrayList<Option> options;
     private Option selectedOption;
 
+    /**
+     * Create a radio question.
+     * @param name The name of the question. At this point, it's only used for debugging.
+     * @param id The id of the question to differentiate it.
+     * @param needsAnswer Does it need an answer?
+     * @param options A list of options for the radio question.
+     */
     public RadioQuestion(String name, int id, boolean needsAnswer, Option... options) {
         super(name, id, needsAnswer);
         this.options = new ArrayList<>(Arrays.asList(options));
