@@ -10,19 +10,23 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.Scouting;
+import com.frc107.scouting2019.ScoutingStrings;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
+import com.frc107.scouting2019.view.wrappers.RadioWrapper;
 import com.frc107.scouting2019.viewmodel.CycleViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
-
 public class CycleActivity extends AppCompatActivity {
+    private RadioWrapper pickupLocationWrapper;
+    private RadioWrapper itemPickedUpWrapper;
+    private RadioWrapper itemPlacedWrapper;
+
     private RadioGroup pickupLocationRadioGroup;
     private RadioGroup itemPickedUpRadioGroup;
     private RadioGroup itemPlacedRadioGroup;
+
     private CheckBox defenseCheckbox;
     private CheckBox allDefenseCheckbox;
 
@@ -33,15 +37,28 @@ public class CycleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cycle);
 
-        viewModel = new CycleViewModel();
+        int teamNumber = getIntent().getIntExtra(ScoutingStrings.EXTRA_TEAM_NUM, -1);
+        getSupportActionBar().setTitle("Team: " + teamNumber);
 
-        getSupportActionBar().setTitle("Team: " + Scouting.getInstance().getTeamNumber());
+        viewModel = new CycleViewModel(teamNumber);
+
+        pickupLocationWrapper = new RadioWrapper(findViewById(R.id.pickupLocationRadioQuestion), viewModel);
+        itemPickedUpWrapper = new RadioWrapper(findViewById(R.id.itemPickedUpRadioQuestion), viewModel);
+        itemPlacedWrapper = new RadioWrapper(findViewById(R.id.itemPlacedRadioQuestion), viewModel);
 
         pickupLocationRadioGroup = findViewById(R.id.pickupLocationRadioQuestion);
         itemPickedUpRadioGroup = findViewById(R.id.itemPickedUpRadioQuestion);
         itemPlacedRadioGroup = findViewById(R.id.itemPlacedRadioQuestion);
+
         defenseCheckbox = findViewById(R.id.defense_chkbx);
         allDefenseCheckbox = findViewById(R.id.allDefense_chkbx);
+
+        boolean shouldAllowStartingPiece = getIntent().getBooleanExtra(ScoutingStrings.EXTRA_SHOULD_ALLOW_STARTING_PIECE_SANDSTORM, true);
+        if (shouldAllowStartingPiece) {
+            enableStartedWithItem();
+        } else {
+            disableStartedWithItem();
+        }
 
         pickupLocationRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.pickupLocationRadioQuestion, checkedId));
         itemPickedUpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> viewModel.setAnswer(R.id.itemPickedUpRadioQuestion, checkedId));
@@ -74,6 +91,12 @@ public class CycleActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        pickupLocationWrapper.cleanUp();
+        itemPickedUpWrapper.cleanUp();
+        itemPlacedWrapper.cleanUp();
+        defenseCheckbox.setOnCheckedChangeListener(null);
+
         viewModel = null;
     }
 
@@ -117,7 +140,10 @@ public class CycleActivity extends AppCompatActivity {
         if (cycleCanBeFinished && unfinishedQuestionId == -1)
             viewModel.finishCycle();
 
+        int teamNumber = viewModel.getTeamNumber();
+
         final Intent intent = new Intent(this, EndGameActivity.class);
+        intent.putExtra(ScoutingStrings.EXTRA_TEAM_NUM, teamNumber);
         startActivity(intent);
 
         finish();
@@ -141,13 +167,43 @@ public class CycleActivity extends AppCompatActivity {
         if (unfinishedQuestionId == -1)
             viewModel.finishCycle();
 
+        if (viewModel.hasUsedStartingItem()) {
+            disableStartedWithItem();
+        }
+
         clearAnswers();
     }
 
+    private void enableStartedWithItem() {
+        RadioButton portRadioButton = findViewById(R.id.portPickupLocation_Radiobtn);
+        portRadioButton.setEnabled(false);
+        portRadioButton.setVisibility(View.GONE);
+
+        RadioButton floorRadioButton = findViewById(R.id.floorPickupLocation_Radiobtn);
+        floorRadioButton.setEnabled(false);
+        floorRadioButton.setVisibility(View.GONE);
+    }
+
+    private void disableStartedWithItem() {
+        RadioButton portRadioButton = findViewById(R.id.portPickupLocation_Radiobtn);
+        portRadioButton.setEnabled(true);
+        portRadioButton.setVisibility(View.VISIBLE);
+
+        RadioButton floorRadioButton = findViewById(R.id.floorPickupLocation_Radiobtn);
+        floorRadioButton.setEnabled(true);
+        floorRadioButton.setVisibility(View.VISIBLE);
+
+        RadioButton startedWithItemButton = findViewById(R.id.startedWithItem_Radiobtn);
+        startedWithItemButton.setVisibility(View.GONE);
+        startedWithItemButton.setEnabled(false);
+
+        viewModel.disableStartingItem();
+    }
+
     private void clearAnswers() {
-        pickupLocationRadioGroup.clearCheck();
-        itemPickedUpRadioGroup.clearCheck();
-        itemPlacedRadioGroup.clearCheck();
+        pickupLocationWrapper.clear();
+        itemPickedUpWrapper.clear();
+        itemPlacedWrapper.clear();
         defenseCheckbox.setChecked(false);
         allDefenseCheckbox.setChecked(false);
     }

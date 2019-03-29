@@ -32,9 +32,13 @@ public class EndGameModel extends ScoutModel {
     }
 
     @Override
-    public String getCSVRowHeader() {
-        return Scouting.getInstance().getSandstormData();
-    }
+    public void onNumberQuestionAnswered(int questionId, Integer answer) { }
+
+    @Override
+    public void onTextQuestionAnswered(int questionId, String answer) { }
+
+    @Override
+    public void onRadioQuestionAnswered(int questionId, int answerId) { }
 
     public String finish() {
         StringBuilder builder = new StringBuilder();

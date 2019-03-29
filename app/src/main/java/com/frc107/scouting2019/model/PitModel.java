@@ -84,7 +84,11 @@ public class PitModel extends ScoutModel {
     }
 
     @Override
-    public String getCSVRowHeader() {
-        return "";
-    }
+    public void onNumberQuestionAnswered(int questionId, Integer answer) { }
+
+    @Override
+    public void onTextQuestionAnswered(int questionId, String answer) { }
+
+    @Override
+    public void onRadioQuestionAnswered(int questionId, int answerId) { }
 }
