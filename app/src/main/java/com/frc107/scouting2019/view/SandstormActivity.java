@@ -67,17 +67,6 @@ public class SandstormActivity extends BaseActivity {
         viewModel = null;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        int matchNum = Scouting.getInstance().getMatchNumber();
-        if (matchNum == -1)
-            return;
-
-        int newMatchNum = Scouting.getInstance().getMatchNumber() + 1;
-        matchNumberEditText.setText(String.valueOf(newMatchNum));
-    }
-
     private void checkForPermissions() {
         int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (writePermission != PackageManager.PERMISSION_GRANTED) {
