@@ -68,6 +68,9 @@ public class EndGameModel extends ScoutModel {
         }
 
         Scouting.getInstance().clearCycles();
+        int matchNum = Scouting.getInstance().getMatchNumber();
+        Scouting.getInstance().setMatchNumber(matchNum + 1);
+
         return Scouting.FILE_UTILS.writeData(FILE_NAME_HEADER, builder.toString());
     }
 }

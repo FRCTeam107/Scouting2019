@@ -55,6 +55,14 @@ public class SandstormActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        int matchNum = Scouting.getInstance().getMatchNumber();
+        String matchNumToShow = matchNum == -1 ? "" : matchNum + "";
+        matchNumberEditText.setText(matchNumToShow);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
 
