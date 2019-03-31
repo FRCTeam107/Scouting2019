@@ -24,6 +24,9 @@ public class RadioQuestion extends Question<Integer> {
         return selectedOption != null;
     }
 
+    /**
+     * @param answerId The ID of the option you're setting the answer to.
+     */
     @Override
     public void setAnswer(Integer answerId) {
         // We check for -1 here because when the check is cleared from the RadioGroup, it sets it as being checked to id -1. It's
@@ -40,11 +43,17 @@ public class RadioQuestion extends Question<Integer> {
         }
     }
 
+    /**
+     * @return The ID of the option that is the answer.
+     */
     @Override
     public Integer getAnswer() {
         return selectedOption.getId();
     }
 
+    /**
+     * @return A string containing either -1 for no answer, or the number representation of the answer.
+     */
     @Override
     public String getAnswerAsString() {
         if (selectedOption == null)
@@ -57,6 +66,11 @@ public class RadioQuestion extends Question<Integer> {
         private int id;
         private int num;
 
+        /**
+         * Create an option for a radio question.
+         * @param id The ID.
+         * @param num The numerical representation of this option when saved to the CSV file.
+         */
         public Option(int id, int num) {
             this.id = id;
             this.num = num;

@@ -1,7 +1,5 @@
 package com.frc107.scouting2019.model;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.util.Log;
 
@@ -11,10 +9,7 @@ import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
 import com.frc107.scouting2019.model.question.TextQuestion;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class PitModel extends ScoutModel {
@@ -24,7 +19,7 @@ public class PitModel extends ScoutModel {
     }
 
     private String getTeamNumber() {
-        return getAnswerForQuestion(R.id.pit_teamNumber_editText);
+        return getAnswerAsString(R.id.pit_teamNumber_editText);
     }
 
     public File createPhotoFile() {

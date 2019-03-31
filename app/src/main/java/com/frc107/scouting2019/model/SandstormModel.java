@@ -5,7 +5,6 @@ import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.model.question.NumberQuestion;
 import com.frc107.scouting2019.model.question.Question;
 import com.frc107.scouting2019.model.question.RadioQuestion;
-import com.frc107.scouting2019.model.question.TextQuestion;
 import com.frc107.scouting2019.model.question.ToggleQuestion;
 
 public class SandstormModel extends ScoutModel {
@@ -69,7 +68,7 @@ public class SandstormModel extends ScoutModel {
     }
 
     public int getTeamNumber() {
-        Integer teamNumber = (Integer) getRawAnswerForQuestion(R.id.teamNumberEditText);
+        Integer teamNumber = (Integer) getAnswer(R.id.teamNumberEditText);
         if (teamNumber == null)
             return -1;
 

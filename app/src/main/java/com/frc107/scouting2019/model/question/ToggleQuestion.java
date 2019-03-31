@@ -12,12 +12,9 @@ public class ToggleQuestion extends Question<Boolean> {
         super(name, id, false);
     }
 
-    @Override
-    public boolean hasAnswer() {
-        // Since it's a toggle, we can't exactly differentiate between an intentional or unintentional empty selection.
-        return true;
-    }
-
+    /**
+     * @param answer The boolean that you are setting the answer to. If this is null, the answer will be set to false.
+     */
     @Override
     public void setAnswer(Boolean answer) {
         this.answer = answer == null ? false : answer;
@@ -28,6 +25,9 @@ public class ToggleQuestion extends Question<Boolean> {
         return answer;
     }
 
+    /**
+     * @return A string containing 1 for true or 0 for false.
+     */
     @Override
     public String getAnswerAsString() {
         int asInt = answer ? 1 : 0;

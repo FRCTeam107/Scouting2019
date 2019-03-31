@@ -14,16 +14,31 @@ public abstract class ScoutModel {
     private ArrayList<Question> questions;
     private String fileNameHeader;
 
+    /**
+     * Create a scout model. You should create classes extending this class.
+     */
     public ScoutModel() {
         this.questions = new ArrayList<>(Arrays.asList(getQuestions()));
     }
 
+    /**
+     * Implement this on your model. Have it return an array of all the questions you want.
+     * @return An array of Question objects.
+     */
     public abstract Question[] getQuestions();
 
+    /**
+     * Set the header on your saved file name. For example, if you wanted the file name to be in the format Match(id).csv, you would pass in "Match" for fileNameHeader.
+     * @param fileNameHeader The name preceding the device ID in the saved file name.
+     */
     public void setFileNameHeader(String fileNameHeader) {
         this.fileNameHeader = fileNameHeader;
     }
 
+    /**
+     * TODO: This also will need to use the isQuestionComplete method.
+     * @return The ID of the first question that is found to be unfinished.
+     */
     public int getFirstUnfinishedQuestionId() {
         for (Question question : questions) {
             if (!question.needsAnswer())
@@ -36,6 +51,7 @@ public abstract class ScoutModel {
     }
 
     // TODO: This should probably have an implementation per-model, so we can avoid things like cycleCanBeFinished. It's bad pattern.
+    // TODO: More todo, make this just call a method called isQuestionComplete for each question that'll be implemented in each model.
     public boolean isFormComplete() {
         for (Question question : questions) {
             if (!question.needsAnswer())
@@ -118,7 +134,7 @@ public abstract class ScoutModel {
         return null;
     }
 
-    public String getAnswerForQuestion(int id) {
+    public String getAnswerAsString(int id) {
         Question question = getQuestion(id);
         if (question == null)
             return null;
@@ -126,7 +142,7 @@ public abstract class ScoutModel {
         return question.getAnswerAsString();
     }
 
-    public Object getRawAnswerForQuestion(int id) {
+    public Object getAnswer(int id) {
         Question question = getQuestion(id);
         if (question == null)
             return null;
@@ -134,6 +150,9 @@ public abstract class ScoutModel {
         return question.getAnswer();
     }
 
+    /**
+     * @return The answers to all the questions formatted nicely separated by commas.
+     */
     public String getAnswerCSVRow() {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < questions.size(); i++) {

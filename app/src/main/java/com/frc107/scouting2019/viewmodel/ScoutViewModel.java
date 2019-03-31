@@ -3,7 +3,6 @@ package com.frc107.scouting2019.viewmodel;
 import com.frc107.scouting2019.model.ScoutModel;
 
 import androidx.databinding.BaseObservable;
-import androidx.lifecycle.ViewModel;
 
 public abstract class ScoutViewModel extends BaseObservable {
     protected ScoutModel model;
@@ -33,7 +32,7 @@ public abstract class ScoutViewModel extends BaseObservable {
     }
 
     public String getAnswerForQuestion(int questionId) {
-        return model.getAnswerForQuestion(questionId);
+        return model.getAnswerAsString(questionId);
     }
 
     public String save() {
