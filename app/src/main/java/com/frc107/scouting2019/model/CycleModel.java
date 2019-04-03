@@ -81,6 +81,10 @@ public class CycleModel extends ScoutModel {
         Scouting.getInstance().addCycle(cycle);
     }
 
+    /**
+     * Called when the user taps the only defense button.
+     * @param allDefense True when the cycle is in only defense mode, false if not.
+     */
     public void setAllDefense(boolean allDefense) {
         Question pickupLocationQuestion = getQuestion(R.id.pickupLocationRadioQuestion);
         Question itemPickedUpQuestion = getQuestion(R.id.itemPickedUpRadioQuestion);

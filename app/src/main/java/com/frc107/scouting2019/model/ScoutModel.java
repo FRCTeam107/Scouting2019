@@ -134,6 +134,11 @@ public abstract class ScoutModel {
         return null;
     }
 
+    /**
+     * Get the answer to a question in a string representation.
+     * @param id The question id.
+     * @return The answer as a string.
+     */
     public String getAnswerAsString(int id) {
         Question question = getQuestion(id);
         if (question == null)
@@ -142,6 +147,11 @@ public abstract class ScoutModel {
         return question.getAnswerAsString();
     }
 
+    /**
+     * Get the answer to a question as the object that the question is represented by.
+     * @param id The question id.
+     * @return The answer.
+     */
     public Object getAnswer(int id) {
         Question question = getQuestion(id);
         if (question == null)
@@ -180,6 +190,7 @@ public abstract class ScoutModel {
     public void clearAllQuestions() {
         for (Question question : questions) {
             question.setAnswer(null);
+            // TODO: Implement a method in the question classes called clearAnswer.
         }
     }
 }

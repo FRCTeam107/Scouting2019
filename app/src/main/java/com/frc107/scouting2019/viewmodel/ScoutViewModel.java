@@ -7,6 +7,10 @@ import androidx.databinding.BaseObservable;
 public abstract class ScoutViewModel extends BaseObservable {
     protected ScoutModel model;
 
+    /**
+     * TODO: This also will need to use the isQuestionComplete method.
+     * @return The ID of the first question that is found to be unfinished.
+     */
     public int getFirstUnfinishedQuestionId() {
         return model.getFirstUnfinishedQuestionId();
     }

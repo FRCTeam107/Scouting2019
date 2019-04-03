@@ -12,6 +12,11 @@ public class TextWrapper {
     private ScoutViewModel viewModel;
     private int id;
 
+    /**
+     * Create a TextWrapper, used for handling text changes.
+     * @param editText The EditText to listen to.
+     * @param viewModel The ViewModel to set the answers in.
+     */
     public TextWrapper(EditText editText, ScoutViewModel viewModel) {
         this.viewModel = viewModel;
         this.editText = editText;
@@ -21,6 +26,7 @@ public class TextWrapper {
         this.editText.addTextChangedListener(textWatcher);
     }
 
+    // TODO: rename to getTextWatcher.
     private TextWatcher createTextWatcher() {
         return new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -35,6 +41,11 @@ public class TextWrapper {
         return editText;
     }
 
+    /**
+     * TODO: rename to onTextChanged
+     * Called when text is changed in the text watcher.
+     * @param text The new text.
+     */
     public void handleText(String text) {
         if (text == null)
             text = "";

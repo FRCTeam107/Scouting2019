@@ -9,6 +9,11 @@ public class RadioWrapper {
     private ScoutViewModel viewModel;
     private int id;
 
+    /**
+     * Create a TextWrapper, used for handling text changes.
+     * @param radioGroup The RadioGroup to listen to.
+     * @param viewModel The ViewModel to set the answers in.
+     */
     public RadioWrapper(RadioGroup radioGroup, ScoutViewModel viewModel) {
         this.viewModel = viewModel;
         this.radioGroup = radioGroup;
@@ -16,6 +21,7 @@ public class RadioWrapper {
         this.radioGroup.setOnCheckedChangeListener(createChangeListener());
     }
 
+    // TODO: rename to getOnCheckedChangeListener.
     private RadioGroup.OnCheckedChangeListener createChangeListener() {
         return (group, checkedId) -> viewModel.setAnswer(id, checkedId);
     }

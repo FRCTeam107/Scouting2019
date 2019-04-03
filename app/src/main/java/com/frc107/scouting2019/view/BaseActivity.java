@@ -41,6 +41,10 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Send a file object over Bluetooth.
+     * @param file The file to send.
+     */
     public void sendFile(File file) {
         if (file == null) {
             Toast.makeText(this, "File does not exist.", Toast.LENGTH_SHORT).show();
