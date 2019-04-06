@@ -46,7 +46,7 @@ public class EndGameModel extends ScoutModel {
         String sandstormData = Scouting.getInstance().getSandstormData();
         ArrayList<String> cycles = Scouting.getInstance().getCycles();
         if (cycles.size() == 0) {
-            String cycle = "-1,-1,-1,-1,-1,-1";
+            String cycle = "-1,-1,-1,-1,-1";
             String maxCycles = cycles.size() + "";
             if (Scouting.SAVE_QUESTION_NAMES_AS_ANSWERS)
                 maxCycles = "maxCycles";
