@@ -27,7 +27,7 @@ public class Scouting {
         return uniqueId;
     }
 
-    private int teamNumber;
+    private int teamNumber = -1;
     public void setTeamNumber(int newTeamNumber) {
         teamNumber = newTeamNumber;
     }
@@ -35,7 +35,7 @@ public class Scouting {
         return teamNumber;
     }
 
-    private int matchNumber;
+    private int matchNumber = -1;
     public void setMatchNumber(int newMatchNumber) {
         matchNumber = newMatchNumber;
     }
