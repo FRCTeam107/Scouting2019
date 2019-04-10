@@ -158,7 +158,7 @@ public class PitActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK) {
-            if (!viewModel.compressPhoto())
+            if (!viewModel.rotateAndCompressPhoto())
                 Toast.makeText(this, "Failure while compressing photo.", Toast.LENGTH_SHORT);
         }
     }
