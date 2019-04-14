@@ -2,6 +2,7 @@ package com.frc107.scouting2019.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.os.Environment;
 import android.util.Log;
 
@@ -76,7 +77,7 @@ public class FileUtils {
         return getFile("ConcatenatedPit.csv");
     }
 
-    public boolean compressPhoto(String teamNumber) {
+    public boolean rotateAndCompressPhoto(String teamNumber) {
         try {
             File file = getPhoto(teamNumber);
             FileInputStream fileInputStream = new FileInputStream(file);
@@ -88,7 +89,11 @@ public class FileUtils {
             }
 
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 25, byteArrayOutputStream);
+
+            Matrix matrix = new Matrix();
+            matrix.postRotate(90);
+            Bitmap rotated = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+            rotated.compress(Bitmap.CompressFormat.JPEG, 25, byteArrayOutputStream);
 
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             fileOutputStream.write(byteArrayOutputStream.toByteArray());

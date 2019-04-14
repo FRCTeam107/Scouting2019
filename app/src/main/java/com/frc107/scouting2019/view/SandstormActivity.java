@@ -55,6 +55,14 @@ public class SandstormActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        int matchNum = Scouting.getInstance().getMatchNumber();
+        String matchNumToShow = matchNum == -1 ? "" : matchNum + "";
+        matchNumberEditText.setText(matchNumToShow);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
 
@@ -65,16 +73,6 @@ public class SandstormActivity extends BaseActivity {
         matchNumWrapper.cleanUp();
 
         viewModel = null;
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        String currentText = matchNumberEditText.getText().toString();
-        if (currentText.length() > 0) {
-            int newMatchNum = Scouting.getInstance().getMatchNumber() + 1;
-            matchNumberEditText.setText(String.valueOf(newMatchNum));
-        }
     }
 
     private void checkForPermissions() {
@@ -108,7 +106,6 @@ public class SandstormActivity extends BaseActivity {
 
     private void clearAnswers() {
         teamNumWrapper.clear();
-        matchNumWrapper.clear();
         startingPosWrapper.clear();
         startingPieceWrapper.clear();
         itemPlacedWrapper.clear();
