@@ -34,4 +34,12 @@ public class AdminViewModel {
     public File getPitFile(boolean concatenated) {
         return model.getPitFile(concatenated);
     }
+
+    public void toggleDuckButton() {
+        model.toggleDuckButton();
+    }
+
+    public boolean duckButtonIsPressed() {
+        return model.duckButtonIsPressed();
+    }
 }

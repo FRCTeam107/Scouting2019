@@ -20,6 +20,7 @@ import androidx.core.content.FileProvider;
 public class AdminModel {
     public static final int MATCH = 0;
     public static final int PIT = 1;
+    private boolean duckButtonIsPressed;
 
     public ArrayList<Uri> getPhotoUriList(Context context) {
         ArrayList<Uri> uriList = new ArrayList<Uri>();
@@ -89,5 +90,13 @@ public class AdminModel {
         } else {
             return Scouting.FILE_UTILS.getPitFile();
         }
+    }
+
+    public void toggleDuckButton() {
+        duckButtonIsPressed = !duckButtonIsPressed;
+    }
+
+    public boolean duckButtonIsPressed() {
+        return duckButtonIsPressed;
     }
 }
