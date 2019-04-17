@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.frc107.scouting2019">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icon"
@@ -16,12 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ScouterInitialsActivity"></activity>
-        <activity android:name=".view.SandstormActivity"></activity>
-        <activity android:name=".view.CycleActivity"></activity>
-        <activity android:name=".view.PitActivity"></activity>
-        <activity android:name=".view.EndGameActivity"></activity>
-        <activity android:name=".view.AdminActivity"></activity>
+        <activity android:name=".view.ScouterInitialsActivity" />
+        <activity android:name=".view.SandstormActivity" />
+        <activity android:name=".view.CycleActivity" />
+        <activity android:name=".view.PitActivity" />
+        <activity android:name=".view.EndGameActivity" />
+        <activity android:name=".view.AdminActivity" />
+        <activity android:name=".view.AnalysisActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -30,11 +35,8 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
     </application>
 
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>

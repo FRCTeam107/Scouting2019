@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/startingPositionHeading"
                     android:layout_marginTop="@dimen/top_margin"
-                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_marginBottom="@dimen/textview_spacer"
                     android:textSize="@dimen/label_text_size"/>
 
                 <RadioGroup
@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/sandstormStartingGamePiece"
                     android:layout_marginTop="@dimen/top_margin"
-                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_marginBottom="@dimen/textview_spacer"
                     android:textSize="@dimen/label_text_size"/>
 
                 <RadioGroup
@@ -120,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/sandstormItemPlacedHeading"
                     android:layout_marginTop="@dimen/top_margin"
-                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_marginBottom="@dimen/textview_spacer"
                     android:textSize="@dimen/label_text_size"/>
 
                 <RadioGroup
@@ -183,7 +183,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/question_height"
                     android:layout_marginTop="@dimen/top_margin"
-                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_marginBottom="@dimen/textview_spacer"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/sandstormBaseline_chkbxText"
                     style="@style/scoutingRadioButtonTheme" />

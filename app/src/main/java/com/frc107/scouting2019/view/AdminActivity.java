@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.frc107.scouting2019.BuildConfig;
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.ScoutingStrings;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.viewmodel.AdminViewModel;
 
@@ -76,5 +77,11 @@ public class AdminActivity extends BaseActivity {
 
     public void sendConcatPitData(View view) {
         sendFile(viewModel.getPitFile(true));
+    }
+
+    public void goToAnalysis(View view) {
+        Intent intent = new Intent(getApplicationContext(), AnalysisActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

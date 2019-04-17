@@ -16,15 +16,15 @@ public class EndGameModel extends ScoutModel {
         Question[] questions = {
 
                 new RadioQuestion("endgameHabitatLevel", R.id.endGameHabitatLevelRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.habOneEndGame_Radiobtn, 1),
-                        new RadioQuestion.Option(R.id.habTwoEndGame_Radiobtn, 2),
-                        new RadioQuestion.Option(R.id.habThreeEndGame_Radiobtn, 3),
-                        new RadioQuestion.Option(R.id.habNoneEndGame_Radiobtn, 0)),
+                        new RadioQuestion.Option(R.id.habOneEndGame_Radiobtn, Scouting.ENDGAME_HAB_ONE),
+                        new RadioQuestion.Option(R.id.habTwoEndGame_Radiobtn, Scouting.ENDGAME_HAB_TWO),
+                        new RadioQuestion.Option(R.id.habThreeEndGame_Radiobtn, Scouting.ENDGAME_HAB_THREE),
+                        new RadioQuestion.Option(R.id.habNoneEndGame_Radiobtn, Scouting.ENDGAME_HAB_NONE)),
                 new ToggleQuestion("endgameDefenseAllMatch", R.id.endGameDefenseAllMatch_chkbx),
                 new RadioQuestion("endgameDefense", R.id.endGameDefenseRadioQuestion, true,
-                        new RadioQuestion.Option(R.id.endGameDefenseEffective_Radiobtn, 1),
-                        new RadioQuestion.Option(R.id.endGameDefenseIneffective_Radiobtn, 2),
-                        new RadioQuestion.Option(R.id.endGameDefenseNone_Radiobtn, 0)),
+                        new RadioQuestion.Option(R.id.endGameDefenseEffective_Radiobtn, Scouting.ENDGAME_DEFENSE_EFFECTIVE),
+                        new RadioQuestion.Option(R.id.endGameDefenseIneffective_Radiobtn, Scouting.ENDGAME_DEFENSE_INEFFECTIVE),
+                        new RadioQuestion.Option(R.id.endGameDefenseNone_Radiobtn, Scouting.ENDGAME_DEFENSE_NONE)),
                 new ToggleQuestion("endgameFouls", R.id.endGameFouls_chkbx)
 
         };

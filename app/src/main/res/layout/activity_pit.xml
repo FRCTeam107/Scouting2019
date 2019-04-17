@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_marginTop="@dimen/top_margin"
-                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_marginBottom="@dimen/textview_spacer"
                     android:text="@string/pitSandstormOperation"
                     android:textSize="@dimen/label_text_size"/>
 
@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_marginTop="@dimen/top_margin"
-                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_marginBottom="@dimen/textview_spacer"
                     android:text="@string/pitSandstormPreference"
                     android:textSize="@dimen/label_text_size"/>
 
@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_marginTop="@dimen/top_margin"
-                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_marginBottom="@dimen/textview_spacer"
                     android:text="@string/pitRocketLevelSandstorm"
                     android:textSize="@dimen/label_text_size"/>
 
@@ -172,7 +172,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_marginTop="@dimen/top_margin"
-                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_marginBottom="@dimen/textview_spacer"
                     android:text="@string/pitHabitatLevel"
                     android:textSize="@dimen/label_text_size"/>
 
@@ -228,7 +228,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_marginTop="@dimen/top_margin"
-                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_marginBottom="@dimen/textview_spacer"
                     android:text="@string/pitprogrammingLanguage"
                     android:textSize="@dimen/label_text_size"/>
 

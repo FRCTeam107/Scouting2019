@@ -50,8 +50,6 @@ public class SandstormActivity extends BaseActivity {
 
         crossedBaselineCheckbox = findViewById(R.id.sandstormBaseline_chkbx);
         crossedBaselineCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setAnswer(R.id.sandstormBaseline_chkbx, isChecked));
-
-        checkForPermissions();
     }
 
     @Override
@@ -73,13 +71,6 @@ public class SandstormActivity extends BaseActivity {
         matchNumWrapper.cleanUp();
 
         viewModel = null;
-    }
-
-    private void checkForPermissions() {
-        int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (writePermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-        }
     }
 
     public void goToCycle(View view) {

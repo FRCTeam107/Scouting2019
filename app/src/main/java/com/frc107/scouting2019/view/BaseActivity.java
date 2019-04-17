@@ -3,6 +3,7 @@ package com.frc107.scouting2019.view;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -15,6 +16,8 @@ import com.frc107.scouting2019.utils.PermissionUtils;
 import java.io.File;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 public class BaseActivity extends AppCompatActivity {
@@ -36,8 +39,24 @@ public class BaseActivity extends AppCompatActivity {
             case R.id.send_data:
                 sendFile(Scouting.FILE_UTILS.getMatchFile());
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    protected void checkForPermissions() {
+        int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int readPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        int cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        if (writePermission != PackageManager.PERMISSION_GRANTED ||
+                cameraPermission != PackageManager.PERMISSION_GRANTED ||
+                readPermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] {
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.CAMERA
+            }, 1);
         }
     }
 
