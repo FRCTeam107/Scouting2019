@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/textview_spacer"
-        android:text="@string/teamNumberHeading"
+        android:text="@string/analysisChooseTeamNumber"
         android:enabled="false"
         android:onClick="teamNumberButtonPressed"/>
 
@@ -20,17 +20,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/textview_spacer"
+        android:layout_marginBottom="@dimen/textview_spacer"
         android:orientation="horizontal">
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="@string/analysisTeamNumber"
+            android:textStyle="bold"
             android:textSize="@dimen/label_text_size"/>
         <TextView
             android:id="@+id/analysisTeamNumberTextView"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:text="@string/analysisEmptyValue"
+            android:textStyle="bold"
             android:textSize="@dimen/label_text_size"
             android:gravity="end"
             android:layout_weight="1"/>

@@ -14,10 +14,11 @@ public class AnalysisModel implements IAnalysisListener {
     private boolean rocket1, rocket2, rocket3;
     private boolean hab1, hab2, hab3;
     private IUIAnalysisListener listener; // TODO: THIS SUCKS. FIX THIS. FIGURE OUT HOW TO DO PROPER MVVM.
+    private String[] teamNumbers;
 
     public AnalysisModel(IUIAnalysisListener listener) {
         this.listener = listener;
-        teamDetailsSparseArray = new SparseArray<TeamDetails>();
+        teamDetailsSparseArray = new SparseArray<>();
     }
 
     public void loadData() {
@@ -101,14 +102,18 @@ public class AnalysisModel implements IAnalysisListener {
     public void onDataLoaded(SparseArray<TeamDetails> map) {
         teamDetailsSparseArray = map;
         listener.onDataLoaded();
+        loadTeamNumbers();
     }
 
-    public String[] getTeamNumbers() {
-        String[] teamNumbers = new String[teamDetailsSparseArray.size()];
+    private void loadTeamNumbers() {
+        teamNumbers = new String[teamDetailsSparseArray.size()];
         for (int i = 0; i < teamDetailsSparseArray.size(); i++) {
             int key = teamDetailsSparseArray.keyAt(i);
             teamNumbers[i] = key + "";
         }
+    }
+
+    public String[] getTeamNumbers() {
         return teamNumbers;
     }
 }
