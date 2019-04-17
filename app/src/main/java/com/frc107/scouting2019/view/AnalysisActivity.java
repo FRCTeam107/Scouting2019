@@ -48,6 +48,12 @@ public class AnalysisActivity extends BaseActivity implements IUIAnalysisListene
         viewModel.loadData();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        viewModel = null;
+    }
+
     private void onTeamNumberChanged(String teamNumber) {
         if (teamNumber.length() == 0)
             teamNumber = "-1";
