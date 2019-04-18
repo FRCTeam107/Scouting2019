@@ -5,5 +5,5 @@ import android.util.SparseArray;
 import java.util.HashMap;
 
 public interface IAnalysisListener {
-    void onDataLoaded(SparseArray<TeamDetails> map);
+    void onDataLoaded(SparseArray<TeamDetails> detailsArray);
 }

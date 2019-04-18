@@ -7,16 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.frc107.scouting2019.BuildConfig;
 import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.ScoutingStrings;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.viewmodel.AdminViewModel;
 
-import java.io.File;
 import java.util.ArrayList;
-
-import androidx.core.content.FileProvider;
 
 /**
  * Created by Matt on 10/9/2017.
@@ -80,7 +75,7 @@ public class AdminActivity extends BaseActivity {
     }
 
     public void goToAnalysis(View view) {
-        Intent intent = new Intent(getApplicationContext(), AnalysisActivity.class);
+        Intent intent = new Intent(getApplicationContext(), TeamAnalysisActivity.class);
         startActivity(intent);
         finish();
     }

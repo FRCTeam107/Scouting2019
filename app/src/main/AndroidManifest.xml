@@ -26,7 +26,7 @@
         <activity android:name=".view.PitActivity" />
         <activity android:name=".view.EndGameActivity" />
         <activity android:name=".view.AdminActivity" />
-        <activity android:name=".view.AnalysisActivity" />
+        <activity android:name=".view.TeamAnalysisActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

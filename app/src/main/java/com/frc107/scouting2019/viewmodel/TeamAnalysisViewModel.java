@@ -1,13 +1,13 @@
 package com.frc107.scouting2019.viewmodel;
 
-import com.frc107.scouting2019.model.AnalysisModel;
+import com.frc107.scouting2019.model.TeamAnalysisModel;
 import com.frc107.scouting2019.view.IUIAnalysisListener;
 
-public class AnalysisViewModel {
-    private AnalysisModel model;
+public class TeamAnalysisViewModel {
+    private TeamAnalysisModel model;
 
-    public AnalysisViewModel(IUIAnalysisListener listener) {
-        model = new AnalysisModel(listener);
+    public TeamAnalysisViewModel(IUIAnalysisListener listener) {
+        model = new TeamAnalysisModel(listener);
     }
 
     public void loadData() {

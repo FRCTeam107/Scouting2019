@@ -4,7 +4,7 @@ import android.util.SparseArray;
 
 import com.frc107.scouting2019.view.IUIAnalysisListener;
 
-public class AnalysisModel implements IAnalysisListener {
+public class TeamAnalysisModel implements IAnalysisListener {
     private SparseArray<TeamDetails> teamDetailsSparseArray;
     private int teamNumber;
     private double averageCargo;
@@ -16,7 +16,7 @@ public class AnalysisModel implements IAnalysisListener {
     private IUIAnalysisListener listener; // TODO: THIS SUCKS. FIX THIS. FIGURE OUT HOW TO DO PROPER MVVM.
     private String[] teamNumbers;
 
-    public AnalysisModel(IUIAnalysisListener listener) {
+    public TeamAnalysisModel(IUIAnalysisListener listener) {
         this.listener = listener;
         teamDetailsSparseArray = new SparseArray<>();
     }
@@ -99,8 +99,8 @@ public class AnalysisModel implements IAnalysisListener {
     }
 
     @Override
-    public void onDataLoaded(SparseArray<TeamDetails> map) {
-        teamDetailsSparseArray = map;
+    public void onDataLoaded(SparseArray<TeamDetails> detailsArray) {
+        teamDetailsSparseArray = detailsArray;
         listener.onDataLoaded();
         loadTeamNumbers();
     }

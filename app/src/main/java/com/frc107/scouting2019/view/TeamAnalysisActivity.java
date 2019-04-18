@@ -5,17 +5,13 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.viewmodel.AnalysisViewModel;
+import com.frc107.scouting2019.viewmodel.TeamAnalysisViewModel;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-public class AnalysisActivity extends BaseActivity implements IUIAnalysisListener {
-    private AnalysisViewModel viewModel;
+public class TeamAnalysisActivity extends BaseActivity implements IUIAnalysisListener {
+    private TeamAnalysisViewModel viewModel;
     private TextView teamNumberTextView;
     private TextView averageCargoTextView;
     private TextView averageHatchTextView;
@@ -44,7 +40,7 @@ public class AnalysisActivity extends BaseActivity implements IUIAnalysisListene
         rocketTwoTextView = findViewById(R.id.rocketTwoTextView);
         rocketThreeTextView = findViewById(R.id.rockettThreeTextView);
 
-        viewModel = new AnalysisViewModel(this);
+        viewModel = new TeamAnalysisViewModel(this);
         viewModel.loadData();
     }
 
