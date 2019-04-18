@@ -22,10 +22,23 @@ public class AttributeAnalysisModel implements IAnalysisListener {
     public void onDataLoaded(SparseArray<TeamDetails> detailsArray) {
         this.detailsArray = detailsArray;
         listener.onDataLoaded();
-
+        loadAttributes();
     }
 
     private void loadAttributes() {
-        
+        teamNumbers = new String[detailsArray.size()];
+        attributes = new String[detailsArray.size()];
+        for (int i = 0; i < detailsArray.size(); i++) {
+            teamNumbers[i] = detailsArray.keyAt(i) + "";
+            attributes[i] = detailsArray.valueAt(i).getAverageCargo() + "";
+        }
+    }
+
+    public String[] getTeamNumbers() {
+        return teamNumbers;
+    }
+
+    public String[] getAttributes() {
+        return attributes;
     }
 }

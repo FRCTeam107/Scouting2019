@@ -166,5 +166,6 @@
     <string name="analysisEmptyValue">0</string>
     <string name="analysisTeamNumber">Team Number:</string>
     <string name="analysisChooseTeamNumber">Choose Team Number</string>
+    <string name="title_activity_attribute_analysis">AttributeAnalysisActivity</string>
 
 </resources>

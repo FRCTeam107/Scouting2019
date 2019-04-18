@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
+
+    <Button
+        android:id="@+id/analysisTeamNumberButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/textview_spacer"
+        android:text="@string/analysisChooseTeamNumber"
+        android:enabled="false"
+        android:onClick="teamNumberButtonPressed"/>
+
+    
+
+    <ProgressBar
+        android:id="@+id/analysisProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/top_margin" />
+
+</LinearLayout>

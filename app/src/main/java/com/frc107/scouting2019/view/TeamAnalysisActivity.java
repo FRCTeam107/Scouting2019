@@ -27,7 +27,7 @@ public class TeamAnalysisActivity extends BaseActivity implements IUIAnalysisLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_analysis);
+        setContentView(R.layout.activity_team_analysis);
         teamNumberTextView = findViewById(R.id.analysisTeamNumberTextView);
         averageCargoTextView = findViewById(R.id.averageCargoTextView);
         averageHatchTextView = findViewById(R.id.averageHatchPanelTextView);
