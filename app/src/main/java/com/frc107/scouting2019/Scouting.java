@@ -35,11 +35,6 @@ public class Scouting {
                             ENDGAME_DEFENSE_INEFFECTIVE = 2,
                             ENDGAME_DEFENSE_NONE = 0;
 
-    public static final String[] ATTRIBUTES = {
-            "Average Cargo",
-            "Average Hatch Panel"
-    };
-
     public static final FileUtils FILE_UTILS = new FileUtils();
     public static final boolean SAVE_QUESTION_NAMES_AS_ANSWERS = false;
 

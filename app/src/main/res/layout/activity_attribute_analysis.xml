@@ -16,24 +16,42 @@
         android:text="@string/analysisChooseAttribute" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/textview_spacer"
-        android:layout_marginBottom="@dimen/textview_spacer">
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
 
-        <ListView
-            android:id="@+id/elementListView"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="false">
-        </ListView>
+            android:text="@string/teamNumberHeading"
+            android:textStyle="bold"
+            android:autoSizeMinTextSize="@dimen/min_text_size"
+            android:autoSizeMaxTextSize="@dimen/max_text_size"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/attributeTypeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:autoSizeMinTextSize="@dimen/min_text_size"
+            android:autoSizeMaxTextSize="@dimen/max_text_size"
+            android:layout_weight="1"/>
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/elementListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:clickable="false" />
 
     <ProgressBar
         android:id="@+id/analysisProgressBar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/question_height"
         android:layout_marginTop="@dimen/top_margin" />
 
 </LinearLayout>

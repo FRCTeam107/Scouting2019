@@ -1,4 +1,4 @@
-package com.frc107.scouting2019.view;
+package com.frc107.scouting2019.analysis.attribute;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.model.AnalysisElement;
+import com.frc107.scouting2019.analysis.attribute.AnalysisElement;
 
 import java.util.ArrayList;
 
@@ -46,7 +46,7 @@ public class AnalysisAdapter extends ArrayAdapter<AnalysisElement> {
         TextView elementTextView = convertView.findViewById(R.id.elementAttributeTextView);
 
         teamNumTextView.setText(element.getTeamNumber());
-        elementTextView.setText(element.getAttribute());
+        elementTextView.setText(element.getAttribute() + "");
 
         return convertView;
     }

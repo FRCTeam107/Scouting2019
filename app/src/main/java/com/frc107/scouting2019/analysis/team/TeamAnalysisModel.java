@@ -1,8 +1,11 @@
-package com.frc107.scouting2019.model;
+package com.frc107.scouting2019.analysis.team;
 
 import android.util.SparseArray;
 
-import com.frc107.scouting2019.view.IUIAnalysisListener;
+import com.frc107.scouting2019.analysis.IAnalysisListener;
+import com.frc107.scouting2019.analysis.IUIAnalysisListener;
+import com.frc107.scouting2019.analysis.LoadDataTask;
+import com.frc107.scouting2019.analysis.TeamDetails;
 
 public class TeamAnalysisModel implements IAnalysisListener {
     private SparseArray<TeamDetails> teamDetailsSparseArray;
@@ -99,9 +102,9 @@ public class TeamAnalysisModel implements IAnalysisListener {
     }
 
     @Override
-    public void onDataLoaded(SparseArray<TeamDetails> detailsArray) {
+    public void onDataLoaded(SparseArray<TeamDetails> detailsArray, boolean error) {
         teamDetailsSparseArray = detailsArray;
-        listener.onDataLoaded();
+        listener.onDataLoaded(error);
         loadTeamNumbers();
     }
 

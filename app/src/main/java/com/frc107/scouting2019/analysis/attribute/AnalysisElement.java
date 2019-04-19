@@ -1,10 +1,10 @@
-package com.frc107.scouting2019.model;
+package com.frc107.scouting2019.analysis.attribute;
 
 public class AnalysisElement {
     private String teamNumber;
-    private String attribute;
+    private double attribute;
 
-    public AnalysisElement(String teamNumber, String attribute) {
+    public AnalysisElement(String teamNumber, double attribute) {
         this.teamNumber = teamNumber;
         this.attribute = attribute;
     }
@@ -13,7 +13,7 @@ public class AnalysisElement {
         return teamNumber;
     }
 
-    public String getAttribute() {
+    public double getAttribute() {
         return attribute;
     }
 }

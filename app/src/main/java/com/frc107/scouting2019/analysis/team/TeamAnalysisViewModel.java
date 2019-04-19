@@ -1,7 +1,6 @@
-package com.frc107.scouting2019.viewmodel;
+package com.frc107.scouting2019.analysis.team;
 
-import com.frc107.scouting2019.model.TeamAnalysisModel;
-import com.frc107.scouting2019.view.IUIAnalysisListener;
+import com.frc107.scouting2019.analysis.IUIAnalysisListener;
 
 public class TeamAnalysisViewModel {
     private TeamAnalysisModel model;

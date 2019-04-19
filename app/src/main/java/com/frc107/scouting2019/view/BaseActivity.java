@@ -32,12 +32,15 @@ public class BaseActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.main_activity:
                 startActivity(new Intent(this, MainActivity.class));
+                finish();
                 return true;
             case R.id.admin_activity:
                 startActivity(new Intent(this, AdminActivity.class));
+                finish();
                 return true;
             case R.id.send_data:
                 sendFile(Scouting.FILE_UTILS.getMatchFile());
+                finish();
                 return true;
 
             default:

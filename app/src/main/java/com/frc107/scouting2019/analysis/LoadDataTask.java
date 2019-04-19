@@ -1,9 +1,11 @@
-package com.frc107.scouting2019.model;
+package com.frc107.scouting2019.analysis;
 
 import android.os.AsyncTask;
 import android.util.SparseArray;
 
 import com.frc107.scouting2019.Scouting;
+import com.frc107.scouting2019.analysis.IAnalysisListener;
+import com.frc107.scouting2019.analysis.TeamDetails;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -38,10 +40,10 @@ public class LoadDataTask extends AsyncTask<Void, Void, SparseArray<TeamDetails>
     @Override
     protected void onPostExecute(SparseArray<TeamDetails> map) {
         super.onPostExecute(map);
-        listener.onDataLoaded(map);
+        listener.onDataLoaded(map, map == null);
     }
 
-    public boolean loadData() {
+    public void loadData() {
         File file = Scouting.FILE_UTILS.getConcatMatchFile();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file.getPath()))) {
             String line = bufferedReader.readLine();
@@ -54,18 +56,16 @@ public class LoadDataTask extends AsyncTask<Void, Void, SparseArray<TeamDetails>
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            return false;
+            teamDetailsSparseArray = null;
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            teamDetailsSparseArray = null;
         }
 
         for(int i = 0; i < teamDetailsSparseArray.size(); i ++) {
             TeamDetails details = teamDetailsSparseArray.valueAt(i);
             details.calculateAverages();
         }
-
-        return true;
     }
 
     private void handleColumns(String[] columns) {
@@ -127,37 +127,43 @@ public class LoadDataTask extends AsyncTask<Void, Void, SparseArray<TeamDetails>
         // Habitat levels
         switch (habLevel) {
             case Scouting.ENDGAME_HAB_ONE:
-                teamDetails.setCanClimbHabOne(true);
+                teamDetails.incrementHabOneAmount();
                 break;
             case Scouting.ENDGAME_HAB_TWO:
-                teamDetails.setCanClimbHabTwo(true);
+                teamDetails.incrementHabTwoAmount();
                 break;
             case Scouting.ENDGAME_HAB_THREE:
-                teamDetails.setCanClimbHabThree(true);
+                teamDetails.incrementHabThreeAmount();
                 break;
         }
 
         // Rocket levels
         switch (startingPlacedLocation) {
             case Scouting.SANDSTORM_BOTTOM_ROCKET:
-                teamDetails.setCanAccessRocketOne(true);
+                teamDetails.incrementRocketOneAmount();
                 break;
             case Scouting.SANDSTORM_MIDDLE_ROCKET:
-                teamDetails.setCanAccessRocketTwo(true);
+                teamDetails.incrementRocketTwoAmount();
                 break;
             case Scouting.SANDSTORM_TOP_ROCKET:
-                teamDetails.setCanAccessRocketThree(true);
+                teamDetails.incrementRocketThreeAmount();
+                break;
+            case Scouting.SANDSTORM_CARGO_SHIP:
+                teamDetails.incrementCargoShipAmount();
                 break;
         }
         switch (cyclePlacedLocation) {
             case Scouting.CYCLE_BOTTOM_ROCKET:
-                teamDetails.setCanAccessRocketOne(true);
+                teamDetails.incrementRocketOneAmount();
                 break;
             case Scouting.CYCLE_MIDDLE_ROCKET:
-                teamDetails.setCanAccessRocketTwo(true);
+                teamDetails.incrementRocketTwoAmount();
                 break;
             case Scouting.CYCLE_TOP_ROCKET:
-                teamDetails.setCanAccessRocketThree(true);
+                teamDetails.incrementRocketThreeAmount();
+                break;
+            case Scouting.CYCLE_CARGO_SHIP:
+                teamDetails.incrementCargoShipAmount();
                 break;
         }
     }

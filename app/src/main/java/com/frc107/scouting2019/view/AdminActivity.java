@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.analysis.attribute.AttributeAnalysisActivity;
+import com.frc107.scouting2019.analysis.team.TeamAnalysisActivity;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.viewmodel.AdminViewModel;
 

@@ -1,14 +1,15 @@
-package com.frc107.scouting2019.view;
+package com.frc107.scouting2019.analysis.team;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.viewmodel.TeamAnalysisViewModel;
+import com.frc107.scouting2019.analysis.IUIAnalysisListener;
+import com.frc107.scouting2019.view.BaseActivity;
 
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TeamAnalysisActivity extends BaseActivity implements IUIAnalysisListener {
     private TeamAnalysisViewModel viewModel;
@@ -74,7 +75,12 @@ public class TeamAnalysisActivity extends BaseActivity implements IUIAnalysisLis
     }
 
     @Override
-    public void onDataLoaded() {
+    public void onDataLoaded(boolean error) {
+        if (error) {
+            Toast.makeText(getApplicationContext(), "Error while loading data.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         findViewById(R.id.analysisProgressBar).setVisibility(View.GONE);
         findViewById(R.id.analysisTeamNumberButton).setEnabled(true);
     }
@@ -83,12 +89,7 @@ public class TeamAnalysisActivity extends BaseActivity implements IUIAnalysisLis
         String[] teamNumbers = viewModel.getTeamNumbers();
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         dialogBuilder.setTitle("Pick a team number");
-        dialogBuilder.setItems(teamNumbers, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                onTeamNumberChanged(teamNumbers[which]);
-            }
-        });
+        dialogBuilder.setItems(teamNumbers, (dialog, which) -> onTeamNumberChanged(teamNumbers[which]));
         dialogBuilder.show();
     }
 }
