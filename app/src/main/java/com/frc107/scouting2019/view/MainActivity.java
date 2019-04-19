@@ -16,6 +16,8 @@ import android.widget.TextView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.util.Locale;
+
 public class MainActivity extends BaseActivity {
 
     @Override
@@ -25,11 +27,8 @@ public class MainActivity extends BaseActivity {
 
         checkForPermissions();
 
-        int versionCode = BuildConfig.VERSION_CODE;
-        String versionName = BuildConfig.VERSION_NAME;
-
         TextView versionTextView = findViewById(R.id.versionNum_textView);
-        versionTextView.setText(String.format("v%s - %d", versionName, versionCode));
+        versionTextView.setText(Scouting.VERSION_DATE);
 
         String uniqueId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         Scouting.getInstance().setUniqueId(uniqueId);

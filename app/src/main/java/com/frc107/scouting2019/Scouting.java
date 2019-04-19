@@ -5,6 +5,8 @@ import com.frc107.scouting2019.utils.FileUtils;
 import java.util.ArrayList;
 
 public class Scouting {
+    public static final String VERSION_DATE = "4/19/2019 - 7:54";
+
     public static final int SANDSTORM_HAB_ONE = 0,
                             SANDSTORM_HAB_TWO = 1,
                             SANDSTORM_CARGO = 1,
