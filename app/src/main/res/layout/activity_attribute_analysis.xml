@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp">
+    android:layout_marginRight="10dp"
+    android:orientation="vertical">
 
     <Button
-        android:id="@+id/analysisTeamNumberButton"
+        android:id="@+id/analysisChooseAttributeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/textview_spacer"
-        android:text="@string/analysisChooseTeamNumber"
-        android:enabled="false"
-        android:onClick="teamNumberButtonPressed"/>
+        android:onClick="attributeButtonPressed"
+        android:text="@string/analysisChooseAttribute" />
 
-    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/textview_spacer"
+        android:layout_marginBottom="@dimen/textview_spacer">
+
+        <ListView
+            android:id="@+id/elementListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="false">
+        </ListView>
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/analysisProgressBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/top_margin" />
 
 </LinearLayout>

@@ -152,7 +152,8 @@
 
     <!--Analysis Strings-->
     <string name="title_activity_analysis">AnalysisActivity</string>
-    <string name="analysisButton">Analysis</string>
+    <string name="teamAnalysisButton">Team Analysis</string>
+    <string name="attributeAnalysisButton">Attribute Analysis</string>
     <string name="analysisAverageCargo">Average Cargo:</string>
     <string name="analysisAverageHatchPanel">Average Hatch Panel:</string>
     <string name="analysisDefenseCount">Defense Count:</string>
@@ -167,5 +168,6 @@
     <string name="analysisTeamNumber">Team Number:</string>
     <string name="analysisChooseTeamNumber">Choose Team Number</string>
     <string name="title_activity_attribute_analysis">AttributeAnalysisActivity</string>
+    <string name="analysisChooseAttribute">Choose Attribute</string>
 
 </resources>

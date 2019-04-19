@@ -74,8 +74,14 @@ public class AdminActivity extends BaseActivity {
         sendFile(viewModel.getPitFile(true));
     }
 
-    public void goToAnalysis(View view) {
+    public void goToTeamAnalysis(View view) {
         Intent intent = new Intent(getApplicationContext(), TeamAnalysisActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void goToAttributeAnalysis(View view) {
+        Intent intent = new Intent(getApplicationContext(), AttributeAnalysisActivity.class);
         startActivity(intent);
         finish();
     }

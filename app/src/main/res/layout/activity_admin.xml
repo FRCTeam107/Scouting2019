@@ -44,7 +44,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="@string/analysisButton"
-        android:onClick="goToAnalysis"/>
+        android:text="@string/teamAnalysisButton"
+        android:onClick="goToTeamAnalysis"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/attributeAnalysisButton"
+        android:onClick="goToAttributeAnalysis"/>
 
 </LinearLayout>
