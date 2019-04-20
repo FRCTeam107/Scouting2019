@@ -27,6 +27,7 @@ import androidx.core.content.FileProvider;
 public class AdminModel implements IOPRListener {
     public static final int MATCH = 0;
     public static final int PIT = 1;
+    private boolean duckButtonIsPressed;
 
     private IUIListener listener;
     private OPR opr;
@@ -142,5 +143,13 @@ public class AdminModel implements IOPRListener {
     public void onOPRLoaded(OPR opr) {
         this.opr = opr;
         listener.callback(opr == null);
+    }
+
+    public void toggleDuckButton() {
+        duckButtonIsPressed = !duckButtonIsPressed;
+    }
+
+    public boolean duckButtonIsPressed() {
+        return duckButtonIsPressed;
     }
 }

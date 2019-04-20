@@ -12,6 +12,7 @@ import com.frc107.scouting2019.Scouting;
 
 import android.provider.Settings;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.core.app.ActivityCompat;
@@ -32,6 +33,7 @@ public class MainActivity extends BaseActivity {
         versionTextView.setText(Scouting.VERSION_DATE);
 
         String uniqueId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+
         Scouting.getInstance().setUniqueId(uniqueId);
 
         SharedPreferences pref = getSharedPreferences(Scouting.PREFERENCES_NAME, MODE_PRIVATE);

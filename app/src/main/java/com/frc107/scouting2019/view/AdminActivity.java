@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -52,6 +53,23 @@ public class AdminActivity extends BaseActivity implements IUIListener {
                 prefEditor.apply();
             }
             public void afterTextChanged(Editable s) { }
+        });
+
+        Button sendPitData = findViewById(R.id.send_pit_data);
+        sendPitData.setOnLongClickListener(v -> {
+            viewModel.toggleDuckButton();
+            return true;
+        });
+
+        Button sendConcatPitData = findViewById(R.id.send_concat_pit_data);
+        sendConcatPitData.setOnLongClickListener(v -> {
+            if (viewModel.duckButtonIsPressed()) {
+                Intent duckIntent = new Intent(this, DuckActivity.class);
+                startActivity(duckIntent);
+                viewModel.toggleDuckButton();
+                return true;
+            }
+            return false;
         });
     }
 

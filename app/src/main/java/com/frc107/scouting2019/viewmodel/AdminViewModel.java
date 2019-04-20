@@ -47,4 +47,12 @@ public class AdminViewModel {
     public void downloadOPRs() {
         model.downloadOPRs();
     }
+
+    public void toggleDuckButton() {
+        model.toggleDuckButton();
+    }
+
+    public boolean duckButtonIsPressed() {
+        return model.duckButtonIsPressed();
+    }
 }
