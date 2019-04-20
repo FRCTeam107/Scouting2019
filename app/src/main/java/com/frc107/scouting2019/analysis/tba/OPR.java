@@ -3,13 +3,9 @@ package com.frc107.scouting2019.analysis.tba;
 import java.util.HashMap;
 
 public class OPR {
-    private HashMap<Integer, String> ccwmMap;
-    private HashMap<Integer, String> dprMap;
     private HashMap<Integer, String> oprMap;
 
     public OPR() {
-        ccwmMap = new HashMap<>();
-        dprMap = new HashMap<>();
         oprMap = new HashMap<>();
     }
 
