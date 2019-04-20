@@ -2,16 +2,14 @@ package com.frc107.scouting2019.analysis.attribute;
 
 import androidx.lifecycle.ViewModel;
 
-import com.frc107.scouting2019.analysis.IUIAnalysisListener;
-import com.frc107.scouting2019.analysis.attribute.AnalysisElement;
-import com.frc107.scouting2019.analysis.attribute.AttributeAnalysisModel;
+import com.frc107.scouting2019.IUIListener;
 
 import java.util.ArrayList;
 
 public class AttributeAnalysisViewModel extends ViewModel {
     private AttributeAnalysisModel model;
 
-    public AttributeAnalysisViewModel(IUIAnalysisListener listener) {
+    public AttributeAnalysisViewModel(IUIListener listener) {
         model = new AttributeAnalysisModel(listener);
     }
 

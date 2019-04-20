@@ -4,8 +4,6 @@ import android.os.AsyncTask;
 import android.util.SparseArray;
 
 import com.frc107.scouting2019.Scouting;
-import com.frc107.scouting2019.analysis.IAnalysisListener;
-import com.frc107.scouting2019.analysis.TeamDetails;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -21,7 +19,8 @@ public class LoadDataTask extends AsyncTask<Void, Void, SparseArray<TeamDetails>
                              COL_ITEM_PICKED_UP = 8,
                              COL_ITEM_PLACED_LOCATION = 9,
                              COL_DEFENSE = 13,
-                             COL_HAB = 11;
+                             COL_HAB = 11,
+                             COL_OPR = 17;
 
     private IAnalysisListener listener;
     private SparseArray<TeamDetails> teamDetailsSparseArray;
@@ -77,6 +76,7 @@ public class LoadDataTask extends AsyncTask<Void, Void, SparseArray<TeamDetails>
         int cyclePlacedLocation = Integer.parseInt(columns[COL_ITEM_PLACED_LOCATION]);
         int defense = Integer.parseInt(columns[COL_DEFENSE]);
         int habLevel = Integer.parseInt(columns[COL_HAB]);
+        double opr = Double.parseDouble(columns[COL_OPR]);
 
         TeamDetails teamDetails = teamDetailsSparseArray.get(teamNum);
         if (teamDetails == null) {
@@ -84,6 +84,7 @@ public class LoadDataTask extends AsyncTask<Void, Void, SparseArray<TeamDetails>
             teamDetails = teamDetailsSparseArray.get(teamNum);
         }
 
+        teamDetails.setOPR(opr);
         teamDetails.incrementCycleNum();
 
         if (!teamDetails.hasMatch(matchNum)) {

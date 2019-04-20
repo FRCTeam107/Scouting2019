@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Scouting {
     public static final String VERSION_DATE = "4/19/2019 - 7:54";
+    public static final String PREFERENCES_NAME = "ScoutingPreferences";
+    public static final String EVENT_KEY_PREFERENCE = "eventKey";
 
     public static final int SANDSTORM_HAB_ONE = 0,
                             SANDSTORM_HAB_TWO = 1,
@@ -99,6 +101,14 @@ public class Scouting {
         this.initials = initials;
     }
     public String getInitials() { return initials; }
+
+    private String eventKey;
+    public void setEventKey(String eventKey) {
+        this.eventKey = eventKey;
+    }
+    public String getEventKey() {
+        return eventKey;
+    }
 
     // TODO: Go through radiogroups and fix formatting
     // TODO: naming conventions

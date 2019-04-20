@@ -135,22 +135,4 @@ public class FileUtils {
         }
         return "SD card not found.";
     }
-
-    public String getContentFromFile(File file) {
-        StringBuilder builder = new StringBuilder();
-        try (FileReader fileReader = new FileReader(file);
-             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                builder.append(line).append('\n');
-            }
-
-            return builder.toString();
-        } catch (IOException e) {
-            Log.d("Scouting", e.getMessage());
-        }
-
-        return "";
-    }
 }

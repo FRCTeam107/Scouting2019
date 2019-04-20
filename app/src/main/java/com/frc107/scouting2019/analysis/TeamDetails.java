@@ -18,6 +18,7 @@ public class TeamDetails {
     private int rocket1Num, rocket2Num, rocket3Num;
     private int hab1Num, hab2Num, hab3Num;
     private int cycleNum;
+    private double opr;
     private ArrayList<Integer> matches;
 
     public TeamDetails() {
@@ -164,5 +165,13 @@ public class TeamDetails {
     }
     public boolean hasMatch(int matchNum) {
         return matches.contains(matchNum);
+    }
+
+    public void setOPR(double opr) {
+        this.opr = opr;
+    }
+
+    public double getOPR() {
+        return opr;
     }
 }

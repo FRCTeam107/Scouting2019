@@ -3,7 +3,7 @@ package com.frc107.scouting2019.analysis.team;
 import android.util.SparseArray;
 
 import com.frc107.scouting2019.analysis.IAnalysisListener;
-import com.frc107.scouting2019.analysis.IUIAnalysisListener;
+import com.frc107.scouting2019.IUIListener;
 import com.frc107.scouting2019.analysis.LoadDataTask;
 import com.frc107.scouting2019.analysis.TeamDetails;
 
@@ -16,10 +16,11 @@ public class TeamAnalysisModel implements IAnalysisListener {
     private int effectiveDefenseAmount;
     private boolean rocket1, rocket2, rocket3;
     private boolean hab1, hab2, hab3;
-    private IUIAnalysisListener listener; // TODO: THIS SUCKS. FIX THIS. FIGURE OUT HOW TO DO PROPER MVVM.
+    private double opr;
+    private IUIListener listener; // TODO: THIS SUCKS. FIX THIS. FIGURE OUT HOW TO DO PROPER MVVM.
     private String[] teamNumbers;
 
-    public TeamAnalysisModel(IUIAnalysisListener listener) {
+    public TeamAnalysisModel(IUIListener listener) {
         this.listener = listener;
         teamDetailsSparseArray = new SparseArray<>();
     }
@@ -42,6 +43,7 @@ public class TeamAnalysisModel implements IAnalysisListener {
             rocket1 = false;
             rocket2 = false;
             rocket3 = false;
+            opr = 0;
             return;
         }
 
@@ -55,6 +57,7 @@ public class TeamAnalysisModel implements IAnalysisListener {
         rocket1 = teamDetails.canAccessRocketOne();
         rocket2 = teamDetails.canAccessRocketTwo();
         rocket3 = teamDetails.canAccessRocketThree();
+        opr = teamDetails.getOPR();
     }
 
     public int getTeamNumber() {
@@ -101,10 +104,14 @@ public class TeamAnalysisModel implements IAnalysisListener {
         return hab3;
     }
 
+    public double getOPR() {
+        return opr;
+    }
+
     @Override
     public void onDataLoaded(SparseArray<TeamDetails> detailsArray, boolean error) {
         teamDetailsSparseArray = detailsArray;
-        listener.onDataLoaded(error);
+        listener.callback(error);
         loadTeamNumbers();
     }
 

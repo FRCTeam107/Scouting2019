@@ -4,14 +4,14 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 
 import com.frc107.scouting2019.R;
-import com.frc107.scouting2019.analysis.IUIAnalysisListener;
+import com.frc107.scouting2019.IUIListener;
 import com.frc107.scouting2019.view.BaseActivity;
 
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TeamAnalysisActivity extends BaseActivity implements IUIAnalysisListener {
+public class TeamAnalysisActivity extends BaseActivity implements IUIListener {
     private TeamAnalysisViewModel viewModel;
     private TextView teamNumberTextView;
     private TextView averageCargoTextView;
@@ -24,6 +24,7 @@ public class TeamAnalysisActivity extends BaseActivity implements IUIAnalysisLis
     private TextView rocketOneTextView;
     private TextView rocketTwoTextView;
     private TextView rocketThreeTextView;
+    private TextView oprTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,8 @@ public class TeamAnalysisActivity extends BaseActivity implements IUIAnalysisLis
         habThreeTextView = findViewById(R.id.habThreeTextView);
         rocketOneTextView = findViewById(R.id.rocketOneTextView);
         rocketTwoTextView = findViewById(R.id.rocketTwoTextView);
-        rocketThreeTextView = findViewById(R.id.rockettThreeTextView);
+        rocketThreeTextView = findViewById(R.id.rocketThreeTextView);
+        oprTextView = findViewById(R.id.oprTextView);
 
         viewModel = new TeamAnalysisViewModel(this);
         viewModel.loadData();
@@ -72,10 +74,12 @@ public class TeamAnalysisActivity extends BaseActivity implements IUIAnalysisLis
         rocketOneTextView.setText(viewModel.canAccessRocketOne() + "");
         rocketTwoTextView.setText(viewModel.canAccessRocketTwo() + "");
         rocketThreeTextView.setText(viewModel.canAccessRocketThree() + "");
+
+        oprTextView.setText(viewModel.getOPR() + "");
     }
 
     @Override
-    public void onDataLoaded(boolean error) {
+    public void callback(boolean error) {
         if (error) {
             Toast.makeText(getApplicationContext(), "Error while loading data.", Toast.LENGTH_LONG).show();
             return;

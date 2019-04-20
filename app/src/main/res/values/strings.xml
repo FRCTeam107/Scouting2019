@@ -169,5 +169,8 @@
     <string name="analysisChooseTeamNumber">Choose Team Number</string>
     <string name="title_activity_attribute_analysis">AttributeAnalysisActivity</string>
     <string name="analysisChooseAttribute">Choose Attribute</string>
+    <string name="eventKeyHint">Event Key</string>
+    <string name="downloadOPRs">Download OPRs</string>
+    <string name="analysisOpr">OPR:</string>
 
 </resources>

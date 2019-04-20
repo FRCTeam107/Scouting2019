@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-import com.frc107.scouting2019.analysis.IUIAnalysisListener;
+import com.frc107.scouting2019.IUIListener;
 import com.frc107.scouting2019.view.BaseActivity;
 
 import android.view.View;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.frc107.scouting2019.R;
 
-public class AttributeAnalysisActivity extends BaseActivity implements IUIAnalysisListener {
+public class AttributeAnalysisActivity extends BaseActivity implements IUIListener {
     private AnalysisAdapter adapter;
     private ListView elementListView;
     private TextView attributeTypeTextView;
@@ -52,7 +52,7 @@ public class AttributeAnalysisActivity extends BaseActivity implements IUIAnalys
     }
 
     @Override
-    public void onDataLoaded(boolean error) {
+    public void callback(boolean error) {
         if (error) {
             Toast.makeText(getApplicationContext(), "Error while loading data.", Toast.LENGTH_LONG).show();
             return;

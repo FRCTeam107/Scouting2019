@@ -4,14 +4,14 @@ import android.os.Build;
 import android.util.SparseArray;
 
 import com.frc107.scouting2019.analysis.IAnalysisListener;
-import com.frc107.scouting2019.analysis.IUIAnalysisListener;
+import com.frc107.scouting2019.IUIListener;
 import com.frc107.scouting2019.analysis.LoadDataTask;
 import com.frc107.scouting2019.analysis.TeamDetails;
 
 import java.util.ArrayList;
 
 public class AttributeAnalysisModel implements IAnalysisListener {
-    private IUIAnalysisListener listener;
+    private IUIListener listener;
     private ArrayList<AnalysisElement> elements;
     private SparseArray<TeamDetails> detailsArray;
 
@@ -24,7 +24,8 @@ public class AttributeAnalysisModel implements IAnalysisListener {
             "Average Rocket Level 3",
             "Hab 2 Climb Amount",
             "Hab 3 Climb Amount",
-            "Successful Defense Amount"
+            "Successful Defense Amount",
+            "OPR"
     };
 
     private static final int AVG_CARGO = 0,
@@ -35,11 +36,12 @@ public class AttributeAnalysisModel implements IAnalysisListener {
                              AVG_ROCKET_3 = 5,
                              HAB_2_AMOUNT = 6,
                              HAB_3_AMOUNT = 7,
-                             SUCCESSFUL_DEFENSE_AMOUNT = 8;
+                             SUCCESSFUL_DEFENSE_AMOUNT = 8,
+                             OPR = 9;
 
     private int currentAttributeType;
 
-    public AttributeAnalysisModel(IUIAnalysisListener listener) {
+    public AttributeAnalysisModel(IUIListener listener) {
         this.listener = listener;
         elements = new ArrayList<>();
     }
@@ -54,7 +56,7 @@ public class AttributeAnalysisModel implements IAnalysisListener {
         if (!error)
             loadTeamNumsAndAttributes();
 
-        listener.onDataLoaded(error);
+        listener.callback(error);
     }
 
     private void loadTeamNumsAndAttributes() {
@@ -70,7 +72,8 @@ public class AttributeAnalysisModel implements IAnalysisListener {
         elements.clear();
         for (int i = 0; i < detailsArray.size(); i++) {
             String teamNumber = detailsArray.keyAt(i) + "";
-            double attribute;
+            double attribute = 0.0;
+
             TeamDetails teamDetails = detailsArray.valueAt(i);
             switch (attributeNum) {
                 case AVG_CARGO:
@@ -100,8 +103,8 @@ public class AttributeAnalysisModel implements IAnalysisListener {
                 case SUCCESSFUL_DEFENSE_AMOUNT:
                     attribute = teamDetails.getEffectiveDefenseNum();
                     break;
-                default:
-                    attribute = 0.0;
+                case OPR:
+                    attribute = teamDetails.getOPR();
                     break;
             }
 

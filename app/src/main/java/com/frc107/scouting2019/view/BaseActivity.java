@@ -52,13 +52,16 @@ public class BaseActivity extends AppCompatActivity {
         int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int readPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
         int cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        int internetPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
         if (writePermission != PackageManager.PERMISSION_GRANTED ||
                 cameraPermission != PackageManager.PERMISSION_GRANTED ||
-                readPermission != PackageManager.PERMISSION_GRANTED) {
+                readPermission != PackageManager.PERMISSION_GRANTED ||
+                internetPermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[] {
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.CAMERA
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.INTERNET
             }, 1);
         }
     }

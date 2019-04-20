@@ -3,6 +3,7 @@ package com.frc107.scouting2019.viewmodel;
 import android.content.Context;
 import android.net.Uri;
 
+import com.frc107.scouting2019.IUIListener;
 import com.frc107.scouting2019.model.AdminModel;
 
 import java.io.File;
@@ -11,8 +12,8 @@ import java.util.ArrayList;
 public class AdminViewModel {
     private AdminModel model;
 
-    public AdminViewModel() {
-        model = new AdminModel();
+    public AdminViewModel(IUIListener listener) {
+        model = new AdminModel(listener);
     }
 
     public boolean concatenateMatchData() {
@@ -33,5 +34,17 @@ public class AdminViewModel {
 
     public File getPitFile(boolean concatenated) {
         return model.getPitFile(concatenated);
+    }
+
+    public void setEventKey(String eventKey) {
+        model.setEventKey(eventKey);
+    }
+
+    public String getEventKey() {
+        return model.getEventKey();
+    }
+
+    public void downloadOPRs() {
+        model.downloadOPRs();
     }
 }

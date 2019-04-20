@@ -1,11 +1,11 @@
 package com.frc107.scouting2019.analysis.team;
 
-import com.frc107.scouting2019.analysis.IUIAnalysisListener;
+import com.frc107.scouting2019.IUIListener;
 
 public class TeamAnalysisViewModel {
     private TeamAnalysisModel model;
 
-    public TeamAnalysisViewModel(IUIAnalysisListener listener) {
+    public TeamAnalysisViewModel(IUIListener listener) {
         model = new TeamAnalysisModel(listener);
     }
 
@@ -59,5 +59,9 @@ public class TeamAnalysisViewModel {
 
     public String[] getTeamNumbers() {
         return model.getTeamNumbers();
+    }
+
+    public double getOPR() {
+        return model.getOPR();
     }
 }
