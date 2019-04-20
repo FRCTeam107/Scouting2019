@@ -9,6 +9,7 @@ import com.frc107.scouting2019.Scouting;
 
 import android.provider.Settings;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends BaseActivity {
@@ -25,6 +26,7 @@ public class MainActivity extends BaseActivity {
         versionTextView.setText(String.format("v%s - %d", versionName, versionCode));
 
         String uniqueId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+
         Scouting.getInstance().setUniqueId(uniqueId);
     }
 

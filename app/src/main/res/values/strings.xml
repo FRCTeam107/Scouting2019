@@ -140,6 +140,8 @@
 
     <string name="takePhotoButton">Take Photo</string>
 
+    <string name="title_activity_duck">DuckActivity</string>
+
     <!--Pit Error Strings-->
 
 

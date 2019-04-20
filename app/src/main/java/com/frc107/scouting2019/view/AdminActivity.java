@@ -5,17 +5,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.frc107.scouting2019.BuildConfig;
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.viewmodel.AdminViewModel;
 
-import java.io.File;
 import java.util.ArrayList;
-
-import androidx.core.content.FileProvider;
 
 /**
  * Created by Matt on 10/9/2017.
@@ -30,6 +27,24 @@ public class AdminActivity extends BaseActivity {
         setContentView(R.layout.activity_admin);
 
         viewModel = new AdminViewModel();
+
+        Intent duckIntent = new Intent(this, DuckActivity.class);
+
+        Button sendPitData = findViewById(R.id.send_pit_data);
+        sendPitData.setOnLongClickListener(v -> {
+            viewModel.toggleDuckButton();
+            return true;
+        });
+
+        Button sendConcatPitData = findViewById(R.id.send_concat_pit_data);
+        sendConcatPitData.setOnLongClickListener(v -> {
+            if (viewModel.duckButtonIsPressed()) {
+                startActivity(duckIntent);
+                viewModel.toggleDuckButton();
+                return true;
+            }
+            return false;
+        });
     }
 
     public void concatenateMatchData(View view) {

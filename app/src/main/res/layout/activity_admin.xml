@@ -24,6 +24,7 @@
         android:onClick="sendRobotPhotos"/>
 
     <Button
+        android:id="@+id/send_pit_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sendPitData"
@@ -35,6 +36,7 @@
         android:text="@string/sendConcatMatchData"
         android:onClick="sendConcatMatchData"/>
     <Button
+        android:id="@+id/send_concat_pit_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sendConcatPitData"
