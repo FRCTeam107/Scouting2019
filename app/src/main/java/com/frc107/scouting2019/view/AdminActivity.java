@@ -152,7 +152,10 @@ public class AdminActivity extends BaseActivity implements IUIListener {
 
     @Override
     public void callback(boolean error) {
-        if (!error)
-            Toast.makeText(getApplicationContext(), "OPRs downloaded successfully.", Toast.LENGTH_LONG).show();
+        String message = "OPRs downloaded successfully.";
+        if (error)
+            message = "Error while downloading OPRs. Double-check your event key.";
+
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }
