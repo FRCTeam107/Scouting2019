@@ -5,7 +5,7 @@ import com.frc107.scouting2019.utils.FileUtils;
 import java.util.ArrayList;
 
 public class Scouting {
-    public static final String VERSION_DATE = "4/20/2019 - 6:22";
+    public static final String VERSION_DATE = "4/21/2019 - 1:25";
     public static final String PREFERENCES_NAME = "ScoutingPreferences";
     public static final String EVENT_KEY_PREFERENCE = "eventKey";
 
