@@ -29,8 +29,12 @@ import java.util.ArrayList;
 public class AdminActivity extends BaseActivity implements IUIListener {
     private AdminViewModel viewModel;
     private EditText eventKeyEditText;
+    private Button sendPitDataButton;
+    private Button sendConcatPitDataButton;
     private SharedPreferences pref;
     private SharedPreferences.Editor prefEditor;
+
+    private TextWatcher eventKeyTextWatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +49,7 @@ public class AdminActivity extends BaseActivity implements IUIListener {
         eventKeyEditText = findViewById(R.id.eventKeyEditText);
         eventKeyEditText.setText(viewModel.getEventKey());
 
-        eventKeyEditText.addTextChangedListener(new TextWatcher() {
+        eventKeyTextWatcher = new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 viewModel.setEventKey(s.toString());
@@ -53,16 +57,17 @@ public class AdminActivity extends BaseActivity implements IUIListener {
                 prefEditor.apply();
             }
             public void afterTextChanged(Editable s) { }
-        });
+        };
+        eventKeyEditText.addTextChangedListener(eventKeyTextWatcher);
 
-        Button sendPitData = findViewById(R.id.send_pit_data);
-        sendPitData.setOnLongClickListener(v -> {
+        sendPitDataButton = findViewById(R.id.send_pit_data);
+        sendPitDataButton.setOnLongClickListener(v -> {
             viewModel.toggleDuckButton();
             return true;
         });
 
-        Button sendConcatPitData = findViewById(R.id.send_concat_pit_data);
-        sendConcatPitData.setOnLongClickListener(v -> {
+        sendConcatPitDataButton = findViewById(R.id.send_concat_pit_data);
+        sendConcatPitDataButton.setOnLongClickListener(v -> {
             if (viewModel.duckButtonIsPressed()) {
                 Intent duckIntent = new Intent(this, DuckActivity.class);
                 startActivity(duckIntent);
@@ -71,6 +76,16 @@ public class AdminActivity extends BaseActivity implements IUIListener {
             }
             return false;
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        eventKeyEditText.removeTextChangedListener(eventKeyTextWatcher);
+        eventKeyTextWatcher = null;
+
+        sendPitDataButton.setOnLongClickListener(null);
+        sendConcatPitDataButton.setOnLongClickListener(null);
     }
 
     public void concatenateMatchData(View view) {
