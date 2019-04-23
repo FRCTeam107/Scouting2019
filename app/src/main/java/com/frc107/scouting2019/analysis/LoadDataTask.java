@@ -20,7 +20,8 @@ public class LoadDataTask extends AsyncTask<Void, Void, SparseArray<TeamDetails>
                              COL_ITEM_PLACED_LOCATION = 9,
                              COL_DEFENSE = 13,
                              COL_HAB = 11,
-                             COL_OPR = 17;
+                             COL_OPR = 17,
+                             COL_DPR = 18;
 
     private IAnalysisListener listener;
     private SparseArray<TeamDetails> teamDetailsSparseArray;
@@ -77,6 +78,7 @@ public class LoadDataTask extends AsyncTask<Void, Void, SparseArray<TeamDetails>
         int defense = Integer.parseInt(columns[COL_DEFENSE]);
         int habLevel = Integer.parseInt(columns[COL_HAB]);
         double opr = Double.parseDouble(columns[COL_OPR]);
+        double dpr = Double.parseDouble(columns[COL_DPR]);
 
         TeamDetails teamDetails = teamDetailsSparseArray.get(teamNum);
         if (teamDetails == null) {
@@ -85,6 +87,7 @@ public class LoadDataTask extends AsyncTask<Void, Void, SparseArray<TeamDetails>
         }
 
         teamDetails.setOPR(opr);
+        teamDetails.setDPR(dpr);
         teamDetails.incrementCycleNum();
 
         if (!teamDetails.hasMatch(matchNum)) {

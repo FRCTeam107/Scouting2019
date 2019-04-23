@@ -64,4 +64,8 @@ public class TeamAnalysisViewModel {
     public double getOPR() {
         return model.getOPR();
     }
+
+    public double getDPR() {
+        return model.getDPR();
+    }
 }

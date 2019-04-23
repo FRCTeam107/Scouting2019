@@ -39,15 +39,20 @@ public class TBA {
 
         JsonObject jsonObject = jsonParser.parse(result.toString()).getAsJsonObject();
         JsonObject oprs = (JsonObject) jsonObject.get("oprs");
+        JsonObject dprs = (JsonObject) jsonObject.get("dprs");
 
-        OPR opr = new OPR();
+        OPR values = new OPR();
 
-        Set<Map.Entry<String, JsonElement>> oprSet = oprs.entrySet();
-        for (Map.Entry<String, JsonElement> entry : oprSet) {
-            int teamNum = Integer.parseInt(entry.getKey().substring(3));
-            opr.setOPR(teamNum, entry.getValue().getAsString());
+        Object[] oprArray = oprs.entrySet().toArray();
+        Object[] dprArray = dprs.entrySet().toArray();
+        for (int i = 0; i < oprArray.length; i++) {
+            String opr = ((Map.Entry<String, JsonElement>) oprArray[i]).getValue().getAsString();
+            String dpr = ((Map.Entry<String, JsonElement>) dprArray[i]).getValue().getAsString();
+            int teamNum = Integer.parseInt((((Map.Entry<String, JsonElement>) oprArray[i])).getKey().substring(3));
+            values.setOPR(teamNum, opr);
+            values.setDPR(teamNum, dpr);
         }
 
-        return opr;
+        return values;
     }
 }

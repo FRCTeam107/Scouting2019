@@ -174,5 +174,6 @@
     <string name="eventKeyHint">Event Key</string>
     <string name="downloadOPRs">Download OPRs</string>
     <string name="analysisOpr">OPR:</string>
+    <string name="analysisDPR">DPR:</string>
 
 </resources>

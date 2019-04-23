@@ -25,7 +25,8 @@ public class AttributeAnalysisModel implements IAnalysisListener {
             "Hab 2 Climb Amount",
             "Hab 3 Climb Amount",
             "Successful Defense Amount",
-            "OPR"
+            "OPR",
+            "DPR"
     };
 
     private static final int AVG_CARGO = 0,
@@ -37,7 +38,8 @@ public class AttributeAnalysisModel implements IAnalysisListener {
                              HAB_2_AMOUNT = 6,
                              HAB_3_AMOUNT = 7,
                              SUCCESSFUL_DEFENSE_AMOUNT = 8,
-                             OPR = 9;
+                             OPR = 9,
+                             DPR = 10;
 
     private int currentAttributeType;
 
@@ -105,6 +107,9 @@ public class AttributeAnalysisModel implements IAnalysisListener {
                     break;
                 case OPR:
                     attribute = teamDetails.getOPR();
+                    break;
+                case DPR:
+                    attribute = teamDetails.getDPR();
                     break;
             }
 

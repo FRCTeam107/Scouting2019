@@ -19,6 +19,7 @@ public class TeamDetails {
     private int hab1Num, hab2Num, hab3Num;
     private int cycleNum;
     private double opr;
+    private double dpr;
     private ArrayList<Integer> matches;
 
     public TeamDetails() {
@@ -173,5 +174,13 @@ public class TeamDetails {
 
     public double getOPR() {
         return opr;
+    }
+
+    public void setDPR(double dpr) {
+        this.dpr = dpr;
+    }
+
+    public double getDPR() {
+        return dpr;
     }
 }

@@ -17,6 +17,7 @@ public class TeamAnalysisModel implements IAnalysisListener {
     private boolean rocket1, rocket2, rocket3;
     private boolean hab1, hab2, hab3;
     private double opr;
+    private double dpr;
     private IUIListener listener; // TODO: THIS SUCKS. FIX THIS. FIGURE OUT HOW TO DO PROPER MVVM.
     private String[] teamNumbers;
 
@@ -44,6 +45,7 @@ public class TeamAnalysisModel implements IAnalysisListener {
             rocket2 = false;
             rocket3 = false;
             opr = 0;
+            dpr = 0;
             return;
         }
 
@@ -58,6 +60,7 @@ public class TeamAnalysisModel implements IAnalysisListener {
         rocket2 = teamDetails.canAccessRocketTwo();
         rocket3 = teamDetails.canAccessRocketThree();
         opr = teamDetails.getOPR();
+        dpr = teamDetails.getDPR();
     }
 
     public int getTeamNumber() {
@@ -106,6 +109,10 @@ public class TeamAnalysisModel implements IAnalysisListener {
 
     public double getOPR() {
         return opr;
+    }
+
+    public double getDPR() {
+        return dpr;
     }
 
     @Override

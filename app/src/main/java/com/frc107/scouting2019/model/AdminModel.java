@@ -82,8 +82,12 @@ public class AdminModel implements IOPRListener {
                     if (opr != null && opr.containsTeam(teamNum)) {
                          teamOPR = opr.getOPR(teamNum);
                     }
+                    String teamDPR = "-1";
+                    if (opr != null && opr.containsTeam(teamNum)) {
+                        teamDPR = opr.getDPR(teamNum);
+                    }
 
-                    line += "," + teamOPR;
+                    line += "," + teamOPR + "," + teamDPR;
 
                     builder.append(line).append('\n');
                     line = bufferedReader.readLine();

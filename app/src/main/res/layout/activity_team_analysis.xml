@@ -259,6 +259,26 @@
             android:layout_weight="1"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/textview_spacer"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/analysisDPR"
+            android:textSize="@dimen/label_text_size"/>
+        <TextView
+            android:id="@+id/dprTextView"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:text="@string/analysisEmptyValue"
+            android:textSize="@dimen/label_text_size"
+            android:gravity="end"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
     <ProgressBar
         android:id="@+id/analysisProgressBar"
         android:layout_width="match_parent"
