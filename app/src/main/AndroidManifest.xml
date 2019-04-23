@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -21,12 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ScouterInitialsActivity"></activity>
-        <activity android:name=".view.SandstormActivity"></activity>
-        <activity android:name=".view.CycleActivity"></activity>
-        <activity android:name=".view.PitActivity"></activity>
-        <activity android:name=".view.EndGameActivity"></activity>
-        <activity android:name=".view.AdminActivity"></activity>
+        <activity android:name=".view.ScouterInitialsActivity" />
+        <activity android:name=".view.SandstormActivity" />
+        <activity android:name=".view.CycleActivity" />
+        <activity android:name=".view.PitActivity" />
+        <activity android:name=".view.EndGameActivity" />
+        <activity android:name=".view.AdminActivity" />
+        <activity android:name=".analysis.team.TeamAnalysisActivity" />
+        <activity android:name=".analysis.attribute.AttributeAnalysisActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

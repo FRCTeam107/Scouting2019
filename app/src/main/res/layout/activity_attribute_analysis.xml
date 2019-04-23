@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/analysisChooseAttributeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/textview_spacer"
+        android:onClick="attributeButtonPressed"
+        android:text="@string/analysisChooseAttribute" />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/textview_spacer"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/teamNumberHeading"
+            android:textStyle="bold"
+            android:autoSizeMinTextSize="@dimen/min_text_size"
+            android:autoSizeMaxTextSize="@dimen/max_text_size"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/attributeTypeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:autoSizeMinTextSize="@dimen/min_text_size"
+            android:autoSizeMaxTextSize="@dimen/max_text_size"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/elementListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:clickable="false" />
+
+    <ProgressBar
+        android:id="@+id/analysisProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/question_height"
+        android:layout_marginTop="@dimen/top_margin" />
+
+</LinearLayout>

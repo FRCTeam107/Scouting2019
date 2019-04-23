@@ -2,13 +2,21 @@ package com.frc107.scouting2019.view;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.frc107.scouting2019.IUIListener;
 import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.Scouting;
+import com.frc107.scouting2019.analysis.attribute.AttributeAnalysisActivity;
+import com.frc107.scouting2019.analysis.team.TeamAnalysisActivity;
 import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.viewmodel.AdminViewModel;
 
@@ -18,33 +26,66 @@ import java.util.ArrayList;
  * Created by Matt on 10/9/2017.
  */
 
-public class AdminActivity extends BaseActivity {
+public class AdminActivity extends BaseActivity implements IUIListener {
     private AdminViewModel viewModel;
+    private EditText eventKeyEditText;
+    private Button sendPitDataButton;
+    private Button sendConcatPitDataButton;
+    private SharedPreferences pref;
+    private SharedPreferences.Editor prefEditor;
+
+    private TextWatcher eventKeyTextWatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        viewModel = new AdminViewModel();
+        viewModel = new AdminViewModel(this);
 
-        Intent duckIntent = new Intent(this, DuckActivity.class);
+        pref = getApplicationContext().getSharedPreferences(Scouting.PREFERENCES_NAME, MODE_PRIVATE);
+        prefEditor = pref.edit();
 
-        Button sendPitData = findViewById(R.id.send_pit_data);
-        sendPitData.setOnLongClickListener(v -> {
+        eventKeyEditText = findViewById(R.id.eventKeyEditText);
+        eventKeyEditText.setText(viewModel.getEventKey());
+
+        eventKeyTextWatcher = new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                viewModel.setEventKey(s.toString());
+                prefEditor.putString(Scouting.EVENT_KEY_PREFERENCE, s.toString());
+                prefEditor.apply();
+            }
+            public void afterTextChanged(Editable s) { }
+        };
+        eventKeyEditText.addTextChangedListener(eventKeyTextWatcher);
+
+        sendPitDataButton = findViewById(R.id.send_pit_data);
+        sendPitDataButton.setOnLongClickListener(v -> {
             viewModel.toggleDuckButton();
             return true;
         });
 
-        Button sendConcatPitData = findViewById(R.id.send_concat_pit_data);
-        sendConcatPitData.setOnLongClickListener(v -> {
+        sendConcatPitDataButton = findViewById(R.id.send_concat_pit_data);
+        sendConcatPitDataButton.setOnLongClickListener(v -> {
             if (viewModel.duckButtonIsPressed()) {
+                Intent duckIntent = new Intent(this, DuckActivity.class);
                 startActivity(duckIntent);
                 viewModel.toggleDuckButton();
                 return true;
             }
             return false;
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        eventKeyEditText.removeTextChangedListener(eventKeyTextWatcher);
+        eventKeyTextWatcher = null;
+
+        sendPitDataButton.setOnLongClickListener(null);
+        sendConcatPitDataButton.setOnLongClickListener(null);
     }
 
     public void concatenateMatchData(View view) {
@@ -91,5 +132,30 @@ public class AdminActivity extends BaseActivity {
 
     public void sendConcatPitData(View view) {
         sendFile(viewModel.getPitFile(true));
+    }
+
+    public void goToTeamAnalysis(View view) {
+        Intent intent = new Intent(getApplicationContext(), TeamAnalysisActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void goToAttributeAnalysis(View view) {
+        Intent intent = new Intent(getApplicationContext(), AttributeAnalysisActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void downloadOPRs(View view) {
+        viewModel.downloadOPRs();
+    }
+
+    @Override
+    public void callback(boolean error) {
+        String message = "OPRs downloaded successfully.";
+        if (error)
+            message = "Error while downloading OPRs. Double-check your event key.";
+
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }

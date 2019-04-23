@@ -27,7 +27,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/top_of_screen_margin"
-                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_marginBottom="@dimen/textview_spacer"
                     android:text="@string/endGameHabitatLevelHeading"
                     android:textSize="@dimen/label_text_size"/>
 
@@ -76,7 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/question_height"
                     android:layout_marginTop="@dimen/top_margin"
-                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_marginBottom="@dimen/textview_spacer"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/endGameDefenseAllMatch_chkbxText"
                     style="@style/scoutingRadioButtonTheme" />
@@ -87,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/top_margin"
-                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_marginBottom="@dimen/textview_spacer"
                     android:text="@string/endGameDefenseHeading"
                     android:textSize="@dimen/label_text_size"/>
 
@@ -127,7 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/question_height"
                     android:layout_marginTop="@dimen/top_margin"
-                    android:layout_marginBottom="@dimen/space_between_label_and_radiogroup"
+                    android:layout_marginBottom="@dimen/textview_spacer"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/endGameFoulsChkbxText"
                     style="@style/scoutingRadioButtonTheme" />

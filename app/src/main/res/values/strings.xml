@@ -33,8 +33,6 @@
     <string name="sandstormBaseline_chkbxText">Crossed Baseline</string>
 
 
-
-
     <string name="saveButton">Save</string>
 
     <string name="enterTeleopCycle">Enter Teleop Cycle</string>
@@ -153,5 +151,29 @@
     <string name="sendMatchData">Send Match Data</string>
     <string name="sendConcatMatchData">Send Concatenated Match File</string>
     <string name="sendConcatPitData">Send Concatenated Pit File</string>
+
+    <!--Analysis Strings-->
+    <string name="title_activity_analysis">AnalysisActivity</string>
+    <string name="teamAnalysisButton">Team Analysis</string>
+    <string name="attributeAnalysisButton">Attribute Analysis</string>
+    <string name="analysisAverageCargo">Average Cargo:</string>
+    <string name="analysisAverageHatchPanel">Average Hatch Panel:</string>
+    <string name="analysisDefenseCount">Defense Count:</string>
+    <string name="analysisEffectiveDefenseCount">Effective Defense Count:</string>
+    <string name="analysisHabOne">Hab Level 1:</string>
+    <string name="analysisHabTwo">Hab Level 2</string>
+    <string name="analysisHabThree">Hab Level 3:</string>
+    <string name="analysisRocketOne">Rocket Level 1:</string>
+    <string name="analysisRocketTwo">Rocket Level 2</string>
+    <string name="analysisRocketThree">Rocket Level 3:</string>
+    <string name="analysisEmptyValue">0</string>
+    <string name="analysisTeamNumber">Team Number:</string>
+    <string name="analysisChooseTeamNumber">Choose Team Number</string>
+    <string name="title_activity_attribute_analysis">AttributeAnalysisActivity</string>
+    <string name="analysisChooseAttribute">Choose Attribute</string>
+    <string name="eventKeyHint">Event Key</string>
+    <string name="downloadOPRs">Download OPRs</string>
+    <string name="analysisOpr">OPR:</string>
+    <string name="analysisDPR">DPR:</string>
 
 </resources>
