@@ -1,4 +1,4 @@
-package com.frc107.scouting2019.question;
+package com.frc107.scouting2019.model.question;
 
 public class TextQuestion extends Question<String> {
     private String answer;

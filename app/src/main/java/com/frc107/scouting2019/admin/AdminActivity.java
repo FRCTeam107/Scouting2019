@@ -12,9 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.frc107.scouting2019.BaseActivity;
-import com.frc107.scouting2019.DuckActivity;
-import com.frc107.scouting2019.IUIListener;
+import com.frc107.scouting2019.ui.BaseActivity;
+import com.frc107.scouting2019.duck.DuckActivity;
+import com.frc107.scouting2019.ui.IUIListener;
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.analysis.attribute.AttributeAnalysisActivity;

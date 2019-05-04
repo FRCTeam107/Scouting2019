@@ -2,14 +2,14 @@ package com.frc107.scouting2019.endgame;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.Scouting;
-import com.frc107.scouting2019.ScoutModel;
-import com.frc107.scouting2019.question.Question;
-import com.frc107.scouting2019.question.RadioQuestion;
-import com.frc107.scouting2019.question.ToggleQuestion;
+import com.frc107.scouting2019.model.BaseModel;
+import com.frc107.scouting2019.model.question.Question;
+import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.model.question.ToggleQuestion;
 
 import java.util.ArrayList;
 
-public class EndGameModel extends ScoutModel {
+public class EndGameModel extends BaseModel {
     private static final String FILE_NAME_HEADER = "Match";
 
     @Override

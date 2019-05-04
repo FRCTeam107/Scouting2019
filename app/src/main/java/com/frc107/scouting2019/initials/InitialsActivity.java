@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.frc107.scouting2019.R;
 import com.frc107.scouting2019.sandstorm.SandstormActivity;
-import com.frc107.scouting2019.BaseActivity;
+import com.frc107.scouting2019.ui.BaseActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 import android.text.Editable;

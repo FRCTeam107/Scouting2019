@@ -16,7 +16,7 @@ import com.frc107.scouting2019.utils.PermissionUtils;
 import com.frc107.scouting2019.utils.ViewUtils;
 import com.frc107.scouting2019.endgame.EndGameActivity;
 import com.frc107.scouting2019.MainActivity;
-import com.frc107.scouting2019.questionWrappers.RadioWrapper;
+import com.frc107.scouting2019.ui.questionWrappers.RadioWrapper;
 
 import androidx.appcompat.app.AppCompatActivity;
 

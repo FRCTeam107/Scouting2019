@@ -1,20 +1,20 @@
-package com.frc107.scouting2019;
+package com.frc107.scouting2019.model;
 
 import com.frc107.scouting2019.Scouting;
-import com.frc107.scouting2019.question.ToggleQuestion;
-import com.frc107.scouting2019.question.NumberQuestion;
-import com.frc107.scouting2019.question.Question;
-import com.frc107.scouting2019.question.RadioQuestion;
-import com.frc107.scouting2019.question.TextQuestion;
+import com.frc107.scouting2019.model.question.ToggleQuestion;
+import com.frc107.scouting2019.model.question.NumberQuestion;
+import com.frc107.scouting2019.model.question.Question;
+import com.frc107.scouting2019.model.question.RadioQuestion;
+import com.frc107.scouting2019.model.question.TextQuestion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public abstract class ScoutModel {
+public abstract class BaseModel {
     private ArrayList<Question> questions;
     private String fileNameHeader;
 
-    public ScoutModel() {
+    public BaseModel() {
         this.questions = new ArrayList<>(Arrays.asList(getQuestions()));
     }
 

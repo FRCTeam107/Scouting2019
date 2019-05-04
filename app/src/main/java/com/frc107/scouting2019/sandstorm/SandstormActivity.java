@@ -1,8 +1,6 @@
 package com.frc107.scouting2019.sandstorm;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -13,12 +11,9 @@ import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.ScoutingStrings;
 import com.frc107.scouting2019.cycle.CycleActivity;
 import com.frc107.scouting2019.utils.ViewUtils;
-import com.frc107.scouting2019.BaseActivity;
-import com.frc107.scouting2019.questionWrappers.RadioWrapper;
-import com.frc107.scouting2019.questionWrappers.TextWrapper;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+import com.frc107.scouting2019.ui.BaseActivity;
+import com.frc107.scouting2019.ui.questionWrappers.RadioWrapper;
+import com.frc107.scouting2019.ui.questionWrappers.TextWrapper;
 
 public class SandstormActivity extends BaseActivity {
     private RadioWrapper startingPosWrapper;

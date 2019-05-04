@@ -1,4 +1,4 @@
-package com.frc107.scouting2019;
+package com.frc107.scouting2019.ui;
 
 import android.Manifest;
 import android.content.Intent;
@@ -7,6 +7,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.frc107.scouting2019.BuildConfig;
+import com.frc107.scouting2019.MainActivity;
+import com.frc107.scouting2019.R;
+import com.frc107.scouting2019.Scouting;
 import com.frc107.scouting2019.admin.AdminActivity;
 import com.frc107.scouting2019.utils.PermissionUtils;
 
