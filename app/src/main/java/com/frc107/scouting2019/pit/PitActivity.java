@@ -162,15 +162,4 @@ public class PitActivity extends BaseActivity {
                 Toast.makeText(this, "Failure while compressing photo.", Toast.LENGTH_SHORT);
         }
     }
-
-    private void checkForPermissions() {
-        int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
-        if (writePermission != PackageManager.PERMISSION_GRANTED || cameraPermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[] {
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.CAMERA
-            }, 1);
-        }
-    }
 }

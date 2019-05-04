@@ -3,7 +3,9 @@
 
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
 
     <Button
         android:layout_width="match_parent"
@@ -24,6 +26,7 @@
         android:onClick="sendRobotPhotos"/>
 
     <Button
+        android:id="@+id/send_pit_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sendPitData"
@@ -35,9 +38,36 @@
         android:text="@string/sendConcatMatchData"
         android:onClick="sendConcatMatchData"/>
     <Button
+        android:id="@+id/send_concat_pit_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sendConcatPitData"
         android:onClick="sendConcatPitData"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/teamAnalysisButton"
+        android:onClick="goToTeamAnalysis"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/attributeAnalysisButton"
+        android:onClick="goToAttributeAnalysis"/>
+
+    <EditText
+        android:id="@+id/eventKeyEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:hint="@string/eventKeyHint" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/downloadOPRs"
+        android:onClick="downloadOPRs" />
 
 </LinearLayout>

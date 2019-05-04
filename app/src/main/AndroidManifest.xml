@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.frc107.scouting2019">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icon"
@@ -22,6 +27,9 @@
         <activity android:name=".pit.PitActivity"></activity>
         <activity android:name=".endgame.EndGameActivity"></activity>
         <activity android:name=".admin.AdminActivity"></activity>
+        <activity android:name=".analysis.team.TeamAnalysisActivity"></activity>
+        <activity android:name=".analysis.attribute.AttributeAnalysisActivity"></activity>
+        <activity android:name=".DuckActivity"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -30,11 +38,8 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
     </application>
 
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>

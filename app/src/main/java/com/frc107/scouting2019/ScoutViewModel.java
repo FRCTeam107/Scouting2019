@@ -1,10 +1,8 @@
 package com.frc107.scouting2019;
 
-import com.frc107.scouting2019.ScoutModel;
+import androidx.lifecycle.ViewModel;
 
-import androidx.databinding.BaseObservable;
-
-public abstract class ScoutViewModel extends BaseObservable {
+public abstract class ScoutViewModel extends ViewModel {
     protected ScoutModel model;
 
     public int getFirstUnfinishedQuestionId() {
